@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="bigdigit" parent="@android:style/Widget.TextView">
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">75sp</item>
+    </style>
+
+    <style name="dim" parent="@style/bigdigit">
+        <item name="android:textColor">@color/dim_green</item>
+    </style>
+
+    <style name="bright" parent="@style/bigdigit">
+        <item name="android:textColor">@color/bright_green</item>
+    </style>
+
+</resources>

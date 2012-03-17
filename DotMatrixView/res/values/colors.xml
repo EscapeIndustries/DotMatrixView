@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark_red">#ff220000</color>
+    <color name="dim_green">#ff223322</color>
+    <color name="bright_green">#ffbbccbb</color>
+</resources>
