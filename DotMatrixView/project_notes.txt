@@ -1,1 +1,1 @@
-7w x 13h grid of circles
+Make the ImageView at 0,0 pulse on and off continuously using animation.
