@@ -5,10 +5,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class NumericalDisplayActivity extends Activity {
+	private ImageView changeMe;
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,9 +42,10 @@ public class NumericalDisplayActivity extends Activity {
 			}
 		}
 
-		// Experiment to show you can turn one from drim to bright
-		ImageView changeMe = (ImageView) ((ViewGroup) matrix.getChildAt(0))
+		changeMe = (ImageView) ((ViewGroup) matrix.getChildAt(0))
 				.getChildAt(0);
 		changeMe.setImageResource(R.drawable.dot_lit);
+		Animation vanish = AnimationUtils.loadAnimation(this, R.anim.vanish);
+		changeMe.startAnimation(vanish);
 	}
 }
