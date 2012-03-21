@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class NumericalDisplayActivity extends Activity {
-	private ImageView changeMe;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -25,27 +24,27 @@ public class NumericalDisplayActivity extends Activity {
 		Log.d("NumericalDisplayActivity", "count == " + count);
 		for (int i = 0; i < count; i++) {
 			View item = matrix.getChildAt(i);
-			Log.d("NumericalDisplayActivity",
-					""
-							+ i
-							+ ": "
-							+ (item instanceof ViewGroup ? (item instanceof LinearLayout ? "LinearLayout"
-									: "Viewgroup")
-									: "View"));
 			int itemCount = ((ViewGroup) item).getChildCount();
 			Log.d("NumericalDisplay", "itemCount == " + itemCount);
 			for (int j = 0; j < itemCount; j++) {
-				View subItem = ((ViewGroup) item).getChildAt(j);
-				Log.d("NumericalDisplayActivity", "" + ((i * itemCount) + j)
-						+ ": "
-						+ (subItem instanceof ImageView ? "ImageView" : "View"));
+				ImageView subItem = (ImageView)((ViewGroup) item).getChildAt(j);
+				fadeOut(subItem);
 			}
 		}
 
-		changeMe = (ImageView) ((ViewGroup) matrix.getChildAt(0))
-				.getChildAt(0);
-		changeMe.setImageResource(R.drawable.dot_lit);
+//		ImageView dot = null;
+//		for (int i = 1; i < 6; i++) {
+//			dot = (ImageView) ((ViewGroup) matrix.getChildAt(0))
+//			.getChildAt(i);
+//			fadeOut(dot);
+//		}
+			
+	}
+
+	private void fadeOut(ImageView dot) {
+		dot.setImageResource(R.drawable.dot_lit);
 		Animation vanish = AnimationUtils.loadAnimation(this, R.anim.vanish);
-		changeMe.startAnimation(vanish);
+		vanish.setAnimationListener(new ChangeToDimAtEndListener(dot));
+		dot.startAnimation(vanish);
 	}
 }

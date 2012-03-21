@@ -116,6 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="6" />
+
         </FrameLayout>
     </LinearLayout>
 
@@ -174,6 +175,7 @@
                 android:layout_height="wrap_content"
                 android:text="9" />
         </FrameLayout>
+
     </LinearLayout>
 
     <LinearLayout
