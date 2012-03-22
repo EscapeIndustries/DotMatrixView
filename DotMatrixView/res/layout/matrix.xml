@@ -17,35 +17,90 @@
             android:padding="1dp"
             android:src="@drawable/dot_dim" />
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
 
         <ImageView
             android:layout_width="10dp"
@@ -53,6 +108,359 @@
             android:padding="1dp"
             android:src="@drawable/dot_dim" />
     </LinearLayout>
+    <!-- End of first line -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Start of middle line -->
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -65,35 +473,90 @@
             android:padding="1dp"
             android:src="@drawable/dot_dim" />
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
 
         <ImageView
             android:layout_width="10dp"
@@ -101,6 +564,359 @@
             android:padding="1dp"
             android:src="@drawable/dot_dim" />
     </LinearLayout>
+    <!-- End of middle line -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:padding="1dp"
+            android:src="@drawable/dot_dim" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Start of last line -->
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -113,515 +929,90 @@
             android:padding="1dp"
             android:src="@drawable/dot_dim" />
 
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:padding="1dp"
-            android:src="@drawable/dot_dim" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_dim" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:padding="1dp"
+                android:src="@drawable/dot_lit" />
+        </FrameLayout>
 
         <ImageView
             android:layout_width="10dp"

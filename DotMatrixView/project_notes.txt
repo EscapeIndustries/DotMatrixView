@@ -1,1 +1,4 @@
-Make all the dots pulse on and off continuously using animation.
+Project notes
+=============
+
+Convert matrix.xml to use merge or include tags instead.

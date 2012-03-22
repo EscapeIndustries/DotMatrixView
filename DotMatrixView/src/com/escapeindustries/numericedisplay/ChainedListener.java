@@ -4,29 +4,30 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 
-public class ChangeToDimAtEndListener implements AnimationListener {
+public class ChainedListener implements AnimationListener {
 	
 	private ImageView dot;
+	private Animation next;
 
-	public ChangeToDimAtEndListener(ImageView dot) {
+	public ChainedListener(ImageView dot, Animation next) {
 		this.dot = dot;
+		this.next = next;
 	}
 	
 	@Override
 	public void onAnimationEnd(Animation animation) {
-		// TODO Auto-generated method stub
-		dot.setImageResource(R.drawable.dot_dim);
+		dot.startAnimation(next);
 	}
 
 	@Override
 	public void onAnimationRepeat(Animation animation) {
-		// TODO Auto-generated method stub
+		// No repeat behaviour required
 		
 	}
 
 	@Override
 	public void onAnimationStart(Animation animation) {
-		// TODO Auto-generated method stub
+		// No start behaviour required
 		
 	}
 }

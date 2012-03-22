@@ -6,7 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -21,30 +23,36 @@ public class NumericalDisplayActivity extends Activity {
 
 		// Experiment to show you can find the items in the grid predictably
 		int count = matrix.getChildCount();
-		Log.d("NumericalDisplayActivity", "count == " + count);
 		for (int i = 0; i < count; i++) {
 			View item = matrix.getChildAt(i);
 			int itemCount = ((ViewGroup) item).getChildCount();
-			Log.d("NumericalDisplay", "itemCount == " + itemCount);
 			for (int j = 0; j < itemCount; j++) {
-				ImageView subItem = (ImageView)((ViewGroup) item).getChildAt(j);
-				fadeOut(subItem);
+				View subItem = ((ViewGroup) item)
+						.getChildAt(j);
+				if (subItem instanceof FrameLayout) {
+					// Only the items inside FrameLayouts need to animate
+					ImageView dot = (ImageView)((ViewGroup)subItem).getChildAt(1);
+					fadeOut(dot);
+				}
 			}
 		}
 
-//		ImageView dot = null;
-//		for (int i = 1; i < 6; i++) {
-//			dot = (ImageView) ((ViewGroup) matrix.getChildAt(0))
-//			.getChildAt(i);
-//			fadeOut(dot);
-//		}
-			
+		// ImageView dot = null;
+		// for (int i = 1; i < 6; i++) {
+		// dot = (ImageView) ((ViewGroup) matrix.getChildAt(0))
+		// .getChildAt(i);
+		// fadeOut(dot);
+		// }
+
 	}
 
 	private void fadeOut(ImageView dot) {
-		dot.setImageResource(R.drawable.dot_lit);
 		Animation vanish = AnimationUtils.loadAnimation(this, R.anim.vanish);
-		vanish.setAnimationListener(new ChangeToDimAtEndListener(dot));
+		Animation appear = AnimationUtils.loadAnimation(this, R.anim.appear);
+		AnimationListener vanishChain = new ChainedListener(dot, appear);
+		AnimationListener appearChain = new ChainedListener(dot, vanish);
+		vanish.setAnimationListener(vanishChain);
+		appear.setAnimationListener(appearChain);
 		dot.startAnimation(vanish);
 	}
 }
