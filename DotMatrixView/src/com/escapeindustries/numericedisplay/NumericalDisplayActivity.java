@@ -18,21 +18,25 @@ public class NumericalDisplayActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.matrix);
-		ViewGroup matrix = (ViewGroup) findViewById(R.id.matrix);
+		setContentView(R.layout.clock);
+		ViewGroup digits = (ViewGroup) findViewById(R.id.digits);
+		for (int digit = 0; digit < digits.getChildCount(); digit++) {
 
-		// Experiment to show you can find the items in the grid predictably
-		int count = matrix.getChildCount();
-		for (int i = 0; i < count; i++) {
-			View item = matrix.getChildAt(i);
-			int itemCount = ((ViewGroup) item).getChildCount();
-			for (int j = 0; j < itemCount; j++) {
-				View subItem = ((ViewGroup) item)
-						.getChildAt(j);
-				if (subItem instanceof FrameLayout) {
-					// Only the items inside FrameLayouts need to animate
-					ImageView dot = (ImageView)((ViewGroup)subItem).getChildAt(1);
-					fadeOut(dot);
+			ViewGroup matrix = (ViewGroup) digits.getChildAt(digit);
+
+			// Experiment to show you can find the items in the grid predictably
+			int count = matrix.getChildCount();
+			for (int i = 0; i < count; i++) {
+				View item = matrix.getChildAt(i);
+				int itemCount = ((ViewGroup) item).getChildCount();
+				for (int j = 0; j < itemCount; j++) {
+					View subItem = ((ViewGroup) item).getChildAt(j);
+					if (subItem instanceof FrameLayout) {
+						// Only the items inside FrameLayouts need to animate
+						ImageView dot = (ImageView) ((ViewGroup) subItem)
+								.getChildAt(1);
+						fadeOut(dot);
+					}
 				}
 			}
 		}

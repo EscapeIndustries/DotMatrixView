@@ -1,6 +1,4 @@
 Project notes
 =============
 
-Convert matrix.xml itself so that the digit is an <include />
-
-Put 4 digits on the screen, with animation, to check performance.
+Build a colon matrix to put between digits.
