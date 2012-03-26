@@ -1,4 +1,6 @@
 Project notes
 =============
 
-Build a colon matrix to put between digits.
+The alpha transition makes the spots disappear right down to the background.
+	Change it to not go all the way down to zero - it might look passable.
+	Make a 3.0-style property animation that takes the colour down to the dim colour.

@@ -5,30 +5,30 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <include layout="@layout/horizontal_line_matrix_row" />
+    <include layout="@layout/digit_matrix_row_horizontal_line" />
 
-    <include layout="@layout/sides_lit_matrix_row" />
+    <include layout="@layout/digit_matrix_row_sides_lit" />
 
-    <include layout="@layout/sides_lit_matrix_row" />
+    <include layout="@layout/digit_matrix_row_sides_lit" />
 
-    <include layout="@layout/sides_lit_matrix_row" />
+    <include layout="@layout/digit_matrix_row_sides_lit" />
 
-    <include layout="@layout/sides_lit_matrix_row" />
+    <include layout="@layout/digit_matrix_row_sides_lit" />
 
-    <include layout="@layout/sides_lit_matrix_row" />
+    <include layout="@layout/digit_matrix_row_sides_lit" />
 
-    <include layout="@layout/horizontal_line_matrix_row" />
+    <include layout="@layout/digit_matrix_row_horizontal_line" />
 
-    <include layout="@layout/sides_lit_matrix_row" />
+    <include layout="@layout/digit_matrix_row_sides_lit" />
 
-    <include layout="@layout/sides_lit_matrix_row" />
+    <include layout="@layout/digit_matrix_row_sides_lit" />
 
-    <include layout="@layout/sides_lit_matrix_row" />
+    <include layout="@layout/digit_matrix_row_sides_lit" />
 
-    <include layout="@layout/sides_lit_matrix_row" />
+    <include layout="@layout/digit_matrix_row_sides_lit" />
 
-    <include layout="@layout/sides_lit_matrix_row" />
+    <include layout="@layout/digit_matrix_row_sides_lit" />
 
-    <include layout="@layout/horizontal_line_matrix_row" />
+    <include layout="@layout/digit_matrix_row_horizontal_line" />
 
 </LinearLayout>
