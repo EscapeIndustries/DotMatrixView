@@ -1,6 +1,18 @@
 Project notes
 =============
 
+NEXT: Use DigitDisplay to set the 1st digit to 1 and the others to 0.
+ 	
+Make it possible to set a digit to an individual value (1,2,3...)
+Thoughts:
+	Make lists of dot references for a digit. A reference is the position if you flattened all the rows into a single array.
+	Write code to turn on all the dots in a collection
+	Write code to turn off all the dots in a collection
+		That is the same code except for the condition
+	Code to filter down the dots that need to change, based on remembering the current digit.
+	I need an array (one item per digit) of Lists
+	
 The alpha transition makes the spots disappear right down to the background.
 	Change it to not go all the way down to zero - it might look passable.
 	Make a 3.0-style property animation that takes the colour down to the dim colour.
+	Do the shadow properties work on shape drawables?
