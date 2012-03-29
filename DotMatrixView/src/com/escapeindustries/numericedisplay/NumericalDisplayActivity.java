@@ -20,6 +20,32 @@ public class NumericalDisplayActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.clock);
 		ViewGroup digits = (ViewGroup) findViewById(R.id.digits);
+		// animateAllLightableDots(digits);
+
+		ViewGroup[] digitsOnly = new ViewGroup[4];
+		for (int i = 0; i < digits.getChildCount(); i++) {
+			// Dirty hack to ensure we only get the digits and not
+			// the colon between digits 2 and 3
+			if (i < 2) {
+				digitsOnly[i] = (ViewGroup) digits.getChildAt(i);
+			} else if (i > 2) {
+				digitsOnly[i - 1] = (ViewGroup) digits.getChildAt(i);
+			}
+		}
+
+		DigitDisplay one = new DigitDisplay(digitsOnly[0]);
+		DigitDisplay two = new DigitDisplay(digitsOnly[1]);
+		DigitDisplay three = new DigitDisplay(digitsOnly[2]);
+		DigitDisplay four = new DigitDisplay(digitsOnly[3]);
+
+		one.setNumber(1);
+		two.setNumber(0);
+		three.setNumber(0);
+		four.setNumber(8);
+
+	}
+
+	private void animateAllLightableDots(ViewGroup digits) {
 		for (int digit = 0; digit < digits.getChildCount(); digit++) {
 
 			ViewGroup matrix = (ViewGroup) digits.getChildAt(digit);
@@ -40,14 +66,6 @@ public class NumericalDisplayActivity extends Activity {
 				}
 			}
 		}
-
-		// ImageView dot = null;
-		// for (int i = 1; i < 6; i++) {
-		// dot = (ImageView) ((ViewGroup) matrix.getChildAt(0))
-		// .getChildAt(i);
-		// fadeOut(dot);
-		// }
-
 	}
 
 	private void fadeOut(ImageView dot) {

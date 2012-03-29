@@ -1,7 +1,9 @@
 Project notes
 =============
 
-NEXT: Use DigitDisplay to set the 1st digit to 1 and the others to 0.
+NEXT: Fill in the other digit dot-index lists and test them.
+
+Try to make the digits smaller so they don't need massive screens to work.
  	
 Make it possible to set a digit to an individual value (1,2,3...)
 Thoughts:
