@@ -1,20 +1,30 @@
 Project notes
 =============
 
-NEXT: Fill in the other digit dot-index lists and test them.
-
-Try to make the digits smaller so they don't need massive screens to work.
+NEXT: Try to make the digits smaller so they don't need massive screens to work.
  	
-Make it possible to set a digit to an individual value (1,2,3...)
-Thoughts:
-	Make lists of dot references for a digit. A reference is the position if you flattened all the rows into a single array.
-	Write code to turn on all the dots in a collection
-	Write code to turn off all the dots in a collection
-		That is the same code except for the condition
-	Code to filter down the dots that need to change, based on remembering the current digit.
-	I need an array (one item per digit) of Lists
+Add feature to change from one digit to another by transition. Need code that compares
+the currently lit and need to be lit dots to make 2 lists:
+1) dots that need to be turned off
+2) dots that need to be turned on
+Or forget the lists, just [make the changes/set the animations off] as they are calculated?
 	
 The alpha transition makes the spots disappear right down to the background.
 	Change it to not go all the way down to zero - it might look passable.
 	Make a 3.0-style property animation that takes the colour down to the dim colour.
 	Do the shadow properties work on shape drawables?
+	
+An eight - all elements on - looks like this:
+	1,2,3,4,5,
+	7,13,
+	14,20,
+	21,27,
+	28,34,
+	35,41,
+	43,44,45,46,47,
+	49,55,
+	56,62,
+	63,69,
+	70,76,
+	77,83,
+	85,86,87,88,89

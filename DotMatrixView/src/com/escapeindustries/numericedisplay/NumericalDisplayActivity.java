@@ -38,10 +38,10 @@ public class NumericalDisplayActivity extends Activity {
 		DigitDisplay three = new DigitDisplay(digitsOnly[2]);
 		DigitDisplay four = new DigitDisplay(digitsOnly[3]);
 
-		one.setNumber(1);
+		one.setNumber(9);
 		two.setNumber(0);
-		three.setNumber(0);
-		four.setNumber(8);
+		three.setNumber(1);
+		four.setNumber(2);
 
 	}
 
