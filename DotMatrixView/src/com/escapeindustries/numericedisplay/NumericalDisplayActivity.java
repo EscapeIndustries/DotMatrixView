@@ -26,10 +26,13 @@ public class NumericalDisplayActivity extends Activity {
 		for (int i = 0; i < digits.getChildCount(); i++) {
 			// Dirty hack to ensure we only get the digits and not
 			// the colon between digits 2 and 3
-			if (i < 2) {
-				digitsOnly[i] = (ViewGroup) digits.getChildAt(i);
-			} else if (i > 2) {
-				digitsOnly[i - 1] = (ViewGroup) digits.getChildAt(i);
+			// AND ignore the spacer columns!
+			if (i % 2 == 0) {
+				if (i < 4) {
+					digitsOnly[i / 2] = (ViewGroup) digits.getChildAt(i);
+				} else if (i > 4) {
+					digitsOnly[(i / 2) - 1] = (ViewGroup) digits.getChildAt(i);
+				}
 			}
 		}
 
@@ -40,8 +43,8 @@ public class NumericalDisplayActivity extends Activity {
 
 		one.setNumber(9);
 		two.setNumber(0);
-		three.setNumber(1);
-		four.setNumber(2);
+		three.setNumber(5);
+		four.setNumber(8);
 
 	}
 

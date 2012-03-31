@@ -1,8 +1,8 @@
 Project notes
 =============
 
-NEXT: Try to make the digits smaller so they don't need massive screens to work.
- 	
+NEXT: 
+
 Add feature to change from one digit to another by transition. Need code that compares
 the currently lit and need to be lit dots to make 2 lists:
 1) dots that need to be turned off
@@ -15,6 +15,19 @@ The alpha transition makes the spots disappear right down to the background.
 	Do the shadow properties work on shape drawables?
 	
 Learn how to target multiple SDK levels so I can optionally use view or property animation.
+
+Make the digits build in code with arbitrary sizes:
+	build the original matrices
+	build the co-ordinates of the digit parts, spacers and colon
+	arguments for building a matrix:
+		dots wide
+		dots high
+		dot size
+		spacer width
+	
+	Should this actually just construct a matrix big enough for the full display, with the
+	digits being indexes to items within it?
+		
 	
 An eight - all elements on - looks like this:
 	1,2,3,4,5,
