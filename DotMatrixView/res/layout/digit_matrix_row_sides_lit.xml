@@ -9,46 +9,53 @@
         android:layout_height="wrap_content" >
 
         <ImageView
-            android:layout_width="7dp"
-            android:layout_height="7dp"
-            android:padding="1dp"
+            android:layout_width="@dimen/dot_size"
+            android:layout_height="@dimen/dot_size"
+            android:contentDescription="@string/dot"
+            android:padding="@dimen/dot_padding"
             android:src="@drawable/dot_dim" />
 
         <ImageView
-            android:layout_width="7dp"
-            android:layout_height="7dp"
-            android:padding="1dp"
+            android:layout_width="@dimen/dot_size"
+            android:layout_height="@dimen/dot_size"
+            android:contentDescription="@string/dot"
+            android:padding="@dimen/dot_padding"
             android:src="@drawable/dot_lit" />
     </FrameLayout>
 
     <ImageView
-        android:layout_width="7dp"
-        android:layout_height="7dp"
-        android:padding="1dp"
+        android:layout_width="@dimen/dot_size"
+        android:layout_height="@dimen/dot_size"
+        android:contentDescription="@string/dot"
+        android:padding="@dimen/dot_padding"
         android:src="@drawable/dot_dim" />
 
     <ImageView
-        android:layout_width="7dp"
-        android:layout_height="7dp"
-        android:padding="1dp"
+        android:layout_width="@dimen/dot_size"
+        android:layout_height="@dimen/dot_size"
+        android:contentDescription="@string/dot"
+        android:padding="@dimen/dot_padding"
         android:src="@drawable/dot_dim" />
 
     <ImageView
-        android:layout_width="7dp"
-        android:layout_height="7dp"
-        android:padding="1dp"
+        android:layout_width="@dimen/dot_size"
+        android:layout_height="@dimen/dot_size"
+        android:contentDescription="@string/dot"
+        android:padding="@dimen/dot_padding"
         android:src="@drawable/dot_dim" />
 
     <ImageView
-        android:layout_width="7dp"
-        android:layout_height="7dp"
-        android:padding="1dp"
+        android:layout_width="@dimen/dot_size"
+        android:layout_height="@dimen/dot_size"
+        android:contentDescription="@string/dot"
+        android:padding="@dimen/dot_padding"
         android:src="@drawable/dot_dim" />
 
     <ImageView
-        android:layout_width="7dp"
-        android:layout_height="7dp"
-        android:padding="1dp"
+        android:layout_width="@dimen/dot_size"
+        android:layout_height="@dimen/dot_size"
+        android:contentDescription="@string/dot"
+        android:padding="@dimen/dot_padding"
         android:src="@drawable/dot_dim" />
 
     <FrameLayout
@@ -56,15 +63,17 @@
         android:layout_height="wrap_content" >
 
         <ImageView
-            android:layout_width="7dp"
-            android:layout_height="7dp"
-            android:padding="1dp"
+            android:layout_width="@dimen/dot_size"
+            android:layout_height="@dimen/dot_size"
+            android:contentDescription="@string/dot"
+            android:padding="@dimen/dot_padding"
             android:src="@drawable/dot_dim" />
 
         <ImageView
-            android:layout_width="7dp"
-            android:layout_height="7dp"
-            android:padding="1dp"
+            android:layout_width="@dimen/dot_size"
+            android:layout_height="@dimen/dot_size"
+            android:contentDescription="@string/dot"
+            android:padding="@dimen/dot_padding"
             android:src="@drawable/dot_lit" />
     </FrameLayout>
 

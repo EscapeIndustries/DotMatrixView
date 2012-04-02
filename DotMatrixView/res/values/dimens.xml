@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="sectional_digit_width">52dp</dimen>
+    <dimen name="sectional_digit_height">89dp</dimen>
+    <dimen name="sectional_digit_long_side">37dp</dimen>
+    <dimen name="sectional_digit_narrow_side">15dp</dimen>
+    <dimen name="sectional_digit_margin">7dp</dimen>
+    <dimen name="dot_size">7dp</dimen>
+    <dimen name="dot_padding">1dp</dimen>
+
+</resources>

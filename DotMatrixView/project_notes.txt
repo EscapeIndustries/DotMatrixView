@@ -1,7 +1,7 @@
 Project notes
 =============
 
-NEXT: 
+NEXT: Add in the sectional colon layout
 
 Add feature to change from one digit to another by transition. Need code that compares
 the currently lit and need to be lit dots to make 2 lists:
@@ -27,6 +27,10 @@ Make the digits build in code with arbitrary sizes:
 	
 	Should this actually just construct a matrix big enough for the full display, with the
 	digits being indexes to items within it?
+	
+Try building a ShapeDrawable using a Path. The point of the experiment is to see if you can
+change the fill colour of such a drawable dynamically, and if so, if the colour can be the
+subject of a property animation.
 		
 	
 An eight - all elements on - looks like this:

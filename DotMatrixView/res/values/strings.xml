@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, NumericalDisplayActivity!</string>
     <string name="app_name">NumericalDisplay</string>
+    <string name="sectional_digit_piece">Piece of a digit</string>
+    <string name="dot">dot</string>
 
 </resources>

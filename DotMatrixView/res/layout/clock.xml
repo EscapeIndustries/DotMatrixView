@@ -1,26 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/digits"
+    android:id="@+id/outer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="vertical" >
 
-    <include layout="@layout/digit" />
+    <LinearLayout
+        android:id="@+id/digits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
-    <include layout="@layout/spacer_column" />
+        <include layout="@layout/digit" />
 
-    <include layout="@layout/digit" />
+        <include layout="@layout/spacer_column" />
 
-    <include layout="@layout/spacer_column" />
+        <include layout="@layout/digit" />
 
-    <include layout="@layout/colon" />
+        <include layout="@layout/spacer_column" />
 
-    <include layout="@layout/spacer_column" />
+        <include layout="@layout/colon" />
 
-    <include layout="@layout/digit" />
+        <include layout="@layout/spacer_column" />
 
-    <include layout="@layout/spacer_column" />
+        <include layout="@layout/digit" />
 
-    <include layout="@layout/digit" />
+        <include layout="@layout/spacer_column" />
+
+        <include layout="@layout/digit" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sectional"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <include layout="@layout/sectional_digit" />
+
+        <include layout="@layout/sectional_digit" />
+
+        <include layout="@layout/sectional_digit" />
+
+        <include layout="@layout/sectional_digit" />
+    </LinearLayout>
 
 </LinearLayout>
