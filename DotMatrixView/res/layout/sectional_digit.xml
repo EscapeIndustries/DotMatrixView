@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="130dp"
+    android:layout_height="212dp" >
+
+    <ImageView
+        android:id="@+id/top_center"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/digit_section_horizontal_lit" />
+    <ImageView
+        android:id="@+id/middle_center"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/digit_section_horizontal_lit" />
+    <ImageView
+        android:id="@+id/bottom_center"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/digit_section_horizontal_lit" />
+
+    <ImageView
+        android:id="@+id/top_left"
+        android:layout_width="30dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/digit_section_vertical_lit" />
+
+    <ImageView
+        android:id="@+id/top_left"
+        android:layout_width="30dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/digit_section_vertical_lit" />
+
+    <ImageView
+        android:id="@+id/top_right"
+        android:layout_width="30dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/digit_section_vertical_lit" />
+
+    <ImageView
+        android:id="@+id/top_right"
+        android:layout_width="30dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/digit_section_vertical_lit" />
+
+</RelativeLayout>
