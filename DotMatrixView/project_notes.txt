@@ -1,7 +1,7 @@
 Project notes
 =============
 
-NEXT: Add in the sectional colon layout
+NEXT: Write the code to create the dots off and dots on collections for a transition from one digit to another.
 
 Add feature to change from one digit to another by transition. Need code that compares
 the currently lit and need to be lit dots to make 2 lists:

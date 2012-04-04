@@ -6,6 +6,8 @@
     <dimen name="sectional_digit_long_side">37dp</dimen>
     <dimen name="sectional_digit_narrow_side">15dp</dimen>
     <dimen name="sectional_digit_margin">7dp</dimen>
+    <dimen name="sectional_colon_width">15dp</dimen>
+    <dimen name="sectional_colon_spacing">10dp</dimen>
     <dimen name="dot_size">7dp</dimen>
     <dimen name="dot_padding">1dp</dimen>
 

@@ -40,6 +40,8 @@
 
         <include layout="@layout/sectional_digit" />
 
+        <include layout="@layout/sectional_colon" />
+
         <include layout="@layout/sectional_digit" />
 
         <include layout="@layout/sectional_digit" />
