@@ -1,19 +1,36 @@
 package com.escapeindustries.numericedisplay;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DigitTransition {
 
 	private int[] from;
 	private int[] to;
+	private int[] dim;
+	private int[] light;
 
 	public DigitTransition(int[] from, int[] to) {
 		this.from = from;
 		this.to = to;
+		calculateTransition();
+	}
+
+	private void calculateTransition() {
+		dim = getTransitionToDimDots();
+		light = getTransitionToLitDots();
+	}
+
+	public int[] getDotsToDim() {
+		return dim;
+	}
+
+	public int[] getDotsToLight() {
+		return light;
 	}
 
 	public int[] getTransitionToDimDots() {
-		ArrayList<Integer> dimWorking = new ArrayList<Integer>();
+		List<Integer> dimWorking = new ArrayList<Integer>();
 		boolean found;
 		for (int i = 0; i < from.length; i++) {
 			found = false;
@@ -27,11 +44,7 @@ public class DigitTransition {
 				dimWorking.add(from[i]);
 			}
 		}
-		int[] dim = new int[dimWorking.size()];
-		for (int i = 0; i < dimWorking.size(); i++) {
-			dim[i] = dimWorking.get(i);
-		}
-		return dim;
+		return intListToArray(dimWorking);
 	}
 
 	public int[] getTransitionToLitDots() {
@@ -49,10 +62,14 @@ public class DigitTransition {
 				litWorking.add(to[i]);
 			}
 		}
-		int[] lit = new int[litWorking.size()];
-		for (int i = 0; i < litWorking.size(); i++) {
-			lit[i] = litWorking.get(i);
+		return intListToArray(litWorking);
+	}
+
+	private int[] intListToArray(List<Integer> dimWorking) {
+		int[] dim = new int[dimWorking.size()];
+		for (int i = 0; i < dimWorking.size(); i++) {
+			dim[i] = dimWorking.get(i);
 		}
-		return lit;
+		return dim;
 	}
 }
