@@ -36,10 +36,10 @@ public class NumericalDisplayActivity extends Activity {
 			}
 		}
 
-		DigitDisplay one = new DigitDisplay(digitsOnly[0]);
-		DigitDisplay two = new DigitDisplay(digitsOnly[1]);
-		DigitDisplay three = new DigitDisplay(digitsOnly[2]);
-		DigitDisplay four = new DigitDisplay(digitsOnly[3]);
+		DigitDisplay one = new DigitDisplay(this, digitsOnly[0]);
+		DigitDisplay two = new DigitDisplay(this, digitsOnly[1]);
+		DigitDisplay three = new DigitDisplay(this, digitsOnly[2]);
+		DigitDisplay four = new DigitDisplay(this, digitsOnly[3]);
 
 		one.setNumber(9);
 		two.setNumber(0);
