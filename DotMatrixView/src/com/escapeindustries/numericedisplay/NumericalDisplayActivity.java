@@ -1,5 +1,8 @@
 package com.escapeindustries.numericedisplay;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,7 +39,7 @@ public class NumericalDisplayActivity extends Activity {
 			}
 		}
 
-		DigitDisplay one = new DigitDisplay(this, digitsOnly[0]);
+		final DigitDisplay one = new DigitDisplay(this, digitsOnly[0]);
 		DigitDisplay two = new DigitDisplay(this, digitsOnly[1]);
 		DigitDisplay three = new DigitDisplay(this, digitsOnly[2]);
 		DigitDisplay four = new DigitDisplay(this, digitsOnly[3]);
@@ -45,6 +48,11 @@ public class NumericalDisplayActivity extends Activity {
 		two.setNumber(0);
 		three.setNumber(5);
 		four.setNumber(8);
+
+		new DigitIncrementTask(one).execute("");
+		new DigitIncrementTask(two).execute("");
+		new DigitIncrementTask(three).execute("");
+		new DigitIncrementTask(four).execute("");
 
 	}
 

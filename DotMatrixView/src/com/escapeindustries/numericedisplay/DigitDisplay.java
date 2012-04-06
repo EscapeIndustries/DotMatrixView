@@ -31,6 +31,10 @@ public class DigitDisplay {
 		current = to;
 	}
 
+	public void increment() {
+		setNumber(current == 9 ? 0 : current + 1);
+	}
+
 	private void displayOff(int[] pattern) {
 		changeDisplay(false, pattern);
 	}
@@ -43,9 +47,11 @@ public class DigitDisplay {
 		ImageView dot;
 		for (int i = 0; i < pattern.length; i++) {
 			dot = getDot(pattern[i]);
-			//dot.setImageResource(on ? R.drawable.dot_lit : R.drawable.dot_dim);
+			// dot.setImageResource(on ? R.drawable.dot_lit :
+			// R.drawable.dot_dim);
 			Animation anim = AnimationUtils.loadAnimation(ctx,
 					on ? R.anim.appear : R.anim.vanish);
+			anim.setAnimationListener(new DotAnimationListener(dot, on));
 			dot.startAnimation(anim);
 		}
 	}

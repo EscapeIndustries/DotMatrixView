@@ -1,22 +1,8 @@
 Project notes
 =============
 
-NEXT: Use the on and off dots to set off animations.
-		Goal 1: Get the activity to change 1 to 2 when it loads.
-			What are the pieces?
-		[ ]		NumericalDisplayActivity should kick off the animation
-		[ ]		DigitDisplay is in control
-		[X]		DigitTransition provides the items to work on
-				Where do the ImageView references come from?
-		[X]			DigitDisplay should have the method getDot(int index)
-		Goal 2: Use an animation listener to make it count up in a loop.
+NEXT: Make an alternative version where the animations kick off as soon as the dim/light decision is made for that dot.
 
-Add feature to change from one digit to another by transition. Need code that compares
-the currently lit and need to be lit dots to make 2 lists:
-1) dots that need to be turned off
-2) dots that need to be turned on
-Or forget the lists, just [make the changes/set the animations off] as they are calculated?
-	
 The alpha transition makes the spots disappear right down to the background.
 	Change it to not go all the way down to zero - it might look passable.
 	Make a 3.0-style property animation that takes the colour down to the dim colour.
