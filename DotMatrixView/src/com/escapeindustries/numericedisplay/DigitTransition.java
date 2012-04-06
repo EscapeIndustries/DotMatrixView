@@ -13,10 +13,11 @@ public class DigitTransition {
 	public DigitTransition(int[] from, int[] to) {
 		this.from = from;
 		this.to = to;
-		calculateTransition();
+		// calculateTransition();
+		calculateTransitionOnePass();
 	}
 
-	private void calculateTransition() {
+	public void calculateTransition() {
 		dim = getTransitionToDimDots();
 		light = getTransitionToLitDots();
 	}
@@ -29,7 +30,7 @@ public class DigitTransition {
 		return light;
 	}
 
-	public int[] getTransitionToDimDots() {
+	private int[] getTransitionToDimDots() {
 		List<Integer> dimWorking = new ArrayList<Integer>();
 		boolean found;
 		for (int i = 0; i < from.length; i++) {
@@ -47,7 +48,7 @@ public class DigitTransition {
 		return intListToArray(dimWorking);
 	}
 
-	public int[] getTransitionToLitDots() {
+	private int[] getTransitionToLitDots() {
 		ArrayList<Integer> litWorking = new ArrayList<Integer>();
 		boolean found;
 		for (int i = 0; i < to.length; i++) {
@@ -63,6 +64,43 @@ public class DigitTransition {
 			}
 		}
 		return intListToArray(litWorking);
+	}
+
+	public void calculateTransitionOnePass() {
+		List<Integer> lightThese = new ArrayList<Integer>();
+		List<Integer> dimThese = new ArrayList<Integer>();
+		int f = 0;
+		int t = 0;
+		while (f < from.length && t < to.length) {
+			if (from[f] == to[t]) {
+				// Dot should stay on - no change
+				f++;
+				t++;
+			} else if (from[f] > to[t]) {
+				// Dot should be lit
+				lightThese.add(to[t]);
+				t++;
+			} else {
+				// Dot should be dimmed
+				dimThese.add(from[f]);
+				f++;
+			}
+		}
+		if (f < from.length) {
+			// Reached the end of to before the end of from - remaining from
+			// must be dimmed
+			for (; f < from.length; f++) {
+				dimThese.add(from[f]);
+			}
+		} else if (t < to.length) {
+			// Reached the end of from before the end of to - remaining to must
+			// be lit
+			for (; t < to.length; t++) {
+				lightThese.add(to[t]);
+			}
+		}
+		light = intListToArray(lightThese);
+		dim = intListToArray(dimThese);
 	}
 
 	private int[] intListToArray(List<Integer> dimWorking) {
