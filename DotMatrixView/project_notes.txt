@@ -3,6 +3,40 @@ Project notes
 
 NEXT: Make an alternative version where the animations kick off as soon as the dim/light decision is made for that dot.
 
+Figure out how what your experimental direction should be now. Options:
+ 	Go further with the display piece
+ 		Improve the animation
+ 			Kick off dots as they are categorised
+ 			Try 3.0-style property animations
+ 		Build up the segmented display to the same functionality
+ 			Can set a number
+ 			Animates to the set number
+ 			Build segments using a PathDrawable instead of images
+ 			Build segment animations using lists instead (flip-pad animation)
+ 		Build dot-array digit from code not XML
+ 			Construct the arrangement of views in code
+ 			Given the width and height, figure out which are the active dots
+ 			Build a single array of dots for all the digits in the display, then let
+ 			each digit construct itself by figuring out which dots it should own.
+ 	Figure out the time piece
+ 		How will update of the display be scheduled to happen
+ 			When the activity is visible
+ 			When in the background? Should there be a background service at all?
+ 	Build some UI
+ 		Connect time display with buttons to set the ending time.
+ 			Might you show both the ending time and the count-down on the screen together?
+ 	Learn to get appointment times from the calendar content provider
+ 
+ Idea: you could build something in code that is conceptually similar to a real LCD using FrameLayout
+ Top of stack:		Shape drawable rectangle whose colour is black and of variable transparency
+ 					Image file that is a black square with a transparent circle in the middle
+ Bottom of stack:	A shape drawable rectangle of whatever colour you want the display to show when lit.
+ 
+ You don't really need the top item above, because you can make the same adjustments at the bottom layer.
+ You could use a different mask image to change the shape of the dots, e.g. use snow-flakes around Christmas
+ 		
+ 		
+
 The alpha transition makes the spots disappear right down to the background.
 	Change it to not go all the way down to zero - it might look passable.
 	Make a 3.0-style property animation that takes the colour down to the dim colour.
