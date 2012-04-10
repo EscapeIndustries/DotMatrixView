@@ -39,14 +39,14 @@ public class NumericalDisplayActivity extends Activity {
 		DigitDisplay three = new DigitDisplay(this, digitsOnly[2]);
 		DigitDisplay four = new DigitDisplay(this, digitsOnly[3]);
 
-		one.setNumber(9);
+		one.setNumber(0);
 		two.setNumber(0);
-		three.setNumber(5);
-		four.setNumber(8);
+		three.setNumber(0);
+		four.setNumber(0);
 
-		new DigitIncrementTask(one).execute("");
-		new DigitIncrementTask(two).execute("");
-		new DigitIncrementTask(three).execute("");
+		//new DigitIncrementTask(one).execute("");
+		//new DigitIncrementTask(two).execute("");
+		//new DigitIncrementTask(three).execute("");
 		new DigitIncrementTask(four).execute("");
 
 	}

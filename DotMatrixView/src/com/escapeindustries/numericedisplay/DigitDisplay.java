@@ -25,9 +25,7 @@ public class DigitDisplay {
 	public void setNumber(int to) {
 		int from = current != -1 ? current : 8;
 		DigitTransition trans = new DigitTransition(Digit.digitPatterns[from],
-				Digit.digitPatterns[to]);
-		displayOff(trans.getDotsToDim());
-		displayOn(trans.getDotsToLight());
+				Digit.digitPatterns[to], this);
 		current = to;
 	}
 
@@ -35,25 +33,13 @@ public class DigitDisplay {
 		setNumber(current == 9 ? 0 : current + 1);
 	}
 
-	private void displayOff(int[] pattern) {
-		changeDisplay(false, pattern);
-	}
-
-	private void displayOn(int[] pattern) {
-		changeDisplay(true, pattern);
-	}
-
-	private void changeDisplay(boolean on, int[] pattern) {
+	public void changeDot(boolean on, int index) {
 		ImageView dot;
-		for (int i = 0; i < pattern.length; i++) {
-			dot = getDot(pattern[i]);
-			// dot.setImageResource(on ? R.drawable.dot_lit :
-			// R.drawable.dot_dim);
-			Animation anim = AnimationUtils.loadAnimation(ctx,
-					on ? R.anim.appear : R.anim.vanish);
-			anim.setAnimationListener(new DotAnimationListener(dot, on));
-			dot.startAnimation(anim);
-		}
+		dot = getDot(index);
+		Animation anim = AnimationUtils.loadAnimation(ctx,
+				on ? R.anim.appear : R.anim.vanish);
+		anim.setAnimationListener(new DotAnimationListener(dot, on));
+		dot.startAnimation(anim);
 	}
 
 	private ImageView getDot(int index) {

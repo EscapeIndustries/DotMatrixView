@@ -1,10 +1,19 @@
 Project notes
 =============
 
-NEXT: Make an alternative version where the animations kick off as soon as the dim/light decision is made for that dot.
+NEXT: Decide what to do next
 
 Figure out how what your experimental direction should be now. Options:
  	Go further with the display piece
+ 		Build the relation between the digits
+ 			Decrement, start with a time period, count down, reflecting the correct changes across all digits
+ 					Set up the digits in relation to each other, and signal them properly
+ 				or
+ 					Calculate the correct current value from an offset off the time when it started, and every
+ 					time the display is scheduled to update figure it out again. This is closer to the final product but the
+ 					alternative is perhaps more in line with other uses of the display?
+ 					Actually perhaps what it really needs is the ability to update itself based on being given a new string
+ 					and figuring out what the changes are from the current string?
  		Improve the animation
  			Kick off dots as they are categorised
  			Try 3.0-style property animations
