@@ -2,28 +2,13 @@ package com.escapeindustries.numericedisplay;
 
 public class DigitTransition {
 
-	private int[] from;
-	private int[] to;
-	private int[] dim;
-	private int[] light;
-	private DigitDisplay digit;
+	private DotChangeAction action;
 
-	public DigitTransition(int[] from, int[] to, DigitDisplay digit) {
-		this.from = from;
-		this.to = to;
-		this.digit = digit;
-		makeTransition();
+	public DigitTransition(DotChangeAction action) {
+		this.action = action;
 	}
 
-	public int[] getDotsToDim() {
-		return dim;
-	}
-
-	public int[] getDotsToLight() {
-		return light;
-	}
-
-	public void makeTransition() {
+	public void makeTransition(int[] from, int[] to) {
 		int f = 0;
 		int t = 0;
 		while (f < from.length && t < to.length) {
@@ -33,11 +18,11 @@ public class DigitTransition {
 				t++;
 			} else if (from[f] > to[t]) {
 				// Dot should be lit
-				digit.changeDot(true, to[t]);
+				action.dotHasChanged(to[t], true);
 				t++;
 			} else {
 				// Dot should be dimmed
-				digit.changeDot(false, from[f]);
+				action.dotHasChanged(from[f], false);
 				f++;
 			}
 		}
@@ -45,13 +30,13 @@ public class DigitTransition {
 			// Reached the end of to before the end of from - remaining from
 			// must be dimmed
 			for (; f < from.length; f++) {
-				digit.changeDot(false, from[f]);
+				action.dotHasChanged(from[f], false);
 			}
 		} else if (t < to.length) {
 			// Reached the end of from before the end of to - remaining to must
 			// be lit
 			for (; t < to.length; t++) {
-				digit.changeDot(true, to[t]);
+				action.dotHasChanged(to[t], true);
 			}
 		}
 	}

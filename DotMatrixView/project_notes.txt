@@ -1,9 +1,12 @@
 Project notes
 =============
 
-NEXT: Decide what to do next
+NEXT: Write some code to parse a string in the format "00:00" into an array of digits.
 
-Figure out how what your experimental direction should be now. Options:
+Current experimental direction: I want to make the display able to update itself given the time. This will
+have to involve parsing a string in the format "00:00" 
+
+Decide your next experimental direction. Options:
  	Go further with the display piece
  		Build the relation between the digits
  			Decrement, start with a time period, count down, reflecting the correct changes across all digits
@@ -15,7 +18,6 @@ Figure out how what your experimental direction should be now. Options:
  					Actually perhaps what it really needs is the ability to update itself based on being given a new string
  					and figuring out what the changes are from the current string?
  		Improve the animation
- 			Kick off dots as they are categorised
  			Try 3.0-style property animations
  		Build up the segmented display to the same functionality
  			Can set a number

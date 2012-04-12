@@ -24,8 +24,8 @@ public class DigitDisplay {
 
 	public void setNumber(int to) {
 		int from = current != -1 ? current : 8;
-		DigitTransition trans = new DigitTransition(Digit.digitPatterns[from],
-				Digit.digitPatterns[to], this);
+		DigitTransition trans = new DigitTransition(new DotChangeAnimationAction(this));
+		trans.makeTransition(Digit.digitPatterns[from], Digit.digitPatterns[to]);
 		current = to;
 	}
 
@@ -33,7 +33,7 @@ public class DigitDisplay {
 		setNumber(current == 9 ? 0 : current + 1);
 	}
 
-	public void changeDot(boolean on, int index) {
+	public void changeDot(int index, boolean on) {
 		ImageView dot;
 		dot = getDot(index);
 		Animation anim = AnimationUtils.loadAnimation(ctx,
