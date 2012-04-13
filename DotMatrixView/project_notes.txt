@@ -1,7 +1,7 @@
 Project notes
 =============
 
-NEXT: Write some code to parse a string in the format "00:00" into an array of digits.
+NEXT: Finish code to parse a string in the format "00:00" into an array of digits.
 
 Current experimental direction: I want to make the display able to update itself given the time. This will
 have to involve parsing a string in the format "00:00" 
@@ -19,6 +19,9 @@ Decide your next experimental direction. Options:
  					and figuring out what the changes are from the current string?
  		Improve the animation
  			Try 3.0-style property animations
+ 		Colour changes
+ 			The countdown will need to be change the dots from green to orange (nearly out) and red (overrun)
+ 			Consider colours that will look good on a white background. 
  		Build up the segmented display to the same functionality
  			Can set a number
  			Animates to the set number
