@@ -17,37 +17,39 @@ public class NumericalDisplayActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.clock);
-		ViewGroup digits = (ViewGroup) findViewById(R.id.digits);
+		ViewGroup digitsGroup = (ViewGroup) findViewById(R.id.digits);
 		// animateAllLightableDots(digits);
 
 		ViewGroup[] digitsOnly = new ViewGroup[4];
-		for (int i = 0; i < digits.getChildCount(); i++) {
+		for (int i = 0; i < digitsGroup.getChildCount(); i++) {
 			// Dirty hack to ensure we only get the digits and not
 			// the colon between digits 2 and 3
 			// AND ignore the spacer columns!
 			if (i % 2 == 0) {
 				if (i < 4) {
-					digitsOnly[i / 2] = (ViewGroup) digits.getChildAt(i);
+					digitsOnly[i / 2] = (ViewGroup) digitsGroup.getChildAt(i);
 				} else if (i > 4) {
-					digitsOnly[(i / 2) - 1] = (ViewGroup) digits.getChildAt(i);
+					digitsOnly[(i / 2) - 1] = (ViewGroup) digitsGroup
+							.getChildAt(i);
 				}
 			}
 		}
 
-		final DigitDisplay one = new DigitDisplay(this, digitsOnly[0]);
-		DigitDisplay two = new DigitDisplay(this, digitsOnly[1]);
-		DigitDisplay three = new DigitDisplay(this, digitsOnly[2]);
-		DigitDisplay four = new DigitDisplay(this, digitsOnly[3]);
+		DigitDisplay[] digits = new DigitDisplay[4];
+		for (int i = 0; i < digits.length; i++) {
+			digits[i] = new DigitDisplay(this, digitsOnly[i]);
+		}
 
-		one.setNumber(0);
-		two.setNumber(0);
-		three.setNumber(0);
-		four.setNumber(0);
+		DigitsParser parser = new DigitsParser();
+		int[] values = parser.parse("00:01");
+		for (int i = 0; i < values.length; i++) {
+			digits[i].setNumber(values[i]);
+		}
 
-		//new DigitIncrementTask(one).execute("");
-		//new DigitIncrementTask(two).execute("");
-		//new DigitIncrementTask(three).execute("");
-		new DigitIncrementTask(four).execute("");
+		// new DigitIncrementTask(one).execute("");
+		// new DigitIncrementTask(two).execute("");
+		// new DigitIncrementTask(three).execute("");
+		new DigitIncrementTask(digits[3]).execute("");
 
 	}
 

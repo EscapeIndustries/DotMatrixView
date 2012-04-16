@@ -1,8 +1,7 @@
 Project notes
 =============
 
-NEXT: Plug parsing code into existing Activity - this is just to get moving in the right direction. Once this works
-it is time to package the set of digits as a single control.
+NEXT: Abstract digit group as a separate class - perhaps just the finding from layout XML and controlling at this point?
 
 Current experimental direction: I want to make the display able to update itself given the time. This will
 involve parsing a string in the format "00:00" 
