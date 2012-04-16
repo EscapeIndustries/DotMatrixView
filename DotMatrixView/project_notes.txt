@@ -1,10 +1,11 @@
 Project notes
 =============
 
-NEXT: Finish code to parse a string in the format "00:00" into an array of digits.
+NEXT: Plug parsing code into existing Activity - this is just to get moving in the right direction. Once this works
+it is time to package the set of digits as a single control.
 
 Current experimental direction: I want to make the display able to update itself given the time. This will
-have to involve parsing a string in the format "00:00" 
+involve parsing a string in the format "00:00" 
 
 Decide your next experimental direction. Options:
  	Go further with the display piece
