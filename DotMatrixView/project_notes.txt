@@ -1,7 +1,8 @@
 Project notes
 =============
 
-NEXT: Abstract digit group as a separate class - perhaps just the finding from layout XML and controlling at this point?
+NEXT: Get increment to count up beyond 9 by changing the next digit up. I think I need the digits to individually know their
+own rules (which should be plugable?), so that one digit can signal it's neighbours to go up or down.
 
 Current experimental direction: I want to make the display able to update itself given the time. This will
 involve parsing a string in the format "00:00".
