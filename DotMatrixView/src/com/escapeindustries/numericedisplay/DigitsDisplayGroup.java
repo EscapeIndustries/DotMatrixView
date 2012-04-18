@@ -26,6 +26,10 @@ public class DigitsDisplayGroup {
 		digits = new DigitDisplay[4];
 		for (int i = 0; i < digits.length; i++) {
 			digits[i] = new DigitDisplay(ctx, digitViewGroups[i]);
+			if (i > 0) {
+				digits[i].setHigherDigit(digits[i-1]);
+				digits[i-1].setLowerDigit(digits[i]);
+			}
 		}
 	}
 

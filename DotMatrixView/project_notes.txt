@@ -1,8 +1,12 @@
 Project notes
 =============
 
-NEXT: Get increment to count up beyond 9 by changing the next digit up. I think I need the digits to individually know their
-own rules (which should be plugable?), so that one digit can signal it's neighbours to go up or down.
+NEXT: Implement decrement action on digits and make sure it affects other digits in the group. 
+
+The digits need pluggable increment/decrement rules so that one digit can signal it's neighbours to go up or down
+regardless whether that digit represents minutes, tens of minutes, hours or tens of hours.
+Once these rules are in place it will effectively be a clock, lacking only a mechanism to accurately update in
+synchronisation with the system time!
 
 Current experimental direction: I want to make the display able to update itself given the time. This will
 involve parsing a string in the format "00:00".

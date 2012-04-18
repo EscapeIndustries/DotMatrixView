@@ -11,6 +11,8 @@ public class DigitDisplay {
 	private int current = -1;
 	private ViewGroup dots;
 	private Context ctx;
+	private DigitDisplay higher;
+	private DigitDisplay lower;
 
 	public DigitDisplay() {
 		// Only present to help testing - will not be able to animate anything
@@ -28,8 +30,21 @@ public class DigitDisplay {
 		trans.makeTransition(Digit.digitPatterns[from], Digit.digitPatterns[to]);
 		current = to;
 	}
+	
+	public void setHigherDigit(DigitDisplay higher) {
+		this.higher = higher;
+	}
+	
+	public void setLowerDigit(DigitDisplay lower) {
+		this.lower = lower;
+	}
 
 	public void increment() {
+		if (current == 9) {
+			if (higher != null) {
+				higher.increment();
+			}
+		}
 		setNumber(current == 9 ? 0 : current + 1);
 	}
 
