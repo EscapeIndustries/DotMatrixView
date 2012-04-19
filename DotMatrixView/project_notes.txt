@@ -1,7 +1,7 @@
 Project notes
 =============
 
-NEXT: Implement decrement action on digits and make sure it affects other digits in the group. 
+NEXT: Implement pluggable increment/decrement rules as below so that the display can correctly show time. 
 
 The digits need pluggable increment/decrement rules so that one digit can signal it's neighbours to go up or down
 regardless whether that digit represents minutes, tens of minutes, hours or tens of hours.
@@ -30,6 +30,19 @@ Decide your next experimental direction. Options:
  					and figuring out what the changes are from the current string?
  		Improve the animation
  			Try 3.0-style property animations
+ 		Touch events
+ 			The display will need some way to be set to the starting value. I could use vertical dragging to 
+ 			increment and decrement a digit. While dragging, the digit could slide down a row of dots at a time,
+ 			with the next higher/lower appearing a row at a time from the top or bottom. If you get beyond a
+ 			certain number of rows and let go, it will complete the slide in with a springing velocity. If you
+ 			let go at less than those rows, the current value would spring back. A drag should be effective as a long 
+ 			motion well beyond the top or bottom of the digit itself - just like the time and date picker dialog in ICS.
+ 			
+ 			Figuring out which bit of a digit should show when sliding could be accomplished by working out an index offset
+ 			against the digit definitions. For example, if a digit was sliding in from the top, and was 2 rows in, which
+ 			figuring out which dots to turn on, the digit patter values would need to have 11 (of 13) rows subtracted for
+ 			their destination dots. The index offset would be the index of the start of row 12 (of 13).
+ 			 
  		Colour changes
  			The countdown will need to be change the dots from green to orange (nearly out) and red (overrun)
  			Consider colours that will look good on a white background. 

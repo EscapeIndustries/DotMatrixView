@@ -20,8 +20,9 @@ public class NumericalDisplayActivity extends Activity {
 		DigitsDisplayGroup digitsGroup = new DigitsDisplayGroup(this,
 				(ViewGroup) findViewById(R.id.digits));
 		
-		digitsGroup.setValue("99:97");
-		digitsGroup.incrementEachSecond();
+		digitsGroup.setValue("00:04");
+		//digitsGroup.incrementEachSecond();
+		digitsGroup.decrementEachSecond();
 
 	}
 

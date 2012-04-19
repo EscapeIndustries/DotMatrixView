@@ -44,4 +44,8 @@ public class DigitsDisplayGroup {
 	public void incrementEachSecond() {
 		new DigitIncrementTask(digits[3]).execute("");
 	}
+	
+	public void decrementEachSecond() {
+		new DigitDecrementTask(digits[3]).execute("");
+	}
 }

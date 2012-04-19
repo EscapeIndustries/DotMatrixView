@@ -47,6 +47,15 @@ public class DigitDisplay {
 		}
 		setNumber(current == 9 ? 0 : current + 1);
 	}
+	
+	public void decrement() {
+		if (current == 0) {
+			if (higher != null) {
+				higher.decrement();
+			}
+		}
+		setNumber(current == 0 ? 9 : current - 1);
+	}
 
 	public void changeDot(int index, boolean on) {
 		ImageView dot;
