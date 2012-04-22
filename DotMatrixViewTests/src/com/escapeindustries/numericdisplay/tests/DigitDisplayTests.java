@@ -1,6 +1,6 @@
 package com.escapeindustries.numericdisplay.tests;
 
-import com.escapeindustries.numericedisplay.Digit;
+import com.escapeindustries.numericedisplay.DigitDefinition;
 import com.escapeindustries.numericedisplay.DigitTransition;
 
 import junit.framework.TestCase;
@@ -14,9 +14,9 @@ public class DigitDisplayTests extends TestCase {
 
 	@Override
 	protected void setUp() throws Exception {
-		one = Digit.digitPatterns[1];
-		two = Digit.digitPatterns[2];
-		three = Digit.digitPatterns[3];
+		one = DigitDefinition.patterns[1];
+		two = DigitDefinition.patterns[2];
+		three = DigitDefinition.patterns[3];
 		counter = new DotChangeCounter();
 	}
 
