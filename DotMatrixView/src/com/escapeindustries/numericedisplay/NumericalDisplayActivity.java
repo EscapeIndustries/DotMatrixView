@@ -17,7 +17,7 @@ public class NumericalDisplayActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.clock);
-		DigitsDisplayGroup digitsGroup = new DigitsDisplayGroup(this,
+		DigitGroup digitsGroup = new DigitGroup(this,
 				(ViewGroup) findViewById(R.id.digits));
 		
 		digitsGroup.setValue("00:04");

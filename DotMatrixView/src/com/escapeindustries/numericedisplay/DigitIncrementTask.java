@@ -4,9 +4,9 @@ import android.os.AsyncTask;
 
 public class DigitIncrementTask extends AsyncTask<String, Void, Void> {
 
-	private DigitDisplay digit;
+	private DisplayDigit digit;
 
-	public DigitIncrementTask(DigitDisplay digit) {
+	public DigitIncrementTask(DisplayDigit digit) {
 		this.digit = digit;
 	}
 

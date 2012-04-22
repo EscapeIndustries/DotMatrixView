@@ -3,12 +3,12 @@ package com.escapeindustries.numericedisplay;
 import android.content.Context;
 import android.view.ViewGroup;
 
-public class DigitsDisplayGroup {
+public class DigitGroup {
 
 	private ViewGroup[] digitViewGroups;
-	private DigitDisplay[] digits;
+	private DisplayDigit[] digits;
 
-	public DigitsDisplayGroup(Context ctx, ViewGroup parent) {
+	public DigitGroup(Context ctx, ViewGroup parent) {
 		digitViewGroups = new ViewGroup[4];
 		for (int i = 0; i < parent.getChildCount(); i++) {
 			// Dirty hack to ensure we only get the digits and not
@@ -23,9 +23,9 @@ public class DigitsDisplayGroup {
 				}
 			}
 		}
-		digits = new DigitDisplay[4];
+		digits = new DisplayDigit[4];
 		for (int i = 0; i < digits.length; i++) {
-			digits[i] = new DigitDisplay(ctx, digitViewGroups[i]);
+			digits[i] = new DisplayDigit(ctx, digitViewGroups[i]);
 			if (i > 0) {
 				digits[i].setHigherDigit(digits[i-1]);
 				digits[i-1].setLowerDigit(digits[i]);

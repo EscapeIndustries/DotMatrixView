@@ -6,36 +6,40 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-public class DigitDisplay {
+public class DisplayDigit implements Digit {
 
 	private int current = -1;
 	private ViewGroup dots;
 	private Context ctx;
-	private DigitDisplay higher;
-	private DigitDisplay lower;
+	private DisplayDigit higher;
+	private Digit lower;
 
-	public DigitDisplay() {
+	public DisplayDigit() {
 		// Only present to help testing - will not be able to animate anything
 		this.dots = null;
 	}
 
-	public DigitDisplay(Context ctx, ViewGroup dots) {
+	public DisplayDigit(Context ctx, ViewGroup dots) {
 		this.ctx = ctx;
 		this.dots = dots;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.escapeindustries.numericedisplay.Digit#setNumber(int)
+	 */
+	@Override
 	public void setNumber(int to) {
 		int from = current != -1 ? current : 8;
 		DigitTransition trans = new DigitTransition(new DotChangeAnimationAction(this));
-		trans.makeTransition(Digit.digitPatterns[from], Digit.digitPatterns[to]);
+		trans.makeTransition(DigitDefinition.patterns[from], DigitDefinition.patterns[to]);
 		current = to;
 	}
 	
-	public void setHigherDigit(DigitDisplay higher) {
+	public void setHigherDigit(DisplayDigit higher) {
 		this.higher = higher;
 	}
 	
-	public void setLowerDigit(DigitDisplay lower) {
+	public void setLowerDigit(Digit lower) {
 		this.lower = lower;
 	}
 
