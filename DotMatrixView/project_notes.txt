@@ -1,43 +1,13 @@
 Project notes
 =============
 
-NEXT: Implement pluggable increment/decrement rules as below so that the display can correctly show time. 
-
-The digits need pluggable increment/decrement rules so that one digit can signal it's neighbours to go up or down
-regardless whether that digit represents minutes, tens of minutes, hours or tens of hours.
-Once these rules are in place it will effectively be a clock, lacking only a mechanism to accurately update in
-synchronisation with the system time!
+NEXT: Add another 2 digits to the display - change the layout, and add seconds into what is built. 
 
 Current experimental direction: I want to make the display able to update itself given the time. This will
-involve parsing a string in the format "00:00".
-The permissable format for a set of digits needs to take into account which digits go all the way round e.g. individual minutes
-and which only go up to 5 before reset e.g. tens of minutes in an hour. You could initialise a parser with a string like 59:59
-to indicate a pair for minutes and a pair for seconds.
-
-What about hours? These operate differently depending upon their partner. The left digit can be up to 9 if the right digit
-is 0 or 1, but only goes to 3 if it is a 2. In the 12 hour clock the left can go to 9 if the right is a 0 but only up to 2
-if the right is a 1. In 24 hour, hour 23 increments to 00, but in the 12 hour, 12 increments to 01.
-
-For a 12-hour clock the rules are complex because hours have a low value of 01 and a high of 12. You cannot split the responsibility
-into single digits because the lesser digit needs to know if the most-significant digit is a 1 or a 0 to decide if it can increment beyond 2.
-
-It seems I need a NumberSequenceRule that understands how to control pairs of digits at the least, rather than single digits.
-
-The difficulty in making this change comes from having the wrong abstraction for controlling the increments. At the moment the
-task controls a single digit, and cascades to other digits. It needs to control all digits so that it can enforce the relationships
-between them.
+involve parsing a string in the format "00:00:00".
 
 Decide your next experimental direction. Options:
  	Go further with the display piece
- 		Build the relation between the digits
- 			Decrement, start with a time period, count down, reflecting the correct changes across all digits
- 					Set up the digits in relation to each other, and signal them properly
- 				or
- 					Calculate the correct current value from an offset off the time when it started, and every
- 					time the display is scheduled to update figure it out again. This is closer to the final product but the
- 					alternative is perhaps more in line with other uses of the display?
- 					Actually perhaps what it really needs is the ability to update itself based on being given a new string
- 					and figuring out what the changes are from the current string?
  		Improve the animation
  			Try 3.0-style property animations
  		Touch events
@@ -70,6 +40,9 @@ Decide your next experimental direction. Options:
  		How will update of the display be scheduled to happen
  			When the activity is visible
  			When in the background? Should there be a background service at all?
+ 		Calculate the current value offset from the start time and the current time
+ 			Calculate the correct current value from an offset off the time when it started, and every
+ 			time the display is scheduled to update figure it out again.
  	Build some UI
  		Connect time display with buttons to set the ending time.
  			Might you show both the ending time and the count-down on the screen together?

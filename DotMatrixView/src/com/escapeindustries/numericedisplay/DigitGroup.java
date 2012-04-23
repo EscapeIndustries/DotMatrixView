@@ -7,6 +7,8 @@ public class DigitGroup {
 
 	private ViewGroup[] digitViewGroups;
 	private DisplayDigit[] digits;
+	private NumberSequenceController hours;
+	private NumberSequenceController minutes;
 
 	public DigitGroup(Context ctx, ViewGroup parent) {
 		digitViewGroups = new ViewGroup[4];
@@ -26,26 +28,31 @@ public class DigitGroup {
 		digits = new DisplayDigit[4];
 		for (int i = 0; i < digits.length; i++) {
 			digits[i] = new DisplayDigit(ctx, digitViewGroups[i]);
-			if (i > 0) {
-				digits[i].setHigherDigit(digits[i-1]);
-				digits[i-1].setLowerDigit(digits[i]);
-			}
 		}
+		hours = new NumberSequenceController(digits[0], digits[1], 0, 23, 0);
+		minutes = new NumberSequenceController(digits[2], digits[3], 0, 59, 0);
+		minutes.setHigherSequence(hours);
 	}
 
 	public void setValue(String value) {
 		DigitsParser parser = new DigitsParser();
 		int[] values = parser.parse(value);
-		for (int i = 0; i < values.length; i++) {
-			digits[i].setNumber(values[i]);
-		}
+		hours.setValue(getPairValue(values, 0));
+		minutes.setValue(getPairValue(values, 2));
+	}
+
+	private int getPairValue(int[] values, int index) {
+		if (values.length < index + 2)
+			throw new IllegalArgumentException(
+					"values argument is not long enough for index + 1 to be accessed");
+		return (values[index] * 10) + values[index + 1];
 	}
 
 	public void incrementEachSecond() {
-		new DigitIncrementTask(digits[3]).execute("");
+		new DigitIncrementTask(minutes).execute("");
 	}
-	
+
 	public void decrementEachSecond() {
-		new DigitDecrementTask(digits[3]).execute("");
+		new DigitDecrementTask(minutes).execute("");
 	}
 }

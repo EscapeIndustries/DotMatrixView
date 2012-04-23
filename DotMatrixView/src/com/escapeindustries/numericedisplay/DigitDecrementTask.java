@@ -4,12 +4,12 @@ import android.os.AsyncTask;
 
 public class DigitDecrementTask extends AsyncTask<String, Void, Void> {
 
-	private DisplayDigit digit;
+	private NumberSequenceController digit;
 
-	public DigitDecrementTask(DisplayDigit digit) {
-		this.digit = digit;
+	public DigitDecrementTask(NumberSequenceController minutes) {
+		this.digit = minutes;
 	}
-	
+
 	@Override
 	protected Void doInBackground(String... params) {
 		try {
@@ -19,7 +19,7 @@ public class DigitDecrementTask extends AsyncTask<String, Void, Void> {
 		}
 		return null;
 	}
-	
+
 	@Override
 	protected void onPostExecute(Void result) {
 		digit.decrement();

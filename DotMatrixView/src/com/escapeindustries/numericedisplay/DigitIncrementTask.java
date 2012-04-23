@@ -4,10 +4,10 @@ import android.os.AsyncTask;
 
 public class DigitIncrementTask extends AsyncTask<String, Void, Void> {
 
-	private DisplayDigit digit;
+	private NumberSequenceController digit;
 
-	public DigitIncrementTask(DisplayDigit digit) {
-		this.digit = digit;
+	public DigitIncrementTask(NumberSequenceController minutes) {
+		this.digit = minutes;
 	}
 
 	@Override
