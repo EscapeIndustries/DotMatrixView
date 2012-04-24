@@ -1,7 +1,7 @@
 Project notes
 =============
 
-NEXT: Clean up the layout - Do I _need_ to have the dots on top of dots? 
+NEXT: Start on the time piece, by making a new AsyncTask that formats the time every second and updates all the digits.
 
 Current experimental direction: I want to make the display able to update itself given the time.
 
@@ -9,6 +9,16 @@ Decide your next experimental direction. Options:
  	Go further with the display piece
  		Improve the animation
  			Try 3.0-style property animations
+ 			
+ 			NOTES ON GETTING RID OF THE STACK (OF 2) DOTS:
+ 			The dot stacks are necessary because without them they fade down to black, then come back to dim at the
+			end of the animation. It might be workable if one of these were done:
+			a) I used property animation to change the colour instead
+			b) If there was no dim dot
+			Setting background to a dim dot drawable doesn't help, as the whole view goes tranparent, including the
+			background. And changing the animation to not go all the way to transparent doesn't look right, the animation
+			and the final switch to dim dot appears to take longer and the whole isn't a smooth transition.
+			
  		Touch events
  			The display will need some way to be set to the starting value. I could use vertical dragging to 
  			increment and decrement a digit. While dragging, the digit could slide down a row of dots at a time,
