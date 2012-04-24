@@ -28,6 +28,18 @@
         <include layout="@layout/spacer_column" />
 
         <include layout="@layout/digit" />
+
+        <include layout="@layout/spacer_column" />
+
+        <include layout="@layout/colon" />
+
+        <include layout="@layout/spacer_column" />
+
+        <include layout="@layout/digit" />
+
+        <include layout="@layout/spacer_column" />
+
+        <include layout="@layout/digit" />
     </LinearLayout>
 
     <LinearLayout

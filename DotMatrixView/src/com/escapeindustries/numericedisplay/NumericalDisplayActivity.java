@@ -19,9 +19,9 @@ public class NumericalDisplayActivity extends Activity {
 		setContentView(R.layout.clock);
 		DigitGroup digitsGroup = new DigitGroup(this,
 				(ViewGroup) findViewById(R.id.digits));
-		
-		digitsGroup.setValue("00:04");
-		//digitsGroup.incrementEachSecond();
+
+		digitsGroup.setValue("23:59:05");
+		// digitsGroup.incrementEachSecond();
 		digitsGroup.decrementEachSecond();
 
 	}
