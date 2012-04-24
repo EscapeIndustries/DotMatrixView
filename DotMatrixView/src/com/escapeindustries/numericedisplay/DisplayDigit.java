@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 public class DisplayDigit implements Digit {
 
-	private int current = -1;
+	private int current = 10;
 	private ViewGroup dots;
 	private Context ctx;
 
@@ -29,10 +29,9 @@ public class DisplayDigit implements Digit {
 	 */
 	@Override
 	public void setNumber(int to) {
-		int from = current != -1 ? current : 8;
 		DigitTransition trans = new DigitTransition(
 				new DotChangeAnimationAction(this));
-		trans.makeTransition(DigitDefinition.patterns[from],
+		trans.makeTransition(DigitDefinition.patterns[current],
 				DigitDefinition.patterns[to]);
 		current = to;
 	}

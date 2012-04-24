@@ -1,7 +1,7 @@
 Project notes
 =============
 
-NEXT: Clean up the layout - start digits as dim. And do I _need_ to have the dots on top of dots? 
+NEXT: Clean up the layout - Do I _need_ to have the dots on top of dots? 
 
 Current experimental direction: I want to make the display able to update itself given the time.
 

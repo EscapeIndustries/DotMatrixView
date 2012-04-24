@@ -27,7 +27,8 @@ public class DigitDefinition {
 
 	private static int[] nine = { 1, 2, 3, 4, 5, 7, 13, 14, 20, 21, 27, 28, 34,
 			35, 41, 43, 44, 45, 46, 47, 55, 62, 69, 76, 83 };
+	private static int[] allDotsOff = {};
 
-	public static int[][] patterns = { zero, one, two, three, four, five,
-			six, seven, eight, nine };
+	public static int[][] patterns = { zero, one, two, three, four, five, six,
+			seven, eight, nine, allDotsOff };
 }

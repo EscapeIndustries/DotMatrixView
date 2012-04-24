@@ -20,7 +20,7 @@
             android:layout_height="@dimen/dot_size"
             android:contentDescription="@string/dot"
             android:padding="@dimen/dot_padding"
-            android:src="@drawable/dot_lit" />
+            android:src="@drawable/dot_dim" />
     </FrameLayout>
 
     <ImageView
@@ -74,7 +74,7 @@
             android:layout_height="@dimen/dot_size"
             android:contentDescription="@string/dot"
             android:padding="@dimen/dot_padding"
-            android:src="@drawable/dot_lit" />
+            android:src="@drawable/dot_dim" />
     </FrameLayout>
 
 </LinearLayout>
