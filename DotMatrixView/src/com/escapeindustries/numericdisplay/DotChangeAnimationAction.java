@@ -1,4 +1,4 @@
-package com.escapeindustries.numericedisplay;
+package com.escapeindustries.numericdisplay;
 
 public class DotChangeAnimationAction implements DotChangeAction {
 	

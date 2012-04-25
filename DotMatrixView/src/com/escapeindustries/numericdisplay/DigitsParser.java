@@ -1,4 +1,4 @@
-package com.escapeindustries.numericedisplay;
+package com.escapeindustries.numericdisplay;
 
 import java.util.ArrayList;
 import java.util.List;

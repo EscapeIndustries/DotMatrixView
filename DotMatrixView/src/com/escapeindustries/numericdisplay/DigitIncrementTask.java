@@ -1,12 +1,12 @@
-package com.escapeindustries.numericedisplay;
+package com.escapeindustries.numericdisplay;
 
 import android.os.AsyncTask;
 
-public class DigitDecrementTask extends AsyncTask<String, Void, Void> {
+public class DigitIncrementTask extends AsyncTask<String, Void, Void> {
 
 	private NumberSequenceController digit;
 
-	public DigitDecrementTask(NumberSequenceController minutes) {
+	public DigitIncrementTask(NumberSequenceController minutes) {
 		this.digit = minutes;
 	}
 
@@ -22,8 +22,7 @@ public class DigitDecrementTask extends AsyncTask<String, Void, Void> {
 
 	@Override
 	protected void onPostExecute(Void result) {
-		digit.decrement();
-		new DigitDecrementTask(digit).execute("");
+		digit.increment();
+		new DigitIncrementTask(digit).execute("");
 	}
-
 }

@@ -1,34 +1,33 @@
-package com.escapeindustries.numericedisplay;
+package com.escapeindustries.numericdisplay;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 
-public class DotAnimationListener implements AnimationListener {
+public class ChainedListener implements AnimationListener {
 	
 	private ImageView dot;
-	private boolean on;
-	
-	public DotAnimationListener(ImageView dot, boolean on) {
-		this.dot = dot;
-		this.on = on;
-	}
+	private Animation next;
 
+	public ChainedListener(ImageView dot, Animation next) {
+		this.dot = dot;
+		this.next = next;
+	}
+	
 	@Override
 	public void onAnimationEnd(Animation animation) {
-		dot.setImageResource(on ? R.drawable.dot_lit : R.drawable.dot_dim);
+		dot.startAnimation(next);
 	}
 
 	@Override
 	public void onAnimationRepeat(Animation animation) {
-		// TODO Auto-generated method stub
-
+		// No repeat behaviour required
+		
 	}
 
 	@Override
 	public void onAnimationStart(Animation animation) {
-		// TODO Auto-generated method stub
-
+		// No start behaviour required
+		
 	}
-
 }

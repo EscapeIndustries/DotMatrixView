@@ -1,4 +1,4 @@
-package com.escapeindustries.numericedisplay;
+package com.escapeindustries.numericdisplay;
 
 public class DigitDefinition {
 	private static int[] zero = { 1, 2, 3, 4, 5, 7, 13, 14, 20, 21, 27, 28, 34,

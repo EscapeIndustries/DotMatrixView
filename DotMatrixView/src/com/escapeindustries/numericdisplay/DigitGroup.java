@@ -1,4 +1,4 @@
-package com.escapeindustries.numericedisplay;
+package com.escapeindustries.numericdisplay;
 
 import android.content.Context;
 import android.view.ViewGroup;

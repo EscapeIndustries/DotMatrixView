@@ -1,4 +1,9 @@
-package com.escapeindustries.numericedisplay;
+package com.escapeindustries.numericdisplay;
+
+import com.escapeindustries.numericedisplay.R;
+import com.escapeindustries.numericedisplay.R.anim;
+import com.escapeindustries.numericedisplay.R.id;
+import com.escapeindustries.numericedisplay.R.layout;
 
 import android.app.Activity;
 import android.os.Bundle;

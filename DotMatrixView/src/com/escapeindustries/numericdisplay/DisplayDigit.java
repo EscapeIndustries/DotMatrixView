@@ -1,4 +1,7 @@
-package com.escapeindustries.numericedisplay;
+package com.escapeindustries.numericdisplay;
+
+import com.escapeindustries.numericedisplay.R;
+import com.escapeindustries.numericedisplay.R.anim;
 
 import android.content.Context;
 import android.view.ViewGroup;
