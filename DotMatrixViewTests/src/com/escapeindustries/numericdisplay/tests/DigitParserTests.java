@@ -1,6 +1,6 @@
 package com.escapeindustries.numericdisplay.tests;
 
-import com.escapeindustries.numericedisplay.DigitsParser;
+import com.escapeindustries.numericdisplay.DigitsParser;
 
 import junit.framework.TestCase;
 

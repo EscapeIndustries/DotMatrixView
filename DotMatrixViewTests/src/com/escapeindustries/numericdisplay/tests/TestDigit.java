@@ -1,6 +1,6 @@
 package com.escapeindustries.numericdisplay.tests;
 
-import com.escapeindustries.numericedisplay.Digit;
+import com.escapeindustries.numericdisplay.Digit;
 
 public class TestDigit implements Digit {
 	

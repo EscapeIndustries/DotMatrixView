@@ -1,7 +1,7 @@
 package com.escapeindustries.numericdisplay.tests;
 
-import com.escapeindustries.numericedisplay.DigitDefinition;
-import com.escapeindustries.numericedisplay.DigitTransition;
+import com.escapeindustries.numericdisplay.DigitDefinition;
+import com.escapeindustries.numericdisplay.DigitTransition;
 
 import junit.framework.TestCase;
 

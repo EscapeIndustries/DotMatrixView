@@ -3,7 +3,7 @@ package com.escapeindustries.numericdisplay.tests;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.escapeindustries.numericedisplay.DotChangeAction;
+import com.escapeindustries.numericdisplay.DotChangeAction;
 
 public class DotChangeCounter implements DotChangeAction {
 	

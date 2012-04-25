@@ -1,6 +1,6 @@
 package com.escapeindustries.numericdisplay.tests;
 
-import com.escapeindustries.numericedisplay.NumberSequenceController;
+import com.escapeindustries.numericdisplay.NumberSequenceController;
 
 import junit.framework.TestCase;
 
