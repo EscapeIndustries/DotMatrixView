@@ -25,9 +25,9 @@ public class NumericalDisplayActivity extends Activity {
 		DigitGroup digitsGroup = new DigitGroup(this,
 				(ViewGroup) findViewById(R.id.digits));
 
-		digitsGroup.setValue("23:59:05");
-		// digitsGroup.incrementEachSecond();
-		digitsGroup.decrementEachSecond();
+		FormattedTime formatter = new FormattedTime(new SystemClockTimeSource());
+		digitsGroup.setValue(formatter.getNow());
+		digitsGroup.incrementEachSecond();
 
 	}
 
