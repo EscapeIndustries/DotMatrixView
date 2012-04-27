@@ -54,6 +54,12 @@ public class DigitGroup {
 					"values argument is not long enough for index + 1 to be accessed");
 		return (values[index] * 10) + values[index + 1];
 	}
+	
+	public void updateFromClockEachSecond() {
+		FormattedTime formatter = new FormattedTime(new SystemClockTimeSource());
+		setValue(formatter.getNow());
+		new UpdateDigitsFromClockTask(this, formatter).execute("");
+	}
 
 	public void incrementEachSecond() {
 		new DigitIncrementTask(seconds).execute("");

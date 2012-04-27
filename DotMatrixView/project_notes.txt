@@ -1,9 +1,7 @@
 Project notes
 =============
 
-NEXT: Start on the time piece, by making a new AsyncTask that formats the time every second and updates all the digits.
-
-Current experimental direction: I want to make the display able to update itself given the time.
+NEXT: Start work on building the dot array in code instead of XML.
 
 Decide your next experimental direction. Options:
  	Go further with the display piece
@@ -56,6 +54,11 @@ Decide your next experimental direction. Options:
  		Connect time display with buttons to set the ending time.
  			Might you show both the ending time and the count-down on the screen together?
  	Learn to get appointment times from the calendar content provider
+ 	Wrap it in a view
+ 		Such that it can be added to an XML layout
+ 			Complete with attributes to set it up
+ 	Make it a library project
+ 	Use it to make a clock widget
  
  Idea: you could build something in code that is conceptually similar to a real LCD using FrameLayout
  Top of stack:		Shape drawable rectangle whose colour is black and of variable transparency

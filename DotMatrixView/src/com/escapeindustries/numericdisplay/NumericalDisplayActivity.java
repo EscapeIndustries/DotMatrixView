@@ -24,10 +24,8 @@ public class NumericalDisplayActivity extends Activity {
 		setContentView(R.layout.clock);
 		DigitGroup digitsGroup = new DigitGroup(this,
 				(ViewGroup) findViewById(R.id.digits));
-
-		FormattedTime formatter = new FormattedTime(new SystemClockTimeSource());
-		digitsGroup.setValue(formatter.getNow());
-		digitsGroup.incrementEachSecond();
+		
+		digitsGroup.updateFromClockEachSecond();
 
 	}
 
