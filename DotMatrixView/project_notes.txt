@@ -1,7 +1,29 @@
 Project notes
 =============
 
-NEXT: Start work on building the dot array in code instead of XML.
+NEXT: Write some code to build the grid in code. It should be parameterised, but it will at this stage only be called
+with the existing size, allowing all the other existing code, including digit definitions, to work unchanged.
+
+Thoughts and requirements for building the dot array in code instead of XML:
+		Why do I want to do this?
+			Because I want more flexible sizes of dots and of the overall control.
+				This is what I would expect of a re-useable view.
+			It feels like a step towards being able to have more dots than are needed to allow scrolling (horizontal or vertical)
+				Scrolling would be a nice visual effect. It would also be useful for touch events, horizontally or vertically showing
+				higher and lower values to the left and right/above and below.
+		What parts will I need to build to make it work?
+			build the view objects based on parameters
+			build the digit definitions based on parameters
+				define the digits by the parts they are made of
+				build the definition of the parts in code
+					this approach allows more parts to be defined later
+					how do non-digit-width parts like spacers and colons play into this?
+				scaling factors - parts know they should take up all the dots available within constraints
+					when the digit width is wider, say 21 instead of current 7, the vertical lines should be
+					2 or even 3 dots wide
+						grids should be divided into proportions. A horizontal is 1 unit of that high and 5 units wide, a vertical
+						is 5 of that unit high and 1 unit wide. Spacers are 1 unit. So the dots of a colon would be 1 unit by 1 unit.
+					the proportions themselves can be changed? allowing normal, thin or fat characters.
 
 Decide your next experimental direction. Options:
  	Go further with the display piece
