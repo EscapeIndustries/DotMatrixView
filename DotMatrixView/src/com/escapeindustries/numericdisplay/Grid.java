@@ -1,7 +1,11 @@
 package com.escapeindustries.numericdisplay;
 
+import com.escapeindustries.numericedisplay.R;
+
 import android.content.Context;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class Grid {
@@ -33,9 +37,31 @@ public class Grid {
 	}
 
 	private void buildGrid() {
-		grid = new LinearLayout(ctx); // TODO add an AttributeSet to this
-										// constructor to add
-										// android:orientation="vertical"
+		grid = new LinearLayout(ctx);
+		((LinearLayout)grid).setOrientation(LinearLayout.VERTICAL);
+		for (int y = 0; y < rows; y++) {
+			grid.addView(buildRow());
+		}
+	}
+
+	private LinearLayout buildRow() {
+		LinearLayout row = new LinearLayout(ctx);
+		row.setOrientation(LinearLayout.HORIZONTAL);
+		for (int x = 0; x < columns; x++) {
+			row.addView(buildDotStack());
+		}
+		return row;
+	}
+
+	private FrameLayout buildDotStack() {
+		FrameLayout frame = new FrameLayout(ctx);
+		ImageView dot = new ImageView(ctx);
+		dot.setImageResource(R.drawable.dot_dim);
+		frame.addView(dot);
+		dot = new ImageView(ctx);
+		dot.setImageResource(R.drawable.dot_lit);
+		frame.addView(dot);
+		return frame;
 	}
 
 }

@@ -1,8 +1,7 @@
 Project notes
 =============
 
-NEXT: Write some code to build the grid in code. It should be parameterised, but it will at this stage only be called
-with the existing size, allowing all the other existing code, including digit definitions, to work unchanged.
+NEXT: Make Grid add the right LayoutParams to all the Views it creates.
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
