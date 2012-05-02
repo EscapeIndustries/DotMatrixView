@@ -1,7 +1,7 @@
 Project notes
 =============
 
-NEXT: Make Grid add the right LayoutParams to all the Views it creates.
+NEXT: Integrate grid into an Activity to see if it works.
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
