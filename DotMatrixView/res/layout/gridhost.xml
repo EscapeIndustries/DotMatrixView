@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ViewGroup
+    <LinearLayout
         android:id="@+id/gridholder"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
 
 </LinearLayout>

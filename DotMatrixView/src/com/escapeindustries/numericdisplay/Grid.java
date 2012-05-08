@@ -42,6 +42,10 @@ public class Grid {
 				R.dimen.dot_padding);
 		buildGrid();
 	}
+	
+	public ViewGroup getGrid() {
+		return grid;
+	}
 
 	private void buildGrid() {
 		grid = new LinearLayout(ctx);
@@ -71,7 +75,7 @@ public class Grid {
 		frame.addView(dot);
 		dot = new ImageView(ctx);
 		setLayoutFromDimens(dot);
-		dot.setImageResource(R.drawable.dot_lit);
+		dot.setImageResource(R.drawable.dot_dim);
 		frame.addView(dot);
 		return frame;
 	}
