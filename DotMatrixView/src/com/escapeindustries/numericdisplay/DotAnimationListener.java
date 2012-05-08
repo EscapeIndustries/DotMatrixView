@@ -1,7 +1,7 @@
 package com.escapeindustries.numericdisplay;
 
-import com.escapeindustries.numericedisplay.R;
-import com.escapeindustries.numericedisplay.R.drawable;
+import com.escapeindustries.numericdisplay.R;
+import com.escapeindustries.numericdisplay.R.drawable;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;

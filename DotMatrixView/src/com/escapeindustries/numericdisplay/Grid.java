@@ -1,6 +1,6 @@
 package com.escapeindustries.numericdisplay;
 
-import com.escapeindustries.numericedisplay.R;
+import com.escapeindustries.numericdisplay.R;
 
 import android.content.Context;
 import android.view.View;

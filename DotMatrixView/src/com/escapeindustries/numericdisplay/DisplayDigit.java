@@ -1,7 +1,7 @@
 package com.escapeindustries.numericdisplay;
 
-import com.escapeindustries.numericedisplay.R;
-import com.escapeindustries.numericedisplay.R.anim;
+import com.escapeindustries.numericdisplay.R;
+import com.escapeindustries.numericdisplay.R.anim;
 
 import android.content.Context;
 import android.view.ViewGroup;
@@ -28,7 +28,7 @@ public class DisplayDigit implements Digit {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.escapeindustries.numericedisplay.Digit#setNumber(int)
+	 * @see com.escapeindustries.numericdisplay.Digit#setNumber(int)
 	 */
 	@Override
 	public void setNumber(int to) {

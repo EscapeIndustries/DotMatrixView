@@ -1,6 +1,7 @@
 package com.escapeindustries.numericdisplay;
 
-import com.escapeindustries.numericedisplay.R;
+import com.escapeindustries.numericdisplay.R;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.ViewGroup;
