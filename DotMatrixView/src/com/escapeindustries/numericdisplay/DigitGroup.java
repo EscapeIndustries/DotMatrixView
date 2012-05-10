@@ -31,7 +31,8 @@ public class DigitGroup {
 		}
 		digits = new DisplayDigit[6];
 		for (int i = 0; i < digits.length; i++) {
-			digits[i] = new DisplayDigit(ctx, digitViewGroups[i]);
+			//TODO next line is broken - fix this when you port this class to work with the new Grid class
+			//digits[i] = new DisplayDigit(ctx, digitViewGroups[i]);
 		}
 		hours = new NumberSequenceController(digits[0], digits[1], 0, 23, 0);
 		minutes = new NumberSequenceController(digits[2], digits[3], 0, 59, 0);

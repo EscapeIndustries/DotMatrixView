@@ -1,7 +1,7 @@
 Project notes
 =============
 
-NEXT: Convert DisplayDigit to be able to draw on an offset on a single large grid instead of a holder within a collection of grids.
+NEXT: Fix DigitGroup so that it now renders on a Grid. Probably only needs changes to the constructor.
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?

@@ -10,17 +10,26 @@ import android.widget.ImageView;
 public class DisplayDigit implements Digit {
 
 	private int current = 10;
-	private ViewGroup dots;
+	private Grid grid;
 	private Context ctx;
+	private int leftMostColumn;
+	private int topRow;
 
 	public DisplayDigit() {
 		// Only present to help testing - will not be able to animate anything
-		this.dots = null;
+		this.grid = null;
 	}
 
-	public DisplayDigit(Context ctx, ViewGroup dots) {
+	public DisplayDigit(Context ctx, Grid grid) {
 		this.ctx = ctx;
-		this.dots = dots;
+		this.grid = grid;
+	}
+	
+	public DisplayDigit(Context ctx, Grid grid, int column, int row) {
+		this.ctx = ctx;
+		this.grid = grid;
+		this.leftMostColumn = column;
+		this.topRow = row;
 	}
 
 	/*
@@ -47,8 +56,8 @@ public class DisplayDigit implements Digit {
 	}
 
 	private ImageView getDot(int index) {
-		ViewGroup rowGroup = (ViewGroup) dots.getChildAt(index / 7);
-		ViewGroup dotStack = (ViewGroup) rowGroup.getChildAt(index % 7);
+		ViewGroup rowGroup = (ViewGroup) grid.getGrid().getChildAt((index / 7) + topRow);
+		ViewGroup dotStack = (ViewGroup) rowGroup.getChildAt(leftMostColumn + (index % 7));
 		return (ImageView) dotStack.getChildAt(1);
 	}
 }

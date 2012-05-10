@@ -43,6 +43,10 @@ public class Grid {
 		buildGrid();
 	}
 	
+	public int getColumns() {
+		return columns;
+	}
+	
 	public ViewGroup getGrid() {
 		return grid;
 	}
