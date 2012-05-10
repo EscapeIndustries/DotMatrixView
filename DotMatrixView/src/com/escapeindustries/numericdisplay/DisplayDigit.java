@@ -1,8 +1,6 @@
 package com.escapeindustries.numericdisplay;
 
 import com.escapeindustries.numericdisplay.R;
-import com.escapeindustries.numericdisplay.R.anim;
-
 import android.content.Context;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
