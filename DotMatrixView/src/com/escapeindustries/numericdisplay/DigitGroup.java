@@ -1,6 +1,7 @@
 package com.escapeindustries.numericdisplay;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.ViewGroup;
 
 public class DigitGroup {
@@ -11,7 +12,26 @@ public class DigitGroup {
 	private NumberSequenceController minutes;
 	private NumberSequenceController seconds;
 
-	public DigitGroup(Context ctx, ViewGroup parent) {
+	// This constructor is for use when the dots are created in code by a Grid object
+	public DigitGroup(Context ctx, Grid grid) {
+		digits = new DisplayDigit[6];
+		int column = 0;
+		int colonsOffset = 0;
+		for (int i = 0; i < digits.length; i++) {
+			if (i > 0 && i % 2 == 0) {
+				colonsOffset += 2;
+			}
+			column = i * 8 + colonsOffset;
+			Log.i("NumericalDisplay", "DigitGroup: column: " + column);
+			digits[i] = new DisplayDigit(ctx, grid, column, 1);
+		}
+		// Is this bit necessary for a general display? Is it even used in the
+		// current clock example?
+		setupPairRelationships();
+	}
+
+	// This constructor is for use with the layout where the dots are created in the XML
+	public DigitGroup(ViewGroup parent) {
 		digitViewGroups = new ViewGroup[6];
 		for (int i = 0; i < parent.getChildCount(); i++) {
 			// Dirty hack to ensure we only get the digits and not
@@ -31,9 +51,14 @@ public class DigitGroup {
 		}
 		digits = new DisplayDigit[6];
 		for (int i = 0; i < digits.length; i++) {
-			//TODO next line is broken - fix this when you port this class to work with the new Grid class
-			//digits[i] = new DisplayDigit(ctx, digitViewGroups[i]);
+			// TODO next line is broken - fix this when you port this class to
+			// work with the new Grid class
+			// digits[i] = new DisplayDigit(ctx, digitViewGroups[i]);
 		}
+		setupPairRelationships();
+	}
+
+	private void setupPairRelationships() {
 		hours = new NumberSequenceController(digits[0], digits[1], 0, 23, 0);
 		minutes = new NumberSequenceController(digits[2], digits[3], 0, 59, 0);
 		seconds = new NumberSequenceController(digits[4], digits[5], 0, 59, 0);
@@ -55,7 +80,7 @@ public class DigitGroup {
 					"values argument is not long enough for index + 1 to be accessed");
 		return (values[index] * 10) + values[index + 1];
 	}
-	
+
 	public void updateFromClockEachSecond() {
 		FormattedTime formatter = new FormattedTime(new SystemClockTimeSource());
 		setValue(formatter.getNow());

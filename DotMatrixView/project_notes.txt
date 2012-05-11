@@ -1,7 +1,7 @@
 Project notes
 =============
 
-NEXT: Fix DigitGroup so that it now renders on a Grid. Probably only needs changes to the constructor.
+NEXT: Add colons to the display.
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?

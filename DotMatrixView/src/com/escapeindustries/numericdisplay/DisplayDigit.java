@@ -24,7 +24,7 @@ public class DisplayDigit implements Digit {
 		this.ctx = ctx;
 		this.grid = grid;
 	}
-	
+
 	public DisplayDigit(Context ctx, Grid grid, int column, int row) {
 		this.ctx = ctx;
 		this.grid = grid;
@@ -56,8 +56,10 @@ public class DisplayDigit implements Digit {
 	}
 
 	private ImageView getDot(int index) {
-		ViewGroup rowGroup = (ViewGroup) grid.getGrid().getChildAt((index / 7) + topRow);
-		ViewGroup dotStack = (ViewGroup) rowGroup.getChildAt(leftMostColumn + (index % 7));
+		ViewGroup rowGroup = (ViewGroup) grid.getGrid().getChildAt(
+				(index / 7) + topRow);
+		ViewGroup dotStack = (ViewGroup) rowGroup.getChildAt(leftMostColumn
+				+ (index % 7));
 		return (ImageView) dotStack.getChildAt(1);
 	}
 }
