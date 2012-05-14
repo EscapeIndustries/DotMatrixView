@@ -20,6 +20,7 @@ public class DigitGroup {
 		for (int i = 0; i < digits.length; i++) {
 			if (i > 0 && i % 2 == 0) {
 				colonsOffset += 2;
+				DisplayColon tmpColon = new DisplayColon(ctx, grid, column + 8, 1);
 			}
 			column = i * 8 + colonsOffset;
 			Log.i("NumericalDisplay", "DigitGroup: column: " + column);

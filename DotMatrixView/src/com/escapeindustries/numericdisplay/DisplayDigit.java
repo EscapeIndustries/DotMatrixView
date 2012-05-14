@@ -56,6 +56,8 @@ public class DisplayDigit implements Digit {
 	}
 
 	private ImageView getDot(int index) {
+		// TODO: this will crash if the column and row origin mean that
+		// the dot is off the grid.
 		ViewGroup rowGroup = (ViewGroup) grid.getGrid().getChildAt(
 				(index / 7) + topRow);
 		ViewGroup dotStack = (ViewGroup) rowGroup.getChildAt(leftMostColumn
