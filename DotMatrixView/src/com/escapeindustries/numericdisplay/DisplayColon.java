@@ -2,6 +2,8 @@ package com.escapeindustries.numericdisplay;
 
 import android.content.Context;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 public class DisplayColon {
@@ -20,10 +22,14 @@ public class DisplayColon {
 	}
 
 	private void draw() {
-		ImageView dot = getDot(5);
-		dot.setImageResource(R.drawable.dot_lit);
-		dot = getDot(9);
-		dot.setImageResource(R.drawable.dot_lit);
+		lightDot(getDot(5));
+		lightDot(getDot(9));
+	}
+
+	private void lightDot(ImageView dot) {
+		Animation anim = AnimationUtils.loadAnimation(ctx, R.anim.appear);
+		anim.setAnimationListener(new DotAnimationListener(dot, true));
+		dot.startAnimation(anim);
 	}
 
 	private ImageView getDot(int i) {
