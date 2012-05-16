@@ -8,10 +8,11 @@ import android.widget.ImageView;
 
 public class DisplayGlyph {
 
-	protected Grid grid;
 	protected Context ctx;
+	protected Grid grid;
 	protected int leftMostColumn;
 	protected int topRow;
+	protected int width;
 
 	public DisplayGlyph() {
 		super();
@@ -30,9 +31,9 @@ public class DisplayGlyph {
 		// TODO: this will crash if the column and row origin mean that
 		// the dot is off the grid.
 		ViewGroup rowGroup = (ViewGroup) grid.getGrid().getChildAt(
-				(index / 7) + topRow);
+				(index / width) + topRow);
 		ViewGroup dotStack = (ViewGroup) rowGroup.getChildAt(leftMostColumn
-				+ (index % 7));
+				+ (index % width));
 		return (ImageView) dotStack.getChildAt(1);
 	}
 

@@ -7,15 +7,17 @@ public class DisplayDigit extends DisplayGlyph implements Digit {
 	private int current = 10;
 	public DisplayDigit() {
 		// Only present to help testing - will not be able to animate anything
-		this.grid = null;
+		this.width = 7;
 	}
 
 	public DisplayDigit(Context ctx, Grid grid) {
+		this();
 		this.ctx = ctx;
 		this.grid = grid;
 	}
 
 	public DisplayDigit(Context ctx, Grid grid, int column, int row) {
+		this();
 		this.ctx = ctx;
 		this.grid = grid;
 		this.leftMostColumn = column;

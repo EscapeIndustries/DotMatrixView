@@ -1,8 +1,8 @@
 Project notes
 =============
 
-NEXT: Finish colons by extracting the similarities into an abstract class. getDot could be at the top level, along with
-some of the fields. Add a getWidth() method which the DigitGroup constructor can call to simplify layout.
+NEXT: Finish colons - simplify DigitGroup constructor by constructing DisplayDigit, DisplaySpace and DisplayColon instances
+and updating the column position with each instance's getWidth() method - to be implemented.
 
 I have added the simplest implementation for colons. How does the system need to evolve to be more generally useful?
 	Look for similarities between digits, colons and spaces. Spaces should probably be an entity too. An interface
