@@ -1,14 +1,8 @@
 Project notes
 =============
 
-NEXT: Finish colons - simplify DigitGroup constructor by constructing DisplayDigit, DisplaySpace and DisplayColon instances
-and updating the column position with each instance's getWidth() method - to be implemented.
-
-I have added the simplest implementation for colons. How does the system need to evolve to be more generally useful?
-	Look for similarities between digits, colons and spaces. Spaces should probably be an entity too. An interface
-	would fit here.
-	Beyond that, look to parse a format string into both a set of these renderable entities AND the increment
-	rules to bind groups together. 
+NEXT: Make DigitGroup build itself from a format string. Perhaps I should get some sort of iterator given the format string, calling
+next() on it gives up a DisplayGlyph? The format itself could indicate the relationships between the digits? 
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?

@@ -27,6 +27,10 @@ public class DisplayGlyph {
 		dot.startAnimation(anim);
 	}
 
+	public int getWidth() {
+		return width;
+	}
+
 	private ImageView getDot(int index) {
 		// TODO: this will crash if the column and row origin mean that
 		// the dot is off the grid.

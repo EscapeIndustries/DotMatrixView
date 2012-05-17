@@ -12,26 +12,36 @@ public class DigitGroup {
 	private NumberSequenceController minutes;
 	private NumberSequenceController seconds;
 
-	// This constructor is for use when the dots are created in code by a Grid object
+	// This constructor is for use when the dots are created in code by a Grid
+	// object
 	public DigitGroup(Context ctx, Grid grid) {
 		digits = new DisplayDigit[6];
 		int column = 0;
-		int colonsOffset = 0;
 		for (int i = 0; i < digits.length; i++) {
-			if (i > 0 && i % 2 == 0) {
-				colonsOffset += 2;
-				DisplayColon tmpColon = new DisplayColon(ctx, grid, column + 8, 1);
-			}
-			column = i * 8 + colonsOffset;
-			Log.i("NumericalDisplay", "DigitGroup: column: " + column);
+			// Create a digit
 			digits[i] = new DisplayDigit(ctx, grid, column, 1);
+			column += digits[i].getWidth();
+			if (i < (digits.length - 1)) {
+				// If it isn't the last, create a space
+				DisplaySpace space = new DisplaySpace();
+				column += space.getWidth();
+				if (i % 2 == 1) {
+					// If it isn't the last, and it's the 2nd of a pair, create
+					// a colon and another space
+					DisplayColon colon = new DisplayColon(ctx, grid, column, 1);
+					column += colon.getWidth();
+					DisplaySpace colonSpace = new DisplaySpace();
+					column += colonSpace.getWidth();
+				}
+			}
 		}
 		// Is this bit necessary for a general display? Is it even used in the
 		// current clock example?
 		setupPairRelationships();
 	}
 
-	// This constructor is for use with the layout where the dots are created in the XML
+	// This constructor is for use with the layout where the dots are created in
+	// the XML
 	public DigitGroup(ViewGroup parent) {
 		digitViewGroups = new ViewGroup[6];
 		for (int i = 0; i < parent.getChildCount(); i++) {
