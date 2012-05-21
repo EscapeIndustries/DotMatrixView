@@ -1,7 +1,6 @@
 package com.escapeindustries.numericdisplay;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.ViewGroup;
 
 public class DigitGroup {
