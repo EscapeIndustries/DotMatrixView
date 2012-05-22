@@ -1,8 +1,31 @@
 Project notes
 =============
 
-NEXT: Make DigitGroup build itself from a format string. Perhaps I should get some sort of iterator given the format string, calling
-next() on it gives up a DisplayGlyph? The format itself could indicate the relationships between the digits? 
+NEXT: Make DigitGroup build itself from a simple format string including 0 for digit, : for colon and a space for a single column space.
+
+Perhaps I should get some sort of iterator given the format string, calling next() on it gives up a DisplayGlyph? The format itself
+could indicate the relationships between the digits?
+
+Format strings:
+9 represents a digit with the range 0-9
+1 represents a digit with the range 0-1
+5 represents a digit with the range 0-5
+
+24-hour: the right digit's range is 0-2. 
+		 When the left digit is 0 or 1, the right digit goes from 0-9. 
+		 When the left digit is 2, the right digit's range is 0-3
+12-hour: the right digit's range is 0-1.
+		 When the left digit is 0, the right digit goes from 0-9. 
+		 When the left digit is 1, the right digit's range is 0-2. 
+
+Minutes: 5 9 the right digit goes all the way round, the left digit goes from 0-5
+
+When would these rules matter? If I am displaying time, it has to be directly from or relative to a clock. It isn't worth updating it
+from an increment or decrement because I cannot deliver them as events to accurate timing.
+When it is used as a scoreboard I could increment and decrement, but is there really any point? Would any client application want to
+defer score-keeping to this control? I doubt it. Easier to just let it be set as a string (or int or whatever).
+NumberSequenceController is useful if you have controls to set the digits by pressing plus and minus buttons. It still might be better
+to move that to application code. It just depends whether I want to make setting buttons a core feature of the display itself. 
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
