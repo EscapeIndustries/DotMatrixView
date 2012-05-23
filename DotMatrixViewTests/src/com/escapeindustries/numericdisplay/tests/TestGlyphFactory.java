@@ -9,8 +9,7 @@ public class TestGlyphFactory implements GlyphFactory {
 
 	@Override
 	public Digit createDigit() {
-		// TODO Auto-generated method stub
-		return null;
+		return new TestDigit();
 	}
 
 	@Override
