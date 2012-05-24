@@ -19,6 +19,9 @@ public class FormatStringParser {
 			if (c == '0') {
 				glyphs.add(factory.createDigit());
 			}
+			if (c == ':') {
+				glyphs.add(factory.createSeperator());
+			}
 		}
 		Glyph[] results = new Glyph[glyphs.size()];
 		results = glyphs.toArray(results);
