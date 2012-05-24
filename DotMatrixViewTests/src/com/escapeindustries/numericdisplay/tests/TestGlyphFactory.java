@@ -14,8 +14,7 @@ public class TestGlyphFactory implements GlyphFactory {
 
 	@Override
 	public Seperator createSeperator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new TestSeperator();
 	}
 
 	@Override
