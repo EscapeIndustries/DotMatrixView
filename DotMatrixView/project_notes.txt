@@ -1,7 +1,21 @@
 Project notes
 =============
+Current goal: Make DigitGroup build itself from a simple format string including 0 for digit, : for colon and a space
+for a single column space.
+NEXT: Work out how you configure a GlyphFactory with glyph dimensions, and then how you can parse Glyphs using those dimensions such
+that they can tell a grid how to size itself.
 
-NEXT: Make DigitGroup build itself from a simple format string including 0 for digit, : for colon and a space for a single column space.
+Scenario #1: Grid size is determined by format string
+The GlyphFactory is set up with some glyph metrics, which it uses to set up each Glyph. Creating glyphs only initialises them. Parse
+a format string to get a list or array of Glyphs. Then total the width by iterating the Glpyhs, and find the height by finding the
+tallest.
+
+Scenario #2: Glyphs determine their own size based on the format string and the size of the grid
+Is there any point in doing this? Surely the developer would need to decide the space and style they wanted before they
+started.
+
+Also need to think about the case where you have more than one line of Glyphs, or where you want to pin the visible Glyphs to the
+top, bottom, left or right.
 
 Perhaps I should get some sort of iterator given the format string, calling next() on it gives up a DisplayGlyph? The format itself
 could indicate the relationships between the digits?
