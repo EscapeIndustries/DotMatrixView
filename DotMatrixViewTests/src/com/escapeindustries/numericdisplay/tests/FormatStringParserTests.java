@@ -5,6 +5,7 @@ import com.escapeindustries.numericdisplay.FormatStringParser;
 import com.escapeindustries.numericdisplay.Glyph;
 import com.escapeindustries.numericdisplay.GlyphFactory;
 import com.escapeindustries.numericdisplay.Seperator;
+import com.escapeindustries.numericdisplay.Space;
 
 import junit.framework.TestCase;
 
@@ -59,6 +60,32 @@ public class FormatStringParserTests extends TestCase {
 		Glyph[] results = parser.parse("00:00");
 		// Assert
 		assertEquals("Correct number of Glyphs parsed", expected.length,
+				results.length);
+		checkGlyphTypesMatch(expected, results);
+	}
+
+	public void testSingleSpace() {
+		// Arrange
+		int expectedLength = 1;
+		// Act
+		Glyph[] results = parser.parse(" ");
+		// Assert
+		assertEquals("Correct number of Glyphs parsed", expectedLength,
+				results.length);
+		assertTrue("Results contains just a space", results[0] instanceof Space);
+	}
+
+	public void testDigitsColonsAndSpaces() {
+		// Arrange
+		String format = " 0 0 : 0 0 ";
+		Glyph[] expected = new Glyph[] { new TestSpace(), new TestDigit(),
+				new TestSpace(), new TestDigit(), new TestSpace(),
+				new TestSeperator(), new TestSpace(), new TestDigit(),
+				new TestSpace(), new TestDigit(), new TestSpace() };
+		// Act
+		Glyph[] results = parser.parse(format);
+		// Assert
+		assertEquals("Correct number of Glyphs parsed", format.length(),
 				results.length);
 		checkGlyphTypesMatch(expected, results);
 	}

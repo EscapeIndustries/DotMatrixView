@@ -19,8 +19,7 @@ public class TestGlyphFactory implements GlyphFactory {
 
 	@Override
 	public Space createSpace() {
-		// TODO Auto-generated method stub
-		return null;
+		return new TestSpace();
 	}
 
 }
