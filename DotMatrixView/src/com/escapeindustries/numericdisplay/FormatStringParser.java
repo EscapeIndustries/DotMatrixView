@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FormatStringParser {
-	
+
 	private GlyphFactory factory;
 
 	public FormatStringParser(GlyphFactory factory) {
@@ -21,6 +21,9 @@ public class FormatStringParser {
 			}
 			if (c == ':') {
 				glyphs.add(factory.createSeperator());
+			}
+			if (c == ' ') {
+				glyphs.add(factory.createSpace());
 			}
 		}
 		Glyph[] results = new Glyph[glyphs.size()];
