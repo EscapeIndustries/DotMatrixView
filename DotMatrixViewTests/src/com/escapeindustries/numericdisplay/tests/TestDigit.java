@@ -15,4 +15,14 @@ public class TestDigit implements Digit {
 		return value;
 	}
 
+	@Override
+	public int getWidth() {
+		return 7;
+	}
+
+	@Override
+	public int getHeight() {
+		return 13;
+	}
+
 }
