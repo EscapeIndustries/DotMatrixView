@@ -8,6 +8,7 @@ public class DisplayDigit extends DisplayGlyph implements Digit {
 	public DisplayDigit() {
 		// Only present to help testing - will not be able to animate anything
 		this.width = 7;
+		height = 13;
 	}
 
 	public DisplayDigit(Context ctx, Grid grid) {

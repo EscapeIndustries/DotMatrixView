@@ -6,13 +6,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-public class DisplayGlyph {
+public class DisplayGlyph implements Glyph {
 
 	protected Context ctx;
 	protected Grid grid;
 	protected int leftMostColumn;
 	protected int topRow;
 	protected int width;
+	protected int height;
 
 	public DisplayGlyph() {
 		super();
@@ -27,8 +28,14 @@ public class DisplayGlyph {
 		dot.startAnimation(anim);
 	}
 
+	@Override
 	public int getWidth() {
 		return width;
+	}
+	
+	@Override
+	public int getHeight() {
+		return height;
 	}
 
 	private ImageView getDot(int index) {

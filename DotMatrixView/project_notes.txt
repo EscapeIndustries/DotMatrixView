@@ -4,6 +4,9 @@ Current goal: Make DigitGroup build itself from a simple format string including
 for a single column space.
 NEXT: Work out how you configure a GlyphFactory with glyph dimensions, and then how you can parse Glyphs using those dimensions such
 that they can tell a grid how to size itself.
+Glyph needs to add getWidth() and getHeight(), and setGrid() and render(). Then you can parse a string into
+Glyphs, figure out the size required for the grid, and render it once you know.
+
 
 Scenario #1: Grid size is determined by format string
 The GlyphFactory is set up with some glyph metrics, which it uses to set up each Glyph. Creating glyphs only initialises them. Parse
