@@ -2,11 +2,31 @@ Project notes
 =============
 Current goal: Make DigitGroup build itself from a simple format string including 0 for digit, : for colon and a space
 for a single column space.
-NEXT: Work out how you configure a GlyphFactory with glyph dimensions, and then how you can parse Glyphs using those dimensions such
+NEXT: SO FAR I HAVEN'T IMPLEMENTED A GlyphFactory IN THE REAL PROJECT, NOR MADE USE OF FormatStringParser. Try to do that to gain
+insight into the problems in the system.
+ 
+Work out how you configure a GlyphFactory with glyph dimensions, and then how you can parse Glyphs using those dimensions such
 that they can tell a grid how to size itself.
 Glyph needs to add getWidth() and getHeight(), and setGrid() and render(). Then you can parse a string into
 Glyphs, figure out the size required for the grid, and render it once you know.
 
+What is the hierarchy?
+Glyph (interface)
+	|
+	-----------------------------------
+	|			 |		  |			  |
+DisplayGlyph	Digit	Seperator	Space
+	|			 |
+	--------------
+		   |
+	 DisplayDigit
+	 
+Is it OK for a DisplayDigit to get Glyph from 2 parents? Digit is a sub-interface of Glyph.
+DisplayGlyph is an abstract base class for things implementing Glpyh interface. What I really want to do is mix in the digit interface
+to a DisplayGlyph.
+
+The interfaces Seperator and Space are not actually being used, because DisplayColon and DisplaySpace extend DisplayGlyph but don't
+implement Seperator or Space.
 
 Scenario #1: Grid size is determined by format string
 The GlyphFactory is set up with some glyph metrics, which it uses to set up each Glyph. Creating glyphs only initialises them. Parse
