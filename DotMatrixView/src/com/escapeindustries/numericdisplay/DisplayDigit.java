@@ -11,13 +11,13 @@ public class DisplayDigit extends DisplayGlyph implements Digit {
 		height = 13;
 	}
 
-	public DisplayDigit(Context ctx, Grid grid) {
+	public DisplayDigit(Context ctx, DisplayGrid grid) {
 		this();
 		this.ctx = ctx;
 		this.grid = grid;
 	}
 
-	public DisplayDigit(Context ctx, Grid grid, int column, int row) {
+	public DisplayDigit(Context ctx, DisplayGrid grid, int column, int row) {
 		this();
 		this.ctx = ctx;
 		this.grid = grid;

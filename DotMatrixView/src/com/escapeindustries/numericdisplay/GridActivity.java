@@ -13,7 +13,7 @@ public class GridActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gridhost);
 		ViewGroup gridholder = (ViewGroup) findViewById(R.id.gridholder);
-		Grid simple = new Grid(this, 51, 15);
+		DisplayGrid simple = new DisplayGrid(this, 51, 15);
 		gridholder.addView(simple.getGrid());
 		DigitGroup display = new DigitGroup(this, simple);
 		display.updateFromClockEachSecond();

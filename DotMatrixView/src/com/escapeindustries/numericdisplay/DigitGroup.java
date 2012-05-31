@@ -11,9 +11,9 @@ public class DigitGroup {
 	private NumberSequenceController minutes;
 	private NumberSequenceController seconds;
 
-	// This constructor is for use when the dots are created in code by a Grid
+	// This constructor is for use when the dots are created in code by a DisplayGrid
 	// object
-	public DigitGroup(Context ctx, Grid grid) {
+	public DigitGroup(Context ctx, DisplayGrid grid) {
 		digits = new DisplayDigit[6];
 		int column = 0;
 		for (int i = 0; i < digits.length; i++) {
@@ -62,7 +62,7 @@ public class DigitGroup {
 		digits = new DisplayDigit[6];
 		for (int i = 0; i < digits.length; i++) {
 			// TODO next line is broken - fix this when you port this class to
-			// work with the new Grid class
+			// work with the new DisplayGrid class
 			// digits[i] = new DisplayDigit(ctx, digitViewGroups[i]);
 		}
 		setupPairRelationships();

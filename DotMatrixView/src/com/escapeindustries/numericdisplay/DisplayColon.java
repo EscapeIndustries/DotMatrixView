@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class DisplayColon extends DisplayGlyph {
 
-	public DisplayColon(Context ctx, Grid grid, int column, int row) {
+	public DisplayColon(Context ctx, DisplayGrid grid, int column, int row) {
 		this.ctx = ctx;
 		this.grid = grid;
 		this.leftMostColumn = column;
