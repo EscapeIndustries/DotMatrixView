@@ -19,7 +19,7 @@ public class DigitGroup {
 	// This constructor is for use when the dots are created in code by a DisplayGrid
 	// object
 	public DigitGroup(Context ctx, Grid grid, String format) {
-		GlyphFactory factory = new DisplayGlyphFactory(grid);
+		GlyphFactory factory = new GlyphFactory(grid);
 		FormatStringParser parser = new FormatStringParser(factory);
 		Glyph[] glyphs = parser.parse(format);
 		digits = extractDigits(glyphs);
