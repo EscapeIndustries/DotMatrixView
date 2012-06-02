@@ -16,6 +16,10 @@ import android.widget.LinearLayout;
 public class DisplayGrid implements Grid {
 	private int columns;
 	private int rows;
+	private int paddingRowsTop;
+	private int paddingColumnsLeft;
+	private int paddingRowsBottom;
+	private int paddingColumnsRight;
 	private ViewGroup grid;
 	private Context ctx;
 	private int dotPadding;
@@ -47,12 +51,40 @@ public class DisplayGrid implements Grid {
 	public void setRows(int rows) {
 		this.rows = rows;
 	}
+	
+	@Override
+	public int getPaddingRowsTop() {
+		return paddingRowsTop;
+	}
+
+	@Override
+	public int getPaddingColumnsLeft() {
+		return paddingColumnsLeft;
+	}
+
+	@Override
+	public int getPaddingRowsBottom() {
+		return paddingRowsBottom;
+	}
+
+	@Override
+	public int getPaddingColumnsRight() {
+		return paddingColumnsRight;
+	}
+
+	@Override
+	public void setPaddingDots(int top, int left, int bottom, int right) {
+		this.paddingRowsTop = top;
+		this.paddingColumnsLeft = left;
+		this.paddingRowsBottom = bottom;
+		this.paddingColumnsRight = right;
+	}
 
 	public void build() {
 		grid = new LinearLayout(ctx);
 		((LinearLayout) grid).setOrientation(LinearLayout.VERTICAL);
 		setLayoutWrapContent(grid);
-		for (int y = 0; y < rows; y++) {
+		for (int y = 0; y < rows + paddingRowsTop + paddingRowsBottom; y++) {
 			grid.addView(buildRow());
 		}
 	}
@@ -61,7 +93,7 @@ public class DisplayGrid implements Grid {
 		LinearLayout row = new LinearLayout(ctx);
 		setLayoutWrapContent(row);
 		row.setOrientation(LinearLayout.HORIZONTAL);
-		for (int x = 0; x < columns; x++) {
+		for (int x = 0; x < columns + paddingColumnsLeft + paddingColumnsRight; x++) {
 			row.addView(buildDotStack());
 		}
 		return row;

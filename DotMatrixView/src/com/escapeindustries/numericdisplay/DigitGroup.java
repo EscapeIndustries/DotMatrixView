@@ -21,15 +21,16 @@ public class DigitGroup {
 	// object
 	public DigitGroup(Context ctx, ViewGroup gridHolder, String format) {
 		DisplayGrid grid = new DisplayGrid(ctx);
+		grid.setPaddingDots(1, 0, 1, 0);
 		GlyphFactory factory = new GlyphFactory(grid);
 		FormatStringParser parser = new FormatStringParser(factory);
 		Glyph[] glyphs = parser.parse(format);
 		digits = extractDigits(glyphs);
 		int gridHeight = 0;
-		int column = 0;
+		int column = grid.getPaddingColumnsLeft();
 		for (Glyph glyph : glyphs) {
 			glyph.setColumn(column);
-			glyph.setRow(0);
+			glyph.setRow(grid.getPaddingRowsTop());
 			column += glyph.getWidth();
 			gridHeight = Math.max(gridHeight, glyph.getHeight());
 		}

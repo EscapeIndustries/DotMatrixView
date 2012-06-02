@@ -1,8 +1,6 @@
 Project notes
 =============
-Current goal: Make DigitGroup build itself from a simple format string including 0 for digit, : for colon and a space
-for a single column space.
-NEXT: Give Grid properties for padding top, left, bottom and right, and have it respected by Glyphs. 
+NEXT: Remove the linked pairs of digits from DigitGroup.  
 
 Format strings:
 9 represents a digit with the range 0-9
@@ -23,7 +21,11 @@ from an increment or decrement because I cannot deliver them as events to accura
 When it is used as a scoreboard I could increment and decrement, but is there really any point? Would any client application want to
 defer score-keeping to this control? I doubt it. Easier to just let it be set as a string (or int or whatever).
 NumberSequenceController is useful if you have controls to set the digits by pressing plus and minus buttons. It still might be better
-to move that to application code. It just depends whether I want to make setting buttons a core feature of the display itself. 
+to move that to application code. It just depends whether I want to make setting buttons a core feature of the display itself.
+
+Even then, the buttons could be wired up to logic that does the appropriate time maths. There is no need to link the digits.
+However, the code in DigitGroup still builds this link, and REQUIRES IT to update the display from the time.
+Ideally DigitGroup would have it's code absorbed by DisplayGrid. 
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
