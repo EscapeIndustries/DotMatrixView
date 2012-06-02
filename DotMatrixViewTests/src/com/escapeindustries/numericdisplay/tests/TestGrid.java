@@ -10,8 +10,18 @@ public class TestGrid implements Grid {
 	}
 
 	@Override
+	public void setColumns(int columns) {
+		// Do nothing
+	}
+
+	@Override
 	public int getRows() {
 		return 0;
+	}
+	
+	@Override
+	public void setRows(int rows) {
+		// Do nothing
 	}
 
 	@Override
