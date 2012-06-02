@@ -14,7 +14,8 @@ public class GridActivity extends Activity {
 		setContentView(R.layout.gridhost);
 		ViewGroup gridHolder = (ViewGroup) findViewById(R.id.gridholder);
 		DigitGroup display = new DigitGroup(this, gridHolder, "0 0 : 0 0 : 0 0");
-		display.updateFromClockEachSecond();
+		display.setValue("97:03:21");
+		//display.updateFromClockEachSecond();
 	}
 
 }
