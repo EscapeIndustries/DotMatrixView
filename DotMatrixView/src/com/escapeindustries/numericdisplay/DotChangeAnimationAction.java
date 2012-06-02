@@ -2,9 +2,9 @@ package com.escapeindustries.numericdisplay;
 
 public class DotChangeAnimationAction implements DotChangeAction {
 	
-	private DisplayGlyph digit;
+	private Glyph digit;
 
-	public DotChangeAnimationAction(DisplayGlyph digit) {
+	public DotChangeAnimationAction(Glyph digit) {
 		this.digit = digit;
 	}
 

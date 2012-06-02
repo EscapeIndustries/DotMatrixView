@@ -1,42 +1,48 @@
 package com.escapeindustries.numericdisplay;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 import android.content.Context;
 import android.view.ViewGroup;
 
 public class DigitGroup {
 
 	private ViewGroup[] digitViewGroups;
-	private DisplayDigit[] digits;
+	private Digit[] digits;
 	private NumberSequenceController hours;
 	private NumberSequenceController minutes;
 	private NumberSequenceController seconds;
 
 	// This constructor is for use when the dots are created in code by a DisplayGrid
 	// object
-	public DigitGroup(Context ctx, DisplayGrid grid) {
-		digits = new DisplayDigit[6];
+	public DigitGroup(Context ctx, Grid grid, String format) {
+		GlyphFactory factory = new DisplayGlyphFactory(grid);
+		FormatStringParser parser = new FormatStringParser(factory);
+		Glyph[] glyphs = parser.parse(format);
+		digits = extractDigits(glyphs);
 		int column = 0;
-		for (int i = 0; i < digits.length; i++) {
-			// Create a digit
-			digits[i] = new DisplayDigit(ctx, grid, column, 1);
-			column += digits[i].getWidth();
-			if (i < (digits.length - 1)) {
-				// If it isn't the last, create a space
-				DisplaySpace space = new DisplaySpace();
-				column += space.getWidth();
-				if (i % 2 == 1) {
-					// If it isn't the last, and it's the 2nd of a pair, create
-					// a colon and another space
-					DisplayColon colon = new DisplayColon(ctx, grid, column, 1);
-					column += colon.getWidth();
-					DisplaySpace colonSpace = new DisplaySpace();
-					column += colonSpace.getWidth();
-				}
-			}
+		for (Glyph glyph : glyphs) {
+			glyph.setColumn(column);
+			glyph.setRow(1);
+			column += glyph.getWidth();
+			glyph.draw();
 		}
 		// Is this bit necessary for a general display? Is it even used in the
 		// current clock example?
 		setupPairRelationships();
+	}
+
+	private Digit[] extractDigits(Glyph[] glyphs) {
+		List<Digit> temp = new ArrayList<Digit>();
+		for (int i = 0; i < glyphs.length; i++) {
+			if (glyphs[i] instanceof Digit) {
+				temp.add((Digit)glyphs[i]);
+			}
+		}
+		return temp.toArray(new Digit[temp.size()]);
 	}
 
 	// This constructor is for use with the layout where the dots are created in
@@ -59,7 +65,7 @@ public class DigitGroup {
 				}
 			}
 		}
-		digits = new DisplayDigit[6];
+		digits = new Digit[6];
 		for (int i = 0; i < digits.length; i++) {
 			// TODO next line is broken - fix this when you port this class to
 			// work with the new DisplayGrid class

@@ -1,5 +1,15 @@
 package com.escapeindustries.numericdisplay;
 
-public interface Space extends Glyph {
+public class Space extends Glyph {
+	
+	public Space() {
+		this.width = 1;
+		this.height = 13;
+	}
+
+	@Override
+	void draw() {
+		// Do nothing - this is an empty space
+	}
 
 }
