@@ -23,6 +23,31 @@ public class TestGrid implements Grid {
 	public void setRows(int rows) {
 		// Do nothing
 	}
+	
+	@Override
+	public int getPaddingRowsTop() {
+		return 0;
+	}
+
+	@Override
+	public int getPaddingColumnsLeft() {
+		return 0;
+	}
+
+	@Override
+	public int getPaddingRowsBottom() {
+		return 0;
+	}
+
+	@Override
+	public int getPaddingColumnsRight() {
+		return 0;
+	}
+	
+	@Override
+	public void setPaddingDots(int top, int left, int bottom, int right) {
+		// Do nothing
+	}
 
 	@Override
 	public void changeDot(int x, int y, boolean on) {
