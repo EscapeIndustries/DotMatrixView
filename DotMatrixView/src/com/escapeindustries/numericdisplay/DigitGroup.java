@@ -16,33 +16,41 @@ public class DigitGroup {
 	private NumberSequenceController minutes;
 	private NumberSequenceController seconds;
 
-	// This constructor is for use when the dots are created in code by a DisplayGrid
+	// This constructor is for use when the dots are created in code by a
+	// DisplayGrid
 	// object
-	public DigitGroup(Context ctx, Grid grid, String format) {
+	public DigitGroup(Context ctx, ViewGroup gridHolder, String format) {
+		DisplayGrid grid = new DisplayGrid(ctx);
 		GlyphFactory factory = new GlyphFactory(grid);
 		FormatStringParser parser = new FormatStringParser(factory);
 		Glyph[] glyphs = parser.parse(format);
 		digits = extractDigits(glyphs);
+		int gridHeight = 0;
 		int column = 0;
 		for (Glyph glyph : glyphs) {
 			glyph.setColumn(column);
-			glyph.setRow(1);
+			glyph.setRow(0);
 			column += glyph.getWidth();
+			gridHeight = Math.max(gridHeight, glyph.getHeight());
+		}
+		grid.setColumns(column);
+		grid.setRows(gridHeight);
+		grid.build();
+		gridHolder.addView(grid.getGrid());
+		for (Glyph glyph : glyphs) {
 			glyph.draw();
 		}
-		// Is this bit necessary for a general display? Is it even used in the
-		// current clock example?
 		setupPairRelationships();
 	}
 
 	private Digit[] extractDigits(Glyph[] glyphs) {
-		List<Digit> temp = new ArrayList<Digit>();
+		List<Digit> digits = new ArrayList<Digit>();
 		for (int i = 0; i < glyphs.length; i++) {
 			if (glyphs[i] instanceof Digit) {
-				temp.add((Digit)glyphs[i]);
+				digits.add((Digit) glyphs[i]);
 			}
 		}
-		return temp.toArray(new Digit[temp.size()]);
+		return digits.toArray(new Digit[digits.size()]);
 	}
 
 	// This constructor is for use with the layout where the dots are created in

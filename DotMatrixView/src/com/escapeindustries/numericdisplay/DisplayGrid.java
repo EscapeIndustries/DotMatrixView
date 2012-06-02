@@ -20,28 +20,35 @@ public class DisplayGrid implements Grid {
 	private Context ctx;
 	private int dotPadding;
 	private int dotSize;
-
-	public DisplayGrid(Context ctx, int columns, int rows) {
+	
+	public DisplayGrid(Context ctx) {
 		this.ctx = ctx;
-		this.columns = columns;
-		this.rows = rows;
 		this.dotSize = (int) ctx.getResources().getDimension(R.dimen.dot_size);
 		this.dotPadding = (int) ctx.getResources().getDimension(
 				R.dimen.dot_padding);
-		buildGrid();
 	}
 
 	@Override
 	public int getColumns() {
 		return columns;
 	}
+	
+	@Override
+	public void setColumns(int columns) {
+		this.columns = columns;
+	}
 
 	@Override
 	public int getRows() {
 		return rows;
 	}
+	
+	@Override
+	public void setRows(int rows) {
+		this.rows = rows;
+	}
 
-	private void buildGrid() {
+	public void build() {
 		grid = new LinearLayout(ctx);
 		((LinearLayout) grid).setOrientation(LinearLayout.VERTICAL);
 		setLayoutWrapContent(grid);
@@ -106,4 +113,5 @@ public class DisplayGrid implements Grid {
 	public View getGrid() {
 		return grid;
 	}
+
 }

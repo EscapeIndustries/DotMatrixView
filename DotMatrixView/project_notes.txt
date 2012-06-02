@@ -2,19 +2,7 @@ Project notes
 =============
 Current goal: Make DigitGroup build itself from a simple format string including 0 for digit, : for colon and a space
 for a single column space.
-NEXT: Make Grid get constructed based on size required by parsed format string.
-
-This goal seems to suggest Grid should be constructed in DigitGroup. Thoughts:
-	1) Pass in the ViewGroup to which it should be added
-	2) Work out what DigitGroup is - does the name cover what it actually does? 
-
-Scenario #1: Grid size is determined by format string
-The GlyphFactory is set up with some glyph metrics, which it uses to set up each Glyph. Creating glyphs only initialises them. Parse
-a format string to get a list or array of Glyphs. Then total the width by iterating the Glpyhs, and find the height by finding the
-tallest.
-
-Think about the case where you have more than one line of Glyphs, or where you want to pin the visible Glyphs to the
-top, bottom, left or right.
+NEXT: Give Grid properties for padding top, left, bottom and right, and have it respected by Glyphs. 
 
 Format strings:
 9 represents a digit with the range 0-9

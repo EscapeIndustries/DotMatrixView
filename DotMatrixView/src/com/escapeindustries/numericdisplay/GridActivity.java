@@ -12,10 +12,8 @@ public class GridActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gridhost);
-		ViewGroup gridholder = (ViewGroup) findViewById(R.id.gridholder);
-		DisplayGrid simple = new DisplayGrid(this, 51, 15);
-		gridholder.addView(simple.getGrid());
-		DigitGroup display = new DigitGroup(this, simple, "0 0 : 0 0 : 0 0");
+		ViewGroup gridHolder = (ViewGroup) findViewById(R.id.gridholder);
+		DigitGroup display = new DigitGroup(this, gridHolder, "0 0 : 0 0 : 0 0");
 		display.updateFromClockEachSecond();
 	}
 
