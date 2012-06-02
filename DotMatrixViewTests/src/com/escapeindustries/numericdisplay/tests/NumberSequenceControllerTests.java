@@ -1,5 +1,7 @@
 package com.escapeindustries.numericdisplay.tests;
 
+import com.escapeindustries.numericdisplay.Digit;
+import com.escapeindustries.numericdisplay.Grid;
 import com.escapeindustries.numericdisplay.NumberSequenceController;
 
 import junit.framework.TestCase;
@@ -10,32 +12,35 @@ public class NumberSequenceControllerTests extends TestCase {
 	private NumberSequenceController hours12hr;
 	private NumberSequenceController hours24hr;
 	private NumberSequenceController strangeRange;
-	private TestDigit minutesHigh;
-	private TestDigit minutesLow;
-	private TestDigit hours12High;
-	private TestDigit hours12Low;
-	private TestDigit hours24High;
-	private TestDigit hours24Low;
-	private TestDigit strangeHigh;
-	private TestDigit strangeLow;
+	private Digit minutesHigh;
+	private Digit minutesLow;
+	private Digit hours12High;
+	private Digit hours12Low;
+	private Digit hours24High;
+	private Digit hours24Low;
+	private Digit strangeHigh;
+	private Digit strangeLow;
+	
+	Grid grid = null;
 
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-		minutesHigh = new TestDigit();
-		minutesLow = new TestDigit();
+		grid = new TestGrid();
+		minutesHigh = new Digit(grid, 0, 0);
+		minutesLow = new Digit(grid, 0, 0);
 		minutes = new NumberSequenceController(minutesHigh, minutesLow, 0, 59,
 				0);
-		hours12High = new TestDigit();
-		hours12Low = new TestDigit();
+		hours12High = new Digit(grid, 0, 0);
+		hours12Low = new Digit(grid, 0, 0);
 		hours12hr = new NumberSequenceController(hours12High, hours12Low, 1,
 				12, 1);
-		hours24High = new TestDigit();
-		hours24Low = new TestDigit();
+		hours24High = new Digit(grid, 0, 0);
+		hours24Low = new Digit(grid, 0, 0);
 		hours24hr = new NumberSequenceController(hours24High, hours24Low, 0,
 				23, 0);
-		strangeHigh = new TestDigit();
-		strangeLow = new TestDigit();
+		strangeHigh = new Digit(grid, 0, 0);
+		strangeLow = new Digit(grid, 0, 0);
 		strangeRange = new NumberSequenceController(strangeHigh, strangeLow, 4,
 				9, 5);
 	}

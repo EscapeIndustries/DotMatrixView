@@ -11,7 +11,7 @@ public class GlyphTests extends TestCase {
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		factory = new TestGlyphFactory();
+		factory = new GlyphFactory(new TestGrid());
 	}
 	
 	public void testStandardWidth() {

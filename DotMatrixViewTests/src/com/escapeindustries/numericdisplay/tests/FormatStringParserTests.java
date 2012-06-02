@@ -4,6 +4,7 @@ import com.escapeindustries.numericdisplay.Digit;
 import com.escapeindustries.numericdisplay.FormatStringParser;
 import com.escapeindustries.numericdisplay.Glyph;
 import com.escapeindustries.numericdisplay.GlyphFactory;
+import com.escapeindustries.numericdisplay.Grid;
 import com.escapeindustries.numericdisplay.Seperator;
 import com.escapeindustries.numericdisplay.Space;
 
@@ -13,9 +14,11 @@ public class FormatStringParserTests extends TestCase {
 
 	private FormatStringParser parser;
 	private GlyphFactory factory;
+	private Grid grid;
 
 	public void setUp() throws Exception {
-		factory = new TestGlyphFactory();
+		grid = new TestGrid();
+		factory = new GlyphFactory(grid);
 		parser = new FormatStringParser(factory);
 	}
 
@@ -54,8 +57,9 @@ public class FormatStringParserTests extends TestCase {
 
 	public void testDigitsAndColons() {
 		// Arrange
-		Glyph[] expected = new Glyph[] { new TestDigit(), new TestDigit(),
-				new TestSeperator(), new TestDigit(), new TestDigit() };
+		Glyph[] expected = new Glyph[] { new Digit(grid, 0, 0),
+				new Digit(grid, 0, 0), new Seperator(grid, 0, 0),
+				new Digit(grid, 0, 0), new Digit(grid, 0, 0) };
 		// Act
 		Glyph[] results = parser.parse("00:00");
 		// Assert
@@ -78,10 +82,10 @@ public class FormatStringParserTests extends TestCase {
 	public void testDigitsColonsAndSpaces() {
 		// Arrange
 		String format = " 0 0 : 0 0 ";
-		Glyph[] expected = new Glyph[] { new TestSpace(), new TestDigit(),
-				new TestSpace(), new TestDigit(), new TestSpace(),
-				new TestSeperator(), new TestSpace(), new TestDigit(),
-				new TestSpace(), new TestDigit(), new TestSpace() };
+		Glyph[] expected = new Glyph[] { new Space(), new Digit(grid, 0, 0),
+				new Space(), new Digit(grid, 0, 0), new Space(),
+				new Seperator(grid, 0, 0), new Space(), new Digit(grid, 0, 0),
+				new Space(), new Digit(grid, 0, 0), new Space() };
 		// Act
 		Glyph[] results = parser.parse(format);
 		// Assert
