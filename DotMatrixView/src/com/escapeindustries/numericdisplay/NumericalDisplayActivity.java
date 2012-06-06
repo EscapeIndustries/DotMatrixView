@@ -4,7 +4,6 @@ import com.escapeindustries.numericdisplay.R;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.ViewGroup;
 
 public class NumericalDisplayActivity extends Activity {
 

@@ -1,8 +1,6 @@
 package com.escapeindustries.numericdisplay;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import android.content.Context;
@@ -10,7 +8,6 @@ import android.view.ViewGroup;
 
 public class DigitGroup {
 
-	private ViewGroup[] digitViewGroups;
 	private Digit[] digits;
 
 	// This constructor is for use when the dots are created in code by a
