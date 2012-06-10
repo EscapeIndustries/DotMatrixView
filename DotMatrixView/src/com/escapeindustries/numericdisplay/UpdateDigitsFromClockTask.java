@@ -7,12 +7,12 @@ import android.os.AsyncTask;
 
 public class UpdateDigitsFromClockTask extends AsyncTask<String, Void, Void> {
 
-	private DigitGroup digits;
+	private Grid grid;
 	private FormattedTime formatter;
 	private int delay;
 
-	public UpdateDigitsFromClockTask(DigitGroup digits, FormattedTime formatter) {
-		this.digits = digits;
+	public UpdateDigitsFromClockTask(Grid grid, FormattedTime formatter) {
+		this.grid = grid;
 		this.formatter = formatter;
 		delay = getMillisToNextSecond();
 	}
@@ -29,8 +29,8 @@ public class UpdateDigitsFromClockTask extends AsyncTask<String, Void, Void> {
 
 	@Override
 	protected void onPostExecute(Void result) {
-		digits.setValue(formatter.getNow());
-		new UpdateDigitsFromClockTask(digits, formatter).execute("");
+		grid.setValue(formatter.getNow());
+		new UpdateDigitsFromClockTask(grid, formatter).execute("");
 
 	}
 

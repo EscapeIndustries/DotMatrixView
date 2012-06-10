@@ -11,4 +11,5 @@ public interface Grid {
 	public int getPaddingColumnsRight();
 	public void setPaddingDots(int top, int left, int bottom, int right);
 	public void changeDot(int x, int y, boolean on);
+	public void setValue(String value);
 }

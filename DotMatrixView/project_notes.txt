@@ -1,6 +1,6 @@
 Project notes
 =============
-NEXT: Transfer the remaining code in DigitGroup into Grid.   
+NEXT: Convert Grid into a LinearLayout subclass - at this point embed the configuration into the class.   
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
