@@ -23,7 +23,6 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	private int paddingColumnsLeft;
 	private int paddingRowsBottom;
 	private int paddingColumnsRight;
-	private ViewGroup grid;
 	private Context ctx;
 	private int dotPadding;
 	private int dotSize;
@@ -121,10 +120,6 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		setColumns(column);
 		setRows(gridHeight);
 		build();
-	}
-
-	public void setViewHolder(ViewGroup gridHolder) {
-		gridHolder.addView(grid);
 		for (Glyph glyph : glyphs) {
 			glyph.draw();
 		}
@@ -147,11 +142,9 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	}
 
 	public void build() {
-		grid = new LinearLayout(ctx);
-		((LinearLayout) grid).setOrientation(LinearLayout.VERTICAL);
-		setLayoutWrapContent(grid);
+		setLayoutWrapContent(this);
 		for (int y = 0; y < rows + paddingRowsTop + paddingRowsBottom; y++) {
-			grid.addView(buildRow());
+			addView(buildRow());
 		}
 	}
 
@@ -170,7 +163,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		// the dot is off the grid.
 		Log.d("NumericDisplay", "getDot(" + x + " [max: " + getColumns()
 				+ "], " + y + " [max: " + getRows() + "])");
-		ViewGroup rowGroup = (ViewGroup) grid.getChildAt(y);
+		ViewGroup rowGroup = (ViewGroup) getChildAt(y);
 		ViewGroup dotStack = (ViewGroup) rowGroup.getChildAt(x);
 		return (ImageView) dotStack.getChildAt(1);
 	}
