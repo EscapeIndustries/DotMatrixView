@@ -6,17 +6,17 @@ import java.util.List;
 import com.escapeindustries.numericdisplay.R;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class DisplayGrid implements Grid {
+public class DisplayGrid extends LinearLayout implements Grid {
 	private int columns;
 	private int rows;
 	private int paddingRowsTop;
@@ -32,10 +32,29 @@ public class DisplayGrid implements Grid {
 	private Glyph[] glyphs;
 
 	public DisplayGrid(Context ctx) {
+		super(ctx);
+		initialise(ctx);
+		Log.d("NumericalDisplay", "Constructor: DisplayGrid(Context ctx)");
+	}
+
+	private void initialise(Context ctx) {
 		this.ctx = ctx;
 		this.dotSize = (int) ctx.getResources().getDimension(R.dimen.dot_size);
 		this.dotPadding = (int) ctx.getResources().getDimension(
 				R.dimen.dot_padding);
+		this.setOrientation(VERTICAL);
+	}
+	
+	public DisplayGrid(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+		initialise(context);
+		Log.d("NumericalDisplay", "Constructor: DisplayGrid(Context context, AttributeSet attrs, int defStyle)");
+	}
+
+	public DisplayGrid(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		initialise(context);
+		Log.d("NumericalDisplay", "Constructor: DisplayGrid(Context context, AttributeSet attrs)");
 	}
 
 	@Override
