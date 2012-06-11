@@ -1,6 +1,6 @@
 Project notes
 =============
-NEXT: Convert Grid into a LinearLayout subclass - at this point embed the configuration into the class.   
+NEXT: Make DisplayGrid configurable from the XML.   
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
