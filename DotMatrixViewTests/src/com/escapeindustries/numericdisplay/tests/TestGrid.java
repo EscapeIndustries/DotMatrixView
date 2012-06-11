@@ -54,4 +54,9 @@ public class TestGrid implements Grid {
 		// Do nothing
 	}
 
+	@Override
+	public void setValue(String value) {
+		// Do nothing
+	}
+
 }
