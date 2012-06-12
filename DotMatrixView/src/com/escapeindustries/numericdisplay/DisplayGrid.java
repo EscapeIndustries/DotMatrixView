@@ -6,6 +6,7 @@ import java.util.List;
 import com.escapeindustries.numericdisplay.R;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -47,13 +48,27 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	public DisplayGrid(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		initialise(context);
+		readAttributes(attrs);
 		Log.d("NumericalDisplay", "Constructor: DisplayGrid(Context context, AttributeSet attrs, int defStyle)");
 	}
 
 	public DisplayGrid(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initialise(context);
+		readAttributes(attrs);
 		Log.d("NumericalDisplay", "Constructor: DisplayGrid(Context context, AttributeSet attrs)");
+	}
+
+	private void readAttributes(AttributeSet attrs) {
+		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.DisplayGrid);
+		paddingRowsTop = a.getInt(R.styleable.DisplayGrid_dotPaddingTop, 0);
+		paddingColumnsLeft = a.getInt(R.styleable.DisplayGrid_dotPaddingLeft, 0);
+		paddingRowsBottom = a.getInt(R.styleable.DisplayGrid_dotPaddingBottom, 0);
+		paddingColumnsRight = a.getInt(R.styleable.DisplayGrid_dotPaddingRight, 0);
+		String format = a.getString(R.styleable.DisplayGrid_format);
+		if (format != null) {
+			setFormat(format);
+		}
 	}
 
 	@Override

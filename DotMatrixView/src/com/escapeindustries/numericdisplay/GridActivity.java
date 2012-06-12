@@ -12,9 +12,6 @@ public class GridActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gridhost);
 		DisplayGrid grid = (DisplayGrid) findViewById(R.id.grid);
-		grid.setPaddingDots(1, 0, 1, 0);
-		grid.setFormat("0 0 : 0 0 : 0 0");
-		
 		FormattedTime formatter = new FormattedTime(new SystemClockTimeSource());
 		new UpdateDigitsFromClockTask(grid, formatter).execute("");
 	}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="DisplayGrid">
+        <attr name="dotPaddingTop" format="integer" />
+        <attr name="dotPaddingLeft" format="integer" />
+        <attr name="dotPaddingBottom" format="integer" />
+        <attr name="dotPaddingRight" format="integer" />
+        <attr name="format" format="string" />
+    </declare-styleable>
+
+</resources>
