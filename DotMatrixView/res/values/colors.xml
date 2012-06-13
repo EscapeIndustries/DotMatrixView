@@ -2,4 +2,6 @@
 <resources>
     <color name="dim_green">#ff001100</color>
     <color name="bright_green">#ff33dd33</color>
+    <color name="dim_red">#ff110000</color>
+    <color name="bright_red">#ffdd3333</color>
 </resources>

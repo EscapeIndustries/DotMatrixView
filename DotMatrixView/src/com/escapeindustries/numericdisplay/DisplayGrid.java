@@ -7,6 +7,7 @@ import com.escapeindustries.numericdisplay.R;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -27,48 +28,61 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	private Context ctx;
 	private int dotPadding;
 	private int dotSize;
+	private int dotColorLit;
+	private int dotColorDim;
 
 	private Digit[] digits;
 	private Glyph[] glyphs;
 
 	public DisplayGrid(Context ctx) {
 		super(ctx);
-		initialise(ctx);
+		initialize(ctx);
 		Log.d("NumericalDisplay", "Constructor: DisplayGrid(Context ctx)");
 	}
 
-	private void initialise(Context ctx) {
+	public DisplayGrid(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+		initialize(context, attrs);
+		Log.d("NumericalDisplay",
+				"Constructor: DisplayGrid(Context context, AttributeSet attrs, int defStyle)");
+	}
+
+	public DisplayGrid(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		initialize(context, attrs);
+		Log.d("NumericalDisplay",
+				"Constructor: DisplayGrid(Context context, AttributeSet attrs)");
+	}
+
+	private void initialize(Context ctx) {
 		this.ctx = ctx;
 		this.dotSize = (int) ctx.getResources().getDimension(R.dimen.dot_size);
 		this.dotPadding = (int) ctx.getResources().getDimension(
 				R.dimen.dot_padding);
 		this.setOrientation(VERTICAL);
-	}
-	
-	public DisplayGrid(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		initialise(context);
-		readAttributes(attrs);
-		Log.d("NumericalDisplay", "Constructor: DisplayGrid(Context context, AttributeSet attrs, int defStyle)");
+		this.dotColorDim = getResources().getColor(R.color.dim_green);
+		this.dotColorLit = getResources().getColor(R.color.bright_green);
 	}
 
-	public DisplayGrid(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		initialise(context);
-		readAttributes(attrs);
-		Log.d("NumericalDisplay", "Constructor: DisplayGrid(Context context, AttributeSet attrs)");
-	}
-
-	private void readAttributes(AttributeSet attrs) {
-		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.DisplayGrid);
+	private void initialize(Context ctx, AttributeSet attrs) {
+		initialize(ctx);
+		TypedArray a = getContext().obtainStyledAttributes(attrs,
+				R.styleable.DisplayGrid);
 		paddingRowsTop = a.getInt(R.styleable.DisplayGrid_dotPaddingTop, 0);
-		paddingColumnsLeft = a.getInt(R.styleable.DisplayGrid_dotPaddingLeft, 0);
-		paddingRowsBottom = a.getInt(R.styleable.DisplayGrid_dotPaddingBottom, 0);
-		paddingColumnsRight = a.getInt(R.styleable.DisplayGrid_dotPaddingRight, 0);
+		paddingColumnsLeft = a
+				.getInt(R.styleable.DisplayGrid_dotPaddingLeft, 0);
+		paddingRowsBottom = a.getInt(R.styleable.DisplayGrid_dotPaddingBottom,
+				0);
+		paddingColumnsRight = a.getInt(R.styleable.DisplayGrid_dotPaddingRight,
+				0);
 		String format = a.getString(R.styleable.DisplayGrid_format);
 		if (format != null) {
 			setFormat(format);
 		}
+		dotColorLit = a.getColor(R.styleable.DisplayGrid_dotColorLit,
+				getResources().getColor(R.color.bright_green));
+		dotColorDim = a.getColor(R.styleable.DisplayGrid_dotColorDim,
+				getResources().getColor(R.color.dim_green));
 	}
 
 	@Override
@@ -118,7 +132,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		this.paddingRowsBottom = bottom;
 		this.paddingColumnsRight = right;
 	}
-	
+
 	public void setFormat(String format) {
 		GlyphFactory factory = new GlyphFactory(this);
 		FormatStringParser parser = new FormatStringParser(factory);
@@ -156,11 +170,43 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		}
 	}
 
+	public void setDimColor(int color) {
+		this.dotColorDim = color;
+	}
+
+	public void setLitColor(int color) {
+		this.dotColorLit = color;
+	}
+
 	public void build() {
 		setLayoutWrapContent(this);
 		for (int y = 0; y < rows + paddingRowsTop + paddingRowsBottom; y++) {
 			addView(buildRow());
 		}
+	}
+
+	private LinearLayout buildRow() {
+		LinearLayout row = new LinearLayout(ctx);
+		setLayoutWrapContent(row);
+		row.setOrientation(LinearLayout.HORIZONTAL);
+		for (int x = 0; x < columns + paddingColumnsLeft + paddingColumnsRight; x++) {
+			row.addView(buildDotStack());
+		}
+		return row;
+	}
+	
+	private FrameLayout buildDotStack() {
+		FrameLayout frame = new FrameLayout(ctx);
+		setLayoutWrapContent(frame);
+		ImageView dot = new ImageView(ctx);
+		setLayoutFromDimens(dot);
+		dot.setImageResource(R.drawable.dot_dim);
+		frame.addView(dot);
+		dot = new ImageView(ctx);
+		setLayoutFromDimens(dot);
+		dot.setImageResource(R.drawable.dot_dim);
+		frame.addView(dot);
+		return frame;
 	}
 
 	@Override
@@ -181,30 +227,6 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		ViewGroup rowGroup = (ViewGroup) getChildAt(y);
 		ViewGroup dotStack = (ViewGroup) rowGroup.getChildAt(x);
 		return (ImageView) dotStack.getChildAt(1);
-	}
-
-	private LinearLayout buildRow() {
-		LinearLayout row = new LinearLayout(ctx);
-		setLayoutWrapContent(row);
-		row.setOrientation(LinearLayout.HORIZONTAL);
-		for (int x = 0; x < columns + paddingColumnsLeft + paddingColumnsRight; x++) {
-			row.addView(buildDotStack());
-		}
-		return row;
-	}
-
-	private FrameLayout buildDotStack() {
-		FrameLayout frame = new FrameLayout(ctx);
-		setLayoutWrapContent(frame);
-		ImageView dot = new ImageView(ctx);
-		setLayoutFromDimens(dot);
-		dot.setImageResource(R.drawable.dot_dim);
-		frame.addView(dot);
-		dot = new ImageView(ctx);
-		setLayoutFromDimens(dot);
-		dot.setImageResource(R.drawable.dot_dim);
-		frame.addView(dot);
-		return frame;
 	}
 
 	private void setLayoutWrapContent(View view) {

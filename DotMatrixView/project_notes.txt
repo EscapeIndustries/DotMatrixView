@@ -128,3 +128,17 @@ An eight - all elements on - looks like this:
 	70,               76,
 	77,               83,
 	   85,86,87,88,89
+	   
+Some code I was working on in GridActivity while trying to learn how to change the colour of an existing
+ShapeDrawable in an ImageView:
+		ImageView v = (ImageView) findViewById(R.id.testDot);
+		GradientDrawable d = (GradientDrawable) v.getDrawable();
+		d.mutate();
+		d.setColor(getResources().getColor(R.color.bright_red));
+		v.setImageDrawable(d);
+		
+		ViewGroup holder = (ViewGroup)findViewById(R.id.holder);
+		ShapeDrawable s = new ShapeDrawable();
+		s.setBounds(1, 1, 30, 30);
+The use of the GradientDrawable and its mutate() method came from reading:
+	http://stackoverflow.com/questions/5940825/android-change-shape-color-in-runtime
