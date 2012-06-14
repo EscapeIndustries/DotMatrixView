@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:nd="http://schemas.android.com/apk/res/com.escapeindustries.numericviewhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <com.escapeindustries.numericdisplay.DisplayGrid
+        android:id="@+id/grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        nd:dotPaddingBottom="1"
+        nd:dotPaddingTop="1"
+        nd:format="0 0 : 0 0 : 0 0" />
+    
+    
+
+</LinearLayout>
