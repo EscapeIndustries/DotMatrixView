@@ -1,23 +1,24 @@
 package com.escapeindustries.numericdisplay;
 
-import com.escapeindustries.numericdisplay.R;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 
 public class DotAnimationListener implements AnimationListener {
 	
+	private DisplayGrid grid;
 	private ImageView dot;
 	private boolean on;
 	
-	public DotAnimationListener(ImageView dot, boolean on) {
+	public DotAnimationListener(DisplayGrid grid, ImageView dot, boolean on) {
+		this.grid = grid;
 		this.dot = dot;
 		this.on = on;
 	}
 
 	@Override
 	public void onAnimationEnd(Animation animation) {
-		dot.setImageResource(on ? R.drawable.dot_lit : R.drawable.dot_dim);
+		dot.setImageDrawable(on ? grid.getLitDrawable() : grid.getDimDrawable());
 	}
 
 	@Override
