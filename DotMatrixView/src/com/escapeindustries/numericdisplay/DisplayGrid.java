@@ -129,6 +129,20 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	public int getPaddingColumnsRight() {
 		return paddingColumnsRight;
 	}
+	
+	public Drawable getLitDrawable() {
+		Log.d("NumericDisplay", "Getting LIT drawable");
+//		return litDot;
+		return buildDot(litColor);
+//		return getResources().getDrawable(R.drawable.dot_lit);
+	}
+
+	public Drawable getDimDrawable() {
+		Log.d("NumericDisplay", "Getting DIM drawable");
+		return buildDot(dimColor);
+//		return dimDot;
+//		return getResources().getDrawable(R.drawable.dot_dim);
+	}
 
 	@Override
 	public void setPaddingDots(int top, int left, int bottom, int right) {
@@ -207,11 +221,11 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		setLayoutWrapContent(frame);
 		ImageView dot = new ImageView(ctx);
 		setLayoutFromDimens(dot);
-		dot.setImageDrawable(dimDot);
+		dot.setImageDrawable(getDimDrawable());
 		frame.addView(dot);
 		dot = new ImageView(ctx);
 		setLayoutFromDimens(dot);
-		dot.setImageDrawable(dimDot);
+		dot.setImageDrawable(getDimDrawable());
 		frame.addView(dot);
 		return frame;
 	}
@@ -263,13 +277,5 @@ public class DisplayGrid extends LinearLayout implements Grid {
 			}
 		}
 		return digits.toArray(new Digit[digits.size()]);
-	}
-
-	public Drawable getLitDrawable() {
-		return litDot;
-	}
-
-	public Drawable getDimDrawable() {
-		return dimDot;
 	}
 }

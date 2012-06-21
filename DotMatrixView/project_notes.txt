@@ -1,6 +1,9 @@
 Project notes
 =============
-NEXT: Make dot colours configurable through the XML. 
+NEXT: Make dot colours configurable through the XML.
+NOW: Find out why the dot changes don't make a difference to the display
+
+PRIORITY NEXT: Make the update task stop when the Activity suspends. 
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
