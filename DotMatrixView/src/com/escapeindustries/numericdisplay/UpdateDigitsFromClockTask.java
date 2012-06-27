@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class UpdateDigitsFromClockTask extends AsyncTask<String, Void, Void> {
 
@@ -29,6 +30,9 @@ public class UpdateDigitsFromClockTask extends AsyncTask<String, Void, Void> {
 
 	@Override
 	protected void onPostExecute(Void result) {
+		Log.d("NumericalDisplay",
+				"UpdateDigitsFromClockTask: onPostExecute calling DisplayGrid.setValue(\""
+						+ formatter.getNow() + "\")");
 		grid.setValue(formatter.getNow());
 		new UpdateDigitsFromClockTask(grid, formatter).execute("");
 

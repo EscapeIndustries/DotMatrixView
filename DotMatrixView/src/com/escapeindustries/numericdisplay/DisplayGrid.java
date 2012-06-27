@@ -12,7 +12,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -33,8 +32,6 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	private int dotSize;
 	private int litColor;
 	private int dimColor;
-	private ShapeDrawable litDot;
-	private ShapeDrawable dimDot;
 
 	private Digit[] digits;
 	private Glyph[] glyphs;
@@ -42,21 +39,16 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	public DisplayGrid(Context ctx) {
 		super(ctx);
 		initialize(ctx);
-		Log.d("NumericalDisplay", "Constructor: DisplayGrid(Context ctx)");
 	}
 
 	public DisplayGrid(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		initialize(context, attrs);
-		Log.d("NumericalDisplay",
-				"Constructor: DisplayGrid(Context context, AttributeSet attrs, int defStyle)");
 	}
 
 	public DisplayGrid(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initialize(context, attrs);
-		Log.d("NumericalDisplay",
-				"Constructor: DisplayGrid(Context context, AttributeSet attrs)");
 	}
 
 	private void initialize(Context ctx) {
@@ -80,14 +72,14 @@ public class DisplayGrid extends LinearLayout implements Grid {
 				0);
 		paddingColumnsRight = a.getInt(R.styleable.DisplayGrid_dotPaddingRight,
 				0);
-		String format = a.getString(R.styleable.DisplayGrid_format);
-		if (format != null) {
-			setFormat(format);
-		}
 		setLitColor(a.getColor(R.styleable.DisplayGrid_dotColorLit,
 				getResources().getColor(R.color.bright_green)));
 		setDimColor(a.getColor(R.styleable.DisplayGrid_dotColorDim,
 				getResources().getColor(R.color.dim_green)));
+		String format = a.getString(R.styleable.DisplayGrid_format);
+		if (format != null) {
+			setFormat(format);
+		}
 	}
 
 	@Override
@@ -129,19 +121,13 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	public int getPaddingColumnsRight() {
 		return paddingColumnsRight;
 	}
-	
+
 	public Drawable getLitDrawable() {
-		Log.d("NumericDisplay", "Getting LIT drawable");
-//		return litDot;
 		return buildDot(litColor);
-//		return getResources().getDrawable(R.drawable.dot_lit);
 	}
 
 	public Drawable getDimDrawable() {
-		Log.d("NumericDisplay", "Getting DIM drawable");
 		return buildDot(dimColor);
-//		return dimDot;
-//		return getResources().getDrawable(R.drawable.dot_dim);
 	}
 
 	@Override
@@ -191,12 +177,10 @@ public class DisplayGrid extends LinearLayout implements Grid {
 
 	public void setDimColor(int color) {
 		this.dimColor = color;
-		this.dimDot = buildDot(dimColor);
 	}
 
 	public void setLitColor(int color) {
 		this.litColor = color;
-		this.litDot = buildDot(litColor);
 	}
 
 	public void build() {
@@ -239,7 +223,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		anim.setAnimationListener(new DotAnimationListener(this, dot, on));
 		dot.startAnimation(anim);
 	}
-	
+
 	private ShapeDrawable buildDot(int color) {
 		ShapeDrawable dot = new ShapeDrawable(new OvalShape());
 		dot.setIntrinsicHeight(1);
@@ -252,8 +236,6 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	private ImageView getDot(int x, int y) {
 		// TODO: this will crash if the column and row origin mean that
 		// the dot is off the grid.
-		Log.d("NumericDisplay", "getDot(" + x + " [max: " + getColumns()
-				+ "], " + y + " [max: " + getRows() + "])");
 		ViewGroup rowGroup = (ViewGroup) getChildAt(y);
 		ViewGroup dotStack = (ViewGroup) rowGroup.getChildAt(x);
 		return (ImageView) dotStack.getChildAt(1);

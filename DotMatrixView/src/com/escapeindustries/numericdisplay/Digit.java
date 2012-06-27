@@ -1,7 +1,5 @@
 package com.escapeindustries.numericdisplay;
 
-import android.util.Log;
-
 public class Digit extends Glyph {
 
 	private int current = 10;
@@ -20,7 +18,6 @@ public class Digit extends Glyph {
 
 	public void setNumber(int to) {
 		if (to != current) {
-			Log.d("NumericDisplay", "setNumber(" + to + ") from " + current);
 			DigitTransition trans = new DigitTransition(
 					new DotChangeAnimationAction(this));
 			trans.makeTransition(DigitDefinition.patterns[current],

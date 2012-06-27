@@ -1,9 +1,16 @@
 Project notes
 =============
-NEXT: Make dot colours configurable through the XML.
-NOW: Find out why the dot changes don't make a difference to the display
+NEXT: Implement some global state to control whether the AsyncTask should queue itself up each time.
 
-PRIORITY NEXT: Make the update task stop when the Activity suspends. 
+Top problems:
+[ ] Async task runs on after Activity goes off screen
+[ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
+*   Need to put time updates into a Service
+	[ ] Read about services
+*   Should be subclassing View and doing my own drawing
+	[ ] Read about animation - how do you make a view able to update itself on a smooth set of frames without using loads of CPU?
+	[ ] Write the basic code for drawing the grid and changing the colour of individual dots
+PRIORITY NEXT: Make the update task stop when the Activity suspends. And don't let it start another task if there is already one active. 
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
