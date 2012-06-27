@@ -12,8 +12,9 @@
         android:orientation="vertical"
         nd:dotColorDim="@color/dullPink"
         nd:dotColorLit="@color/pink"
-        nd:dotPaddingBottom="1"
-        nd:dotPaddingTop="1"
+        nd:paddingRowsBottom="1"
+        nd:paddingRowsTop="1"
+        nd:dotSize="6dp"
         nd:format="0 0 : 0 0 : 0 0" />
 
 </LinearLayout>
