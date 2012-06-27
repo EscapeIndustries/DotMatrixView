@@ -67,17 +67,20 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		initialize(ctx);
 		TypedArray a = getContext().obtainStyledAttributes(attrs,
 				R.styleable.DisplayGrid);
-		paddingRowsTop = a.getInt(R.styleable.DisplayGrid_dotPaddingTop, 0);
+		paddingRowsTop = a.getInt(R.styleable.DisplayGrid_paddingRowsTop, 0);
 		paddingColumnsLeft = a
-				.getInt(R.styleable.DisplayGrid_dotPaddingLeft, 0);
-		paddingRowsBottom = a.getInt(R.styleable.DisplayGrid_dotPaddingBottom,
+				.getInt(R.styleable.DisplayGrid_paddingColumnsLeft, 0);
+		paddingRowsBottom = a.getInt(R.styleable.DisplayGrid_paddingRowsBottom,
 				0);
-		paddingColumnsRight = a.getInt(R.styleable.DisplayGrid_dotPaddingRight,
+		paddingColumnsRight = a.getInt(R.styleable.DisplayGrid_paddingColumnsRight,
 				0);
 		setLitColor(a.getColor(R.styleable.DisplayGrid_dotColorLit,
 				getResources().getColor(R.color.bright_green)));
 		setDimColor(a.getColor(R.styleable.DisplayGrid_dotColorDim,
 				getResources().getColor(R.color.dim_green)));
+		dotSize = (int)a.getDimension(R.styleable.DisplayGrid_dotSize, dotSize);
+		dotPadding = (int)a.getDimension(R.styleable.DisplayGrid_dotPadding, dotPadding);
+		
 		String format = a.getString(R.styleable.DisplayGrid_format);
 		if (format != null) {
 			setFormat(format);

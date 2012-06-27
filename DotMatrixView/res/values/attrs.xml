@@ -2,13 +2,15 @@
 <resources>
 
     <declare-styleable name="DisplayGrid">
-        <attr name="dotPaddingTop" format="integer" />
-        <attr name="dotPaddingLeft" format="integer" />
-        <attr name="dotPaddingBottom" format="integer" />
-        <attr name="dotPaddingRight" format="integer" />
+        <attr name="paddingRowsTop" format="integer" />
+        <attr name="paddingColumnsLeft" format="integer" />
+        <attr name="paddingRowsBottom" format="integer" />
+        <attr name="paddingColumnsRight" format="integer" />
         <attr name="format" format="string" />
         <attr name="dotColorLit" format="color" />
         <attr name="dotColorDim" format="color" />
+        <attr name="dotSize" format="dimension" />
+        <attr name="dotPadding" format="dimension" />
     </declare-styleable>
 
 </resources>
