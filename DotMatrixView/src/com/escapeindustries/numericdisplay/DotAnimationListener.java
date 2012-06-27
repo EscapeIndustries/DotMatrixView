@@ -23,14 +23,12 @@ public class DotAnimationListener implements AnimationListener {
 
 	@Override
 	public void onAnimationRepeat(Animation animation) {
-		// TODO Auto-generated method stub
-
+		// Do nothing
 	}
 
 	@Override
 	public void onAnimationStart(Animation animation) {
-		// TODO Auto-generated method stub
-
+		// Do nothing
 	}
 
 }
