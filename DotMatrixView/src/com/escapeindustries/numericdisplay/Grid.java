@@ -12,4 +12,6 @@ public interface Grid {
 	public void setPaddingDots(int top, int left, int bottom, int right);
 	public void changeDot(int x, int y, boolean on);
 	public void setValue(String value);
+	public void setActive(boolean active);
+	public boolean isActive();
 }

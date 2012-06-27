@@ -30,12 +30,10 @@ public class UpdateDigitsFromClockTask extends AsyncTask<String, Void, Void> {
 
 	@Override
 	protected void onPostExecute(Void result) {
-		Log.d("NumericalDisplay",
-				"UpdateDigitsFromClockTask: onPostExecute calling DisplayGrid.setValue(\""
-						+ formatter.getNow() + "\")");
-		grid.setValue(formatter.getNow());
-		new UpdateDigitsFromClockTask(grid, formatter).execute("");
-
+		if (grid.isActive()) {
+			grid.setValue(formatter.getNow());
+			new UpdateDigitsFromClockTask(grid, formatter).execute("");
+		}
 	}
 
 	private int getMillisToNextSecond() {

@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class DisplayGrid extends LinearLayout implements Grid {
+
 	private int columns;
 	private int rows;
 	private int paddingRowsTop;
@@ -35,6 +36,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 
 	private Digit[] digits;
 	private Glyph[] glyphs;
+	private boolean active;
 
 	public DisplayGrid(Context ctx) {
 		super(ctx);
@@ -80,6 +82,12 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		if (format != null) {
 			setFormat(format);
 		}
+	}
+	
+	@Override
+	protected void onDetachedFromWindow() {
+		super.onDetachedFromWindow();
+		setActive(false);
 	}
 
 	@Override
@@ -157,6 +165,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		for (Glyph glyph : glyphs) {
 			glyph.draw();
 		}
+		setActive(true);
 	}
 
 	@Override
@@ -181,6 +190,16 @@ public class DisplayGrid extends LinearLayout implements Grid {
 
 	public void setLitColor(int color) {
 		this.litColor = color;
+	}
+	
+	@Override
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
+	@Override
+	public boolean isActive() {
+		return active;
 	}
 
 	public void build() {
