@@ -9,13 +9,20 @@ import android.app.Activity;
 import android.os.Bundle;
 
 public class NumericViewHostActivity extends Activity {
-    /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-		DisplayGrid grid = (DisplayGrid) findViewById(R.id.grid);
+	private DisplayGrid grid;
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		grid = (DisplayGrid) findViewById(R.id.grid);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
 		FormattedTime formatter = new FormattedTime(new SystemClockTimeSource());
 		new UpdateDigitsFromClockTask(grid, formatter).execute("");
-    }
+	}
 }
