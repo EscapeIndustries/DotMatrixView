@@ -83,7 +83,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 			setFormat(format);
 		}
 	}
-	
+
 	@Override
 	protected void onDetachedFromWindow() {
 		super.onDetachedFromWindow();
@@ -184,22 +184,45 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		}
 	}
 
+	@Override
 	public void setDimColor(int color) {
 		this.dimColor = color;
 	}
 
+	@Override
 	public void setLitColor(int color) {
 		this.litColor = color;
 	}
-	
+
 	@Override
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	
+
 	@Override
 	public boolean isActive() {
 		return active;
+	}
+
+	@Override
+	public void redraw() {
+		for (int i = 0; i < this.getChildCount(); i++) {
+			LinearLayout row = (LinearLayout) this.getChildAt(i);
+			for (int j = 0; j < row.getChildCount(); j++) {
+				FrameLayout cell = (FrameLayout) row.getChildAt(j);
+				((ImageView) cell.getChildAt(0))
+						.setImageDrawable(buildDot(dimColor));
+				((ImageView) cell.getChildAt(1))
+						.setImageDrawable(buildDot(dimColor));
+			}
+		}
+		for (Glyph glyph : glyphs) {
+			if (glyph instanceof Digit) {
+				((Digit) glyph).setNumber(10, ((Digit) glyph).getNumber());
+			} else {
+				glyph.draw();
+			}
+		}
 	}
 
 	public void build() {

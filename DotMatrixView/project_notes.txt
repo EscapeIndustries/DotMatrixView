@@ -1,6 +1,6 @@
 Project notes
 =============
-NEXT: Implement redraw with fresh colours.
+NEXT: Integrate color-changing with time updating. Probably should make it an injectable strategy and rule.
 
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red

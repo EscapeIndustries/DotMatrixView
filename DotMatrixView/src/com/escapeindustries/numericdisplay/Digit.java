@@ -17,10 +17,14 @@ public class Digit extends Glyph {
 	}
 
 	public void setNumber(int to) {
-		if (to != current) {
+		setNumber(current, to);
+	}
+
+	public void setNumber(int from, int to) {
+		if (to != from) {
 			DigitTransition trans = new DigitTransition(
 					new DotChangeAnimationAction(this));
-			trans.makeTransition(DigitDefinition.patterns[current],
+			trans.makeTransition(DigitDefinition.patterns[from],
 					DigitDefinition.patterns[to]);
 			current = to;
 		}
