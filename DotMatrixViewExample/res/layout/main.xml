@@ -10,12 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:dotPadding="6dp"
         app:dotColorDim="@color/dullPink"
         app:dotColorLit="@color/pink"
-        app:dotSize="6dp"
-        app:format="0 0 : 0 0 : 0 0"
-        app:paddingRowsBottom="1"
-        app:paddingRowsTop="1" />
+        app:dotPaddingBottom="1"
+        app:dotPaddingTop="1"
+        app:format="0 0 : 0 0 : 0 0" />
 
 </LinearLayout>

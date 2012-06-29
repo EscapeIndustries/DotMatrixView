@@ -1,5 +1,6 @@
 package com.escapeindustries.numericviewhost;
 
+import com.escapeindustries.numericdisplay.ColorCycleTask;
 import com.escapeindustries.numericdisplay.DisplayGrid;
 import com.escapeindustries.numericdisplay.FormattedTime;
 import com.escapeindustries.numericdisplay.SystemClockTimeSource;
@@ -23,6 +24,7 @@ public class NumericViewHostActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		FormattedTime formatter = new FormattedTime(new SystemClockTimeSource());
+//		new ColorCycleTask(grid, 0).execute("");
 		new UpdateDigitsFromClockTask(grid, formatter).execute("");
 	}
 }
