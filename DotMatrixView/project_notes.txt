@@ -2,6 +2,10 @@ Project notes
 =============
 NEXT: Integrate color-changing with time updating. Probably should make it an injectable strategy and rule.
 
+Is this really any harder than just changing the AsyncTask to do some extra work?
+For a color change, you could change DigitDisplay so that it had setNextUpdateColors(Color dim, Color lit). This would
+set some state, and if those are set, a normal update does the full redraw instead.
+
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
 [ ] More XML config - dot size, padding between dots
