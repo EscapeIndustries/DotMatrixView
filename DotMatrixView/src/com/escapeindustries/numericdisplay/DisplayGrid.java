@@ -20,6 +20,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+/**
+ * @author mark
+ * 
+ */
 public class DisplayGrid extends LinearLayout implements Grid {
 
 	private int columns;
@@ -33,6 +37,8 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	private int dotSize;
 	private int litColor;
 	private int dimColor;
+	private int nextLitColor = -1;
+	private int nextDimColor = -1;
 
 	private Digit[] digits;
 	private Glyph[] glyphs;
@@ -256,14 +262,54 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		return frame;
 	}
 
+	// Change a dot from dim to bright or bright to dim, with animation
 	@Override
 	public void changeDot(int x, int y, boolean on) {
-		ImageView dot;
-		dot = getDot(x, y);
+		ImageView dot = getDot(x, y);
 		Animation anim = AnimationUtils.loadAnimation(ctx, on ? R.anim.appear
 				: R.anim.vanish);
 		anim.setAnimationListener(new DotAnimationListener(this, dot, on));
 		dot.startAnimation(anim);
+	}
+
+	public void changeDot(int x, int y, boolean on, boolean current) {
+		// Is the color changing?
+		if (nextLitColor == -1) {
+			// Just do the normal transition
+			if (on != current) {
+				changeDot(x, y, on);
+			}
+			// No else condition, because without a color change there is
+			// nothing to do change on the dot
+		} else {
+			ImageView dot = getDot(x, y);
+			Animation anim;
+			if (on != current) {
+				// Change color while changing state
+				if (on) {
+					// Dot is currently dim - change color then animate up to lit
+					ImageView backDot = getBackDot(x,y);
+				} else {
+					// Dot is lit - animate to dim then change color
+				}
+				anim = AnimationUtils.loadAnimation(ctx, on ? R.anim.appear
+						: R.anim.vanish);
+//				anim.setAnimationListener(new DotAnimationListener(this, dot, on));
+				anim.setAnimationListener(new ColorChangeDotAnimationListener(this, dot, on));
+				dot.startAnimation(anim);
+			} else if (on) {
+				// Dim the dot, change the colors, then undim the dot
+			} else {
+				// Dot is dim = just change the color of both dots in stack for
+				// the
+				// new dim color
+			}
+		}
+	}
+
+	public void setNextColors(int lit, int dim) {
+		this.nextLitColor = lit;
+		this.nextDimColor = dim;
 	}
 
 	private ShapeDrawable buildDot(int color) {
@@ -275,12 +321,20 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		return dot;
 	}
 
-	private ImageView getDot(int x, int y) {
+	private ImageView getDot(int x, int y, int level) {
 		// TODO: this will crash if the column and row origin mean that
 		// the dot is off the grid.
 		ViewGroup rowGroup = (ViewGroup) getChildAt(y);
 		ViewGroup dotStack = (ViewGroup) rowGroup.getChildAt(x);
 		return (ImageView) dotStack.getChildAt(1);
+	}
+
+	private ImageView getDot(int x, int y) {
+		return getDot(x, y, 1);
+	}
+	
+	private ImageView getBackDot(int x, int y) {
+		return getDot(x, y, 0);
 	}
 
 	private void setLayoutWrapContent(View view) {
