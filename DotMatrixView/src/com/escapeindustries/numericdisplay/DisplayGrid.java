@@ -143,6 +143,14 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	public Drawable getDimDrawable() {
 		return buildDot(dimColor);
 	}
+	
+	public Drawable getNextLitDrawable() {
+		return buildDot(nextLitColor);
+	}
+	
+	public Drawable getNextDimDrawable() {
+		return buildDot(nextDimColor);
+	}
 
 	@Override
 	public void setPaddingDots(int top, int left, int bottom, int right) {
@@ -289,6 +297,10 @@ public class DisplayGrid extends LinearLayout implements Grid {
 				if (on) {
 					// Dot is currently dim - change color then animate up to lit
 					ImageView backDot = getBackDot(x,y);
+					backDot.setImageDrawable(getNextDimDrawable());
+					dot.setImageDrawable(getNextDimDrawable());
+					anim = AnimationUtils.loadAnimation(ctx, R.anim.appear);
+					dot.startAnimation(anim);
 				} else {
 					// Dot is lit - animate to dim then change color
 				}

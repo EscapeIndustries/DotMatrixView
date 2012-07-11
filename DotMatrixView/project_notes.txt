@@ -2,11 +2,20 @@ Project notes
 =============
 NEXT: Make color change part of the general changeDot() transition.
 
+What happens when you change the color of a dot that is lit and should remain lit?
+Fade to current dull 
+Change dull to next dull
+Change lit to current lit
+Fade up to lit
+
+How does current fade-up work? Does it set the top dot to lit then apply the animation? NO, it changes to lit when the animation ends.
+So what does the fade-up animation do? Does it even work?
+
+
 Finish building the alternative changeDot() that knows what to do when a color change is scheduled.
 Color change was implemented by setting a new ImageDrawable into every dot. Synchronising a call into it with a natural update
 would only work if the update involved ALL the dots fading down from the old color, then fading up from the new color.
 	That looks like a plan!
-Is it worth doing this with the Views and ViewAnimation? Or should I roll this into a fresh SurfaceView implementation?
 
 For a color change, you could change DigitDisplay so that it had setNextUpdateColors(Color dim, Color lit). This would
 set some state, and if those are set, a normal update does the full redraw instead.
