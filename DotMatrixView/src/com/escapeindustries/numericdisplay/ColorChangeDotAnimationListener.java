@@ -23,7 +23,7 @@ public class ColorChangeDotAnimationListener implements AnimationListener {
 		dot.setImageDrawable(lit ? grid.getNextLitDrawable() : grid.getNextDimDrawable());
 		if (lit) {
 			// Kick off another animation to bring it back up
-			Animation anim = AnimationUtils.loadAnimation(ctx, R.anim.appear);
+//			Animation anim = AnimationUtils.loadAnimation(ctx, R.anim.appear);
 		}
 	}
 

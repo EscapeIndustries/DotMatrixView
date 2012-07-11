@@ -143,11 +143,11 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	public Drawable getDimDrawable() {
 		return buildDot(dimColor);
 	}
-	
+
 	public Drawable getNextLitDrawable() {
 		return buildDot(nextLitColor);
 	}
-	
+
 	public Drawable getNextDimDrawable() {
 		return buildDot(nextDimColor);
 	}
@@ -274,9 +274,14 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	@Override
 	public void changeDot(int x, int y, boolean on) {
 		ImageView dot = getDot(x, y);
+		if (on) {
+			dot.setImageDrawable(getLitDrawable());
+		}
 		Animation anim = AnimationUtils.loadAnimation(ctx, on ? R.anim.appear
 				: R.anim.vanish);
-		anim.setAnimationListener(new DotAnimationListener(this, dot, on));
+		if (!on) {
+			anim.setAnimationListener(new FadeOutDotAnimationListener(this, dot));
+		}
 		dot.startAnimation(anim);
 	}
 
@@ -295,8 +300,9 @@ public class DisplayGrid extends LinearLayout implements Grid {
 			if (on != current) {
 				// Change color while changing state
 				if (on) {
-					// Dot is currently dim - change color then animate up to lit
-					ImageView backDot = getBackDot(x,y);
+					// Dot is currently dim - change color then animate up to
+					// lit
+					ImageView backDot = getBackDot(x, y);
 					backDot.setImageDrawable(getNextDimDrawable());
 					dot.setImageDrawable(getNextDimDrawable());
 					anim = AnimationUtils.loadAnimation(ctx, R.anim.appear);
@@ -306,8 +312,10 @@ public class DisplayGrid extends LinearLayout implements Grid {
 				}
 				anim = AnimationUtils.loadAnimation(ctx, on ? R.anim.appear
 						: R.anim.vanish);
-//				anim.setAnimationListener(new DotAnimationListener(this, dot, on));
-				anim.setAnimationListener(new ColorChangeDotAnimationListener(this, dot, on));
+				// anim.setAnimationListener(new FadeOutDotAnimationListener(this, dot,
+				// on));
+				anim.setAnimationListener(new ColorChangeDotAnimationListener(
+						this, dot, on));
 				dot.startAnimation(anim);
 			} else if (on) {
 				// Dim the dot, change the colors, then undim the dot
@@ -344,7 +352,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	private ImageView getDot(int x, int y) {
 		return getDot(x, y, 1);
 	}
-	
+
 	private ImageView getBackDot(int x, int y) {
 		return getDot(x, y, 0);
 	}

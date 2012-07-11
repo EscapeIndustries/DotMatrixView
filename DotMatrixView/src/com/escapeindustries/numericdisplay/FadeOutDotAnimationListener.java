@@ -4,21 +4,19 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 
-public class DotAnimationListener implements AnimationListener {
+public class FadeOutDotAnimationListener implements AnimationListener {
 	
 	private DisplayGrid grid;
 	private ImageView dot;
-	private boolean on;
 	
-	public DotAnimationListener(DisplayGrid grid, ImageView dot, boolean on) {
+	public FadeOutDotAnimationListener(DisplayGrid grid, ImageView dot) {
 		this.grid = grid;
 		this.dot = dot;
-		this.on = on;
 	}
 
 	@Override
 	public void onAnimationEnd(Animation animation) {
-		dot.setImageDrawable(on ? grid.getLitDrawable() : grid.getDimDrawable());
+		dot.setImageDrawable(grid.getDimDrawable());
 	}
 
 	@Override
