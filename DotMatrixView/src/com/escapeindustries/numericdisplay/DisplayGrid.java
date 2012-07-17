@@ -287,7 +287,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 
 	public void changeDot(int x, int y, boolean on, boolean current) {
 		// Is the color changing?
-		if (nextLitColor == -1) {
+		if (nextLitColor == litColor) {
 			// Just do the normal transition
 			if (on != current) {
 				changeDot(x, y, on);
@@ -300,29 +300,32 @@ public class DisplayGrid extends LinearLayout implements Grid {
 			if (on != current) {
 				// Change color while changing state
 				if (on) {
-					// Dot is currently dim - change color then animate up to
-					// lit
-					ImageView backDot = getBackDot(x, y);
-					backDot.setImageDrawable(getNextDimDrawable());
-					dot.setImageDrawable(getNextDimDrawable());
+					// Dim to lit - change color of both dots then fade in
+					getBackDot(x, y).setImageDrawable(getNextDimDrawable());
+					dot.setImageDrawable(getNextLitDrawable());
 					anim = AnimationUtils.loadAnimation(ctx, R.anim.appear);
 					dot.startAnimation(anim);
 				} else {
 					// Dot is lit - animate to dim then change color
+					anim = AnimationUtils.loadAnimation(ctx, R.anim.vanish);
+					anim.setAnimationListener(new ColorChangeAnimationListener(
+							ctx, dot, getBackDot(x, y), getNextDimDrawable(),
+							getNextDimDrawable(), false));
+					dot.startAnimation(anim);
 				}
-				anim = AnimationUtils.loadAnimation(ctx, on ? R.anim.appear
-						: R.anim.vanish);
-				// anim.setAnimationListener(new FadeOutDotAnimationListener(this, dot,
-				// on));
-				anim.setAnimationListener(new ColorChangeDotAnimationListener(
-						this, dot, on));
-				dot.startAnimation(anim);
 			} else if (on) {
-				// Dim the dot, change the colors, then undim the dot
+				// Fade from on to off, change color of both dots and fade back
+				// up
+				anim = AnimationUtils.loadAnimation(ctx, R.anim.vanish);
+				anim.setAnimationListener(new ColorChangeAnimationListener(ctx,
+						dot, getBackDot(x, y), getNextLitDrawable(),
+						getNextDimDrawable(), true));
+				dot.startAnimation(anim);
 			} else {
 				// Dot is dim = just change the color of both dots in stack for
-				// the
-				// new dim color
+				// the new dim color
+				dot.setImageDrawable(getNextDimDrawable());
+				getBackDot(x, y).setImageDrawable(getNextDimDrawable());
 			}
 		}
 	}
@@ -346,7 +349,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		// the dot is off the grid.
 		ViewGroup rowGroup = (ViewGroup) getChildAt(y);
 		ViewGroup dotStack = (ViewGroup) rowGroup.getChildAt(x);
-		return (ImageView) dotStack.getChildAt(1);
+		return (ImageView) dotStack.getChildAt(level);
 	}
 
 	private ImageView getDot(int x, int y) {

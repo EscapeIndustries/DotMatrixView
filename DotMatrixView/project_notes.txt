@@ -1,6 +1,6 @@
 Project notes
 =============
-NEXT: Make color change part of the general changeDot() transition.
+NEXT: Integrate use of extended changeDot() and find out whether this big chunk of UNTESTED code works.
 
 What happens when you change the color of a dot that is lit and should remain lit?
 Fade to current dull
