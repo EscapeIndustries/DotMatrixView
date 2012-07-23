@@ -21,13 +21,15 @@ public class Digit extends Glyph {
 	}
 
 	public void setNumber(int from, int to) {
-		if (to != from) {
-			DigitTransition trans = new DigitTransition(
+		//if (to != from) {
+			GlyphTransition trans = new GlyphTransition(this,
 					new DotChangeAnimationAction(this));
-			trans.makeTransition(DigitDefinition.patterns[from],
+//			trans.makeTransition(DigitDefinition.patterns[from],
+//					DigitDefinition.patterns[to]);
+			trans.makeTransitionAllDots(DigitDefinition.patterns[from],
 					DigitDefinition.patterns[to]);
 			current = to;
-		}
+		//}
 	}
 
 	@Override

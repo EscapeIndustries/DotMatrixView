@@ -1,6 +1,25 @@
 Project notes
 =============
-NEXT: Integrate use of extended changeDot() and find out whether this big chunk of UNTESTED code works.
+NEXT: Fix the bug in GlyphTransition.makeTransitionAllDots() that means that you can't correctly transition from no dots on
+to some dots on.
+Integrate use of extended changeDot() and find out whether this big chunk of UNTESTED code works.
+
+Glyph.changeDot() assumes that the dot is currently the opposite of what it is being changed to.
+Currently DigitTransition determines which dots are changing based on the current and next patterns. It currently only finds the
+changes. It could iterate over all the dots and be aware, based on current pattern, which dots are currently on or off.
+
+Glyph.changeDot() is being called via making transitions on digits - this means colons and spaces are not getting any
+calls to change currently.
+
+So what to do?
+	Make an overload for makeTransition that iterates over all the dots, not just the ones in current and next. It passes through
+	the extra state to allow the right thing to be done to each dot.
+	Is DigitTransition the right name for a class that deals with spaces and colons too?
+	GlyphTransition would be better, and it should be constructed with a reference to the Glyph for access
+	to height and width.
+	
+	Still missing how the color change is being posted down. Should every dot get changeDot called on it, and let the DisplayGrid decide?
+	That is the simplest answer - let's see if it performs well enough! 
 
 What happens when you change the color of a dot that is lit and should remain lit?
 Fade to current dull

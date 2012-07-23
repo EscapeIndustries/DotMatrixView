@@ -21,6 +21,8 @@ public interface Grid {
 
 	public void changeDot(int x, int y, boolean on);
 
+	public void changeDot(int x, int y, boolean on, boolean current);
+
 	public void setValue(String value);
 
 	public void setActive(boolean active);
@@ -32,4 +34,5 @@ public interface Grid {
 	public void setDimColor(int color);
 
 	public void setLitColor(int color);
+
 }

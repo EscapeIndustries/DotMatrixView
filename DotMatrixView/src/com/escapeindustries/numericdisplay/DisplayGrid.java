@@ -201,11 +201,13 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	@Override
 	public void setDimColor(int color) {
 		this.dimColor = color;
+		this.nextDimColor = color;
 	}
 
 	@Override
 	public void setLitColor(int color) {
 		this.litColor = color;
+		this.nextLitColor = color;
 	}
 
 	@Override
@@ -285,6 +287,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		dot.startAnimation(anim);
 	}
 
+	@Override
 	public void changeDot(int x, int y, boolean on, boolean current) {
 		// Is the color changing?
 		if (nextLitColor == litColor) {

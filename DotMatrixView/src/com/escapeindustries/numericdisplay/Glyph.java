@@ -29,9 +29,19 @@ public abstract class Glyph {
 
 	public void changeDot(int index, boolean on) {
 		// index is relative to topRow and leftMostColumn.
-		int x = leftMostColumn + (index % width);
-		int y = (index / width) + topRow;
-		grid.changeDot(x, y, on);
+		grid.changeDot(getX(index), getY(index), on);
+	}
+	
+	public void changeDot(int index, boolean on, boolean current) {
+		grid.changeDot(getX(index), getY(index), on, current);
+	}
+	
+	private int getX(int index) {
+		return leftMostColumn + (index % width);
+	}
+	
+	private int getY(int index) {
+		return (index / width) + topRow;
 	}
 	
 	abstract void draw();
