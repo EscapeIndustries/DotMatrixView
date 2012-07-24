@@ -1,6 +1,7 @@
 Project notes
 =============
-NEXT: Get the color change AsyncTask back in place to see if the changeDot() overload does what you intended. 
+NEXT: Implement the color change such that the final dot to be updated on the grid, in the face of a color change,
+updates the grid's own colors so that the new color becomes the current color. 
 Integrate use of extended changeDot() and find out whether this big chunk of UNTESTED code works.
 
 Glyph.changeDot() assumes that the dot is currently the opposite of what it is being changed to.

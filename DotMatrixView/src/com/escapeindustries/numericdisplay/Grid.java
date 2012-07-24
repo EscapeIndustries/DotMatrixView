@@ -35,4 +35,6 @@ public interface Grid {
 
 	public void setLitColor(int color);
 
+	void setNextColors(int lit, int dim);
+
 }

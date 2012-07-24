@@ -333,6 +333,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		}
 	}
 
+	@Override
 	public void setNextColors(int lit, int dim) {
 		this.nextLitColor = lit;
 		this.nextDimColor = dim;

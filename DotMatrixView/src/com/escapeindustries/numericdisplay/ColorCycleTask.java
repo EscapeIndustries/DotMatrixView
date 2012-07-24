@@ -29,8 +29,7 @@ public class ColorCycleTask extends AsyncTask<String, Void, Void> {
 	@Override
 	protected void onPostExecute(Void result) {
 		super.onPostExecute(result);
-		grid.setDimColor(dimColors[colorIndex]);
-		grid.setLitColor(litColors[colorIndex]);
+		grid.setNextColors(litColors[colorIndex], dimColors[colorIndex]);
 		grid.redraw();
 		int nextColor = colorIndex + 1;
 		if (nextColor == litColors.length) {
