@@ -1,7 +1,6 @@
 Project notes
 =============
-NEXT: Fix the bug in GlyphTransition.makeTransitionAllDots() that means that you can't correctly transition from no dots on
-to some dots on.
+NEXT: Get the color change AsyncTask back in place to see if the changeDot() overload does what you intended. 
 Integrate use of extended changeDot() and find out whether this big chunk of UNTESTED code works.
 
 Glyph.changeDot() assumes that the dot is currently the opposite of what it is being changed to.

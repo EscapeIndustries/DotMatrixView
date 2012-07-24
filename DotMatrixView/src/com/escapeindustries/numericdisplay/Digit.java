@@ -24,9 +24,7 @@ public class Digit extends Glyph {
 		//if (to != from) {
 			GlyphTransition trans = new GlyphTransition(this,
 					new DotChangeAnimationAction(this));
-//			trans.makeTransition(DigitDefinition.patterns[from],
-//					DigitDefinition.patterns[to]);
-			trans.makeTransitionAllDots(DigitDefinition.patterns[from],
+			trans.makeTransition(DigitDefinition.patterns[from],
 					DigitDefinition.patterns[to]);
 			current = to;
 		//}
