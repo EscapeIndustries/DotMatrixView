@@ -330,6 +330,10 @@ public class DisplayGrid extends LinearLayout implements Grid {
 				dot.setImageDrawable(getNextDimDrawable());
 				getBackDot(x, y).setImageDrawable(getNextDimDrawable());
 			}
+			if (x == columns - 1 && y == rows - 1) {
+				litColor = nextLitColor;
+				dimColor = nextDimColor;
+			}
 		}
 	}
 

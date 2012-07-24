@@ -1,39 +1,6 @@
 Project notes
 =============
-NEXT: Implement the color change such that the final dot to be updated on the grid, in the face of a color change,
-updates the grid's own colors so that the new color becomes the current color. 
-Integrate use of extended changeDot() and find out whether this big chunk of UNTESTED code works.
-
-Glyph.changeDot() assumes that the dot is currently the opposite of what it is being changed to.
-Currently DigitTransition determines which dots are changing based on the current and next patterns. It currently only finds the
-changes. It could iterate over all the dots and be aware, based on current pattern, which dots are currently on or off.
-
-Glyph.changeDot() is being called via making transitions on digits - this means colons and spaces are not getting any
-calls to change currently.
-
-So what to do?
-	Make an overload for makeTransition that iterates over all the dots, not just the ones in current and next. It passes through
-	the extra state to allow the right thing to be done to each dot.
-	Is DigitTransition the right name for a class that deals with spaces and colons too?
-	GlyphTransition would be better, and it should be constructed with a reference to the Glyph for access
-	to height and width.
-	
-	Still missing how the color change is being posted down. Should every dot get changeDot called on it, and let the DisplayGrid decide?
-	That is the simplest answer - let's see if it performs well enough! 
-
-What happens when you change the color of a dot that is lit and should remain lit?
-Fade to current dull
-Change dull to next dull
-Change lit to current lit
-Fade up to lit
-
-Finish building the alternative changeDot() that knows what to do when a color change is scheduled.
-Color change was implemented by setting a new ImageDrawable into every dot. Synchronising a call into it with a natural update
-would only work if the update involved ALL the dots fading down from the old color, then fading up from the new color.
-	That looks like a plan!
-
-For a color change, you could change DigitDisplay so that it had setNextUpdateColors(Color dim, Color lit). This would
-set some state, and if those are set, a normal update does the full redraw instead.
+NEXT: Get spaces and colons to be included in the display update caused by setValue().
 
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
