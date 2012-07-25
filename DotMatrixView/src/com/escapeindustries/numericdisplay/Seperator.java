@@ -2,6 +2,10 @@ package com.escapeindustries.numericdisplay;
 
 
 public class Seperator extends Glyph {
+	
+	
+
+	private int[] current;
 
 	public Seperator(Grid grid, int column, int row) {
 		this.width = 1;
@@ -9,11 +13,15 @@ public class Seperator extends Glyph {
 		this.leftMostColumn = column;
 		this.topRow = row;
 		this.grid = grid;
+		this.current = SeperatorDefinition.none;
 	}
 
 	@Override
 	public void draw() {
-		changeDot(5, true);
-		changeDot(9, true);
+		GlyphTransition trans = new GlyphTransition(this,
+				new DotChangeAnimationAction(this));
+		trans.makeTransition(current,
+				SeperatorDefinition.colon);
+		current = SeperatorDefinition.colon;
 	}
 }

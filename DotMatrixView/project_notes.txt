@@ -1,6 +1,11 @@
 Project notes
 =============
-NEXT: Get spaces and colons to be included in the display update caused by setValue().
+NEXT: Get spaces and colons to be included in the display update caused by setValue(). Remove grid.redraw() from
+ColorCycleTask.onPostExecute(), then work to integrate color change timing with ongoing update. You could use the
+same plugging in point that you use to update the colors from next to current status - immediately after the
+last dot in the grid is updated in DisplayGrid.changeDot().
+
+Also, padding is not being redrawn - and that is probably why you had to use the -1 offsets on X and Y in DisplayGrid.changeDot().
 
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
@@ -62,42 +67,31 @@ Decide your next experimental direction. Options:
  		Colour changes
  			The countdown will need to be change the dots from green to orange (nearly out) and red (overrun)
  			Consider colours that will look good on a white background. 
+
  		Build up the segmented display to the same functionality
  			Can set a number
  			Animates to the set number
  			Build segments using a PathDrawable instead of images
  			Build segment animations using lists instead (flip-pad animation)
- 		Build dot-array digit from code not XML
- 			Construct the arrangement of views in code
- 			Given the width and height, figure out which are the active dots
- 			Build a single array of dots for all the digits in the display, then let
- 			each digit construct itself by figuring out which dots it should own.
+
  	Figure out the time piece
+
  		How will update of the display be scheduled to happen
  			When the activity is visible
  			When in the background? Should there be a background service at all?
+
  		Calculate the current value offset from the start time and the current time
  			Calculate the correct current value from an offset off the time when it started, and every
  			time the display is scheduled to update figure it out again.
+
  	Build some UI
+
  		Connect time display with buttons to set the ending time.
  			Might you show both the ending time and the count-down on the screen together?
+
  	Learn to get appointment times from the calendar content provider
- 	Wrap it in a view
- 		Such that it can be added to an XML layout
- 			Complete with attributes to set it up
- 	Make it a library project
+
  	Use it to make a clock widget
- 
- Idea: you could build something in code that is conceptually similar to a real LCD using FrameLayout
- Top of stack:		Shape drawable rectangle whose colour is black and of variable transparency
- 					Image file that is a black square with a transparent circle in the middle
- Bottom of stack:	A shape drawable rectangle of whatever colour you want the display to show when lit.
- 
- You don't really need the top item above, because you can make the same adjustments at the bottom layer.
- You could use a different mask image to change the shape of the dots, e.g. use snow-flakes around Christmas
- 		
- 		
 
 The alpha transition makes the spots disappear right down to the background.
 	Change it to not go all the way down to zero - it might look passable.

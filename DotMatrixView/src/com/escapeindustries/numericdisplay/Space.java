@@ -1,15 +1,22 @@
 package com.escapeindustries.numericdisplay;
 
 public class Space extends Glyph {
-	
-	public Space() {
+
+	int[] space = {};
+
+	public Space(Grid grid, int column, int row) {
 		this.width = 1;
 		this.height = 13;
+		this.leftMostColumn = column;
+		this.topRow = row;
+		this.grid = grid;
 	}
 
 	@Override
 	void draw() {
-		// Do nothing - this is an empty space
+		GlyphTransition trans = new GlyphTransition(this,
+				new DotChangeAnimationAction(this));
+		trans.makeTransition(space, space);
 	}
 
 }

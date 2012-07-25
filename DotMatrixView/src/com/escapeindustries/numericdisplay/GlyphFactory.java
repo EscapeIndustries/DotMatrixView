@@ -16,7 +16,7 @@ public class GlyphFactory {
 	}
 
 	public Space createSpace() {
-		return new Space();
+		return new Space(grid, 0, 0);
 	}
 
 }
