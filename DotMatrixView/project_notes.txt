@@ -7,6 +7,11 @@ last dot in the grid is updated in DisplayGrid.changeDot().
 
 Also, padding is not being redrawn - and that is probably why you had to use the -1 offsets on X and Y in DisplayGrid.changeDot().
 
+Also, there should be a null animation, which makes no changes, but causes the same wait as a fade out. This would
+be applied when a dot is transitioning from off to off with a color change. It would mean that all off dots change
+at the same moment. Currently I assume the ones that are staying off change immediately, while those changing
+from on to off change at the end of a fade animation.
+
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
 [ ] More XML config - dot size, padding between dots
