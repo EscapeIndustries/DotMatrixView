@@ -1,9 +1,7 @@
 Project notes
 =============
-NEXT: Get spaces and colons to be included in the display update caused by setValue(). Remove grid.redraw() from
-ColorCycleTask.onPostExecute(), then work to integrate color change timing with ongoing update. You could use the
-same plugging in point that you use to update the colors from next to current status - immediately after the
-last dot in the grid is updated in DisplayGrid.changeDot().
+NEXT: Integrate color change timing with ongoing update. You could use the same plugging in point that you use to update
+the colors from next to current status - immediately after the last dot in the grid is updated in DisplayGrid.changeDot().
 
 Also, padding is not being redrawn - and that is probably why you had to use the -1 offsets on X and Y in DisplayGrid.changeDot().
 

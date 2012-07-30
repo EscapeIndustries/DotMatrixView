@@ -184,6 +184,11 @@ public class DisplayGrid extends LinearLayout implements Grid {
 
 	@Override
 	public void setValue(String value) {
+		for (int y = 0; y < glyphs.length; y++) {
+			if (nextLitColor != litColor && (glyphs[y] instanceof Digit) == false) {
+				glyphs[y].draw();
+			}
+		}
 		DigitsParser parser = new DigitsParser();
 		int[] values = parser.parse(value);
 		int digitsOffset = digits.length - values.length;
@@ -196,6 +201,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		for (int i = 0; i < limit; i++) {
 			digits[i + digitsOffset].setNumber(values[i + valuesOffset]);
 		}
+		
 	}
 
 	@Override

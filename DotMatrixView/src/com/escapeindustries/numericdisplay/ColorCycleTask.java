@@ -18,7 +18,7 @@ public class ColorCycleTask extends AsyncTask<String, Void, Void> {
 	protected Void doInBackground(String... params) {
 
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(3500);
 		} catch (InterruptedException e) {
 			// Do nothing
 		}
@@ -30,7 +30,7 @@ public class ColorCycleTask extends AsyncTask<String, Void, Void> {
 	protected void onPostExecute(Void result) {
 		super.onPostExecute(result);
 		grid.setNextColors(litColors[colorIndex], dimColors[colorIndex]);
-		grid.redraw();
+//		grid.redraw();
 		int nextColor = colorIndex + 1;
 		if (nextColor == litColors.length) {
 			nextColor = 0;
