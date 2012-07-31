@@ -184,6 +184,12 @@ public class DisplayGrid extends LinearLayout implements Grid {
 
 	@Override
 	public void setValue(String value) {
+		// Top padding
+		drawPadding(0, 0, columns, paddingRowsTop);
+		// Left padding
+		drawPadding(0, paddingRowsTop, paddingColumnsLeft, rows - paddingRowsTop - paddingRowsBottom);
+		// Right padding
+		drawPadding(columns - paddingColumnsRight, paddingRowsTop, paddingColumnsRight, rows - paddingRowsTop - paddingRowsBottom);
 		for (int y = 0; y < glyphs.length; y++) {
 			if (nextLitColor != litColor && (glyphs[y] instanceof Digit) == false) {
 				glyphs[y].draw();
@@ -201,7 +207,16 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		for (int i = 0; i < limit; i++) {
 			digits[i + digitsOffset].setNumber(values[i + valuesOffset]);
 		}
-		
+		// Bottom padding - here because updating the bottom-right dot finalises a color change
+		drawPadding(0, rows - paddingRowsBottom, columns, paddingRowsBottom);
+	}
+
+	private void drawPadding(int startColumn, int startRow, int columnsWide, int rowsDeep) {
+		for (int row = startRow; row < startRow + rowsDeep; row++) {
+			for (int column = startColumn; column < startColumn + columnsWide; column++) {
+				changeDot(column, row, false, false);
+			}
+		}
 	}
 
 	@Override
