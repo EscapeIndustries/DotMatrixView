@@ -1,11 +1,6 @@
 Project notes
 =============
-NEXT: Fix bug that columns and rows don't include the whole height, only the glyphs, and paddingLeft adds on to the right too, whereas
-paddingRight only affects the right.
-
-If necessary, fix redraw of padding dots in DisplayGrid.setValue() 
-
-Integrate color change timing with ongoing update. You could use the same plugging in point that you use to update
+NEXT: Integrate color change timing with ongoing update. You could use the same plugging in point that you use to update
 the colors from next to current status - immediately after the last dot in the grid is updated in DisplayGrid.changeDot().
 
 Also, padding is not being redrawn - and that is probably why you had to use the -1 offsets on X and Y in DisplayGrid.changeDot().

@@ -173,8 +173,8 @@ public class DisplayGrid extends LinearLayout implements Grid {
 			column += glyph.getWidth();
 			gridHeight = Math.max(gridHeight, glyph.getHeight());
 		}
-		setColumns(column);
-		setRows(gridHeight);
+		setColumns(column + getPaddingColumnsRight());
+		setRows(getPaddingRowsTop() + gridHeight + getPaddingRowsBottom());
 		build();
 		for (Glyph glyph : glyphs) {
 			glyph.draw();
@@ -264,7 +264,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 
 	public void build() {
 		setLayoutWrapContent(this);
-		for (int y = 0; y < rows + paddingRowsTop + paddingRowsBottom; y++) {
+		for (int y = 0; y < rows; y++) {
 			addView(buildRow());
 		}
 	}
@@ -273,7 +273,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		LinearLayout row = new LinearLayout(ctx);
 		setLayoutWrapContent(row);
 		row.setOrientation(LinearLayout.HORIZONTAL);
-		for (int x = 0; x < columns + paddingColumnsLeft + paddingColumnsRight; x++) {
+		for (int x = 0; x < columns; x++) {
 			row.addView(buildDotStack());
 		}
 		return row;
