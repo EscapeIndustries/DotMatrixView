@@ -1,14 +1,16 @@
 Project notes
 =============
-NEXT: Integrate color change timing with ongoing update. You could use the same plugging in point that you use to update
-the colors from next to current status - immediately after the last dot in the grid is updated in DisplayGrid.changeDot().
+NEXT: When a color change is occurring as part of a call to setValue, the dots that are being lit that were not part of the previous digit
+are being lit much more quickly than the others. Are they being drawn outside the new framework? Or is this related to the problem below
+regarding the lack of null animation for this type of fade-in?
 
-Also, padding is not being redrawn - and that is probably why you had to use the -1 offsets on X and Y in DisplayGrid.changeDot().
-
-Also, there should be a null animation, which makes no changes, but causes the same wait as a fade out. This would
+There should be a null animation, which makes no changes, but causes the same wait as a fade out. This would
 be applied when a dot is transitioning from off to off with a color change. It would mean that all off dots change
 at the same moment. Currently I assume the ones that are staying off change immediately, while those changing
 from on to off change at the end of a fade animation.
+
+Integrate color change timing with ongoing update. You could use the same plugging in point that you use to update
+the colors from next to current status - immediately after the last dot in the grid is updated in DisplayGrid.changeDot().
 
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
