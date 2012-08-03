@@ -10,17 +10,17 @@ import android.widget.ImageView;
 public class ColorChangeAnimationListener implements AnimationListener {
 
 	private Context ctx;
-	private ImageView dot;
+	private ImageView frontDot;
 	private ImageView backDot;
 	private Drawable nextTop;
 	private Drawable nextBack;
 	private boolean appear;
 
-	public ColorChangeAnimationListener(Context ctx, ImageView dot,
+	public ColorChangeAnimationListener(Context ctx, ImageView frontDot,
 			ImageView backDot, Drawable nextTop, Drawable nextBack,
 			boolean appear) {
 		this.ctx = ctx;
-		this.dot = dot;
+		this.frontDot = frontDot;
 		this.backDot = backDot;
 		this.nextTop = nextTop;
 		this.nextBack = nextBack;
@@ -30,11 +30,11 @@ public class ColorChangeAnimationListener implements AnimationListener {
 	@Override
 	public void onAnimationEnd(Animation animation) {
 		backDot.setImageDrawable(nextBack);
-		dot.setImageDrawable(nextTop);
+		frontDot.setImageDrawable(nextTop);
 		if (appear) {
 			// Kick off another animation to bring it back up
 			Animation anim = AnimationUtils.loadAnimation(ctx, R.anim.appear);
-			dot.startAnimation(anim);
+			frontDot.startAnimation(anim);
 		}
 	}
 

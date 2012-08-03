@@ -187,11 +187,14 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		// Top padding
 		drawPadding(0, 0, columns, paddingRowsTop);
 		// Left padding
-		drawPadding(0, paddingRowsTop, paddingColumnsLeft, rows - paddingRowsTop - paddingRowsBottom);
+		drawPadding(0, paddingRowsTop, paddingColumnsLeft, rows
+				- paddingRowsTop - paddingRowsBottom);
 		// Right padding
-		drawPadding(columns - paddingColumnsRight, paddingRowsTop, paddingColumnsRight, rows - paddingRowsTop - paddingRowsBottom);
+		drawPadding(columns - paddingColumnsRight, paddingRowsTop,
+				paddingColumnsRight, rows - paddingRowsTop - paddingRowsBottom);
 		for (int y = 0; y < glyphs.length; y++) {
-			if (nextLitColor != litColor && (glyphs[y] instanceof Digit) == false) {
+			if (nextLitColor != litColor
+					&& (glyphs[y] instanceof Digit) == false) {
 				glyphs[y].draw();
 			}
 		}
@@ -207,11 +210,13 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		for (int i = 0; i < limit; i++) {
 			digits[i + digitsOffset].setNumber(values[i + valuesOffset]);
 		}
-		// Bottom padding - here because updating the bottom-right dot finalises a color change
+		// Bottom padding - here because updating the bottom-right dot finalises
+		// a color change
 		drawPadding(0, rows - paddingRowsBottom, columns, paddingRowsBottom);
 	}
 
-	private void drawPadding(int startColumn, int startRow, int columnsWide, int rowsDeep) {
+	private void drawPadding(int startColumn, int startRow, int columnsWide,
+			int rowsDeep) {
 		for (int row = startRow; row < startRow + rowsDeep; row++) {
 			for (int column = startColumn; column < startColumn + columnsWide; column++) {
 				changeDot(column, row, false, false);
@@ -324,10 +329,12 @@ public class DisplayGrid extends LinearLayout implements Grid {
 			if (on != current) {
 				// Change color while changing state
 				if (on) {
-					// Dim to lit - change color of both dots then fade in
-					getBackDot(x, y).setImageDrawable(getNextDimDrawable());
-					dot.setImageDrawable(getNextLitDrawable());
-					anim = AnimationUtils.loadAnimation(ctx, R.anim.appear);
+					// Dim to lit - wait for the fade-out going on with other
+					// dots, then change both colors and fade in
+					anim = AnimationUtils.loadAnimation(ctx, R.anim.nochange);
+					anim.setAnimationListener(new ColorChangeAnimationListener(
+							ctx, dot, getBackDot(x, y), getNextLitDrawable(),
+							getNextDimDrawable(), true));
 					dot.startAnimation(anim);
 				} else {
 					// Dot is lit - animate to dim then change color
@@ -346,10 +353,14 @@ public class DisplayGrid extends LinearLayout implements Grid {
 						getNextDimDrawable(), true));
 				dot.startAnimation(anim);
 			} else {
-				// Dot is dim = just change the color of both dots in stack for
+				// Dot is dim - wait for the fade-out going on with other dots,
+				// then change the color of both dots in stack for
 				// the new dim color
-				dot.setImageDrawable(getNextDimDrawable());
-				getBackDot(x, y).setImageDrawable(getNextDimDrawable());
+				anim = AnimationUtils.loadAnimation(ctx, R.anim.nochange);
+				anim.setAnimationListener(new ColorChangeAnimationListener(ctx,
+						dot, getBackDot(x, y), getNextDimDrawable(),
+						getNextDimDrawable(), false));
+				dot.startAnimation(anim);
 			}
 			if (x == columns - 1 && y == rows - 1) {
 				litColor = nextLitColor;

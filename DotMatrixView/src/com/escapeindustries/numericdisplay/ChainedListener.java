@@ -5,7 +5,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 
 public class ChainedListener implements AnimationListener {
-	
+
 	private ImageView dot;
 	private Animation next;
 
@@ -13,7 +13,7 @@ public class ChainedListener implements AnimationListener {
 		this.dot = dot;
 		this.next = next;
 	}
-	
+
 	@Override
 	public void onAnimationEnd(Animation animation) {
 		dot.startAnimation(next);
@@ -21,13 +21,11 @@ public class ChainedListener implements AnimationListener {
 
 	@Override
 	public void onAnimationRepeat(Animation animation) {
-		// No repeat behaviour required
-		
+		// No repeat behavior required
 	}
 
 	@Override
 	public void onAnimationStart(Animation animation) {
-		// No start behaviour required
-		
+		// No start behavior required
 	}
 }
