@@ -43,6 +43,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	private Digit[] digits;
 	private Glyph[] glyphs;
 	private boolean active;
+	private boolean colorChangeInProgress = false;
 
 	public DisplayGrid(Context ctx) {
 		super(ctx);
@@ -184,6 +185,9 @@ public class DisplayGrid extends LinearLayout implements Grid {
 
 	@Override
 	public void setValue(String value) {
+		if (nextLitColor != litColor) {
+			colorChangeInProgress = true;
+		}
 		// Top padding
 		drawPadding(0, 0, columns, paddingRowsTop);
 		// Left padding
@@ -316,7 +320,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	@Override
 	public void changeDot(int x, int y, boolean on, boolean current) {
 		// Is the color changing?
-		if (nextLitColor == litColor) {
+		if (colorChangeInProgress == false) {
 			// Just do the normal transition
 			if (on != current) {
 				changeDot(x, y, on);
@@ -365,6 +369,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 			if (x == columns - 1 && y == rows - 1) {
 				litColor = nextLitColor;
 				dimColor = nextDimColor;
+				colorChangeInProgress = false;
 			}
 		}
 	}
