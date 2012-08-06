@@ -188,18 +188,20 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		if (nextLitColor != litColor) {
 			colorChangeInProgress = true;
 		}
-		// Top padding
-		drawPadding(0, 0, columns, paddingRowsTop);
-		// Left padding
-		drawPadding(0, paddingRowsTop, paddingColumnsLeft, rows
-				- paddingRowsTop - paddingRowsBottom);
-		// Right padding
-		drawPadding(columns - paddingColumnsRight, paddingRowsTop,
-				paddingColumnsRight, rows - paddingRowsTop - paddingRowsBottom);
-		for (int y = 0; y < glyphs.length; y++) {
-			if (nextLitColor != litColor
-					&& (glyphs[y] instanceof Digit) == false) {
-				glyphs[y].draw();
+		if (colorChangeInProgress) {
+			// Top padding
+			drawPadding(0, 0, columns, paddingRowsTop);
+			// Left padding
+			drawPadding(0, paddingRowsTop, paddingColumnsLeft, rows
+					- paddingRowsTop - paddingRowsBottom);
+			// Right padding
+			drawPadding(columns - paddingColumnsRight, paddingRowsTop,
+					paddingColumnsRight, rows - paddingRowsTop
+							- paddingRowsBottom);
+			for (int y = 0; y < glyphs.length; y++) {
+				if ((glyphs[y] instanceof Digit) == false) {
+					glyphs[y].draw();
+				}
 			}
 		}
 		DigitsParser parser = new DigitsParser();
@@ -212,11 +214,17 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		}
 		int limit = Math.min(digits.length, values.length);
 		for (int i = 0; i < limit; i++) {
-			digits[i + digitsOffset].setNumber(values[i + valuesOffset]);
+			if (colorChangeInProgress
+					|| digits[i + digitsOffset].getNumber() != values[i
+							+ valuesOffset]) {
+				digits[i + digitsOffset].setNumber(values[i + valuesOffset]);
+			}
 		}
-		// Bottom padding - here because updating the bottom-right dot finalises
-		// a color change
-		drawPadding(0, rows - paddingRowsBottom, columns, paddingRowsBottom);
+		if (colorChangeInProgress) {
+			// Bottom padding - here because updating the bottom-right dot
+			// finalises a color change
+			drawPadding(0, rows - paddingRowsBottom, columns, paddingRowsBottom);
+		}
 	}
 
 	private void drawPadding(int startColumn, int startRow, int columnsWide,

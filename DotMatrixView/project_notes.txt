@@ -1,7 +1,6 @@
 Project notes
 =============
-NEXT: Optimise the setValue code so that it stops updating the padding areas when no color change is underway. 
-Locking color change behaviour via setValue hasn't fixed the problem. Find out why the changing dots are coming in earlier.
+NEXT: Locking color change behaviour via setValue hasn't fixed the problem. Find out why the changing dots are coming in earlier.
 
 When a color change is occurring as part of a call to setValue, the dots that are being lit that were not part of the previous digit
 are being lit much more quickly than the others. Are they being drawn outside the new framework?
