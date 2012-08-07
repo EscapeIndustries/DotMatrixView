@@ -1,12 +1,6 @@
 Project notes
 =============
-NEXT: Locking color change behaviour via setValue hasn't fixed the problem. Find out why the changing dots are coming in earlier.
-
-When a color change is occurring as part of a call to setValue, the dots that are being lit that were not part of the previous digit
-are being lit much more quickly than the others. Are they being drawn outside the new framework?
-
-Integrate color change timing with ongoing update. You could use the same plugging in point that you use to update
-the colors from next to current status - immediately after the last dot in the grid is updated in DisplayGrid.changeDot().
+NEXT: Start working on bringing the proof of concept SurfaceView implementation of drawing over from "YB".
 
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
