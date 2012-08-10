@@ -2,6 +2,12 @@ Project notes
 =============
 NEXT: Start working on bringing the proof of concept SurfaceView implementation of drawing over from "YB".
 
+Steps to make YB work within NumericalDisplay?
+	[ ] Make it able to draw numbers on the grid
+	[ ] Transitions can work by knowing purely what the state should be right now. Without animation this would
+		just change numbers instantaneously with the clock. With animation this would mean figuring out what each
+		dot's state is for this moment in time e.g. it was a 5, it's this far through turning into a 6.
+
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
 [ ] More XML config - dot size, padding between dots
