@@ -1,9 +1,7 @@
 Project notes
 =============
 Goal: Get the grid drawing numbers, spaces and colons using a SurfaceView.
-NEXT: Get the grid drawing a single digit.
-
-
+NEXT: Implement setFormat in ModelGrid.
 
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
