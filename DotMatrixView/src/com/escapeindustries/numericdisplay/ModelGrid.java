@@ -8,20 +8,14 @@ public class ModelGrid extends BaseGrid {
 		setFormat(format);
 	}
 
-	private void setFormat(String format) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public void changeDot(int x, int y, boolean on) {
 		grid[x][y] = on;
 	}
 
 	@Override
-	public void setValue(String value) {
-		// TODO Auto-generated method stub
-
+	public void initializeGrid() {
+		grid = new boolean[columns][rows];
 	}
 
 }
