@@ -17,5 +17,9 @@ public class ModelGrid extends BaseGrid {
 	public void initializeGrid() {
 		grid = new boolean[columns][rows];
 	}
+	
+	public boolean getDotState(int x, int y) {
+		return grid[x][y];
+	}
 
 }

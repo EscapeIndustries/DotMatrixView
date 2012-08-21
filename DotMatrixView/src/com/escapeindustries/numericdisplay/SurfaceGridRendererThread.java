@@ -19,9 +19,13 @@ public class SurfaceGridRendererThread extends Thread {
 	private int columns = 7;
 	private int[][] coordsX;
 	private int[][] coordsY;
-	private int radius = 10;
-	private int space = 3;
-	
+	private int radius = 4;
+	private int space = 2;
+
+	// TODO SPIKE this model should be passed in and controlled from somewhere
+	// else
+	ModelGrid model = new ModelGrid("0 0 : 0 0 : 0 0 ");
+
 	private static String TAG = "NumericalDisplay";
 
 	public SurfaceGridRendererThread(SurfaceHolder holder, Context context,
@@ -30,6 +34,9 @@ public class SurfaceGridRendererThread extends Thread {
 		this.context = context;
 		this.grid = grid;
 		getColors();
+		model.setValue("93:34:07");
+		this.columns = model.getColumns();
+		this.rows = model.getRows();
 		initCoords();
 	}
 
@@ -44,11 +51,15 @@ public class SurfaceGridRendererThread extends Thread {
 						canvas.drawColor(Color.BLACK);
 						for (int row = 0; row < rows; row++) {
 							for (int column = 0; column < columns; column++) {
-								canvas.drawCircle(coordsX[row][column], coordsY[row][column], radius, lit);
+								if (model.getDotState(column, row)) {
+									canvas.drawCircle(coordsX[row][column],
+											coordsY[row][column], radius, lit);
+								}
 							}
 						}
 					}
-					Log.d(TAG, "SurfaceGridRendererThread: finished drawing one frome");
+					Log.d(TAG,
+							"SurfaceGridRendererThread: finished drawing one frome");
 				}
 			} finally {
 				if (canvas != null) {
