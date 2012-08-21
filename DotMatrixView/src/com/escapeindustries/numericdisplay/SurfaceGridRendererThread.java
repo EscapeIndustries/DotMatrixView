@@ -1,5 +1,8 @@
 package com.escapeindustries.numericdisplay;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -25,6 +28,8 @@ public class SurfaceGridRendererThread extends Thread {
 	// TODO SPIKE this model should be passed in and controlled from somewhere
 	// else
 	ModelGrid model = new ModelGrid("0 0 : 0 0 : 0 0 ");
+	private int lastSeconds = -1;
+	private int fps = 0;
 
 	private static String TAG = "NumericalDisplay";
 
@@ -58,14 +63,24 @@ public class SurfaceGridRendererThread extends Thread {
 							}
 						}
 					}
-					Log.d(TAG,
-							"SurfaceGridRendererThread: finished drawing one frome");
+					logFPS();
 				}
 			} finally {
 				if (canvas != null) {
 					holder.unlockCanvasAndPost(canvas);
 				}
 			}
+		}
+	}
+
+	private void logFPS() {
+		int nowSeconds = GregorianCalendar.getInstance().get(Calendar.SECOND);
+		if (nowSeconds != lastSeconds) {
+			Log.d(TAG, "SurfaceGridRendererThread: fps == " + fps);
+			fps = 1;
+			lastSeconds = nowSeconds;
+		} else {
+			fps++;
 		}
 	}
 
