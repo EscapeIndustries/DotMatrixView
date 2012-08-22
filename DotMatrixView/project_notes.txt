@@ -1,7 +1,13 @@
 Project notes
 =============
 Goal: Get the SurfaceView animating the transitions between dot colors.
-NEXT: Make the SurfaceView render the dim off dots too.
+NEXT: Work on introducing arrays in the model, representing from and to, so that the dots that are changing state can be found. Consider
+changing the arrays to store ints instead. Then you could store 0,1,2,3 :
+	0 == off
+	1 == transitioning to off
+	2 == tranitioning to on
+	3 == on
+When setValue() is run, all the 1s become 0s and the 2s become 3s.
 
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red

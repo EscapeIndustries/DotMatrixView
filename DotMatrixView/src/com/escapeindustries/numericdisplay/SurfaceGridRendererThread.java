@@ -18,6 +18,8 @@ public class SurfaceGridRendererThread extends Thread {
 	private ModelGrid grid;
 	private int litColor;
 	private Paint lit;
+	private int dimColor;
+	private Paint dim;
 	private int rows = 13;
 	private int columns = 7;
 	private int[][] coordsX;
@@ -52,10 +54,10 @@ public class SurfaceGridRendererThread extends Thread {
 						canvas.drawColor(Color.BLACK);
 						for (int row = 0; row < rows; row++) {
 							for (int column = 0; column < columns; column++) {
-								if (grid.getDotState(column, row)) {
-									canvas.drawCircle(coordsX[row][column],
-											coordsY[row][column], radius, lit);
-								}
+								canvas.drawCircle(coordsX[row][column],
+										coordsY[row][column], radius, grid
+												.getDotState(column, row) ? lit
+												: dim);
 							}
 						}
 					}
@@ -88,6 +90,9 @@ public class SurfaceGridRendererThread extends Thread {
 		this.litColor = context.getResources().getColor(R.color.bright_green);
 		lit = new Paint();
 		lit.setColor(litColor);
+		this.dimColor = context.getResources().getColor(R.color.dim_green);
+		dim = new Paint();
+		dim.setColor(dimColor);
 	}
 
 	private void initCoords() {
