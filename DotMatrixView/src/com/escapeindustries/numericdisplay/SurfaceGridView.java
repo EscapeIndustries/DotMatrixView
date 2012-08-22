@@ -8,6 +8,7 @@ import android.view.SurfaceView;
 public class SurfaceGridView extends SurfaceView implements SurfaceHolder.Callback {
 	
 	private Context context;
+	private ModelGrid model;
 	private SurfaceHolder holder;
 	private SurfaceGridRendererThread renderer;
 
@@ -22,8 +23,13 @@ public class SurfaceGridView extends SurfaceView implements SurfaceHolder.Callba
 		this.context = context;
 		initialize();
 	}
+	
+	public Grid getGrid() {
+		return model;
+	}
 
 	private void initialize() {
+		model = new ModelGrid("0 0 : 0 0 : 0 0 ");
 		holder = getHolder();
 		holder.addCallback(this);
 	}
@@ -37,7 +43,7 @@ public class SurfaceGridView extends SurfaceView implements SurfaceHolder.Callba
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		renderer = new SurfaceGridRendererThread(holder, context, this);
+		renderer = new SurfaceGridRendererThread(holder, context, model);
 		renderer.setRunning(true);
 		renderer.start();
 		

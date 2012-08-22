@@ -15,7 +15,7 @@ public class SurfaceGridRendererThread extends Thread {
 	private boolean running;
 	private SurfaceHolder holder;
 	private Context context;
-	private SurfaceGridView grid;
+	private ModelGrid grid;
 	private int litColor;
 	private Paint lit;
 	private int rows = 13;
@@ -25,23 +25,19 @@ public class SurfaceGridRendererThread extends Thread {
 	private int radius = 4;
 	private int space = 2;
 
-	// TODO SPIKE this model should be passed in and controlled from somewhere
-	// else
-	ModelGrid model = new ModelGrid("0 0 : 0 0 : 0 0 ");
 	private int lastSeconds = -1;
 	private int fps = 0;
 
 	private static String TAG = "NumericalDisplay";
 
 	public SurfaceGridRendererThread(SurfaceHolder holder, Context context,
-			SurfaceGridView grid) {
+			ModelGrid grid) {
 		this.holder = holder;
 		this.context = context;
 		this.grid = grid;
 		getColors();
-		model.setValue("93:34:07");
-		this.columns = model.getColumns();
-		this.rows = model.getRows();
+		this.columns = grid.getColumns();
+		this.rows = grid.getRows();
 		initCoords();
 	}
 
@@ -56,7 +52,7 @@ public class SurfaceGridRendererThread extends Thread {
 						canvas.drawColor(Color.BLACK);
 						for (int row = 0; row < rows; row++) {
 							for (int column = 0; column < columns; column++) {
-								if (model.getDotState(column, row)) {
+								if (grid.getDotState(column, row)) {
 									canvas.drawCircle(coordsX[row][column],
 											coordsY[row][column], radius, lit);
 								}
@@ -97,7 +93,6 @@ public class SurfaceGridRendererThread extends Thread {
 	private void initCoords() {
 		// Set up a pair of 2D arrays. Each holds one half of the coordinates
 		// for every dot in the grid
-		Log.d(TAG, "Starting initCoords");
 		coordsX = new int[rows][columns];
 		coordsY = new int[rows][columns];
 		int rowStart = radius + space;
@@ -115,6 +110,5 @@ public class SurfaceGridRendererThread extends Thread {
 			y = y + centerSpacing;
 			x = rowStart;
 		}
-		Log.d(TAG, "Finished initCoords");
 	}
 }

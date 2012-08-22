@@ -1,7 +1,7 @@
 Project notes
 =============
-Goal: Get the grid drawing numbers, spaces and colons using a SurfaceView.
-NEXT: Move the ModelGrid up to SurfaceGridView from the SurfaceGridRendererThread and get it plugged in to normal update mechanism.
+Goal: Get the SurfaceView animating the transitions between dot colors.
+NEXT: Make the SurfaceView render the dim off dots too.
 
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
