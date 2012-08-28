@@ -2,7 +2,7 @@ package com.escapeindustries.numericdisplay;
 
 public class ModelGrid extends BaseGrid {
 	
-	private boolean[][] grid;
+	private int[][] grid;
 	
 	public ModelGrid(String format) {
 		setFormat(format);
@@ -10,15 +10,24 @@ public class ModelGrid extends BaseGrid {
 
 	@Override
 	public void changeDot(int x, int y, boolean on) {
-		grid[x][y] = on;
+		int current = grid[x][y];
+		if (on) {
+			if (current == 0 || current == 1) {
+				grid[x][y] = 2;
+			}
+		} else {
+			if (current == 2 || current == 3) {
+				grid[x][y] = 1;
+			}
+		}
 	}
 
 	@Override
 	public void initializeGrid() {
-		grid = new boolean[columns][rows];
+		grid = new int[columns][rows];
 	}
 	
-	public boolean getDotState(int x, int y) {
+	public int getDotState(int x, int y) {
 		return grid[x][y];
 	}
 
