@@ -120,12 +120,14 @@ public class SurfaceGridRendererThread extends Thread {
 	}
 
 	private void setupColors() {
-		paints[DIM] = getDim();
-		paints[DIMMING] = null;
-		paints[LIGHTENING] = null;
-		paints[LIT] = getLit();
+		dimColor = context.getResources().getColor(R.color.dim_green);
+		litColor = context.getResources().getColor(R.color.bright_green);
 		setUpColorComponents();
 		setUpColorRanges();
+		paints[DIM] = getDim();
+		paints[DIMMING] = getDimming();
+		paints[LIGHTENING] = getLightening();
+		paints[LIT] = getLit();
 	}
 
 	private void updatePaints() {
@@ -141,7 +143,11 @@ public class SurfaceGridRendererThread extends Thread {
 	}
 
 	private Paint getDim() {
-		return getPaint(context.getResources().getColor(R.color.dim_green));
+		return getPaint(dimColor);
+	}
+	
+	private Paint getLit() {
+		return getPaint(litColor);
 	}
 
 	private Paint getDimming() {
@@ -149,7 +155,7 @@ public class SurfaceGridRendererThread extends Thread {
 		if (sinceSecond >= TRANSITION_LIMIT) {
 			result = paints[DIM];
 		} else {
-			float percentThroughTransition = 1.0f - (sinceSecond / TRANSITION_LIMIT);
+			float percentThroughTransition = 1.0f - ((float)sinceSecond / TRANSITION_LIMIT);
 			result = new Paint();
 			result.setColor(getInterstitial(percentThroughTransition));
 		}
@@ -161,8 +167,8 @@ public class SurfaceGridRendererThread extends Thread {
 		if (sinceSecond >= TRANSITION_LIMIT) {
 			result = paints[LIT];
 		} else {
+			float percentThroughTransition = (float)sinceSecond / TRANSITION_LIMIT;
 			result = new Paint();
-			float percentThroughTransition = sinceSecond / TRANSITION_LIMIT;
 			result.setColor(getInterstitial(percentThroughTransition));
 		}
 		return result;
@@ -192,10 +198,6 @@ public class SurfaceGridRendererThread extends Thread {
 		redRange = litRed - dimRed;
 		blueRange = litBlue - dimBlue;
 		greenRange = litGreen - dimGreen;
-	}
-
-	private Paint getLit() {
-		return getPaint(context.getResources().getColor(R.color.bright_green));
 	}
 
 	private void initCoords() {
