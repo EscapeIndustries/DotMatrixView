@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 public class UpdateDigitsFromClockTask extends AsyncTask<String, Void, Void> {
 
