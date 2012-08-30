@@ -1,8 +1,11 @@
 package com.escapeindustries.numericdisplay;
 
+import android.util.Log;
+
 public class ModelGrid extends BaseGrid {
 	
 	private int[][] grid;
+	private boolean transitionsActive;
 	
 	public ModelGrid(String format) {
 		setFormat(format);
@@ -29,11 +32,13 @@ public class ModelGrid extends BaseGrid {
 	
 	@Override
 	public void setValue(String value) {
-		clearTransitionState();
+		Log.d("NumericalDisplay", "ModelGrid.setValue called");
+		transitionsActive = true;
 		super.setValue(value);
 	}
 	
-	private void clearTransitionState() {
+	public void clearTransitionState() {
+		Log.d("NumericalDisplay", "ModelGrid.clearTransitionState called");
 		for (int x = 0; x < this.columns; x++) {
 			for (int y = 0; y < this.rows; y++) {
 				if (grid[x][y] == 1) {
@@ -43,6 +48,11 @@ public class ModelGrid extends BaseGrid {
 				}
 			}
 		}
+		transitionsActive = false;
+	}
+	
+	public boolean getTransitionsActive() {
+		return transitionsActive;
 	}
 
 	public int getDotState(int x, int y) {

@@ -12,7 +12,7 @@ import android.view.SurfaceHolder;
 
 public class SurfaceGridRendererThread extends Thread {
 
-	private static final int TRANSITION_LIMIT = 400;
+	private static final int TRANSITION_LIMIT = 300;
 	private static final int LIGHTENING = 2;
 	private static final int DIMMING = 1;
 	private static final int LIT = 3;
@@ -22,9 +22,7 @@ public class SurfaceGridRendererThread extends Thread {
 	private Context context;
 	private ModelGrid grid;
 	private int litColor;
-	private Paint lit;
 	private int dimColor;
-	private Paint dim;
 	private int rows = 13;
 	private int columns = 7;
 	private int[][] coordsX;
@@ -81,6 +79,9 @@ public class SurfaceGridRendererThread extends Thread {
 						}
 					}
 					logFPS();
+					if (sinceSecond >= TRANSITION_LIMIT && grid.getTransitionsActive() == true) {
+						grid.clearTransitionState();
+					}
 				}
 			} finally {
 				if (canvas != null) {

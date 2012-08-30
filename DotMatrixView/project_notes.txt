@@ -1,14 +1,17 @@
 Project notes
 =============
 Goal: Get the SurfaceView animating the transitions between dot colors.
-NEXT: Debug why some dots are flipping between on and off part way into a transition.
-	  This may be a problem of synchronisation - perhaps ModelGrid.clearTransitionState() is updating the grid while SurfaceGridRendererThread
-	  is rendering the changing data? Yes, this would make sense because a dot that had been transitioning to off at the end of second 59 would still
-	  be set to transitioning at the start of 00, until a few ms later when clearTransitionState() had finished running. So for a few frames
-	  it would be a lit dot a small percentage away from fully on, then suddenly it would become an off dot.
-	  
-	  I need to ensure that when the transition finishes, the dot gets updated to complete right away. This suggests the SurfaceGridRendererThread
-	  should kick off another thread to do this as sinceSecond > TRANSITION_LIMIT.
+NEXT: Optimise - can the view only over-draw the dots that have not yet been drawn? Perhaps this needs a new state of -1 to
+indicate a dot that hasn't yet been drawn?
+
+Fading is working properly because I altered the timing of the task that calls setValue so that it happens just after
+the second has changed. This is necessary because the system doesn't have a view on now vs next, and operates transitions against
+0 milliseconds rather than milliseconds since last change was put into effect.
+
+It may be that SurfaceGridRendererThread should be controlling the update of the value too. Instead of the client app running the
+self-rescheduling AsyncTask, the display would instead be configured with an object that could tell it what value should be set, and
+how long it should expect to wait for the next change. With that in effect, the code could be optimised to only draw while transitions
+are active, then sleep pending the next change.
 
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
