@@ -48,9 +48,10 @@ public class SurfaceGridView extends SurfaceView implements SurfaceHolder.Callba
 		renderer.start();
 		
 	}
-
+	
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
+		model.setActive(false);
 		boolean retry = true;
 		renderer.setRunning(false);
 		while (retry) {
