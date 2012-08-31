@@ -63,24 +63,12 @@ public class SurfaceGridRendererThread extends Thread {
 	@Override
 	public void run() {
 		while (running) {
-			updatePaints();
 			Canvas canvas = null;
 			try {
 				canvas = holder.lockCanvas();
 				if (canvas != null) {
 					synchronized (holder) {
-						canvas.drawColor(Color.BLACK);
-						for (int row = 0; row < rows; row++) {
-							for (int column = 0; column < columns; column++) {
-								canvas.drawCircle(coordsX[row][column],
-										coordsY[row][column], radius,
-										paints[grid.getDotState(column, row)]);
-							}
-						}
-					}
-					logFPS();
-					if (sinceSecond >= TRANSITION_LIMIT && grid.getTransitionsActive() == true) {
-						grid.clearTransitionState();
+						drawFull(canvas);
 					}
 				}
 			} finally {
@@ -88,6 +76,22 @@ public class SurfaceGridRendererThread extends Thread {
 					holder.unlockCanvasAndPost(canvas);
 				}
 			}
+		}
+	}
+
+	private void drawFull(Canvas canvas) {
+		updatePaints();
+		canvas.drawColor(Color.BLACK);
+		for (int row = 0; row < rows; row++) {
+			for (int column = 0; column < columns; column++) {
+				canvas.drawCircle(coordsX[row][column],
+						coordsY[row][column], radius,
+						paints[grid.getDotState(column, row)]);
+			}
+		}
+		logFPS();
+		if (sinceSecond >= TRANSITION_LIMIT && grid.getTransitionsActive() == true) {
+			grid.clearTransitionState();
 		}
 	}
 
