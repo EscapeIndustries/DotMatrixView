@@ -43,6 +43,7 @@ public class SurfaceGridView extends SurfaceView implements SurfaceHolder.Callba
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
+		model.setActive(true);
 		renderer = new SurfaceGridRendererThread(holder, context, model);
 		renderer.setRunning(true);
 		renderer.start();
