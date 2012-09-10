@@ -68,7 +68,7 @@ public class SurfaceGridRendererThread extends Thread {
 				canvas = holder.lockCanvas();
 				if (canvas != null) {
 					synchronized (holder) {
-						drawFull(canvas);
+						drawChanges(canvas);
 					}
 				}
 			} finally {
@@ -84,13 +84,32 @@ public class SurfaceGridRendererThread extends Thread {
 		canvas.drawColor(Color.BLACK);
 		for (int row = 0; row < rows; row++) {
 			for (int column = 0; column < columns; column++) {
-				canvas.drawCircle(coordsX[row][column],
-						coordsY[row][column], radius,
-						paints[grid.getDotState(column, row)]);
+				canvas.drawCircle(coordsX[row][column], coordsY[row][column],
+						radius, paints[grid.getDotState(column, row)]);
 			}
 		}
 		logFPS();
-		if (sinceSecond >= TRANSITION_LIMIT && grid.getTransitionsActive() == true) {
+		if (sinceSecond >= TRANSITION_LIMIT
+				&& grid.getTransitionsActive() == true) {
+			grid.clearTransitionState();
+		}
+	}
+
+	private void drawChanges(Canvas canvas) {
+		updatePaints();
+		int dotState = -1;
+		for (int row = 0; row < rows; row++) {
+			for (int column = 0; column < columns; column++) {
+				dotState = grid.getDotState(column, row);
+				if (dotState == 1 || dotState == 2) {
+					canvas.drawCircle(coordsX[row][column],
+							coordsY[row][column], radius, paints[dotState]);
+				}
+			}
+		}
+		logFPS();
+		if (sinceSecond >= TRANSITION_LIMIT
+				&& grid.getTransitionsActive() == true) {
 			grid.clearTransitionState();
 		}
 	}
@@ -150,7 +169,7 @@ public class SurfaceGridRendererThread extends Thread {
 	private Paint getDim() {
 		return getPaint(dimColor);
 	}
-	
+
 	private Paint getLit() {
 		return getPaint(litColor);
 	}
@@ -160,7 +179,7 @@ public class SurfaceGridRendererThread extends Thread {
 		if (sinceSecond >= TRANSITION_LIMIT) {
 			result = paints[DIM];
 		} else {
-			float percentThroughTransition = 1.0f - ((float)sinceSecond / TRANSITION_LIMIT);
+			float percentThroughTransition = 1.0f - ((float) sinceSecond / TRANSITION_LIMIT);
 			result = new Paint();
 			result.setColor(getInterstitial(percentThroughTransition));
 		}
@@ -172,7 +191,8 @@ public class SurfaceGridRendererThread extends Thread {
 		if (sinceSecond >= TRANSITION_LIMIT) {
 			result = paints[LIT];
 		} else {
-			float percentThroughTransition = (float)sinceSecond / TRANSITION_LIMIT;
+			float percentThroughTransition = (float) sinceSecond
+					/ TRANSITION_LIMIT;
 			result = new Paint();
 			result.setColor(getInterstitial(percentThroughTransition));
 		}
@@ -181,10 +201,10 @@ public class SurfaceGridRendererThread extends Thread {
 
 	private int getInterstitial(float percentThroughTransition) {
 		return Color.argb(dimAlpha
-				+ (int)(alphaRange * percentThroughTransition), dimRed
-				+ (int)(redRange * percentThroughTransition), dimGreen
-				+ (int)(greenRange * percentThroughTransition), dimBlue
-				+ (int)(blueRange * percentThroughTransition));
+				+ (int) (alphaRange * percentThroughTransition), dimRed
+				+ (int) (redRange * percentThroughTransition), dimGreen
+				+ (int) (greenRange * percentThroughTransition), dimBlue
+				+ (int) (blueRange * percentThroughTransition));
 	}
 
 	private void setUpColorComponents() {
