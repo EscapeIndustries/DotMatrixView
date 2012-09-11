@@ -48,6 +48,8 @@ public class SurfaceGridRendererThread extends Thread {
 	private int dimBlue;
 	private int litGreen;
 	private int dimGreen;
+	private DrawStrategy update;
+	private DrawStrategy full;
 
 	public SurfaceGridRendererThread(SurfaceHolder holder, Context context,
 			ModelGrid grid) {
@@ -58,59 +60,39 @@ public class SurfaceGridRendererThread extends Thread {
 		this.columns = grid.getColumns();
 		this.rows = grid.getRows();
 		initCoords();
+		update = new GridUpdateRenderer(grid, rows, columns, coordsX, coordsY,
+				radius);
+		full = new GridFullRenderer(grid, rows, columns, coordsX, coordsY,
+				radius);
+//		doDraw(full);
 	}
 
 	@Override
 	public void run() {
 		while (running) {
-			Canvas canvas = null;
-			try {
-				canvas = holder.lockCanvas();
-				if (canvas != null) {
-					synchronized (holder) {
-						drawChanges(canvas);
-					}
-				}
-			} finally {
-				if (canvas != null) {
-					holder.unlockCanvasAndPost(canvas);
-				}
+			updatePaints();
+			doDraw(full);
+			logFPS();
+			if (sinceSecond >= TRANSITION_LIMIT
+					&& grid.getTransitionsActive() == true) {
+				grid.clearTransitionState();
 			}
 		}
 	}
 
-	private void drawFull(Canvas canvas) {
-		updatePaints();
-		canvas.drawColor(Color.BLACK);
-		for (int row = 0; row < rows; row++) {
-			for (int column = 0; column < columns; column++) {
-				canvas.drawCircle(coordsX[row][column], coordsY[row][column],
-						radius, paints[grid.getDotState(column, row)]);
-			}
-		}
-		logFPS();
-		if (sinceSecond >= TRANSITION_LIMIT
-				&& grid.getTransitionsActive() == true) {
-			grid.clearTransitionState();
-		}
-	}
-
-	private void drawChanges(Canvas canvas) {
-		updatePaints();
-		int dotState = -1;
-		for (int row = 0; row < rows; row++) {
-			for (int column = 0; column < columns; column++) {
-				dotState = grid.getDotState(column, row);
-				if (dotState == 1 || dotState == 2) {
-					canvas.drawCircle(coordsX[row][column],
-							coordsY[row][column], radius, paints[dotState]);
+	private void doDraw(DrawStrategy renderer) {
+		Canvas canvas = null;
+		try {
+			canvas = holder.lockCanvas();
+			if (canvas != null) {
+				synchronized (holder) {
+					renderer.draw(canvas, paints);
 				}
 			}
-		}
-		logFPS();
-		if (sinceSecond >= TRANSITION_LIMIT
-				&& grid.getTransitionsActive() == true) {
-			grid.clearTransitionState();
+		} finally {
+			if (canvas != null) {
+				holder.unlockCanvasAndPost(canvas);
+			}
 		}
 	}
 
