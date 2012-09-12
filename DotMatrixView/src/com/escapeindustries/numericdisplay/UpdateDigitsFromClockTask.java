@@ -37,7 +37,7 @@ public class UpdateDigitsFromClockTask extends AsyncTask<String, Void, Void> {
 
 	private int getMillisToNextSecond() {
 		Calendar now = GregorianCalendar.getInstance();
-		int retVal = 1050 - now.get(Calendar.MILLISECOND);
+		int retVal = 1010 - now.get(Calendar.MILLISECOND);
 		return retVal > 1 ? retVal : 1;
 	}
 }

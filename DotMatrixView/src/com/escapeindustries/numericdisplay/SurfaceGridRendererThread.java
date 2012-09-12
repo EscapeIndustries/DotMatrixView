@@ -64,18 +64,25 @@ public class SurfaceGridRendererThread extends Thread {
 				radius);
 		full = new GridFullRenderer(grid, rows, columns, coordsX, coordsY,
 				radius);
-//		doDraw(full);
+		// doDraw(full);
 	}
 
 	@Override
 	public void run() {
 		while (running) {
+			sinceSecond = getMillisSinceSecond();
 			updatePaints();
 			doDraw(full);
-			logFPS();
-			if (sinceSecond >= TRANSITION_LIMIT
+			if (sinceSecond > TRANSITION_LIMIT
 					&& grid.getTransitionsActive() == true) {
 				grid.clearTransitionState();
+				long sleepTime = 950 - sinceSecond;
+				if (sleepTime > 0) {
+					try {
+						Thread.sleep(sleepTime);
+					} catch (InterruptedException e) {
+					}
+				}
 			}
 		}
 	}
@@ -94,6 +101,7 @@ public class SurfaceGridRendererThread extends Thread {
 				holder.unlockCanvasAndPost(canvas);
 			}
 		}
+		logFPS();
 	}
 
 	private long getStartOfSecond(Calendar now) {
@@ -137,7 +145,6 @@ public class SurfaceGridRendererThread extends Thread {
 	}
 
 	private void updatePaints() {
-		sinceSecond = getMillisSinceSecond();
 		paints[DIMMING] = getDimming();
 		paints[LIGHTENING] = getLightening();
 	}
@@ -158,7 +165,7 @@ public class SurfaceGridRendererThread extends Thread {
 
 	private Paint getDimming() {
 		Paint result;
-		if (sinceSecond >= TRANSITION_LIMIT) {
+		if (sinceSecond > TRANSITION_LIMIT) {
 			result = paints[DIM];
 		} else {
 			float percentThroughTransition = 1.0f - ((float) sinceSecond / TRANSITION_LIMIT);
@@ -170,7 +177,7 @@ public class SurfaceGridRendererThread extends Thread {
 
 	private Paint getLightening() {
 		Paint result;
-		if (sinceSecond >= TRANSITION_LIMIT) {
+		if (sinceSecond > TRANSITION_LIMIT) {
 			result = paints[LIT];
 		} else {
 			float percentThroughTransition = (float) sinceSecond

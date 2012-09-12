@@ -1,7 +1,8 @@
 Project notes
 =============
 Goal: Get the SurfaceView animating the transitions between dot colors.
-NEXT: Why does the update renderer cause flickering?
+NEXT: Make SurfaceGridRendererThread control it's own updates and timing via a configuration object that can be called
+to ask what the current value is and how long to sleep for.
 
 Fading is working properly because I altered the timing of the task that calls setValue so that it happens just after
 the second has changed. This is necessary because the system doesn't have a view on now vs next, and operates transitions against
