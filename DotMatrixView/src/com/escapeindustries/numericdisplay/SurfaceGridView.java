@@ -5,8 +5,9 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class SurfaceGridView extends SurfaceView implements SurfaceHolder.Callback {
-	
+public class SurfaceGridView extends SurfaceView implements
+		SurfaceHolder.Callback {
+
 	private Context context;
 	private ModelGrid model;
 	private SurfaceHolder holder;
@@ -17,13 +18,13 @@ public class SurfaceGridView extends SurfaceView implements SurfaceHolder.Callba
 		this.context = context;
 		initialize();
 	}
-	
+
 	public SurfaceGridView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		this.context = context;
 		initialize();
 	}
-	
+
 	public Grid getGrid() {
 		return model;
 	}
@@ -38,18 +39,20 @@ public class SurfaceGridView extends SurfaceView implements SurfaceHolder.Callba
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
 		// TODO Find out what this event is for
-		
+
 	}
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
 		model.setActive(true);
-		renderer = new SurfaceGridRendererThread(holder, context, model);
+		renderer = new SurfaceGridRendererThread(holder, context, model,
+				new PerSecondTimeUpdateProvider(new FormattedTime(
+						new SystemClockTimeSource())));
 		renderer.setRunning(true);
 		renderer.start();
-		
+
 	}
-	
+
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		model.setActive(false);

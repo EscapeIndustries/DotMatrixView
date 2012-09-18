@@ -18,9 +18,15 @@ public class SurfaceGridRendererThread extends Thread {
 	private static final int LIT = 3;
 	private static final int DIM = 0;
 	private boolean running;
+	
 	private SurfaceHolder holder;
 	private Context context;
 	private ModelGrid grid;
+	private UpdateProvider updater;
+
+	private String currentValue;
+	private long nextUpdate;
+
 	private int litColor;
 	private int dimColor;
 	private int rows = 13;
@@ -52,10 +58,16 @@ public class SurfaceGridRendererThread extends Thread {
 	private DrawStrategy full;
 
 	public SurfaceGridRendererThread(SurfaceHolder holder, Context context,
-			ModelGrid grid) {
+			ModelGrid grid, UpdateProvider updater) {
 		this.holder = holder;
 		this.context = context;
 		this.grid = grid;
+		this.updater = updater;
+		
+		currentValue = updater.getCurrentValue();
+		grid.setValue(currentValue);
+		this.nextUpdate = updater.getNextPossibleUpdateTime();
+		
 		setupColors();
 		this.columns = grid.getColumns();
 		this.rows = grid.getRows();
@@ -70,6 +82,19 @@ public class SurfaceGridRendererThread extends Thread {
 	@Override
 	public void run() {
 		while (running) {
+			long now = getNow();
+			if (now >= nextUpdate) {
+				String newValue = updater.getCurrentValue();
+				if (!newValue.equals(currentValue)) {
+					currentValue = newValue;
+					grid.clearTransitionState();
+					grid.setValue(currentValue);
+				}
+				// Regardless whether the value changed, update the time that should trigger the next query
+				nextUpdate = updater.getNextPossibleUpdateTime();
+			}
+			// TODO sinceSecond should be changed to being an offset from the point that
+			// updater.getCurrentValue() last gave a changed value.
 			sinceSecond = getMillisSinceSecond();
 			updatePaints();
 			doDraw(full);
@@ -104,6 +129,11 @@ public class SurfaceGridRendererThread extends Thread {
 		logFPS();
 	}
 
+	private long getNow() {
+		Calendar now = GregorianCalendar.getInstance();
+		return now.getTimeInMillis();
+	}
+
 	private long getStartOfSecond(Calendar now) {
 		Calendar from = GregorianCalendar.getInstance();
 		from.set(now.get(Calendar.YEAR), now.get(Calendar.MONTH),
@@ -112,6 +142,7 @@ public class SurfaceGridRendererThread extends Thread {
 		from.set(Calendar.MILLISECOND, 0);
 		return from.getTimeInMillis();
 	}
+	
 
 	private long getMillisSinceSecond() {
 		Calendar now = GregorianCalendar.getInstance();
