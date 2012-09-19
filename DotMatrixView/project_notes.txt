@@ -1,16 +1,13 @@
 Project notes
 =============
 Goal: Get the SurfaceView animating the transitions between dot colors.
-NEXT: Finish off integrating use of the updater in SurfaceGridRendererThread so that it is used in the sleep after transition ends too.
+NEXT: Figure out how you will make color changes occur in a configurable way.
 
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
 [ ] More XML config - dot size, padding between dots
 *   Need to put time updates into a Service
 	[ ] Read about services
-*   Should be subclassing View and doing my own drawing
-	[ ] Read about animation - how do you make a view able to update itself on a smooth set of frames without using loads of CPU?
-	[ ] Write the basic code for drawing the grid and changing the colour of individual dots
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?

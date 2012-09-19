@@ -1,13 +1,10 @@
 package com.escapeindustries.numericdisplay;
 
-import android.util.Log;
-
 public class ModelGrid extends BaseGrid {
-	
-	private static final String TAG = "NumericalDisplay";
+
 	private int[][] grid;
 	private boolean transitionsActive;
-	
+
 	public ModelGrid(String format) {
 		setFormat(format);
 	}
@@ -30,16 +27,14 @@ public class ModelGrid extends BaseGrid {
 	public void initializeGrid() {
 		grid = new int[columns][rows];
 	}
-	
+
 	@Override
 	public void setValue(String value) {
-		Log.d(TAG, "ModelGrid.setValue called");
 		transitionsActive = true;
 		super.setValue(value);
 	}
-	
+
 	public void clearTransitionState() {
-		Log.d(TAG, "ModelGrid.clearTransitionState called");
 		for (int x = 0; x < this.columns; x++) {
 			for (int y = 0; y < this.rows; y++) {
 				if (grid[x][y] == 1) {
@@ -51,7 +46,7 @@ public class ModelGrid extends BaseGrid {
 		}
 		transitionsActive = false;
 	}
-	
+
 	public boolean getTransitionsActive() {
 		return transitionsActive;
 	}
