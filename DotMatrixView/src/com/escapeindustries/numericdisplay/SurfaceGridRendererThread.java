@@ -56,6 +56,7 @@ public class SurfaceGridRendererThread extends Thread {
 	private int dimGreen;
 	private DrawStrategy update;
 	private DrawStrategy full;
+	private long lastUpdated;
 
 	public SurfaceGridRendererThread(SurfaceHolder holder, Context context,
 			ModelGrid grid, UpdateProvider updater) {
@@ -72,11 +73,8 @@ public class SurfaceGridRendererThread extends Thread {
 		this.columns = grid.getColumns();
 		this.rows = grid.getRows();
 		initCoords();
-		update = new GridUpdateRenderer(grid, rows, columns, coordsX, coordsY,
-				radius);
 		full = new GridFullRenderer(grid, rows, columns, coordsX, coordsY,
 				radius);
-		// doDraw(full);
 	}
 
 	@Override
@@ -87,21 +85,19 @@ public class SurfaceGridRendererThread extends Thread {
 				String newValue = updater.getCurrentValue();
 				if (!newValue.equals(currentValue)) {
 					currentValue = newValue;
+					lastUpdated = now;
 					grid.clearTransitionState();
 					grid.setValue(currentValue);
 				}
 				// Regardless whether the value changed, update the time that should trigger the next query
 				nextUpdate = updater.getNextPossibleUpdateTime();
 			}
-			// TODO sinceSecond should be changed to being an offset from the point that
-			// updater.getCurrentValue() last gave a changed value.
-			sinceSecond = getMillisSinceSecond();
+			sinceSecond = now - lastUpdated;
 			updatePaints();
 			doDraw(full);
 			if (sinceSecond > TRANSITION_LIMIT
 					&& grid.getTransitionsActive() == true) {
-				grid.clearTransitionState();
-				long sleepTime = 950 - sinceSecond;
+				long sleepTime = nextUpdate - now;
 				if (sleepTime > 0) {
 					try {
 						Thread.sleep(sleepTime);
@@ -132,21 +128,6 @@ public class SurfaceGridRendererThread extends Thread {
 	private long getNow() {
 		Calendar now = GregorianCalendar.getInstance();
 		return now.getTimeInMillis();
-	}
-
-	private long getStartOfSecond(Calendar now) {
-		Calendar from = GregorianCalendar.getInstance();
-		from.set(now.get(Calendar.YEAR), now.get(Calendar.MONTH),
-				now.get(Calendar.DAY_OF_MONTH), now.get(Calendar.HOUR_OF_DAY),
-				now.get(Calendar.MINUTE), now.get(Calendar.SECOND));
-		from.set(Calendar.MILLISECOND, 0);
-		return from.getTimeInMillis();
-	}
-	
-
-	private long getMillisSinceSecond() {
-		Calendar now = GregorianCalendar.getInstance();
-		return now.getTimeInMillis() - getStartOfSecond(now);
 	}
 
 	private void logFPS() {
