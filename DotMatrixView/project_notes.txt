@@ -1,7 +1,7 @@
 Project notes
 =============
 Goal: Get the SurfaceView animating the transitions between dot colors.
-NEXT: Figure out how you will make color changes occur in a configurable way.
+NEXT: Make SurfaceGridRendererThread use a CountDownPaintUpdateProvider to control color change.
 
 Top problems:
 [ ] No way to change the color of all dots once drawn - want to be able to go from green through amber to red
