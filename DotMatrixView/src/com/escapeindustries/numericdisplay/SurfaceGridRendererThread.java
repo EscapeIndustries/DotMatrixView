@@ -22,7 +22,7 @@ public class SurfaceGridRendererThread extends Thread {
 	private SurfaceHolder holder;
 	private Context context;
 	private ModelGrid grid;
-	private UpdateProvider updater;
+	private ValueUpdateProvider updater;
 
 	private String currentValue;
 	private long nextUpdate;
@@ -59,7 +59,7 @@ public class SurfaceGridRendererThread extends Thread {
 	private long lastUpdated;
 
 	public SurfaceGridRendererThread(SurfaceHolder holder, Context context,
-			ModelGrid grid, UpdateProvider updater) {
+			ModelGrid grid, ValueUpdateProvider updater) {
 		this.holder = holder;
 		this.context = context;
 		this.grid = grid;

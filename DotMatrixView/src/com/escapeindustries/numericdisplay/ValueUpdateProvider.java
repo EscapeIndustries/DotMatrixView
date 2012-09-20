@@ -1,6 +1,6 @@
 package com.escapeindustries.numericdisplay;
 
-public interface UpdateProvider {
+public interface ValueUpdateProvider {
 
 	public String getCurrentValue();
 	public long getNextPossibleUpdateTime();

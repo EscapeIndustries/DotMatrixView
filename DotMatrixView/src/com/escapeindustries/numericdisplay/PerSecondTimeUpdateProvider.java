@@ -3,7 +3,7 @@ package com.escapeindustries.numericdisplay;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class PerSecondTimeUpdateProvider implements UpdateProvider {
+public class PerSecondTimeUpdateProvider implements ValueUpdateProvider {
 	
 	private FormattedTime formatter;
 
