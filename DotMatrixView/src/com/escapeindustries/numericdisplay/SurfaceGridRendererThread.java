@@ -18,14 +18,16 @@ public class SurfaceGridRendererThread extends Thread {
 	private static final int LIT = 3;
 	private static final int DIM = 0;
 	private boolean running;
-	
+
 	private SurfaceHolder holder;
 	private Context context;
 	private ModelGrid grid;
-	private ValueUpdateProvider updater;
+	private ValueUpdateProvider valueUpdater;
+	private PaintUpdateProvider paintUpdater;
 
 	private String currentValue;
-	private long nextUpdate;
+	private long nextValueUpdate;
+	private long nextPaintUpdate;
 
 	private int litColor;
 	private int dimColor;
@@ -57,18 +59,21 @@ public class SurfaceGridRendererThread extends Thread {
 	private DrawStrategy update;
 	private DrawStrategy full;
 	private long lastUpdated;
+	private long now;
 
 	public SurfaceGridRendererThread(SurfaceHolder holder, Context context,
-			ModelGrid grid, ValueUpdateProvider updater) {
+			ModelGrid grid, ValueUpdateProvider valueUpdater,
+			PaintUpdateProvider paintUpdater) {
 		this.holder = holder;
 		this.context = context;
 		this.grid = grid;
-		this.updater = updater;
-		
-		currentValue = updater.getCurrentValue();
+		this.valueUpdater = valueUpdater;
+		this.paintUpdater = paintUpdater;
+
+		currentValue = valueUpdater.getCurrentValue();
 		grid.setValue(currentValue);
-		this.nextUpdate = updater.getNextPossibleUpdateTime();
-		
+		this.nextValueUpdate = valueUpdater.getNextPossibleUpdateTime();
+
 		setupColors();
 		this.columns = grid.getColumns();
 		this.rows = grid.getRows();
@@ -80,24 +85,25 @@ public class SurfaceGridRendererThread extends Thread {
 	@Override
 	public void run() {
 		while (running) {
-			long now = getNow();
-			if (now >= nextUpdate) {
-				String newValue = updater.getCurrentValue();
+			now = getNow();
+			if (now >= nextValueUpdate) {
+				String newValue = valueUpdater.getCurrentValue();
 				if (!newValue.equals(currentValue)) {
 					currentValue = newValue;
 					lastUpdated = now;
 					grid.clearTransitionState();
 					grid.setValue(currentValue);
 				}
-				// Regardless whether the value changed, update the time that should trigger the next query
-				nextUpdate = updater.getNextPossibleUpdateTime();
+				// Regardless whether the value changed, update the time that
+				// should trigger the next query
+				nextValueUpdate = valueUpdater.getNextPossibleUpdateTime();
 			}
 			sinceSecond = now - lastUpdated;
 			updatePaints();
 			doDraw(full);
 			if (sinceSecond > TRANSITION_LIMIT
 					&& grid.getTransitionsActive() == true) {
-				long sleepTime = nextUpdate - now;
+				long sleepTime = nextValueUpdate - now;
 				if (sleepTime > 0) {
 					try {
 						Thread.sleep(sleepTime);
@@ -146,8 +152,12 @@ public class SurfaceGridRendererThread extends Thread {
 	}
 
 	private void setupColors() {
-		dimColor = context.getResources().getColor(R.color.dim_green);
-		litColor = context.getResources().getColor(R.color.bright_green);
+		int[] currentPaints = paintUpdater.getCurrentPaints();
+		nextPaintUpdate = paintUpdater.getNextPossibleUpdateTime();
+		litColor = currentPaints[0];
+		dimColor = currentPaints[1];
+		// dimColor = context.getResources().getColor(R.color.dim_green);
+		// litColor = context.getResources().getColor(R.color.bright_green);
 		setUpColorComponents();
 		setUpColorRanges();
 		paints[DIM] = getDim();
@@ -157,6 +167,16 @@ public class SurfaceGridRendererThread extends Thread {
 	}
 
 	private void updatePaints() {
+		if (now > nextPaintUpdate) {
+			int[] currentPaints = paintUpdater.getCurrentPaints();
+			nextPaintUpdate = paintUpdater.getNextPossibleUpdateTime();
+			litColor = currentPaints[0];
+			dimColor = currentPaints[1];
+			setUpColorComponents();
+			setUpColorRanges();
+			paints[DIM] = getDim();
+			paints[LIT] = getLit();
+		}
 		paints[DIMMING] = getDimming();
 		paints[LIGHTENING] = getLightening();
 	}

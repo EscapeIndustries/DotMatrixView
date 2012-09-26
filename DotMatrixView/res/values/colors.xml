@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="dim_green">#ff001100</color>
+    <color name="dim_green">#ff002200</color>
     <color name="bright_green">#ff33dd33</color>
-    <color name="dim_red">#ff110000</color>
-    <color name="bright_red">#ffdd3333</color>
+    <color name="dim_orange">#ff221100</color>
+    <color name="bright_orange">#ffdd7733</color>
+    <color name="dim_red">#ff220000</color>
+    <color name="bright_red">#ffdd3232</color>
 </resources>
