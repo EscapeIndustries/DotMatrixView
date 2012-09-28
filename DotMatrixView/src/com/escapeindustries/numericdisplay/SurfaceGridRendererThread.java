@@ -74,7 +74,7 @@ public class SurfaceGridRendererThread extends Thread {
 		grid.setValue(currentValue);
 		this.nextValueUpdate = valueUpdater.getNextPossibleUpdateTime();
 
-		setupColors();
+		updatePaints();
 		this.columns = grid.getColumns();
 		this.rows = grid.getRows();
 		initCoords();
@@ -149,21 +149,6 @@ public class SurfaceGridRendererThread extends Thread {
 
 	public void setRunning(boolean running) {
 		this.running = running;
-	}
-
-	private void setupColors() {
-		int[] currentPaints = paintUpdater.getCurrentPaints();
-		nextPaintUpdate = paintUpdater.getNextPossibleUpdateTime();
-		litColor = currentPaints[0];
-		dimColor = currentPaints[1];
-		// dimColor = context.getResources().getColor(R.color.dim_green);
-		// litColor = context.getResources().getColor(R.color.bright_green);
-		setUpColorComponents();
-		setUpColorRanges();
-		paints[DIM] = getDim();
-		paints[DIMMING] = getDimming();
-		paints[LIGHTENING] = getLightening();
-		paints[LIT] = getLit();
 	}
 
 	private void updatePaints() {
