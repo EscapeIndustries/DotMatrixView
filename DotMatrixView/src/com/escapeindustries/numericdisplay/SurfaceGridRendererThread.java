@@ -74,7 +74,10 @@ public class SurfaceGridRendererThread extends Thread {
 		grid.setValue(currentValue);
 		this.nextValueUpdate = valueUpdater.getNextPossibleUpdateTime();
 
+		now = getNow();
 		updatePaints();
+		updateInterstitialPaints();
+
 		this.columns = grid.getColumns();
 		this.rows = grid.getRows();
 		initCoords();
@@ -93,13 +96,14 @@ public class SurfaceGridRendererThread extends Thread {
 					lastUpdated = now;
 					grid.clearTransitionState();
 					grid.setValue(currentValue);
+					updatePaints();
 				}
 				// Regardless whether the value changed, update the time that
 				// should trigger the next query
 				nextValueUpdate = valueUpdater.getNextPossibleUpdateTime();
 			}
 			sinceSecond = now - lastUpdated;
-			updatePaints();
+			updateInterstitialPaints();
 			doDraw(full);
 			if (sinceSecond > TRANSITION_LIMIT
 					&& grid.getTransitionsActive() == true) {
@@ -162,6 +166,9 @@ public class SurfaceGridRendererThread extends Thread {
 			paints[DIM] = getDim();
 			paints[LIT] = getLit();
 		}
+	}
+
+	private void updateInterstitialPaints() {
 		paints[DIMMING] = getDimming();
 		paints[LIGHTENING] = getLightening();
 	}

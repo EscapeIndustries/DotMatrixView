@@ -1,8 +1,7 @@
 Project notes
 =============
 Goal: Get the SurfaceView animating the transitions between dot colors.
-NEXT: Make SurfaceGridRendererThread call for paint changes whenever it gets a new value, and not on general interstitial paint updates.
-Build a PaintUpdateProvider representing a single color, expecting updates at the end of time.
+NEXT: Build a PaintUpdateProvider representing a single color, expecting updates at the end of time.
 
 Top problems: What to do next?
 [ ] More XML config - dot size, padding between dots
