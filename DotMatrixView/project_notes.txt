@@ -1,7 +1,7 @@
 Project notes
 =============
 Goal: Get the SurfaceView animating the transitions between dot colors.
-NEXT: Build a PaintUpdateProvider representing a single color, expecting updates at the end of time.
+NEXT: Bring some XML config over to SurfaceGridView from DisplayGrid.
 
 Top problems: What to do next?
 [ ] More XML config - dot size, padding between dots

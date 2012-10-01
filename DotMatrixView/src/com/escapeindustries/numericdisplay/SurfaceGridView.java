@@ -35,6 +35,23 @@ public class SurfaceGridView extends SurfaceView implements
 		holder.addCallback(this);
 	}
 
+	private ColorUpdateProvider getPaintUpdateProvider() {
+		return new SingleColorUpdateProvider(context.getResources()
+				.getColor(R.color.bright_green), context.getResources()
+				.getColor(R.color.dim_green));
+//		int[] litColors = new int[3];
+//		litColors[0] = context.getResources().getColor(R.color.bright_green);
+//		litColors[1] = context.getResources().getColor(R.color.bright_orange);
+//		litColors[2] = context.getResources().getColor(R.color.bright_red);
+//		int[] dimColors = new int[3];
+//		dimColors[0] = context.getResources().getColor(R.color.dim_green);
+//		dimColors[1] = context.getResources().getColor(R.color.dim_orange);
+//		dimColors[2] = context.getResources().getColor(R.color.dim_red);
+//		long[] colorTimings = new long[] { 3, 3, 3 };
+//		return new CountdownColorUpdateProvider(litColors, dimColors,
+//				colorTimings);
+	}
+
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
@@ -45,21 +62,10 @@ public class SurfaceGridView extends SurfaceView implements
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
 		model.setActive(true);
-		int[] litColors = new int[3];
-		litColors[0] = context.getResources().getColor(R.color.bright_green);
-		litColors[1] = context.getResources().getColor(R.color.bright_orange);
-		litColors[2] = context.getResources().getColor(R.color.bright_red);
-		int[] dimColors = new int[3];
-		dimColors[0] = context.getResources().getColor(R.color.dim_green);
-		dimColors[1] = context.getResources().getColor(R.color.dim_orange);
-		dimColors[2] = context.getResources().getColor(R.color.dim_red);
-		long[] colorTimings = new long[3];
-		colorTimings[0] = 3;
-		colorTimings[1] = 3;
-		colorTimings[2] = 3;
+
 		renderer = new SurfaceGridRendererThread(holder, context, model,
 				new PerSecondTimeUpdateProvider(new FormattedTime(
-						new SystemClockTimeSource())), new CountdownPaintUpdateProvider(litColors, dimColors, colorTimings));
+						new SystemClockTimeSource())), getPaintUpdateProvider());
 		renderer.setRunning(true);
 		renderer.start();
 

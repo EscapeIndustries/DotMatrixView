@@ -23,7 +23,7 @@ public class SurfaceGridRendererThread extends Thread {
 	private Context context;
 	private ModelGrid grid;
 	private ValueUpdateProvider valueUpdater;
-	private PaintUpdateProvider paintUpdater;
+	private ColorUpdateProvider paintUpdater;
 
 	private String currentValue;
 	private long nextValueUpdate;
@@ -63,7 +63,7 @@ public class SurfaceGridRendererThread extends Thread {
 
 	public SurfaceGridRendererThread(SurfaceHolder holder, Context context,
 			ModelGrid grid, ValueUpdateProvider valueUpdater,
-			PaintUpdateProvider paintUpdater) {
+			ColorUpdateProvider paintUpdater) {
 		this.holder = holder;
 		this.context = context;
 		this.grid = grid;
@@ -157,7 +157,7 @@ public class SurfaceGridRendererThread extends Thread {
 
 	private void updatePaints() {
 		if (now > nextPaintUpdate) {
-			int[] currentPaints = paintUpdater.getCurrentPaints();
+			int[] currentPaints = paintUpdater.getCurrentColors();
 			nextPaintUpdate = paintUpdater.getNextPossibleUpdateTime();
 			litColor = currentPaints[0];
 			dimColor = currentPaints[1];

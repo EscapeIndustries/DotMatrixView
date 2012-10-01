@@ -3,7 +3,7 @@ package com.escapeindustries.numericdisplay;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class CountdownPaintUpdateProvider implements PaintUpdateProvider {
+public class CountdownColorUpdateProvider implements ColorUpdateProvider {
 
 	private int[] lit;
 	private int[] dim;
@@ -11,7 +11,7 @@ public class CountdownPaintUpdateProvider implements PaintUpdateProvider {
 	private long[] changeTimes;
 	private int current;
 
-	public CountdownPaintUpdateProvider(int[] lit, int[] dim, long[] timeOnColor) {
+	public CountdownColorUpdateProvider(int[] lit, int[] dim, long[] timeOnColor) {
 		this.lit = lit;
 		this.dim = dim;
 		this.timeOnColor = timeOnColor;
@@ -44,7 +44,7 @@ public class CountdownPaintUpdateProvider implements PaintUpdateProvider {
 	}
 
 	@Override
-	public int[] getCurrentPaints() {
+	public int[] getCurrentColors() {
 		long now = getNow();
 		// Move on to the next color if we have passed the time limit for the
 		// current color
