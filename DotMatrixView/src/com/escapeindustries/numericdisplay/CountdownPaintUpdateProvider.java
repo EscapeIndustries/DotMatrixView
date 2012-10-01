@@ -3,8 +3,6 @@ package com.escapeindustries.numericdisplay;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import android.graphics.Paint;
-
 public class CountdownPaintUpdateProvider implements PaintUpdateProvider {
 
 	private int[] lit;
