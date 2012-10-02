@@ -87,8 +87,8 @@ public abstract class BaseGrid implements Grid {
 			column += glyph.getWidth();
 			gridHeight = Math.max(gridHeight, glyph.getHeight());
 		}
-		setColumns(column);
-		setRows(gridHeight);
+		setColumns(column + paddingRight);
+		setRows(paddingTop + gridHeight + paddingBottom);
 		initializeGrid();
 		for (Glyph glyph : glyphs) {
 			glyph.draw();
