@@ -68,12 +68,12 @@ public class DisplayGrid extends LinearLayout implements Grid {
 		TypedArray a = getContext().obtainStyledAttributes(attrs,
 				R.styleable.MatrixDisplay);
 		paddingRowsTop = a.getInt(R.styleable.MatrixDisplay_dotPaddingTop, 0);
-		paddingColumnsLeft = a
-				.getInt(R.styleable.MatrixDisplay_dotPaddingLeft, 0);
-		paddingRowsBottom = a.getInt(R.styleable.MatrixDisplay_dotPaddingBottom,
+		paddingColumnsLeft = a.getInt(R.styleable.MatrixDisplay_dotPaddingLeft,
 				0);
-		paddingColumnsRight = a.getInt(R.styleable.MatrixDisplay_dotPaddingRight,
-				0);
+		paddingRowsBottom = a.getInt(
+				R.styleable.MatrixDisplay_dotPaddingBottom, 0);
+		paddingColumnsRight = a.getInt(
+				R.styleable.MatrixDisplay_dotPaddingRight, 0);
 		setLitColor(a.getColor(R.styleable.MatrixDisplay_dotColorLit,
 				getResources().getColor(R.color.bright_green)));
 		setDimColor(a.getColor(R.styleable.MatrixDisplay_dotColorDim,
@@ -83,7 +83,7 @@ public class DisplayGrid extends LinearLayout implements Grid {
 			setFormat(format);
 		}
 	}
-	
+
 	@Override
 	protected void onDetachedFromWindow() {
 		super.onDetachedFromWindow();
@@ -191,12 +191,12 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	public void setLitColor(int color) {
 		this.litColor = color;
 	}
-	
+
 	@Override
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	
+
 	@Override
 	public boolean isActive() {
 		return active;
