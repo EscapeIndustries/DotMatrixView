@@ -3,7 +3,6 @@ package com.escapeindustries.numericdisplay;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -20,7 +19,6 @@ public class SurfaceGridRendererThread extends Thread {
 	private boolean running;
 
 	private SurfaceHolder holder;
-	private Context context;
 	private ModelGrid grid;
 	private ValueUpdateProvider valueUpdater;
 	private ColorUpdateProvider paintUpdater;
@@ -56,16 +54,13 @@ public class SurfaceGridRendererThread extends Thread {
 	private int dimBlue;
 	private int litGreen;
 	private int dimGreen;
-	private DrawStrategy update;
 	private DrawStrategy full;
 	private long lastUpdated;
 	private long now;
 
-	public SurfaceGridRendererThread(SurfaceHolder holder, Context context,
-			ModelGrid grid, ValueUpdateProvider valueUpdater,
-			ColorUpdateProvider paintUpdater) {
+	public SurfaceGridRendererThread(SurfaceHolder holder, ModelGrid grid,
+			ValueUpdateProvider valueUpdater, ColorUpdateProvider paintUpdater) {
 		this.holder = holder;
-		this.context = context;
 		this.grid = grid;
 		this.valueUpdater = valueUpdater;
 		this.paintUpdater = paintUpdater;
