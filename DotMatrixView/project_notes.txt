@@ -1,7 +1,7 @@
 Project notes
 =============
-Goal: Get the SurfaceView animating the transitions between dot colors.
-NEXT: Bring some XML config over to SurfaceGridView from DisplayGrid.
+Goal: Finish off the SurfaceView version, aiming to make it a basic component that can be used easily via XML.
+NEXT: Rename SurfaceGridView and SurfaceGridRendererThread to be less implementation-specific.
 
 Top problems: What to do next?
 [ ] More XML config - dot size, padding between dots

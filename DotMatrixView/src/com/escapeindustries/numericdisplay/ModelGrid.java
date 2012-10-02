@@ -4,11 +4,7 @@ public class ModelGrid extends BaseGrid {
 
 	private int[][] grid;
 	private boolean transitionsActive;
-
-	public ModelGrid(String format) {
-		setFormat(format);
-	}
-
+	
 	@Override
 	public void changeDot(int x, int y, boolean on) {
 		int current = grid[x][y];
