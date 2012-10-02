@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="DisplayGrid">
+    <declare-styleable name="MatrixDisplay">
         <attr name="dotPaddingTop" format="integer" />
         <attr name="dotPaddingLeft" format="integer" />
         <attr name="dotPaddingBottom" format="integer" />

@@ -66,19 +66,19 @@ public class DisplayGrid extends LinearLayout implements Grid {
 	private void initialize(Context ctx, AttributeSet attrs) {
 		initialize(ctx);
 		TypedArray a = getContext().obtainStyledAttributes(attrs,
-				R.styleable.DisplayGrid);
-		paddingRowsTop = a.getInt(R.styleable.DisplayGrid_dotPaddingTop, 0);
+				R.styleable.MatrixDisplay);
+		paddingRowsTop = a.getInt(R.styleable.MatrixDisplay_dotPaddingTop, 0);
 		paddingColumnsLeft = a
-				.getInt(R.styleable.DisplayGrid_dotPaddingLeft, 0);
-		paddingRowsBottom = a.getInt(R.styleable.DisplayGrid_dotPaddingBottom,
+				.getInt(R.styleable.MatrixDisplay_dotPaddingLeft, 0);
+		paddingRowsBottom = a.getInt(R.styleable.MatrixDisplay_dotPaddingBottom,
 				0);
-		paddingColumnsRight = a.getInt(R.styleable.DisplayGrid_dotPaddingRight,
+		paddingColumnsRight = a.getInt(R.styleable.MatrixDisplay_dotPaddingRight,
 				0);
-		setLitColor(a.getColor(R.styleable.DisplayGrid_dotColorLit,
+		setLitColor(a.getColor(R.styleable.MatrixDisplay_dotColorLit,
 				getResources().getColor(R.color.bright_green)));
-		setDimColor(a.getColor(R.styleable.DisplayGrid_dotColorDim,
+		setDimColor(a.getColor(R.styleable.MatrixDisplay_dotColorDim,
 				getResources().getColor(R.color.dim_green)));
-		String format = a.getString(R.styleable.DisplayGrid_format);
+		String format = a.getString(R.styleable.MatrixDisplay_format);
 		if (format != null) {
 			setFormat(format);
 		}
