@@ -6,12 +6,12 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class SurfaceGridView extends SurfaceView implements
+public class MatrixDisplay extends SurfaceView implements
 		SurfaceHolder.Callback {
 
 	private ModelGrid model;
 	private SurfaceHolder holder;
-	private SurfaceGridRendererThread renderer;
+	private MatrixDisplayRenderer renderer;
 	private int paddingRowsTop = 0;
 	private int paddingColumnsLeft = 0;
 	private int paddingRowsBottom = 0;
@@ -21,17 +21,17 @@ public class SurfaceGridView extends SurfaceView implements
 	private String defaultFormat = "0 0 : 0 0 : 0 0";
 	private String format = defaultFormat;
 
-	public SurfaceGridView(Context context) {
+	public MatrixDisplay(Context context) {
 		super(context);
 		initialize();
 	}
 
-	public SurfaceGridView(Context context, AttributeSet attrs, int defStyle) {
+	public MatrixDisplay(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		initialize(context, attrs);
 	}
 
-	public SurfaceGridView(Context context, AttributeSet attrs) {
+	public MatrixDisplay(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initialize(context, attrs);
 	}
@@ -97,7 +97,7 @@ public class SurfaceGridView extends SurfaceView implements
 	public void surfaceCreated(SurfaceHolder holder) {
 		model.setActive(true);
 
-		renderer = new SurfaceGridRendererThread(holder, model, new PerSecondTimeUpdateProvider(new FormattedTime(
+		renderer = new MatrixDisplayRenderer(holder, model, new PerSecondTimeUpdateProvider(new FormattedTime(
 				new SystemClockTimeSource())),
 				getPaintUpdateProvider());
 		renderer.setRunning(true);

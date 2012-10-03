@@ -1,12 +1,7 @@
 Project notes
 =============
-Goal: Finish off the SurfaceView version, aiming to make it a basic component that can be used easily via XML.
-NEXT: Rename SurfaceGridView and SurfaceGridRendererThread to be less implementation-specific.
-
-Top problems: What to do next?
-[ ] More XML config - dot size, padding between dots
-*   Need to put time updates into a Service
-	[ ] Read about services
+Goal: Finish off the MatrixDisplay version, aiming to make it a basic component that can be used easily via XML.
+NEXT: More XML config - dot size, padding between dots 
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
