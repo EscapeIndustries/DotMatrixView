@@ -5,14 +5,15 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <com.escapeindustries.numericdisplay.DisplayGrid
-        android:id="@+id/grid"
+    <com.escapeindustries.numericdisplay.MatrixDisplay
+        android:id="@+id/surfacegrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         app:dotColorDim="@color/dullPink"
         app:dotColorLit="@color/pink"
         app:dotPaddingBottom="1"
+        app:dotPaddingLeft="1"
+        app:dotPaddingRight="1"
         app:dotPaddingTop="1"
         app:format="0 0 : 0 0 : 0 0" />
 
