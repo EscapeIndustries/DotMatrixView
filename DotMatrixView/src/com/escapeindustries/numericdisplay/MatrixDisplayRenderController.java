@@ -9,7 +9,7 @@ import android.graphics.Paint;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
-public class MatrixDisplayRenderer extends Thread {
+public class MatrixDisplayRenderController extends Thread {
 
 	private static final int TRANSITION_LIMIT = 300;
 	private static final int LIGHTENING = 2;
@@ -58,7 +58,7 @@ public class MatrixDisplayRenderer extends Thread {
 	private long lastUpdated;
 	private long now;
 
-	public MatrixDisplayRenderer(SurfaceHolder holder, ModelGrid grid,
+	public MatrixDisplayRenderController(SurfaceHolder holder, ModelGrid grid,
 			ValueUpdateProvider valueUpdater, ColorUpdateProvider paintUpdater) {
 		this.holder = holder;
 		this.grid = grid;
@@ -76,7 +76,7 @@ public class MatrixDisplayRenderer extends Thread {
 		this.columns = grid.getColumns();
 		this.rows = grid.getRows();
 		initCoords();
-		full = new GridFullRenderer(grid, rows, columns, coordsX, coordsY,
+		full = new MatrixDisplayFullDrawStrategy(grid, rows, columns, coordsX, coordsY,
 				radius);
 	}
 
@@ -137,7 +137,7 @@ public class MatrixDisplayRenderer extends Thread {
 	private void logFPS() {
 		int nowSeconds = GregorianCalendar.getInstance().get(Calendar.SECOND);
 		if (nowSeconds != lastSeconds) {
-			Log.d(TAG, "MatrixDisplayRenderer: fps == " + fps);
+			Log.d(TAG, "MatrixDisplayRenderController: fps == " + fps);
 			fps = 1;
 			lastSeconds = nowSeconds;
 		} else {

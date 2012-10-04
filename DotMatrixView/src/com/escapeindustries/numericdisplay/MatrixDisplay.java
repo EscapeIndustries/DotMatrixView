@@ -11,7 +11,7 @@ public class MatrixDisplay extends SurfaceView implements
 
 	private ModelGrid model;
 	private SurfaceHolder holder;
-	private MatrixDisplayRenderer renderer;
+	private MatrixDisplayRenderController renderer;
 	private int paddingRowsTop = 0;
 	private int paddingColumnsLeft = 0;
 	private int paddingRowsBottom = 0;
@@ -97,7 +97,7 @@ public class MatrixDisplay extends SurfaceView implements
 	public void surfaceCreated(SurfaceHolder holder) {
 		model.setActive(true);
 
-		renderer = new MatrixDisplayRenderer(holder, model, new PerSecondTimeUpdateProvider(new FormattedTime(
+		renderer = new MatrixDisplayRenderController(holder, model, new PerSecondTimeUpdateProvider(new FormattedTime(
 				new SystemClockTimeSource())),
 				getPaintUpdateProvider());
 		renderer.setRunning(true);

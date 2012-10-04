@@ -1,9 +1,10 @@
 package com.escapeindustries.numericdisplay;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 
-public class GridUpdateRenderer implements DrawStrategy {
+public class MatrixDisplayFullDrawStrategy implements DrawStrategy {
 
 	private ModelGrid grid;
 	private int rows;
@@ -12,7 +13,7 @@ public class GridUpdateRenderer implements DrawStrategy {
 	private int[][] coordsY;
 	private float radius;
 
-	public GridUpdateRenderer(ModelGrid grid, int rows, int columns,
+	public MatrixDisplayFullDrawStrategy(ModelGrid grid, int rows, int columns,
 			int[][] coordsX, int[][] coordsY, float radius) {
 		this.grid = grid;
 		this.rows = rows;
@@ -24,14 +25,11 @@ public class GridUpdateRenderer implements DrawStrategy {
 
 	@Override
 	public void draw(Canvas canvas, Paint[] paints) {
-		int dotState = -1;
+		canvas.drawColor(Color.BLACK);
 		for (int row = 0; row < rows; row++) {
 			for (int column = 0; column < columns; column++) {
-				dotState = grid.getDotState(column, row);
-				if (dotState == 1 || dotState == 2) {
-					canvas.drawCircle(coordsX[row][column],
-							coordsY[row][column], radius, paints[dotState]);
-				}
+				canvas.drawCircle(coordsX[row][column], coordsY[row][column],
+						radius, paints[grid.getDotState(column, row)]);
 			}
 		}
 	}
