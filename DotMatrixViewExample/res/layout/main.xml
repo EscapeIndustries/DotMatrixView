@@ -15,6 +15,9 @@
         app:dotPaddingLeft="1"
         app:dotPaddingRight="1"
         app:dotPaddingTop="1"
+        app:dotRadius="4"
+        app:dotSpacing="2"
+        app:transitionDuration="300"
         app:format="0 0 : 0 0 : 0 0" />
 
 </LinearLayout>
