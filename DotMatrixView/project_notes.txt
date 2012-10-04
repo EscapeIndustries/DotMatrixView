@@ -1,7 +1,7 @@
 Project notes
 =============
 Goal: Finish off the MatrixDisplay version, aiming to make it a basic component that can be used easily via XML.
-NEXT: More XML config - dot size, padding between dots 
+NEXT: Refactor color calculation code out of MatrixDisplayRenderController into its own class. 
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?

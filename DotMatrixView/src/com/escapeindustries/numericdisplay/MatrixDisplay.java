@@ -9,17 +9,24 @@ import android.view.SurfaceView;
 public class MatrixDisplay extends SurfaceView implements
 		SurfaceHolder.Callback {
 
+	private static final int DEFAULT_PADDING = 0;
+	private static final int DEFAULT_DOT_SPACING = 2;
+	private static final int DEFAULT_DOT_RADIUS = 4;
+	private static final int DEFAULT_TRANSITION_DURATION = 300;
+	private static final String DEFAULT_FORMAT = "0 0 : 0 0 : 0 0";
 	private ModelGrid model;
 	private SurfaceHolder holder;
 	private MatrixDisplayRenderController renderer;
-	private int paddingRowsTop = 0;
-	private int paddingColumnsLeft = 0;
-	private int paddingRowsBottom = 0;
-	private int paddingColumnsRight = 0;
+	private int paddingRowsTop = DEFAULT_PADDING;
+	private int paddingColumnsLeft = DEFAULT_PADDING;
+	private int paddingRowsBottom = DEFAULT_PADDING;
+	private int paddingColumnsRight = DEFAULT_PADDING;
+	private int dotRadius = DEFAULT_DOT_RADIUS;
+	private int dotSpacing = DEFAULT_DOT_SPACING;
 	private int litColor = getResources().getColor(R.color.bright_green);
 	private int dimColor = getResources().getColor(R.color.dim_green);
-	private String defaultFormat = "0 0 : 0 0 : 0 0";
-	private String format = defaultFormat;
+	private String format = DEFAULT_FORMAT;
+	private long transitionDuration;
 
 	public MatrixDisplay(Context context) {
 		super(context);
@@ -52,20 +59,28 @@ public class MatrixDisplay extends SurfaceView implements
 	private void initialize(Context context2, AttributeSet attrs) {
 		TypedArray a = getContext().obtainStyledAttributes(attrs,
 				R.styleable.MatrixDisplay);
-		paddingRowsTop = a.getInt(R.styleable.MatrixDisplay_dotPaddingTop, 0);
+		paddingRowsTop = a.getInt(R.styleable.MatrixDisplay_dotPaddingTop,
+				DEFAULT_PADDING);
 		paddingRowsBottom = a.getInt(
-				R.styleable.MatrixDisplay_dotPaddingBottom, 0);
+				R.styleable.MatrixDisplay_dotPaddingBottom, DEFAULT_PADDING);
 		paddingColumnsLeft = a.getInt(R.styleable.MatrixDisplay_dotPaddingLeft,
-				0);
+				DEFAULT_PADDING);
 		paddingColumnsRight = a.getInt(
-				R.styleable.MatrixDisplay_dotPaddingRight, 0);
+				R.styleable.MatrixDisplay_dotPaddingRight, DEFAULT_PADDING);
 		litColor = a.getColor(R.styleable.MatrixDisplay_dotColorLit,
 				getResources().getColor(R.color.bright_green));
 		dimColor = a.getColor(R.styleable.MatrixDisplay_dotColorDim,
 				getResources().getColor(R.color.dim_green));
+		dotRadius = a.getInt(R.styleable.MatrixDisplay_dotRadius,
+				DEFAULT_DOT_RADIUS);
+		dotSpacing = a.getInt(R.styleable.MatrixDisplay_dotSpacing,
+				DEFAULT_DOT_SPACING);
+		transitionDuration = a.getInt(
+				R.styleable.MatrixDisplay_transitionDuration,
+				DEFAULT_TRANSITION_DURATION);
 		format = a.getString(R.styleable.MatrixDisplay_format);
 		if (format == null) {
-			format = defaultFormat;
+			format = DEFAULT_FORMAT;
 		}
 		initialize();
 	}
@@ -97,9 +112,11 @@ public class MatrixDisplay extends SurfaceView implements
 	public void surfaceCreated(SurfaceHolder holder) {
 		model.setActive(true);
 
-		renderer = new MatrixDisplayRenderController(holder, model, new PerSecondTimeUpdateProvider(new FormattedTime(
-				new SystemClockTimeSource())),
-				getPaintUpdateProvider());
+		renderer = new MatrixDisplayRenderController(holder, model,
+				new PerSecondTimeUpdateProvider(new FormattedTime(
+						new SystemClockTimeSource())),
+				getPaintUpdateProvider(), dotRadius, dotSpacing,
+				transitionDuration);
 		renderer.setRunning(true);
 		renderer.start();
 

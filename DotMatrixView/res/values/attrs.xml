@@ -9,6 +9,9 @@
         <attr name="format" format="string" />
         <attr name="dotColorLit" format="color" />
         <attr name="dotColorDim" format="color" />
+        <attr name="dotRadius" format="integer" />
+        <attr name="dotSpacing" format="integer" />
+        <attr name="transitionDuration" format="integer" />
     </declare-styleable>
 
 </resources>

@@ -11,11 +11,10 @@ import android.view.SurfaceHolder;
 
 public class MatrixDisplayRenderController extends Thread {
 
-	private static final int TRANSITION_LIMIT = 300;
-	private static final int LIGHTENING = 2;
-	private static final int DIMMING = 1;
-	private static final int LIT = 3;
 	private static final int DIM = 0;
+	private static final int DIMMING = 1;
+	private static final int LIGHTENING = 2;
+	private static final int LIT = 3;
 	private boolean running;
 
 	private SurfaceHolder holder;
@@ -27,14 +26,11 @@ public class MatrixDisplayRenderController extends Thread {
 	private long nextValueUpdate;
 	private long nextPaintUpdate;
 
+	private long transitionDuration;
 	private int litColor;
 	private int dimColor;
-	private int rows = 13;
-	private int columns = 7;
 	private int[][] coordsX;
 	private int[][] coordsY;
-	private int radius = 4;
-	private int space = 2;
 
 	private int lastSeconds = -1;
 	private int fps = 0;
@@ -59,11 +55,13 @@ public class MatrixDisplayRenderController extends Thread {
 	private long now;
 
 	public MatrixDisplayRenderController(SurfaceHolder holder, ModelGrid grid,
-			ValueUpdateProvider valueUpdater, ColorUpdateProvider paintUpdater) {
+			ValueUpdateProvider valueUpdater, ColorUpdateProvider paintUpdater,
+			int dotRadius, int dotSpacing, long transitionDuration) {
 		this.holder = holder;
 		this.grid = grid;
 		this.valueUpdater = valueUpdater;
 		this.paintUpdater = paintUpdater;
+		this.transitionDuration = transitionDuration;
 
 		currentValue = valueUpdater.getCurrentValue();
 		grid.setValue(currentValue);
@@ -73,11 +71,9 @@ public class MatrixDisplayRenderController extends Thread {
 		updatePaints();
 		updateInterstitialPaints();
 
-		this.columns = grid.getColumns();
-		this.rows = grid.getRows();
-		initCoords();
-		full = new MatrixDisplayFullDrawStrategy(grid, rows, columns, coordsX, coordsY,
-				radius);
+		initCoords(grid.getRows(), grid.getColumns(), dotRadius, dotSpacing);
+		full = new MatrixDisplayFullDrawStrategy(grid, grid.getRows(),
+				grid.getColumns(), coordsX, coordsY, dotRadius);
 	}
 
 	@Override
@@ -100,7 +96,7 @@ public class MatrixDisplayRenderController extends Thread {
 			sinceSecond = now - lastUpdated;
 			updateInterstitialPaints();
 			doDraw(full);
-			if (sinceSecond > TRANSITION_LIMIT
+			if (sinceSecond > transitionDuration
 					&& grid.getTransitionsActive() == true) {
 				long sleepTime = nextValueUpdate - now;
 				if (sleepTime > 0) {
@@ -183,10 +179,10 @@ public class MatrixDisplayRenderController extends Thread {
 
 	private Paint getDimming() {
 		Paint result;
-		if (sinceSecond > TRANSITION_LIMIT) {
+		if (sinceSecond > transitionDuration) {
 			result = paints[DIM];
 		} else {
-			float percentThroughTransition = 1.0f - ((float) sinceSecond / TRANSITION_LIMIT);
+			float percentThroughTransition = 1.0f - ((float) sinceSecond / transitionDuration);
 			result = new Paint();
 			result.setColor(getInterstitial(percentThroughTransition));
 		}
@@ -195,11 +191,11 @@ public class MatrixDisplayRenderController extends Thread {
 
 	private Paint getLightening() {
 		Paint result;
-		if (sinceSecond > TRANSITION_LIMIT) {
+		if (sinceSecond > transitionDuration) {
 			result = paints[LIT];
 		} else {
 			float percentThroughTransition = (float) sinceSecond
-					/ TRANSITION_LIMIT;
+					/ transitionDuration;
 			result = new Paint();
 			result.setColor(getInterstitial(percentThroughTransition));
 		}
@@ -232,15 +228,16 @@ public class MatrixDisplayRenderController extends Thread {
 		greenRange = litGreen - dimGreen;
 	}
 
-	private void initCoords() {
+	private void initCoords(int rows, int columns, int dotRadius,
+			int spaceBetweenDots) {
 		// Set up a pair of 2D arrays. Each holds one half of the coordinates
 		// for every dot in the grid
 		coordsX = new int[rows][columns];
 		coordsY = new int[rows][columns];
-		int rowStart = radius + space;
+		int rowStart = dotRadius + spaceBetweenDots;
 		int x = rowStart;
 		int y = rowStart;
-		int centerSpacing = space + radius * 2;
+		int centerSpacing = spaceBetweenDots + dotRadius * 2;
 		// Iterate over all rows and columns
 		for (int row = 0; row < rows; row++) {
 			for (int column = 0; column < columns; column++) {
