@@ -11,33 +11,43 @@ import android.view.SurfaceHolder;
 
 public class MatrixDisplayRenderController extends Thread {
 
+	// Constants
 	private static final int DIM = 0;
 	private static final int DIMMING = 1;
 	private static final int LIGHTENING = 2;
 	private static final int LIT = 3;
-	private boolean running;
+	private static String TAG = "NumericalDisplay";
 
+	// State
+	private boolean running;
+	private String currentValue;
+	private long now;
+	private long lastValueUpdate;
+	private long nextValueUpdate;
+	private long nextPaintUpdate;
+
+	// Configuration
+	private long transitionDuration;
+
+	// Collaborators
 	private SurfaceHolder holder;
 	private ModelGrid grid;
 	private ValueUpdateProvider valueUpdater;
 	private ColorUpdateProvider paintUpdater;
+	private DrawStrategy full;
 
-	private String currentValue;
-	private long nextValueUpdate;
-	private long nextPaintUpdate;
-
-	private long transitionDuration;
-	private int litColor;
-	private int dimColor;
+	// Convenience data
 	private int[][] coordsX;
 	private int[][] coordsY;
 
+	// Supporting FPS measurement/estimation
 	private int lastSeconds = -1;
 	private int fps = 0;
-	private Paint[] paints = new Paint[4];
-	private long sinceSecond;
 
-	private static String TAG = "NumericalDisplay";
+	private int litColor;
+	private int dimColor;
+	private Paint[] paints = new Paint[4];
+
 	private int alphaRange;
 	private int redRange;
 	private int blueRange;
@@ -50,9 +60,6 @@ public class MatrixDisplayRenderController extends Thread {
 	private int dimBlue;
 	private int litGreen;
 	private int dimGreen;
-	private DrawStrategy full;
-	private long lastUpdated;
-	private long now;
 
 	public MatrixDisplayRenderController(SurfaceHolder holder, ModelGrid grid,
 			ValueUpdateProvider valueUpdater, ColorUpdateProvider paintUpdater,
@@ -69,7 +76,7 @@ public class MatrixDisplayRenderController extends Thread {
 
 		now = getNow();
 		updatePaints();
-		updateInterstitialPaints();
+		updateInterstitialPaints(0l);
 
 		initCoords(grid.getRows(), grid.getColumns(), dotRadius, dotSpacing);
 		full = new MatrixDisplayFullDrawStrategy(grid, grid.getRows(),
@@ -84,7 +91,7 @@ public class MatrixDisplayRenderController extends Thread {
 				String newValue = valueUpdater.getCurrentValue();
 				if (!newValue.equals(currentValue)) {
 					currentValue = newValue;
-					lastUpdated = now;
+					lastValueUpdate = now;
 					grid.clearTransitionState();
 					grid.setValue(currentValue);
 					updatePaints();
@@ -93,10 +100,10 @@ public class MatrixDisplayRenderController extends Thread {
 				// should trigger the next query
 				nextValueUpdate = valueUpdater.getNextPossibleUpdateTime();
 			}
-			sinceSecond = now - lastUpdated;
-			updateInterstitialPaints();
+			long sinceLastUpdate = now - lastValueUpdate;
+			updateInterstitialPaints(sinceLastUpdate);
 			doDraw(full);
-			if (sinceSecond > transitionDuration
+			if (sinceLastUpdate > transitionDuration
 					&& grid.getTransitionsActive() == true) {
 				long sleepTime = nextValueUpdate - now;
 				if (sleepTime > 0) {
@@ -133,7 +140,8 @@ public class MatrixDisplayRenderController extends Thread {
 	private void logFPS() {
 		int nowSeconds = GregorianCalendar.getInstance().get(Calendar.SECOND);
 		if (nowSeconds != lastSeconds) {
-			Log.d(TAG, "MatrixDisplayRenderController: fps == " + fps);
+			Log.d(TAG, "Pro-rata fps: "
+					+ (int) (fps * 1000f / transitionDuration));
 			fps = 1;
 			lastSeconds = nowSeconds;
 		} else {
@@ -158,9 +166,9 @@ public class MatrixDisplayRenderController extends Thread {
 		}
 	}
 
-	private void updateInterstitialPaints() {
-		paints[DIMMING] = getDimming();
-		paints[LIGHTENING] = getLightening();
+	private void updateInterstitialPaints(long sinceLastUpdate) {
+		paints[DIMMING] = getDimming(sinceLastUpdate);
+		paints[LIGHTENING] = getLightening(sinceLastUpdate);
 	}
 
 	private Paint getPaint(int color) {
@@ -177,24 +185,24 @@ public class MatrixDisplayRenderController extends Thread {
 		return getPaint(litColor);
 	}
 
-	private Paint getDimming() {
+	private Paint getDimming(long sinceLastUpdate) {
 		Paint result;
-		if (sinceSecond > transitionDuration) {
+		if (sinceLastUpdate > transitionDuration) {
 			result = paints[DIM];
 		} else {
-			float percentThroughTransition = 1.0f - ((float) sinceSecond / transitionDuration);
+			float percentThroughTransition = 1.0f - ((float) sinceLastUpdate / transitionDuration);
 			result = new Paint();
 			result.setColor(getInterstitial(percentThroughTransition));
 		}
 		return result;
 	}
 
-	private Paint getLightening() {
+	private Paint getLightening(long sinceLastUpdate) {
 		Paint result;
-		if (sinceSecond > transitionDuration) {
+		if (sinceLastUpdate > transitionDuration) {
 			result = paints[LIT];
 		} else {
-			float percentThroughTransition = (float) sinceSecond
+			float percentThroughTransition = (float) sinceLastUpdate
 					/ transitionDuration;
 			result = new Paint();
 			result.setColor(getInterstitial(percentThroughTransition));
