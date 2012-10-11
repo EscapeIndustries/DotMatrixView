@@ -13,6 +13,7 @@ public class MatrixDisplay extends SurfaceView implements
 	private static final int DEFAULT_DOT_SPACING = 2;
 	private static final int DEFAULT_DOT_RADIUS = 4;
 	private static final int DEFAULT_TRANSITION_DURATION = 300;
+	private Context context;
 	private static final String DEFAULT_FORMAT = "0 0 : 0 0 : 0 0";
 	private ModelGrid model;
 	private SurfaceHolder holder;
@@ -30,7 +31,7 @@ public class MatrixDisplay extends SurfaceView implements
 
 	public MatrixDisplay(Context context) {
 		super(context);
-		initialize();
+		initialize(context);
 	}
 
 	public MatrixDisplay(Context context, AttributeSet attrs, int defStyle) {
@@ -47,16 +48,17 @@ public class MatrixDisplay extends SurfaceView implements
 		return model;
 	}
 
-	private void initialize() {
+	private void initialize(Context context) {
 		model = new ModelGrid();
 		model.setPaddingDots(paddingRowsTop, paddingColumnsLeft,
 				paddingRowsBottom, paddingColumnsRight);
 		model.setFormat(format);
 		holder = getHolder();
 		holder.addCallback(this);
+		this.context = context;
 	}
 
-	private void initialize(Context context2, AttributeSet attrs) {
+	private void initialize(Context context, AttributeSet attrs) {
 		TypedArray a = getContext().obtainStyledAttributes(attrs,
 				R.styleable.MatrixDisplay);
 		paddingRowsTop = a.getInt(R.styleable.MatrixDisplay_dotPaddingTop,
@@ -82,7 +84,7 @@ public class MatrixDisplay extends SurfaceView implements
 		if (format == null) {
 			format = DEFAULT_FORMAT;
 		}
-		initialize();
+		initialize(context);
 	}
 
 	private ColorUpdateProvider getPaintUpdateProvider() {

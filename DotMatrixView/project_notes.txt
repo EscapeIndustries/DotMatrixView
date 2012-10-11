@@ -1,7 +1,7 @@
 Project notes
 =============
 Goal: Finish off the MatrixDisplay version, aiming to make it a basic component that can be used easily via XML.
-NEXT: Refactor color calculation code out of MatrixDisplayRenderController into its own class. 
+NEXT: Make background color configurable by XML. And think about how you could default it to match the current theme. 
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
