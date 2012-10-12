@@ -41,7 +41,7 @@ public class MatrixDisplayRenderController extends Thread {
 
 	public MatrixDisplayRenderController(SurfaceHolder holder, ModelGrid grid,
 			ValueUpdateProvider valueUpdater, ColorUpdateProvider paintUpdater,
-			int dotRadius, int dotSpacing, long transitionDuration) {
+			int dotRadius, int dotSpacing, long transitionDuration, int backgroundColor) {
 		this.holder = holder;
 		this.grid = grid;
 		this.valueUpdater = valueUpdater;
@@ -57,7 +57,7 @@ public class MatrixDisplayRenderController extends Thread {
 
 		initCoords(grid.getRows(), grid.getColumns(), dotRadius, dotSpacing);
 		full = new MatrixDisplayFullDrawStrategy(grid, grid.getRows(),
-				grid.getColumns(), coordsX, coordsY, dotRadius);
+				grid.getColumns(), coordsX, coordsY, dotRadius, backgroundColor);
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package com.escapeindustries.numericdisplay;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -13,6 +14,7 @@ public class MatrixDisplay extends SurfaceView implements
 	private static final int DEFAULT_DOT_SPACING = 2;
 	private static final int DEFAULT_DOT_RADIUS = 4;
 	private static final int DEFAULT_TRANSITION_DURATION = 300;
+	private static final int DEFAULT_BACKGROUND_COLOR = Color.BLACK;
 	private Context context;
 	private static final String DEFAULT_FORMAT = "0 0 : 0 0 : 0 0";
 	private ModelGrid model;
@@ -24,6 +26,7 @@ public class MatrixDisplay extends SurfaceView implements
 	private int paddingColumnsRight = DEFAULT_PADDING;
 	private int dotRadius = DEFAULT_DOT_RADIUS;
 	private int dotSpacing = DEFAULT_DOT_SPACING;
+	private int backgroundColor = DEFAULT_BACKGROUND_COLOR;
 	private int litColor = getResources().getColor(R.color.bright_green);
 	private int dimColor = getResources().getColor(R.color.dim_green);
 	private String format = DEFAULT_FORMAT;
@@ -69,6 +72,8 @@ public class MatrixDisplay extends SurfaceView implements
 				DEFAULT_PADDING);
 		paddingColumnsRight = a.getInt(
 				R.styleable.MatrixDisplay_dotPaddingRight, DEFAULT_PADDING);
+		backgroundColor = a.getColor(R.styleable.MatrixDisplay_backgroundColor,
+				DEFAULT_BACKGROUND_COLOR);
 		litColor = a.getColor(R.styleable.MatrixDisplay_dotColorLit,
 				getResources().getColor(R.color.bright_green));
 		dimColor = a.getColor(R.styleable.MatrixDisplay_dotColorDim,
@@ -118,7 +123,7 @@ public class MatrixDisplay extends SurfaceView implements
 				new PerSecondTimeUpdateProvider(new FormattedTime(
 						new SystemClockTimeSource())),
 				getPaintUpdateProvider(), dotRadius, dotSpacing,
-				transitionDuration);
+				transitionDuration, backgroundColor);
 		renderer.setRunning(true);
 		renderer.start();
 
