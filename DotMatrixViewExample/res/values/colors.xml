@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="pink">#ffff9999</color>
-    <color name="dullPink">#ff442222</color>
+    <color name="pink">#ffffbbbb</color>
+    <color name="dullPink">#ffff3333</color>
     <color name="orange">#fff69c54</color>
+    <color name="white">#ffffffff</color>
 </resources>
