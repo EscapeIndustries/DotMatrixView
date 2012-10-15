@@ -1,7 +1,9 @@
 Project notes
 =============
 Goal: Finish off the MatrixDisplay version, aiming to make it a basic component that can be used easily via XML.
-NEXT: Make MatrixDisplay set whatever is required to make android:layout_width|height="wrap_content" work properly. 
+NEXT: Improve onMeasure so that it respects the MeasureSpec modes passed in.
+      Test that these code changes have actually made the View work properly within other layouts - things around it, positioned in a
+      RelativeLayout, etc. 
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?

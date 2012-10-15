@@ -57,6 +57,11 @@ public class MatrixDisplay extends SurfaceView implements
 				paddingRowsBottom, paddingColumnsRight);
 		model.setFormat(format);
 		holder = getHolder();
+		renderer = new MatrixDisplayRenderController(holder, model,
+				new PerSecondTimeUpdateProvider(new FormattedTime(
+						new SystemClockTimeSource())),
+				getPaintUpdateProvider(), dotRadius, dotSpacing,
+				transitionDuration, backgroundColor);
 		holder.addCallback(this);
 		this.context = context;
 	}
@@ -93,6 +98,11 @@ public class MatrixDisplay extends SurfaceView implements
 		initialize(context);
 	}
 
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		setMeasuredDimension(renderer.getWidth(), renderer.getHeight());
+	}
+
 	private ColorUpdateProvider getPaintUpdateProvider() {
 		return new SingleColorUpdateProvider(litColor, dimColor);
 		// int[] litColors = new int[3];
@@ -119,12 +129,6 @@ public class MatrixDisplay extends SurfaceView implements
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
 		model.setActive(true);
-
-		renderer = new MatrixDisplayRenderController(holder, model,
-				new PerSecondTimeUpdateProvider(new FormattedTime(
-						new SystemClockTimeSource())),
-				getPaintUpdateProvider(), dotRadius, dotSpacing,
-				transitionDuration, backgroundColor);
 		renderer.setRunning(true);
 		renderer.start();
 

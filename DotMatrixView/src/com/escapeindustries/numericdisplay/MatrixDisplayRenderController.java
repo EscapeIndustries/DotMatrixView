@@ -23,6 +23,8 @@ public class MatrixDisplayRenderController extends Thread {
 
 	// Configuration
 	private long transitionDuration;
+	private int dotRadius;
+	private int dotSpacing;
 
 	// Collaborators
 	private SurfaceHolder holder;
@@ -39,15 +41,20 @@ public class MatrixDisplayRenderController extends Thread {
 	private int lastSeconds = -1;
 	private int fps = 0;
 
+
+
 	public MatrixDisplayRenderController(SurfaceHolder holder, ModelGrid grid,
 			ValueUpdateProvider valueUpdater, ColorUpdateProvider paintUpdater,
-			int dotRadius, int dotSpacing, long transitionDuration, int backgroundColor) {
+			int dotRadius, int dotSpacing, long transitionDuration,
+			int backgroundColor) {
 		this.holder = holder;
 		this.grid = grid;
 		this.valueUpdater = valueUpdater;
 		this.colorSet = new TransitionalColorSet(paintUpdater,
 				transitionDuration);
 		this.transitionDuration = transitionDuration;
+		this.dotRadius  = dotRadius;
+		this.dotSpacing = dotSpacing;
 
 		currentValue = valueUpdater.getCurrentValue();
 		this.grid.setValue(currentValue);
@@ -58,6 +65,14 @@ public class MatrixDisplayRenderController extends Thread {
 		initCoords(grid.getRows(), grid.getColumns(), dotRadius, dotSpacing);
 		full = new MatrixDisplayFullDrawStrategy(grid, grid.getRows(),
 				grid.getColumns(), coordsX, coordsY, dotRadius, backgroundColor);
+	}
+
+	public int getWidth() {
+		return coordsX[grid.getRows() - 1][grid.getColumns() - 1] + dotRadius + dotSpacing;
+	}
+
+	public int getHeight() {
+		return coordsY[grid.getRows() - 1][grid.getColumns() - 1] + dotRadius + dotSpacing;
 	}
 
 	@Override
