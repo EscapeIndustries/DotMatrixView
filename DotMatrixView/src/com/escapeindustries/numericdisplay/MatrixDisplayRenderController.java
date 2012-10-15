@@ -50,7 +50,7 @@ public class MatrixDisplayRenderController extends Thread {
 		this.transitionDuration = transitionDuration;
 
 		currentValue = valueUpdater.getCurrentValue();
-		grid.setValue(currentValue);
+		this.grid.setValue(currentValue);
 		this.nextValueUpdate = valueUpdater.getNextPossibleUpdateTime();
 
 		now = getNow();
