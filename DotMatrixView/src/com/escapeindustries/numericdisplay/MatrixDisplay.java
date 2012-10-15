@@ -89,6 +89,7 @@ public class MatrixDisplay extends SurfaceView implements
 		if (format == null) {
 			format = DEFAULT_FORMAT;
 		}
+		a.recycle();
 		initialize(context);
 	}
 
