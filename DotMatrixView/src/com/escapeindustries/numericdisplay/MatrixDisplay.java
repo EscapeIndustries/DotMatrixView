@@ -100,7 +100,21 @@ public class MatrixDisplay extends SurfaceView implements
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		setMeasuredDimension(renderer.getWidth(), renderer.getHeight());
+		int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+		int width = renderer.getWidth();
+		if (widthMode == MeasureSpec.EXACTLY
+				|| (widthMode == MeasureSpec.AT_MOST && width > MeasureSpec
+						.getSize(widthMeasureSpec))) {
+			width = MeasureSpec.getSize(widthMeasureSpec);
+		}
+		int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+		int height = renderer.getHeight();
+		if (heightMode == MeasureSpec.EXACTLY
+				|| (heightMode == MeasureSpec.AT_MOST && height > MeasureSpec
+						.getSize(heightMeasureSpec))) {
+			height = MeasureSpec.getSize(heightMeasureSpec);
+		}
+		setMeasuredDimension(width, height);
 	}
 
 	private ColorUpdateProvider getPaintUpdateProvider() {
