@@ -100,21 +100,20 @@ public class MatrixDisplay extends SurfaceView implements
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-		int width = renderer.getWidth();
-		if (widthMode == MeasureSpec.EXACTLY
-				|| (widthMode == MeasureSpec.AT_MOST && width > MeasureSpec
-						.getSize(widthMeasureSpec))) {
-			width = MeasureSpec.getSize(widthMeasureSpec);
-		}
-		int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-		int height = renderer.getHeight();
-		if (heightMode == MeasureSpec.EXACTLY
-				|| (heightMode == MeasureSpec.AT_MOST && height > MeasureSpec
-						.getSize(heightMeasureSpec))) {
-			height = MeasureSpec.getSize(heightMeasureSpec);
-		}
+		int width = getAppropriateSize(widthMeasureSpec, renderer.getWidth());
+		int height = getAppropriateSize(heightMeasureSpec, renderer.getHeight());
 		setMeasuredDimension(width, height);
+	}
+
+	private int getAppropriateSize(int sizeMeasureSpec, int sizePrefered) {
+		int size = sizePrefered;
+		int mode = MeasureSpec.getMode(sizeMeasureSpec);
+		if (mode == MeasureSpec.EXACTLY
+				|| (mode == MeasureSpec.AT_MOST && sizePrefered > MeasureSpec
+						.getSize(sizeMeasureSpec))) {
+			size = MeasureSpec.getSize(sizeMeasureSpec);
+		}
+		return size;
 	}
 
 	private ColorUpdateProvider getPaintUpdateProvider() {
