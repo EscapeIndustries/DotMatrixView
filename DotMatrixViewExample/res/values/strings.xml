@@ -3,5 +3,7 @@
 
     <string name="hello">Hello World, NumericViewHostActivity!</string>
     <string name="app_name">NumericViewHost</string>
+    <string name="before">Before</string>
+    <string name="after">After</string>
 
 </resources>

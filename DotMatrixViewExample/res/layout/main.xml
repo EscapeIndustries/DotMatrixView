@@ -1,24 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/com.escapeindustries.numericviewhost"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:layout_height="fill_parent" >
 
-    <com.escapeindustries.numericdisplay.MatrixDisplay
-        android:id="@+id/surfacegrid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:backgroundColor="@color/white"
-        app:dotColorDim="@color/pink"
-        app:dotColorLit="@color/dullPink"
-        app:dotPaddingBottom="1"
-        app:dotPaddingLeft="1"
-        app:dotPaddingRight="1"
-        app:dotPaddingTop="1"
-        app:dotRadius="4"
-        app:dotSpacing="2"
-        app:transitionDuration="300"
-        app:format="0 0 : 0 0 : 0 0" />
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/ic_launcher" />
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <com.escapeindustries.numericdisplay.MatrixDisplay
+            android:id="@+id/surfacegrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:backgroundColor="@color/white"
+            app:dotColorDim="@color/pink"
+            app:dotColorLit="@color/dullPink"
+            app:dotPaddingBottom="1"
+            app:dotPaddingLeft="1"
+            app:dotPaddingRight="1"
+            app:dotPaddingTop="1"
+            app:dotRadius="4"
+            app:dotSpacing="2"
+            app:format="0 0 : 0 0 : 0 0"
+            app:transitionDuration="300" />
+
+        <TextView
+            android:id="@+id/before"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/surfacegrid"
+            android:layout_alignLeft="@+id/surfacegrid"
+            android:text="@string/before" />
+
+        <TextView
+            android:id="@+id/after"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/surfacegrid"
+            android:layout_below="@+id/surfacegrid"
+            android:text="@string/after" />
+    </RelativeLayout>
+
+</FrameLayout>
