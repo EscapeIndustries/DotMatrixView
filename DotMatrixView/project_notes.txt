@@ -1,7 +1,8 @@
 Project notes
 =============
 Goal: Finish off the MatrixDisplay version, aiming to make it a basic component that can be used easily via XML.
-NEXT: More XML configuration - initial value, value updater, color updater? 
+NEXT: Make value_updater attribute use some sort of list-type attribute.
+	  More XML configuration - color updater? 
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?

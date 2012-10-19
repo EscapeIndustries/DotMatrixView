@@ -6,13 +6,15 @@
         <attr name="dotPaddingLeft" format="integer" />
         <attr name="dotPaddingBottom" format="integer" />
         <attr name="dotPaddingRight" format="integer" />
-        <attr name="format" format="string" />
         <attr name="backgroundColor" format="color" />
         <attr name="dotColorLit" format="color" />
         <attr name="dotColorDim" format="color" />
         <attr name="dotRadius" format="integer" />
         <attr name="dotSpacing" format="integer" />
         <attr name="transitionDuration" format="integer" />
+        <attr name="format" format="string" />
+        <attr name="value" format="string" />
+        <attr name="value_updater" format="string" />
     </declare-styleable>
 
 </resources>

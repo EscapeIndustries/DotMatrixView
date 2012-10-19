@@ -15,8 +15,11 @@ public class MatrixDisplay extends SurfaceView implements
 	private static final int DEFAULT_DOT_RADIUS = 4;
 	private static final int DEFAULT_TRANSITION_DURATION = 300;
 	private static final int DEFAULT_BACKGROUND_COLOR = Color.BLACK;
-	private Context context;
 	private static final String DEFAULT_FORMAT = "0 0 : 0 0 : 0 0";
+	private static final String DEFAULT_VALUE = "";
+	private static final String VALUE_UPDATER_CLOCK_PER_SECOND = "clock_per_second";
+	private static final String DEFAULT_VALUE_UPDATER = "static_value_updater";
+	private Context context;
 	private ModelGrid model;
 	private SurfaceHolder holder;
 	private MatrixDisplayRenderController renderer;
@@ -31,6 +34,9 @@ public class MatrixDisplay extends SurfaceView implements
 	private int dimColor = getResources().getColor(R.color.dim_green);
 	private String format = DEFAULT_FORMAT;
 	private long transitionDuration;
+	private String value;
+	private ValueUpdateProvider valueUpdater;
+	private String valueUpdaterConfig = DEFAULT_VALUE_UPDATER;
 
 	public MatrixDisplay(Context context) {
 		super(context);
@@ -57,10 +63,14 @@ public class MatrixDisplay extends SurfaceView implements
 				paddingRowsBottom, paddingColumnsRight);
 		model.setFormat(format);
 		holder = getHolder();
+		if (valueUpdaterConfig.equals(VALUE_UPDATER_CLOCK_PER_SECOND)) {
+			valueUpdater = new PerSecondTimeUpdateProvider(new FormattedTime(
+					new SystemClockTimeSource()));
+		} else {
+			valueUpdater = new StaticValueUpdateProvider(value);
+		}
 		renderer = new MatrixDisplayRenderController(holder, model,
-				new PerSecondTimeUpdateProvider(new FormattedTime(
-						new SystemClockTimeSource())),
-				getPaintUpdateProvider(), dotRadius, dotSpacing,
+				valueUpdater, getPaintUpdateProvider(), dotRadius, dotSpacing,
 				transitionDuration, backgroundColor);
 		holder.addCallback(this);
 		this.context = context;
@@ -93,6 +103,15 @@ public class MatrixDisplay extends SurfaceView implements
 		format = a.getString(R.styleable.MatrixDisplay_format);
 		if (format == null) {
 			format = DEFAULT_FORMAT;
+		}
+		value = a.getString(R.styleable.MatrixDisplay_value);
+		if (value == null) {
+			value = DEFAULT_VALUE;
+		}
+		valueUpdaterConfig = a
+				.getString(R.styleable.MatrixDisplay_value_updater);
+		if (valueUpdaterConfig == null) {
+			valueUpdaterConfig = DEFAULT_VALUE_UPDATER;
 		}
 		a.recycle();
 		initialize(context);

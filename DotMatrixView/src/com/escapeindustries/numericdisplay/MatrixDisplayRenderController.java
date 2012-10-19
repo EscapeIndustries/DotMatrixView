@@ -79,6 +79,7 @@ public class MatrixDisplayRenderController extends Thread {
 			now = getNow();
 			if (now >= nextValueUpdate) {
 				String newValue = valueUpdater.getCurrentValue();
+				Log.d(TAG, "new value: " + newValue);
 				if (!newValue.equals(currentValue)) {
 					currentValue = newValue;
 					lastValueUpdate = now;
@@ -101,6 +102,10 @@ public class MatrixDisplayRenderController extends Thread {
 				}
 			}
 		}
+	}
+
+	public void setRunning(boolean running) {
+		this.running = running;
 	}
 
 	private void doDraw(DrawStrategy renderer) {
@@ -135,10 +140,6 @@ public class MatrixDisplayRenderController extends Thread {
 		} else {
 			fps++;
 		}
-	}
-
-	public void setRunning(boolean running) {
-		this.running = running;
 	}
 
 	private void initCoords(int rows, int columns, int dotRadius,
