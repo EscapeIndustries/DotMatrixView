@@ -30,6 +30,7 @@
             app:dotRadius="4"
             app:dotSpacing="2"
             app:format="0 0 : 0 0 : 0 0"
+            app:value_updater="clock_per_second"
             app:transitionDuration="300" />
 
         <TextView
