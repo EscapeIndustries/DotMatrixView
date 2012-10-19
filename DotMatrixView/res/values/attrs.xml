@@ -14,7 +14,10 @@
         <attr name="transitionDuration" format="integer" />
         <attr name="format" format="string" />
         <attr name="value" format="string" />
-        <attr name="value_updater" format="string" />
+        <attr name="value_updater">
+            <flag name="static_value" value="0" />
+            <flag name="clock_per_second" value="1" />
+        </attr>
     </declare-styleable>
 
 </resources>

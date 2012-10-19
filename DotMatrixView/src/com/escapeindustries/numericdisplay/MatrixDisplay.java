@@ -10,6 +10,7 @@ import android.view.SurfaceView;
 public class MatrixDisplay extends SurfaceView implements
 		SurfaceHolder.Callback {
 
+	private static final int VALUE_UPDATER_PER_SECOND = 1;
 	private static final int DEFAULT_PADDING = 0;
 	private static final int DEFAULT_DOT_SPACING = 2;
 	private static final int DEFAULT_DOT_RADIUS = 4;
@@ -17,8 +18,7 @@ public class MatrixDisplay extends SurfaceView implements
 	private static final int DEFAULT_BACKGROUND_COLOR = Color.BLACK;
 	private static final String DEFAULT_FORMAT = "0 0 : 0 0 : 0 0";
 	private static final String DEFAULT_VALUE = "";
-	private static final String VALUE_UPDATER_CLOCK_PER_SECOND = "clock_per_second";
-	private static final String DEFAULT_VALUE_UPDATER = "static_value_updater";
+	private static final int DEFAULT_VALUE_UPDATER = 0;
 	private Context context;
 	private ModelGrid model;
 	private SurfaceHolder holder;
@@ -36,7 +36,7 @@ public class MatrixDisplay extends SurfaceView implements
 	private long transitionDuration;
 	private String value;
 	private ValueUpdateProvider valueUpdater;
-	private String valueUpdaterConfig = DEFAULT_VALUE_UPDATER;
+	private int valueUpdaterConfig = DEFAULT_VALUE_UPDATER;
 
 	public MatrixDisplay(Context context) {
 		super(context);
@@ -63,7 +63,7 @@ public class MatrixDisplay extends SurfaceView implements
 				paddingRowsBottom, paddingColumnsRight);
 		model.setFormat(format);
 		holder = getHolder();
-		if (valueUpdaterConfig.equals(VALUE_UPDATER_CLOCK_PER_SECOND)) {
+		if (valueUpdaterConfig == VALUE_UPDATER_PER_SECOND) {
 			valueUpdater = new PerSecondTimeUpdateProvider(new FormattedTime(
 					new SystemClockTimeSource()));
 		} else {
@@ -108,11 +108,8 @@ public class MatrixDisplay extends SurfaceView implements
 		if (value == null) {
 			value = DEFAULT_VALUE;
 		}
-		valueUpdaterConfig = a
-				.getString(R.styleable.MatrixDisplay_value_updater);
-		if (valueUpdaterConfig == null) {
-			valueUpdaterConfig = DEFAULT_VALUE_UPDATER;
-		}
+		valueUpdaterConfig = a.getInteger(
+				R.styleable.MatrixDisplay_value_updater, 0);
 		a.recycle();
 		initialize(context);
 	}
