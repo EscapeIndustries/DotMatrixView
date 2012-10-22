@@ -74,9 +74,9 @@ public class DisplayGrid extends LinearLayout implements Grid {
 				R.styleable.MatrixDisplay_dotPaddingBottom, 0);
 		paddingColumnsRight = a.getInt(
 				R.styleable.MatrixDisplay_dotPaddingRight, 0);
-		setLitColor(a.getColor(R.styleable.MatrixDisplay_dotColorLit,
+		setLitColor(a.getColor(R.styleable.MatrixDisplay_dotColor_staticLit,
 				getResources().getColor(R.color.bright_green)));
-		setDimColor(a.getColor(R.styleable.MatrixDisplay_dotColorDim,
+		setDimColor(a.getColor(R.styleable.MatrixDisplay_dotColor_staticDim,
 				getResources().getColor(R.color.dim_green)));
 		String format = a.getString(R.styleable.MatrixDisplay_format);
 		if (format != null) {
