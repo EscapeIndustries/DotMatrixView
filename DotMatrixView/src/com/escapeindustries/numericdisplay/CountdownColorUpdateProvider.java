@@ -7,11 +7,11 @@ public class CountdownColorUpdateProvider implements ColorUpdateProvider {
 
 	private int[] lit;
 	private int[] dim;
-	private long[] timeOnColor;
+	private int[] timeOnColor;
 	private long[] changeTimes;
 	private int current;
 
-	public CountdownColorUpdateProvider(int[] lit, int[] dim, long[] timeOnColor) {
+	public CountdownColorUpdateProvider(int[] lit, int[] dim, int[] timeOnColor) {
 		this.lit = lit;
 		this.dim = dim;
 		this.timeOnColor = timeOnColor;

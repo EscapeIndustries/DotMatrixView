@@ -36,6 +36,7 @@ public class MatrixDisplay extends SurfaceView implements
 	private long transitionDuration;
 	private String value;
 	private ValueUpdateProvider valueUpdater;
+	private ColorUpdateProvider colorUpdater;
 	private int valueUpdaterConfig = DEFAULT_VALUE_UPDATER;
 
 	public MatrixDisplay(Context context) {
@@ -69,8 +70,11 @@ public class MatrixDisplay extends SurfaceView implements
 		} else {
 			valueUpdater = new StaticValueUpdateProvider(value);
 		}
+		if (colorUpdater == null) {
+			colorUpdater = getDefaultColorUpdateProvider();
+		}
 		renderer = new MatrixDisplayRenderController(holder, model,
-				valueUpdater, getPaintUpdateProvider(), dotRadius, dotSpacing,
+				valueUpdater, colorUpdater, dotRadius, dotSpacing,
 				transitionDuration, backgroundColor);
 		holder.addCallback(this);
 		this.context = context;
@@ -89,9 +93,9 @@ public class MatrixDisplay extends SurfaceView implements
 				R.styleable.MatrixDisplay_dotPaddingRight, DEFAULT_PADDING);
 		backgroundColor = a.getColor(R.styleable.MatrixDisplay_backgroundColor,
 				DEFAULT_BACKGROUND_COLOR);
-		litColor = a.getColor(R.styleable.MatrixDisplay_dotColorLit,
+		litColor = a.getColor(R.styleable.MatrixDisplay_dotColor_staticLit,
 				getResources().getColor(R.color.bright_green));
-		dimColor = a.getColor(R.styleable.MatrixDisplay_dotColorDim,
+		dimColor = a.getColor(R.styleable.MatrixDisplay_dotColor_staticDim,
 				getResources().getColor(R.color.dim_green));
 		dotRadius = a.getInt(R.styleable.MatrixDisplay_dotRadius,
 				DEFAULT_DOT_RADIUS);
@@ -109,7 +113,8 @@ public class MatrixDisplay extends SurfaceView implements
 			value = DEFAULT_VALUE;
 		}
 		valueUpdaterConfig = a.getInteger(
-				R.styleable.MatrixDisplay_value_updater, 0);
+				R.styleable.MatrixDisplay_valueUpdater, 0);
+		colorUpdater = getColorUpdateProviderFromXML(a);
 		a.recycle();
 		initialize(context);
 	}
@@ -132,20 +137,62 @@ public class MatrixDisplay extends SurfaceView implements
 		return size;
 	}
 
-	private ColorUpdateProvider getPaintUpdateProvider() {
+	private ColorUpdateProvider getDefaultColorUpdateProvider() {
 		return new SingleColorUpdateProvider(litColor, dimColor);
-		// int[] litColors = new int[3];
-		// litColors[0] = context.getResources().getColor(R.color.bright_green);
-		// litColors[1] =
-		// context.getResources().getColor(R.color.bright_orange);
-		// litColors[2] = context.getResources().getColor(R.color.bright_red);
-		// int[] dimColors = new int[3];
-		// dimColors[0] = context.getResources().getColor(R.color.dim_green);
-		// dimColors[1] = context.getResources().getColor(R.color.dim_orange);
-		// dimColors[2] = context.getResources().getColor(R.color.dim_red);
-		// long[] colorTimings = new long[] { 3, 3, 3 };
-		// return new CountdownColorUpdateProvider(litColors, dimColors,
-		// colorTimings);
+	}
+
+	private ColorUpdateProvider getColorUpdateProviderFromXML(TypedArray a) {
+		ColorUpdateProvider retVal = null;
+		int colorUpdateType = a.getInteger(
+				R.styleable.MatrixDisplay_dotColor_changeUpdater, -1);
+		switch (colorUpdateType) {
+		case 1:
+			int litColors[] = null;
+			int dimColors[] = null;
+			int timings[] = null;
+			int litList = a.getResourceId(
+					R.styleable.MatrixDisplay_dotColor_changeListLit, -1);
+			if (litList != -1) { // Assuming the resource compiler never uses
+									// -1
+				litColors = getColorArrayFromTypedArray(litList);
+			}
+			int dimList = a.getResourceId(
+					R.styleable.MatrixDisplay_dotColor_changeListDim, -1);
+			if (dimList != -1) {
+				dimColors = getColorArrayFromTypedArray(dimList);
+			}
+			int timingList = a.getResourceId(
+					R.styleable.MatrixDisplay_dotColor_changeListTiming, -1);
+			if (timingList != -1) {
+				timings = getIntArrayFromTypedArray(timingList);
+			}
+			retVal = new CountdownColorUpdateProvider(litColors, dimColors,
+					timings);
+			break;
+		default:
+			retVal = new SingleColorUpdateProvider(litColor, dimColor);
+			break;
+		}
+
+		return retVal;
+	}
+
+	private int[] getColorArrayFromTypedArray(int resId) {
+		TypedArray source = getResources().obtainTypedArray(resId);
+		int[] retVal = new int[source.length()];
+		for (int i = 0; i < retVal.length; i++) {
+			retVal[i] = source.getColor(i, 0);
+		}
+		return retVal;
+	}
+
+	private int[] getIntArrayFromTypedArray(int resId) {
+		TypedArray source = getResources().obtainTypedArray(resId);
+		int[] retVal = new int[source.length()];
+		for (int i = 0; i < retVal.length; i++) {
+			retVal[i] = source.getInteger(i, 0);
+		}
+		return retVal;
 	}
 
 	@Override

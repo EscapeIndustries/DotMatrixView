@@ -2,7 +2,7 @@ Project notes
 =============
 Goal: Finish off the MatrixDisplay version, aiming to make it a basic component that can be used easily via XML.
 NEXT: Make an enum in Java to match the <flag> type used in attr for value_updater.
-	  More XML configuration - color updater? 
+	  XML - change pixels for dimensions?
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
