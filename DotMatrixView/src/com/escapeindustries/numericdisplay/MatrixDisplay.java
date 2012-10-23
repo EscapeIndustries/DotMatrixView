@@ -127,6 +127,36 @@ public class MatrixDisplay extends SurfaceView implements
 		setMeasuredDimension(width, height);
 	}
 
+	@Override
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,
+			int height) {
+		// TODO Find out what this event is for
+
+	}
+
+	@Override
+	public void surfaceCreated(SurfaceHolder holder) {
+		model.setActive(true);
+		renderer.setRunning(true);
+		renderer.start();
+
+	}
+
+	@Override
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		model.setActive(false);
+		boolean retry = true;
+		renderer.setRunning(false);
+		while (retry) {
+			try {
+				renderer.join();
+				retry = false;
+			} catch (InterruptedException e) {
+				// Do nothing - allow a retry in this loop
+			}
+		}
+	}
+	
 	private int getAppropriateSize(int sizeMeasureSpec, int sizePrefered) {
 		int size = sizePrefered;
 		int mode = MeasureSpec.getMode(sizeMeasureSpec);
@@ -194,36 +224,6 @@ public class MatrixDisplay extends SurfaceView implements
 			retVal[i] = source.getInteger(i, 0);
 		}
 		return retVal;
-	}
-
-	@Override
-	public void surfaceChanged(SurfaceHolder holder, int format, int width,
-			int height) {
-		// TODO Find out what this event is for
-
-	}
-
-	@Override
-	public void surfaceCreated(SurfaceHolder holder) {
-		model.setActive(true);
-		renderer.setRunning(true);
-		renderer.start();
-
-	}
-
-	@Override
-	public void surfaceDestroyed(SurfaceHolder holder) {
-		model.setActive(false);
-		boolean retry = true;
-		renderer.setRunning(false);
-		while (retry) {
-			try {
-				renderer.join();
-				retry = false;
-			} catch (InterruptedException e) {
-				// Do nothing - allow a retry in this loop
-			}
-		}
 	}
 
 }
