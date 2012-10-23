@@ -1,8 +1,19 @@
 Project notes
 =============
 Goal: Finish off the MatrixDisplay version, aiming to make it a basic component that can be used easily via XML.
-NEXT: Make an enum in Java to match the <flag> type used in attr for value_updater.
-	  XML - change pixels for dimensions?
+NEXT: XML - change pixels for dimensions?
+
+Release planning
+----------------
+The most important goal right now is to get the code for the View library onto GitHub. What needs to be done
+to make that happen?
+[ ] Merge the surfaceview_alternative branch into master
+[ ] Remove all the classes that are not needed for the SurfaceView based solution
+[ ] Read ALL the remaining code and comment anything that isn't obvious
+[ ] Add JavaDoc comments to all the public bits, including the interfaces
+[ ] Spend some time on GitHub getting a feel for how other Android projects are structured
+    [ ] Should the test client be part of the GitHub project?
+    [ ] Should the unit tests be part of the GitHub project?
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
@@ -27,18 +38,6 @@ Thoughts and requirements for building the dot array in code instead of XML:
 
 Decide your next experimental direction. Options:
  	Go further with the display piece
- 		Improve the animation
- 			Try 3.0-style property animations
- 			
- 			NOTES ON GETTING RID OF THE STACK (OF 2) DOTS:
- 			The dot stacks are necessary because without them they fade down to black, then come back to dim at the
-			end of the animation. It might be workable if one of these were done:
-			a) I used property animation to change the colour instead
-			b) If there was no dim dot
-			Setting background to a dim dot drawable doesn't help, as the whole view goes tranparent, including the
-			background. And changing the animation to not go all the way to transparent doesn't look right, the animation
-			and the final switch to dim dot appears to take longer and the whole isn't a smooth transition.
-			
  		Touch events
  			The display will need some way to be set to the starting value. I could use vertical dragging to 
  			increment and decrement a digit. While dragging, the digit could slide down a row of dots at a time,
@@ -51,20 +50,8 @@ Decide your next experimental direction. Options:
  			against the digit definitions. For example, if a digit was sliding in from the top, and was 2 rows in, which
  			figuring out which dots to turn on, the digit patter values would need to have 11 (of 13) rows subtracted for
  			their destination dots. The index offset would be the index of the start of row 12 (of 13).
- 			 
- 		Colour changes
- 			The countdown will need to be change the dots from green to orange (nearly out) and red (overrun)
- 			Consider colours that will look good on a white background. 
- 		Build up the segmented display to the same functionality
- 			Can set a number
- 			Animates to the set number
- 			Build segments using a PathDrawable instead of images
- 			Build segment animations using lists instead (flip-pad animation)
  		Build dot-array digit from code not XML
- 			Construct the arrangement of views in code
  			Given the width and height, figure out which are the active dots
- 			Build a single array of dots for all the digits in the display, then let
- 			each digit construct itself by figuring out which dots it should own.
  	Figure out the time piece
  		How will update of the display be scheduled to happen
  			When the activity is visible
@@ -76,29 +63,8 @@ Decide your next experimental direction. Options:
  		Connect time display with buttons to set the ending time.
  			Might you show both the ending time and the count-down on the screen together?
  	Learn to get appointment times from the calendar content provider
- 	Wrap it in a view
- 		Such that it can be added to an XML layout
- 			Complete with attributes to set it up
- 	Make it a library project
  	Use it to make a clock widget
  
- Idea: you could build something in code that is conceptually similar to a real LCD using FrameLayout
- Top of stack:		Shape drawable rectangle whose colour is black and of variable transparency
- 					Image file that is a black square with a transparent circle in the middle
- Bottom of stack:	A shape drawable rectangle of whatever colour you want the display to show when lit.
- 
- You don't really need the top item above, because you can make the same adjustments at the bottom layer.
- You could use a different mask image to change the shape of the dots, e.g. use snow-flakes around Christmas
- 		
- 		
-
-The alpha transition makes the spots disappear right down to the background.
-	Change it to not go all the way down to zero - it might look passable.
-	Make a 3.0-style property animation that takes the colour down to the dim colour.
-	Do the shadow properties work on shape drawables?
-	
-Learn how to target multiple SDK levels so I can optionally use view or property animation.
-
 Make the digits build in code with arbitrary sizes:
 	build the original matrices
 	build the co-ordinates of the digit parts, spacers and colon
@@ -110,11 +76,6 @@ Make the digits build in code with arbitrary sizes:
 	
 	Should this actually just construct a matrix big enough for the full display, with the
 	digits being indexes to items within it?
-	
-Try building a ShapeDrawable using a Path. The point of the experiment is to see if you can
-change the fill colour of such a drawable dynamically, and if so, if the colour can be the
-subject of a property animation.
-		
 	
 An eight - all elements on - looks like this:
 	    1, 2, 3, 4, 5,
