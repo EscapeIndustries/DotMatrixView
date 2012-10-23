@@ -2,8 +2,5 @@
 <resources>
 
     <string name="app_name">NumericalDisplay</string>
-    <string name="sectional_digit_piece">Piece of a digit</string>
-    <string name="dot">dot</string>
-    <string name="colon_dot">colon dot</string>
 
 </resources>

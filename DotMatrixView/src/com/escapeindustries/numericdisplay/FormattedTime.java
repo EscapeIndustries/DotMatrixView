@@ -2,6 +2,8 @@ package com.escapeindustries.numericdisplay;
 
 import java.util.Calendar;
 
+import com.escapeindustries.numericdisplay.TimeSource;
+
 public class FormattedTime {
 	
 	private TimeSource source;
