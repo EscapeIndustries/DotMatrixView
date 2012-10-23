@@ -8,7 +8,7 @@ Release planning
 The most important goal right now is to get the code for the View library onto GitHub. What needs to be done
 to make that happen?
 [X] Merge the surfaceview_alternative branch into master
-[ ] Remove all the classes that are not needed for the SurfaceView based solution
+[X] Remove all the classes that are not needed for the SurfaceView based solution
 [ ] Read ALL the remaining code and comment anything that isn't obvious
 [ ] Add JavaDoc comments to all the public bits, including the interfaces
 [ ] Spend some time on GitHub getting a feel for how other Android projects are structured
