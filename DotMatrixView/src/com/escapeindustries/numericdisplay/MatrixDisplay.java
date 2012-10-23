@@ -19,10 +19,7 @@ public class MatrixDisplay extends SurfaceView implements
 	private static final String DEFAULT_FORMAT = "0 0 : 0 0 : 0 0";
 	private static final String DEFAULT_VALUE = "";
 	private static final int DEFAULT_VALUE_UPDATER = 0;
-	private Context context;
-	private ModelGrid model;
-	private SurfaceHolder holder;
-	private MatrixDisplayRenderController renderer;
+	
 	private int paddingRowsTop = DEFAULT_PADDING;
 	private int paddingColumnsLeft = DEFAULT_PADDING;
 	private int paddingRowsBottom = DEFAULT_PADDING;
@@ -33,11 +30,16 @@ public class MatrixDisplay extends SurfaceView implements
 	private int litColor = getResources().getColor(R.color.bright_green);
 	private int dimColor = getResources().getColor(R.color.dim_green);
 	private String format = DEFAULT_FORMAT;
+	private int valueUpdaterConfig = DEFAULT_VALUE_UPDATER;
+
+	private ModelGrid model;
+	private SurfaceHolder holder;
+	private MatrixDisplayRenderController renderer;
+	
 	private long transitionDuration;
 	private String value;
 	private ValueUpdateProvider valueUpdater;
 	private ColorUpdateProvider colorUpdater;
-	private int valueUpdaterConfig = DEFAULT_VALUE_UPDATER;
 
 	public MatrixDisplay(Context context) {
 		super(context);
@@ -77,7 +79,6 @@ public class MatrixDisplay extends SurfaceView implements
 				valueUpdater, colorUpdater, dotRadius, dotSpacing,
 				transitionDuration, backgroundColor);
 		holder.addCallback(this);
-		this.context = context;
 	}
 
 	private void initialize(Context context, AttributeSet attrs) {
