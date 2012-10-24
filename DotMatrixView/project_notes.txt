@@ -2,6 +2,7 @@ Project notes
 =============
 Goal: Finish off the MatrixDisplay version, aiming to make it a basic component that can be used easily via XML.
 NEXT: XML - change pixels for dimensions?
+	  BUG - combine static value updater and countdown color change and the colors don't change.
 
 Release planning
 ----------------
