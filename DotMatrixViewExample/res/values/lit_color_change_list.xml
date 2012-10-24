@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<array name="lit_color_change_list">
+	    <item>@color/bright_green</item>
+	    <item>@color/bright_orange</item>
+	    <item>@color/bright_blue</item>
+	    <item>@color/bright_red</item>
+	</array>    
+</resources>

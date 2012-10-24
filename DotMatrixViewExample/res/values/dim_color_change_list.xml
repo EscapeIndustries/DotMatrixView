@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="dim_color_change_list">
+        <item>@color/dim_green</item>
+        <item>@color/dim_orange</item>
+        <item>@color/dim_blue</item>
+        <item>@color/dim_red</item>
+    </array>
+
+</resources>
