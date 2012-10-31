@@ -1,9 +1,11 @@
-package com.escapeindustries.numericviewhost;
+package com.escapeindustries.dotmatrix.example;
+
+import com.escapeindustries.dotmatrix.example.R;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-public class NumericViewHostActivity extends Activity {
+public class DotMatrixViewExampleActivity extends Activity {
 
 	/** Called when the activity is first created. */
 	@Override
