@@ -1,4 +1,4 @@
-package com.escapeindustries.numericdisplay;
+package com.escapeindustries.dotmatrix;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;

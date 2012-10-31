@@ -1,4 +1,4 @@
-package com.escapeindustries.numericdisplay;
+package com.escapeindustries.dotmatrix;
 
 public abstract class Glyph {
 	protected int width;
@@ -34,6 +34,6 @@ public abstract class Glyph {
 		grid.changeDot(x, y, on);
 	}
 	
-	abstract void draw();
+	public abstract void draw();
 
 }

@@ -1,4 +1,4 @@
-package com.escapeindustries.numericdisplay;
+package com.escapeindustries.dotmatrix;
 
 public class Digit extends Glyph {
 
@@ -27,7 +27,7 @@ public class Digit extends Glyph {
 	}
 
 	@Override
-	void draw() {
+	public void draw() {
 		setNumber(current);
 	}
 

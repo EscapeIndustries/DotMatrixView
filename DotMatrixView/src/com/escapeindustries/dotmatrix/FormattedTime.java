@@ -1,8 +1,8 @@
-package com.escapeindustries.numericdisplay;
+package com.escapeindustries.dotmatrix;
 
 import java.util.Calendar;
 
-import com.escapeindustries.numericdisplay.TimeSource;
+import com.escapeindustries.dotmatrix.TimeSource;
 
 public class FormattedTime {
 	

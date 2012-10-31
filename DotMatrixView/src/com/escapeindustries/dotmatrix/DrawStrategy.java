@@ -1,4 +1,4 @@
-package com.escapeindustries.numericdisplay;
+package com.escapeindustries.dotmatrix;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

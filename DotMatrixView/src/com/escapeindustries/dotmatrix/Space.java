@@ -1,4 +1,4 @@
-package com.escapeindustries.numericdisplay;
+package com.escapeindustries.dotmatrix;
 
 public class Space extends Glyph {
 	
@@ -8,7 +8,7 @@ public class Space extends Glyph {
 	}
 
 	@Override
-	void draw() {
+	public void draw() {
 		// Do nothing - this is an empty space
 	}
 

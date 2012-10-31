@@ -1,4 +1,4 @@
-package com.escapeindustries.numericdisplay;
+package com.escapeindustries.dotmatrix;
 
 public interface UpdateProvider {
 	public long getNextPossibleUpdateTime();

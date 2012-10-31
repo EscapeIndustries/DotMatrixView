@@ -1,4 +1,6 @@
-package com.escapeindustries.numericdisplay;
+package com.escapeindustries.dotmatrix;
+
+import com.escapeindustries.dotmatrix.R;
 
 import android.content.Context;
 import android.content.res.TypedArray;

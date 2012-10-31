@@ -1,9 +1,9 @@
-package com.escapeindustries.numericdisplay;
+package com.escapeindustries.dotmatrix;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-public class MatrixDisplayUpdateDrawStrategy implements DrawStrategy {
+public class MatrixDisplayFullDrawStrategy implements DrawStrategy {
 
 	private ModelGrid grid;
 	private int rows;
@@ -11,27 +11,26 @@ public class MatrixDisplayUpdateDrawStrategy implements DrawStrategy {
 	private int[][] coordsX;
 	private int[][] coordsY;
 	private float radius;
+	private int backgroundColor;
 
-	public MatrixDisplayUpdateDrawStrategy(ModelGrid grid, int rows, int columns,
-			int[][] coordsX, int[][] coordsY, float radius) {
+	public MatrixDisplayFullDrawStrategy(ModelGrid grid, int rows, int columns,
+			int[][] coordsX, int[][] coordsY, float radius, int backgroundColor) {
 		this.grid = grid;
 		this.rows = rows;
 		this.columns = columns;
 		this.coordsX = coordsX;
 		this.coordsY = coordsY;
 		this.radius = radius;
+		this.backgroundColor = backgroundColor;
 	}
 
 	@Override
 	public void draw(Canvas canvas, Paint[] paints) {
-		int dotState = -1;
+		canvas.drawColor(backgroundColor);
 		for (int row = 0; row < rows; row++) {
 			for (int column = 0; column < columns; column++) {
-				dotState = grid.getDotState(column, row);
-				if (dotState == 1 || dotState == 2) {
-					canvas.drawCircle(coordsX[row][column],
-							coordsY[row][column], radius, paints[dotState]);
-				}
+				canvas.drawCircle(coordsX[row][column], coordsY[row][column],
+						radius, paints[grid.getDotState(column, row)]);
 			}
 		}
 	}
