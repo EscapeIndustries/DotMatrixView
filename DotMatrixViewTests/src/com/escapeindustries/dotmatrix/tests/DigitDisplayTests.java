@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 
 public class DigitDisplayTests extends TestCase {
 
+	// Shared between tests
 	private int[] one;
 	private int[] two;
 	private int[] three;
