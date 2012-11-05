@@ -1,6 +1,6 @@
-package com.escapeindustries.numericdisplay.tests;
+package com.escapeindustries.dotmatrix.tests;
 
-import com.escapeindustries.numericdisplay.DigitsParser;
+import com.escapeindustries.dotmatrix.DigitsParser;
 
 import junit.framework.TestCase;
 

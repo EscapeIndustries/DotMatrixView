@@ -1,7 +1,7 @@
-package com.escapeindustries.numericdisplay.tests;
+package com.escapeindustries.dotmatrix.tests;
 
-import com.escapeindustries.numericdisplay.DigitDefinition;
-import com.escapeindustries.numericdisplay.DigitTransition;
+import com.escapeindustries.dotmatrix.DigitDefinition;
+import com.escapeindustries.dotmatrix.DigitTransition;
 
 import junit.framework.TestCase;
 

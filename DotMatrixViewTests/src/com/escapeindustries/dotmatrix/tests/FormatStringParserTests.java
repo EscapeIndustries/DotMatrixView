@@ -1,12 +1,12 @@
-package com.escapeindustries.numericdisplay.tests;
+package com.escapeindustries.dotmatrix.tests;
 
-import com.escapeindustries.numericdisplay.Digit;
-import com.escapeindustries.numericdisplay.FormatStringParser;
-import com.escapeindustries.numericdisplay.Glyph;
-import com.escapeindustries.numericdisplay.GlyphFactory;
-import com.escapeindustries.numericdisplay.Grid;
-import com.escapeindustries.numericdisplay.Seperator;
-import com.escapeindustries.numericdisplay.Space;
+import com.escapeindustries.dotmatrix.Digit;
+import com.escapeindustries.dotmatrix.FormatStringParser;
+import com.escapeindustries.dotmatrix.Glyph;
+import com.escapeindustries.dotmatrix.GlyphFactory;
+import com.escapeindustries.dotmatrix.Grid;
+import com.escapeindustries.dotmatrix.Seperator;
+import com.escapeindustries.dotmatrix.Space;
 
 import junit.framework.TestCase;
 

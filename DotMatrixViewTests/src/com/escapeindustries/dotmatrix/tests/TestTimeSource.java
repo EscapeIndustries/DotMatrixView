@@ -1,9 +1,9 @@
-package com.escapeindustries.numericdisplay.tests;
+package com.escapeindustries.dotmatrix.tests;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import com.escapeindustries.numericdisplay.TimeSource;
+import com.escapeindustries.dotmatrix.TimeSource;
 
 public class TestTimeSource implements TimeSource {
 

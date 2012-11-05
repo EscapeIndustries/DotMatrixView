@@ -1,9 +1,9 @@
-package com.escapeindustries.numericdisplay.tests;
+package com.escapeindustries.dotmatrix.tests;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.escapeindustries.numericdisplay.DotChangeAction;
+import com.escapeindustries.dotmatrix.DotChangeAction;
 
 public class DotChangeCounter implements DotChangeAction {
 	

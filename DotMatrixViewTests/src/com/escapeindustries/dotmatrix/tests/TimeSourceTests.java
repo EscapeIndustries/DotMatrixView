@@ -1,6 +1,6 @@
-package com.escapeindustries.numericdisplay.tests;
+package com.escapeindustries.dotmatrix.tests;
 
-import com.escapeindustries.numericdisplay.FormattedTime;
+import com.escapeindustries.dotmatrix.FormattedTime;
 import junit.framework.TestCase;
 
 public class TimeSourceTests extends TestCase {

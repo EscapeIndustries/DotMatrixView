@@ -1,7 +1,7 @@
-package com.escapeindustries.numericdisplay.tests;
+package com.escapeindustries.dotmatrix.tests;
 
-import com.escapeindustries.numericdisplay.Glyph;
-import com.escapeindustries.numericdisplay.GlyphFactory;
+import com.escapeindustries.dotmatrix.Glyph;
+import com.escapeindustries.dotmatrix.GlyphFactory;
 
 import junit.framework.TestCase;
 
