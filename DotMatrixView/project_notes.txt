@@ -1,7 +1,10 @@
 Project notes
 =============
 Goal: Finish off the MatrixDisplay version, aiming to make it a basic component that can be used easily via XML.
-NEXT: XML - change pixels for dimensions?
+NEXT: Thread problem when you exit via the Home button then launch app again. This should help:
+http://stackoverflow.com/questions/8903290/losing-focus-on-surfaceview-after-home-button-is-pressed
+FURTHER:
+	  XML - change pixels for dimensions?
 	  BUG - combine static value updater and countdown color change and the colors don't change.
 
 Release planning
