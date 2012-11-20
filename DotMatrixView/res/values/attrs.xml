@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MatrixDisplay">
+        <attr name="dotPaddingTop" format="integer" />
+        <attr name="dotPaddingLeft" format="integer" />
+        <attr name="dotPaddingBottom" format="integer" />
+        <attr name="dotPaddingRight" format="integer" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="dotColor_staticLit" format="color" />
+        <attr name="dotColor_staticDim" format="color" />
+        <attr name="dotRadius" format="integer" />
+        <attr name="dotSpacing" format="integer" />
+        <attr name="transitionDuration" format="integer" />
+        <attr name="format" format="string" />
+        <attr name="value" format="string" />
+        <attr name="valueUpdater">
+            <flag name="static_value" value="0" />
+            <flag name="clock_per_second" value="1" />
+        </attr>
+        <attr name="dotColor_changeUpdater">
+            <flag name="static_color" value="0" />
+            <flag name="countdown_color_updates" value="1" />
+        </attr>
+        <attr name="dotColor_changeListLit" format="reference" />
+        <attr name="dotColor_changeListDim" format="reference" />
+        <attr name="dotColor_changeListTiming" format="reference" />
+    </declare-styleable>
+
+</resources>
