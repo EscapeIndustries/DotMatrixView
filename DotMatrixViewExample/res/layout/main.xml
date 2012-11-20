@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/ic_launcher" />
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <com.escapeindustries.dotmatrix.MatrixDisplay
+            android:id="@+id/surfacegrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:backgroundColor="@android:color/black"
+            app:dotColor_changeListDim="@array/dim_color_change_list"
+            app:dotColor_changeListLit="@array/lit_color_change_list"
+            app:dotColor_changeListTiming="@array/color_change_timings"
+            app:dotColor_changeUpdater="countdown_color_updates"
+            app:dotColor_staticDim="@color/pink"
+            app:dotColor_staticLit="@color/dullPink"
+            app:dotPaddingBottom="1"
+            app:dotPaddingLeft="1"
+            app:dotPaddingRight="1"
+            app:dotPaddingTop="1"
+            app:dotRadius="4"
+            app:dotSpacing="2"
+            app:format="0 0 : 0 0 : 0 0"
+            app:transitionDuration="300"
+            app:valueUpdater="clock_per_second" />
+
+        <TextView
+            android:id="@+id/before"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/surfacegrid"
+            android:layout_alignLeft="@+id/surfacegrid"
+            android:text="@string/before" />
+
+        <TextView
+            android:id="@+id/after"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/surfacegrid"
+            android:layout_below="@+id/surfacegrid"
+            android:text="@string/after" />
+    </RelativeLayout>
+
+</FrameLayout>
