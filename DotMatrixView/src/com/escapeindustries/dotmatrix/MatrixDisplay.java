@@ -2,7 +2,10 @@ package com.escapeindustries.dotmatrix;
 
 import com.escapeindustries.dotmatrix.R;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
@@ -21,7 +24,7 @@ public class MatrixDisplay extends SurfaceView implements
 	private static final String DEFAULT_FORMAT = "0 0 : 0 0 : 0 0";
 	private static final String DEFAULT_VALUE = "";
 	private static final int DEFAULT_VALUE_UPDATER = 0;
-	
+
 	private int paddingRowsTop = DEFAULT_PADDING;
 	private int paddingColumnsLeft = DEFAULT_PADDING;
 	private int paddingRowsBottom = DEFAULT_PADDING;
@@ -37,11 +40,12 @@ public class MatrixDisplay extends SurfaceView implements
 	private ModelGrid model;
 	private SurfaceHolder holder;
 	private MatrixDisplayRenderController renderer;
-	
+
 	private long transitionDuration;
 	private String value;
 	private ValueUpdateProvider valueUpdater;
 	private ColorUpdateProvider colorUpdater;
+	private BroadcastReceiver screenStateReceiver;
 
 	public MatrixDisplay(Context context) {
 		super(context);
@@ -77,10 +81,9 @@ public class MatrixDisplay extends SurfaceView implements
 		if (colorUpdater == null) {
 			colorUpdater = getDefaultColorUpdateProvider();
 		}
-		renderer = new MatrixDisplayRenderController(holder, model,
-				valueUpdater, colorUpdater, dotRadius, dotSpacing,
-				transitionDuration, backgroundColor);
+		buildRenderer();
 		holder.addCallback(this);
+		createScreenStateReceiver();
 	}
 
 	private void initialize(Context context, AttributeSet attrs) {
@@ -133,19 +136,37 @@ public class MatrixDisplay extends SurfaceView implements
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
 		// TODO Find out what this event is for
-
 	}
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		model.setActive(true);
-		renderer.setRunning(true);
-		renderer.start();
+		startRenderer();
 
 	}
 
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
+		stopRendering();
+		getContext().unregisterReceiver(screenStateReceiver);
+	}
+	
+	private void buildRenderer() {
+		renderer = new MatrixDisplayRenderController(this.holder, model,
+				valueUpdater, colorUpdater, dotRadius, dotSpacing,
+				transitionDuration, backgroundColor);
+	}
+	
+	private void startRenderer() {
+		model.setActive(true);
+		if (renderer == null) {
+			buildRenderer();
+		}
+		renderer.setRunning(true);
+		renderer.start();
+		registerScreenStateReciever();
+	}
+
+	private void stopRendering() {
 		model.setActive(false);
 		boolean retry = true;
 		renderer.setRunning(false);
@@ -157,8 +178,32 @@ public class MatrixDisplay extends SurfaceView implements
 				// Do nothing - allow a retry in this loop
 			}
 		}
+		renderer = null;
 	}
 	
+	private void createScreenStateReceiver() {
+		screenStateReceiver = new BroadcastReceiver() {
+
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				String action = intent.getAction();
+				if (action.equals(Intent.ACTION_SCREEN_OFF)) {
+					stopRendering();
+				} else if (action.equals(Intent.ACTION_SCREEN_ON)) {
+					startRenderer();
+				}
+			}
+
+		};
+	}
+	
+	private void registerScreenStateReciever() {
+		IntentFilter screenOff = new IntentFilter(Intent.ACTION_SCREEN_OFF);
+		getContext().registerReceiver(screenStateReceiver, screenOff);
+		IntentFilter screenOn = new IntentFilter(Intent.ACTION_SCREEN_ON);
+		getContext().registerReceiver(screenStateReceiver, screenOn);
+	}
+
 	private int getAppropriateSize(int sizeMeasureSpec, int sizePrefered) {
 		int size = sizePrefered;
 		int mode = MeasureSpec.getMode(sizeMeasureSpec);
