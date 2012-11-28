@@ -1,11 +1,9 @@
 Project notes
 =============
 Goal: Finish off the MatrixDisplay version, aiming to make it a basic component that can be used easily via XML.
-NEXT: Make configuration XML accept dimensions for dot sizes and padding instead of just assuming raw pixels.
-FURTHER:
-	  Consider something that wants to use the view to draw from any grid to any grid - such as a Conway's Game Of Life app. I'm thinking
+NEXT: Consider something that wants to use the view to draw from any grid to any grid - such as a Conway's Game Of Life app. I'm thinking
 	  this would just need a new sub-class of Glyph. Is that correct? Do the names in the interfaces still work?
-	  BUG - combine static value updater and countdown color change and the colors don't change.
+BUG:  Combine static value updater and countdown color change and the colors don't change.
 
 Release planning
 ----------------

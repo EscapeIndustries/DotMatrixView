@@ -103,10 +103,10 @@ public class MatrixDisplay extends SurfaceView implements
 				getResources().getColor(R.color.bright_green));
 		dimColor = a.getColor(R.styleable.MatrixDisplay_dotColor_staticDim,
 				getResources().getColor(R.color.dim_green));
-		dotRadius = a.getInt(R.styleable.MatrixDisplay_dotRadius,
-				DEFAULT_DOT_RADIUS);
-		dotSpacing = a.getInt(R.styleable.MatrixDisplay_dotSpacing,
-				DEFAULT_DOT_SPACING);
+		dotRadius = a.getDimensionPixelSize(
+				R.styleable.MatrixDisplay_dotRadius, DEFAULT_DOT_RADIUS);
+		dotSpacing = a.getDimensionPixelSize(
+				R.styleable.MatrixDisplay_dotSpacing, DEFAULT_DOT_SPACING);
 		transitionDuration = a.getInt(
 				R.styleable.MatrixDisplay_transitionDuration,
 				DEFAULT_TRANSITION_DURATION);
@@ -149,13 +149,13 @@ public class MatrixDisplay extends SurfaceView implements
 		stopRendering();
 		getContext().unregisterReceiver(screenStateReceiver);
 	}
-	
+
 	private void buildRenderer() {
 		renderer = new MatrixDisplayRenderController(this.holder, model,
 				valueUpdater, colorUpdater, dotRadius, dotSpacing,
 				transitionDuration, backgroundColor);
 	}
-	
+
 	private void startRenderer() {
 		model.setActive(true);
 		if (renderer == null) {
@@ -180,7 +180,7 @@ public class MatrixDisplay extends SurfaceView implements
 		}
 		renderer = null;
 	}
-	
+
 	private void createScreenStateReceiver() {
 		screenStateReceiver = new BroadcastReceiver() {
 
@@ -196,7 +196,7 @@ public class MatrixDisplay extends SurfaceView implements
 
 		};
 	}
-	
+
 	private void registerScreenStateReciever() {
 		IntentFilter screenOff = new IntentFilter(Intent.ACTION_SCREEN_OFF);
 		getContext().registerReceiver(screenStateReceiver, screenOff);

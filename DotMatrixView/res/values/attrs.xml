@@ -9,8 +9,8 @@
         <attr name="backgroundColor" format="color" />
         <attr name="dotColor_staticLit" format="color" />
         <attr name="dotColor_staticDim" format="color" />
-        <attr name="dotRadius" format="integer" />
-        <attr name="dotSpacing" format="integer" />
+        <attr name="dotRadius" format="dimension" />
+        <attr name="dotSpacing" format="dimension" />
         <attr name="transitionDuration" format="integer" />
         <attr name="format" format="string" />
         <attr name="value" format="string" />
