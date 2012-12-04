@@ -16,11 +16,31 @@ public class CountdownColorUpdateProvider implements ColorUpdateProvider {
 		this.dim = dim;
 		this.timeOnColor = timeOnColor;
 		changeTimes = new long[this.timeOnColor.length];
-		getChangeTimes();
+		setUpChangeTimes();
 		this.current = 0;
 	}
+	
+	@Override
+	public long getNextPossibleUpdateTime() {
+		return changeTimes[current];
+	}
 
-	private void getChangeTimes() {
+	@Override
+	public int[] getCurrentColors() {
+		long now = getNow();
+		// Move on to the next color if we have passed the time limit for the
+		// current color
+		if (now > changeTimes[current]) {
+			current++;
+			if (current == lit.length) {
+				current = 0;
+				setUpChangeTimes();
+			}
+		}
+		return new int[] { lit[current], dim[current] };
+	}
+
+	private void setUpChangeTimes() {
 		long last = getStartOfThisSecond();
 		for (int i = 0; i < timeOnColor.length; i++) {
 			changeTimes[i] = last + (timeOnColor[i] * 1000);
@@ -36,25 +56,5 @@ public class CountdownColorUpdateProvider implements ColorUpdateProvider {
 
 	private long getNow() {
 		return GregorianCalendar.getInstance().getTimeInMillis();
-	}
-
-	@Override
-	public long getNextPossibleUpdateTime() {
-		return changeTimes[current];
-	}
-
-	@Override
-	public int[] getCurrentColors() {
-		long now = getNow();
-		// Move on to the next color if we have passed the time limit for the
-		// current color
-		if (now > changeTimes[current]) {
-			current++;
-			if (current == lit.length) {
-				current = 0;
-				getChangeTimes();
-			}
-		}
-		return new int[] { lit[current], dim[current] };
 	}
 }

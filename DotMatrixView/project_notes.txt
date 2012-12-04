@@ -12,10 +12,38 @@ to make that happen?
 [X] Merge the surfaceview_alternative branch into master
 [X] Remove all the classes that are not needed for the SurfaceView based solution
 [ ] Read ALL the remaining code and comment anything that isn't obvious
+[X]    BaseGrid.java
+[X]    ColorUpdateProvider.java
+[X]    CountdownColorUpdateProvider.java
+[ ]    Digit.java
+[ ]    DigitDefinition.java
+[ ]    DigitTransition.java
+[ ]    DigitsParser.java
+[ ]    DotChangeAction.java
+[ ]    DotChangeAnimationAction.java
+[ ]    DrawStrategy.java
+[ ]    FormatStringParser.java
+[ ]    FormattedTime.java
+[ ]    Glyph.java
+[ ]    GlyphFactory.java
+[ ]    Grid.java
+[ ]    MatrixDisplay.java
+[ ]    MatrixDisplayFullDrawStrategy.java
+[ ]    MatrixDisplayRenderController.java
+[ ]    MatrixDisplayUpdateDrawStrategy.java
+[ ]    ModelGrid.java
+[ ]    PerSecondTimeUpdateProvider.java
+[ ]    Seperator.java
+[ ]    SingleColorUpdateProvider.java
+[ ]    Space.java
+[ ]    StaticValueUpdateProvider.java
+[ ]    SystemClockTimeSource.java
+[ ]    TimeSource.java
+[ ]    TransitionalColorSet.java
+[ ]    UpdateProvider.java
+[ ]    ValueUpdateProvider.java
+
 [ ] Add JavaDoc comments to all the public bits, including the interfaces
-[ ] Spend some time on GitHub getting a feel for how other Android projects are structured
-    [ ] Should the test client be part of the GitHub project?
-    [ ] Should the unit tests be part of the GitHub project?
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?

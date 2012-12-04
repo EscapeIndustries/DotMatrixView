@@ -71,6 +71,7 @@ public class MatrixDisplay extends SurfaceView implements
 		model.setPaddingDots(paddingRowsTop, paddingColumnsLeft,
 				paddingRowsBottom, paddingColumnsRight);
 		model.setFormat(format);
+		model.setActive(true);
 		holder = getHolder();
 		if (valueUpdaterConfig == VALUE_UPDATER_PER_SECOND) {
 			valueUpdater = new PerSecondTimeUpdateProvider(new FormattedTime(

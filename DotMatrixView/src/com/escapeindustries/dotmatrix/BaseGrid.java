@@ -3,6 +3,10 @@ package com.escapeindustries.dotmatrix;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author mark
+ *
+ */
 public abstract class BaseGrid implements Grid {
 
 	protected int columns = 0;
@@ -75,6 +79,10 @@ public abstract class BaseGrid implements Grid {
 
 	@Override
 	public void setFormat(String format) {
+		// The format drives the size of the grid in dots. This method
+		// parses the format into Glyphs, filters out the digits to
+		// simplify updating them, derrives the number of rows and
+		// columns of dots, and gets the initial value drawn into the grid.
 		GlyphFactory factory = new GlyphFactory(this);
 		FormatStringParser parser = new FormatStringParser(factory);
 		glyphs = parser.parse(format);
@@ -93,11 +101,18 @@ public abstract class BaseGrid implements Grid {
 		for (Glyph glyph : glyphs) {
 			glyph.draw();
 		}
-		setActive(true); // TODO Is this really supposed to be here?
 	}
 	
 	@Override
 	public void setValue(String value) {
+		// The number of digits in the input must be compared
+		// to the number of digits available on the grid so
+		// that an offset can be found, if necessary,
+		// to make the least-significant digit of input to
+		// render in the left-most digit of the grid, and
+		// to make sure that the least significant digits
+		// are displayed if there are not enough digits
+		// on the grid to display the whole input.
 		DigitsParser parser = new DigitsParser();
 		int[] values = parser.parse(value);
 		int digitsOffset = digits.length - values.length;
