@@ -19,7 +19,7 @@ public class Digit extends Glyph {
 	public void setNumber(int to) {
 		if (to != current) {
 			DigitTransition trans = new DigitTransition(
-					new DotChangeAnimationAction(this));
+					new NormalDotChangeAction(this));
 			trans.makeTransition(DigitDefinition.patterns[current],
 					DigitDefinition.patterns[to]);
 			current = to;

@@ -1,10 +1,10 @@
 package com.escapeindustries.dotmatrix;
 
-public class DotChangeAnimationAction implements DotChangeAction {
+public class NormalDotChangeAction implements DotChangeAction {
 	
 	private Glyph digit;
 
-	public DotChangeAnimationAction(Glyph digit) {
+	public NormalDotChangeAction(Glyph digit) {
 		this.digit = digit;
 	}
 
