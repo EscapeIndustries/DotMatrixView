@@ -11,38 +11,7 @@ The most important goal right now is to get the code for the View library onto G
 to make that happen?
 [X] Merge the surfaceview_alternative branch into master
 [X] Remove all the classes that are not needed for the SurfaceView based solution
-[ ] Read ALL the remaining code and comment anything that isn't obvious
-[X]    BaseGrid.java
-[X]    ColorUpdateProvider.java
-[X]    CountdownColorUpdateProvider.java
-[ ]    Digit.java
-[ ]    DigitDefinition.java
-[ ]    DigitTransition.java
-[ ]    DigitsParser.java
-[ ]    DotChangeAction.java
-[ ]    DotChangeAnimationAction.java
-[ ]    DrawStrategy.java
-[ ]    FormatStringParser.java
-[ ]    FormattedTime.java
-[ ]    Glyph.java
-[ ]    GlyphFactory.java
-[ ]    Grid.java
-[ ]    MatrixDisplay.java
-[ ]    MatrixDisplayFullDrawStrategy.java
-[ ]    MatrixDisplayRenderController.java
-[ ]    MatrixDisplayUpdateDrawStrategy.java
-[ ]    ModelGrid.java
-[ ]    PerSecondTimeUpdateProvider.java
-[ ]    Seperator.java
-[ ]    SingleColorUpdateProvider.java
-[ ]    Space.java
-[ ]    StaticValueUpdateProvider.java
-[ ]    SystemClockTimeSource.java
-[ ]    TimeSource.java
-[ ]    TransitionalColorSet.java
-[ ]    UpdateProvider.java
-[ ]    ValueUpdateProvider.java
-
+[X] Read ALL the remaining code and comment anything that isn't obvious
 [ ] Add JavaDoc comments to all the public bits, including the interfaces
 
 Thoughts and requirements for building the dot array in code instead of XML:

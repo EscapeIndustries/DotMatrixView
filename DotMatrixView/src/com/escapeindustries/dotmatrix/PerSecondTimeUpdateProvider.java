@@ -19,11 +19,10 @@ public class PerSecondTimeUpdateProvider implements ValueUpdateProvider {
 	@Override
 	public long getNextPossibleUpdateTime() {
 		Calendar now = GregorianCalendar.getInstance();
-		long roughThen = now.getTimeInMillis() + 1000;
-		Calendar then = GregorianCalendar.getInstance();
-		then.setTimeInMillis(roughThen);
-		then.set(Calendar.MILLISECOND, 0);
-		return then.getTimeInMillis();
+		Calendar next = GregorianCalendar.getInstance();
+		next.setTimeInMillis(now.getTimeInMillis() + 1000);
+		next.set(Calendar.MILLISECOND, 0);
+		return next.getTimeInMillis();
 	}
 
 }

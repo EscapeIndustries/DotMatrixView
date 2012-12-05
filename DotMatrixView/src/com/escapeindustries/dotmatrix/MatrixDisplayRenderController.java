@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
@@ -23,13 +24,13 @@ public class MatrixDisplayRenderController extends Thread {
 	private long transitionDuration;
 	private int dotRadius;
 	private int dotSpacing;
+	private int backgroundColor;
 
 	// Collaborators
 	private SurfaceHolder holder;
 	private ModelGrid grid;
 	private ValueUpdateProvider valueUpdater;
 	private TransitionalColorSet colorSet;
-	private DrawStrategy full;
 
 	// Convenience data
 	private int[][] coordsX;
@@ -38,8 +39,6 @@ public class MatrixDisplayRenderController extends Thread {
 	// Supporting FPS measurement/estimation
 	private int lastSeconds = -1;
 	private int fps = 0;
-
-
 
 	public MatrixDisplayRenderController(SurfaceHolder holder, ModelGrid grid,
 			ValueUpdateProvider valueUpdater, ColorUpdateProvider paintUpdater,
@@ -51,8 +50,9 @@ public class MatrixDisplayRenderController extends Thread {
 		this.colorSet = new TransitionalColorSet(paintUpdater,
 				transitionDuration);
 		this.transitionDuration = transitionDuration;
-		this.dotRadius  = dotRadius;
+		this.dotRadius = dotRadius;
 		this.dotSpacing = dotSpacing;
+		this.backgroundColor = backgroundColor;
 
 		currentValue = valueUpdater.getCurrentValue();
 		this.grid.setValue(currentValue);
@@ -61,16 +61,16 @@ public class MatrixDisplayRenderController extends Thread {
 		now = getNow();
 
 		initCoords(grid.getRows(), grid.getColumns(), dotRadius, dotSpacing);
-		full = new MatrixDisplayFullDrawStrategy(grid, grid.getRows(),
-				grid.getColumns(), coordsX, coordsY, dotRadius, backgroundColor);
 	}
 
 	public int getWidth() {
-		return coordsX[grid.getRows() - 1][grid.getColumns() - 1] + dotRadius + dotSpacing;
+		return coordsX[grid.getRows() - 1][grid.getColumns() - 1] + dotRadius
+				+ dotSpacing;
 	}
 
 	public int getHeight() {
-		return coordsY[grid.getRows() - 1][grid.getColumns() - 1] + dotRadius + dotSpacing;
+		return coordsY[grid.getRows() - 1][grid.getColumns() - 1] + dotRadius
+				+ dotSpacing;
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class MatrixDisplayRenderController extends Thread {
 				// should trigger the next query
 				nextValueUpdate = valueUpdater.getNextPossibleUpdateTime();
 			}
-			doDraw(full);
+			doDraw();
 			if (now - lastValueUpdate > transitionDuration
 					&& grid.getTransitionsActive() == true) {
 				long sleepTime = nextValueUpdate - now;
@@ -108,14 +108,20 @@ public class MatrixDisplayRenderController extends Thread {
 		this.running = running;
 	}
 
-	private void doDraw(DrawStrategy renderer) {
+	private void doDraw() {
 		Canvas canvas = null;
 		try {
 			canvas = holder.lockCanvas();
 			if (canvas != null) {
 				synchronized (holder) {
-					renderer.draw(canvas,
-							colorSet.getPaints(now, lastValueUpdate));
+					Paint[] paints = colorSet.getPaints(now, lastValueUpdate);
+					canvas.drawColor(backgroundColor);
+					for (int row = 0; row < grid.getRows(); row++) {
+						for (int column = 0; column < grid.getColumns(); column++) {
+							canvas.drawCircle(coordsX[row][column], coordsY[row][column],
+									dotRadius, paints[grid.getDotState(column, row)]);
+						}
+					}
 				}
 			}
 		} finally {

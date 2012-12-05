@@ -42,7 +42,7 @@ public class TransitionalColorSet {
 		this.paintUpdater = paintUpdater;
 		this.transitionDuration = transitionDuration;
 		
-		// Does this need to happen?
+		//TODO Does this need to happen?
 		updatePaints(0l, 0l);
 	}
 	
