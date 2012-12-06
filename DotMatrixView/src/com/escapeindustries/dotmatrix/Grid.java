@@ -1,5 +1,10 @@
 package com.escapeindustries.dotmatrix;
 
+/**
+ * Defines the core of what makes a Grid that can display {@link com.escapeindustries.dotmatrix.Glyph Glyphs}.
+ * @author Mark Roberts
+ *
+ */
 public interface Grid {
 	public int getColumns();
 	public void setColumns(int columns);
