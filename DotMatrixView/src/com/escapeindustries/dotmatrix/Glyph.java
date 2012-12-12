@@ -49,7 +49,7 @@ public abstract class Glyph {
 	 * @param column
 	 *            The left-most column at which to start drawing this Glyph in
 	 *            the target {@link Grid}.
-	 * @see setGrid
+	 * @see #setGrid
 	 */
 	public void setColumn(int column) {
 		this.leftMostColumn = column;
@@ -62,14 +62,15 @@ public abstract class Glyph {
 	 * @param row
 	 *            The top-most row at which to start drawing this Glyph in the
 	 *            target {@link Grid}.
+	 * @see #setGrid
 	 */
 	public void setRow(int row) {
 		this.topRow = row;
 	}
 
 	/**
-	 * Convenience method for setting a dot on or off using a one dimensional index as
-	 * used as a shape definition by {@link DigitDefinition}.
+	 * Convenience method for setting a dot on or off using a one dimensional
+	 * index as used as a shape definition by {@link DigitDefinition}.
 	 * 
 	 * @param index
 	 *            One-dimensional zero-based index to the dot. For example, if

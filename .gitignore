@@ -2,6 +2,9 @@
 bin
 gen
 
+#JavaDoc
+doc
+
 #Eclipse
 .project
 .classpath

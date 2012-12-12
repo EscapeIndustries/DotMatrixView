@@ -13,6 +13,33 @@ to make that happen?
 [X] Remove all the classes that are not needed for the SurfaceView based solution
 [X] Read ALL the remaining code and comment anything that isn't obvious
 [ ] Add JavaDoc comments to all the public bits, including the interfaces
+ [ ] BaseGrid.java
+ [ ] ColorUpdateProvider.java
+ [ ] CountdownColorUpdateProvider.java
+ [ ] Digit.java
+ [ ] DigitDefinition.java
+ [ ] DigitTransition.java
+ [ ] DigitsParser.java
+ [ ] DotChangeAction.java
+ [ ] FormatStringParser.java
+ [ ] FormattedTime.java
+ [X] Glyph.java
+ [ ] GlyphFactory.java
+ [X] Grid.java
+ [ ] MatrixDisplay.java
+ [ ] MatrixDisplayRenderController.java
+ [ ] ModelGrid.java
+ [ ] NormalDotChangeAction.java
+ [ ] PerSecondTimeUpdateProvider.java
+ [ ] Seperator.java
+ [ ] SingleColorUpdateProvider.java
+ [ ] Space.java
+ [ ] StaticValueUpdateProvider.java
+ [ ] SystemClockTimeSource.java
+ [ ] TimeSource.java
+ [ ] TransitionalColorSet.java
+ [ ] UpdateProvider.java
+ [ ] ValueUpdateProvider.java
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?
