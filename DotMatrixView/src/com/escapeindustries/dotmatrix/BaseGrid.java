@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author mark
- *
+ * This is a helper class for classes that implement {@link Grid}. Default
+ * implementations are provided for most interface methods. It remains for the
+ * sub-class to provide an implementation of {@link #changeDot} and
+ * {@link #initializeGrid}.
+ * 
+ * @author Mark Roberts
+ * 
  */
 public abstract class BaseGrid implements Grid {
 
@@ -66,7 +71,7 @@ public abstract class BaseGrid implements Grid {
 		this.paddingBottom = bottom;
 		this.paddingRight = right;
 	}
-	
+
 	@Override
 	public void setActive(boolean active) {
 		this.active = active;
@@ -102,7 +107,7 @@ public abstract class BaseGrid implements Grid {
 			glyph.draw();
 		}
 	}
-	
+
 	@Override
 	public void setValue(String value) {
 		// The number of digits in the input must be compared
@@ -126,10 +131,14 @@ public abstract class BaseGrid implements Grid {
 			digits[i + digitsOffset].setNumber(values[i + valuesOffset]);
 		}
 	}
-	
+
 	@Override
 	public abstract void changeDot(int x, int y, boolean on);
-	
+
+	/**
+	 * Called by {@link #setFormat} this is a chance to set up data structures
+	 * etc. needed by the grid.
+	 */
 	public abstract void initializeGrid();
 
 	private Digit[] extractDigits(Glyph[] glyphs) {

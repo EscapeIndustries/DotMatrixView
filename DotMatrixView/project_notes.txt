@@ -13,7 +13,7 @@ to make that happen?
 [X] Remove all the classes that are not needed for the SurfaceView based solution
 [X] Read ALL the remaining code and comment anything that isn't obvious
 [ ] Add JavaDoc comments to all the public bits, including the interfaces
- [ ] BaseGrid.java
+ [X] BaseGrid.java
  [ ] ColorUpdateProvider.java
  [ ] CountdownColorUpdateProvider.java
  [ ] Digit.java
@@ -38,7 +38,7 @@ to make that happen?
  [ ] SystemClockTimeSource.java
  [ ] TimeSource.java
  [ ] TransitionalColorSet.java
- [ ] UpdateProvider.java
+ [X] UpdateProvider.java
  [ ] ValueUpdateProvider.java
 
 Thoughts and requirements for building the dot array in code instead of XML:
