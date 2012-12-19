@@ -14,8 +14,8 @@ to make that happen?
 [X] Read ALL the remaining code and comment anything that isn't obvious
 [ ] Add JavaDoc comments to all the public bits, including the interfaces
  [X] BaseGrid.java
- [ ] ColorUpdateProvider.java
- [ ] CountdownColorUpdateProvider.java
+ [X] ColorUpdateProvider.java
+ [X] CountdownColorUpdateProvider.java
  [ ] Digit.java
  [ ] DigitDefinition.java
  [ ] DigitTransition.java
@@ -39,7 +39,7 @@ to make that happen?
  [ ] TimeSource.java
  [ ] TransitionalColorSet.java
  [X] UpdateProvider.java
- [ ] ValueUpdateProvider.java
+ [X] ValueUpdateProvider.java
 
 Thoughts and requirements for building the dot array in code instead of XML:
 		Why do I want to do this?

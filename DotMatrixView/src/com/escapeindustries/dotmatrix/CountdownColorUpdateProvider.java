@@ -3,6 +3,12 @@ package com.escapeindustries.dotmatrix;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * This {@link ColorUpdateProvider} changes color based on time, cycling through
+ * a set of colors. The time spent on each color is individually configurable.
+ * 
+ * @author Mark Roberts
+ */
 public class CountdownColorUpdateProvider implements ColorUpdateProvider {
 
 	private int[] lit;
@@ -11,6 +17,17 @@ public class CountdownColorUpdateProvider implements ColorUpdateProvider {
 	private long[] changeTimes;
 	private int current;
 
+	/**
+	 * Construct and fully configure a CountdowColorUpdateProvider. All arrays
+	 * provided should have the same length.
+	 * 
+	 * @param lit
+	 *            An array of colors to use for lit dots.
+	 * @param dim
+	 *            An array of colors to use for dim dots.
+	 * @param timeOnColor
+	 *            An array of times to remain on each color pair.
+	 */
 	public CountdownColorUpdateProvider(int[] lit, int[] dim, int[] timeOnColor) {
 		this.lit = lit;
 		this.dim = dim;
@@ -19,7 +36,7 @@ public class CountdownColorUpdateProvider implements ColorUpdateProvider {
 		setUpChangeTimes();
 		this.current = 0;
 	}
-	
+
 	@Override
 	public long getNextPossibleUpdateTime() {
 		return changeTimes[current];
