@@ -1,8 +1,13 @@
 package com.escapeindustries.dotmatrix;
 
+/**
+ * A {@link Glyph} to represent a digit (0-9).
+ * 
+ * @author Mark Roberts
+ */
 public class Digit extends Glyph {
 
-	private int current = 10;
+	private int current = 10; // 10 represents a blank digit
 
 	public Digit(Grid grid, int column, int row) {
 		this.width = 7;
@@ -12,10 +17,21 @@ public class Digit extends Glyph {
 		this.grid = grid;
 	}
 
+	/**
+	 * Get the value of this digit.
+	 * 
+	 * @return The current value
+	 */
 	public int getNumber() {
 		return current;
 	}
 
+	/**
+	 * Set the value of this digit.
+	 * 
+	 * @param to
+	 *            The new value
+	 */
 	public void setNumber(int to) {
 		if (to != current) {
 			DigitTransition trans = new DigitTransition(
@@ -26,6 +42,11 @@ public class Digit extends Glyph {
 		}
 	}
 
+	/**
+	 * Render the digit to the {@link Grid}.
+	 * 
+	 * @see com.escapeindustries.dotmatrix.Glyph#draw()
+	 */
 	@Override
 	public void draw() {
 		setNumber(current);

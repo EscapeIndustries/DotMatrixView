@@ -1,5 +1,13 @@
 package com.escapeindustries.dotmatrix;
 
+/**
+ * This class defines the dots that should be on for each digit on a 5 column by
+ * 13 row grid. The numbers are the one dimensional coordinate beginning in the
+ * top right corner of the grid.
+ * 
+ * @author Mark Roberts
+ * 
+ */
 public class DigitDefinition {
 	private static int[] zero = { 1, 2, 3, 4, 5, 7, 13, 14, 20, 21, 27, 28, 34,
 			35, 41,

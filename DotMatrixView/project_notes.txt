@@ -16,10 +16,10 @@ to make that happen?
  [X] BaseGrid.java
  [X] ColorUpdateProvider.java
  [X] CountdownColorUpdateProvider.java
- [ ] Digit.java
- [ ] DigitDefinition.java
+ [X] Digit.java
+ [X] DigitDefinition.java
  [ ] DigitTransition.java
- [ ] DigitsParser.java
+ [X] DigitsParser.java
  [ ] DotChangeAction.java
  [ ] FormatStringParser.java
  [ ] FormattedTime.java
