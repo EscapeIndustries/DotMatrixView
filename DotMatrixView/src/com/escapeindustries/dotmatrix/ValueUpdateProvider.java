@@ -1,8 +1,7 @@
 package com.escapeindustries.dotmatrix;
 
 /**
- * This interface defines something that provides updates of a changing String
- * value.
+ * Provider of updates of a changing value.
  * 
  * @author Mark Roberts
  */

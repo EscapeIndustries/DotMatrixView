@@ -1,8 +1,7 @@
 package com.escapeindustries.dotmatrix;
 
 /**
- * This interface defines something provides updates for sets of on and off
- * colors.
+ * Provider of updates for sets of on and off colors.
  * 
  * @author Mark Roberts
  */

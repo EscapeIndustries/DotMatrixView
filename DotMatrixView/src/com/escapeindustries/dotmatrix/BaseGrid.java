@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This is a helper class for classes that implement {@link Grid}. Default
- * implementations are provided for most interface methods. It remains for the
- * sub-class to provide an implementation of {@link #changeDot} and
- * {@link #initializeGrid}.
+ * A helper for classes that implement {@link Grid}. Default implementations are
+ * provided for most interface methods. It remains for the sub-class to provide
+ * an implementation of {@link #changeDot} and {@link #initializeGrid}.
  * 
  * @author Mark Roberts
  * 

@@ -1,9 +1,11 @@
 package com.escapeindustries.dotmatrix;
 
 /**
- * This class defines the dots that should be on for each digit on a 5 column by
- * 13 row grid. The numbers are the one dimensional coordinate beginning in the
- * top right corner of the grid.
+ * Defines the dots that should be on for each digit on a 7 column by 13 row
+ * grid. The numbers are one dimensional coordinates beginning in the top right
+ * corner of the part of the {@link Grid} this digit is being rendered in.
+ * Coordinates begin at zero. Therefore the first column on the second row from
+ * the top is at coordinate 7.
  * 
  * @author Mark Roberts
  * 
