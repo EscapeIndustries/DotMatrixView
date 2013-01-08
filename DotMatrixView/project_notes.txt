@@ -18,13 +18,13 @@ to make that happen?
  [X] CountdownColorUpdateProvider.java
  [X] Digit.java
  [X] DigitDefinition.java
- [X] DigitTransition.java
  [X] DigitsParser.java
- [ ] DotChangeAction.java
+ [X] DotChangeAction.java
  [ ] FormatStringParser.java
  [ ] FormattedTime.java
  [X] Glyph.java
  [ ] GlyphFactory.java
+ [X] GlyphTransition.java
  [X] Grid.java
  [ ] MatrixDisplay.java
  [ ] MatrixDisplayRenderController.java
