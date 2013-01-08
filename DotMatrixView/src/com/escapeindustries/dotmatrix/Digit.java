@@ -34,7 +34,7 @@ public class Digit extends Glyph {
 	 */
 	public void setNumber(int to) {
 		if (to != current) {
-			DigitTransition trans = new DigitTransition(
+			GlyphTransition trans = new GlyphTransition(
 					new NormalDotChangeAction(this));
 			trans.makeTransition(DigitDefinition.patterns[current],
 					DigitDefinition.patterns[to]);

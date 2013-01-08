@@ -7,18 +7,18 @@ package com.escapeindustries.dotmatrix;
  * @author Mark Roberts
  * 
  */
-public class DigitTransition {
+public class GlyphTransition {
 
 	private DotChangeAction action;
 
 	/**
-	 * Construct and configure a DigitTransition.
+	 * Construct and configure a GlyphTransition.
 	 * 
 	 * @param action
 	 *            action will be informed of all changes that need to be made
 	 *            when transitions are calculated.
 	 */
-	public DigitTransition(DotChangeAction action) {
+	public GlyphTransition(DotChangeAction action) {
 		this.action = action;
 	}
 

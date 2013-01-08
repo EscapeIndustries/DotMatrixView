@@ -1,7 +1,7 @@
 package com.escapeindustries.dotmatrix.tests;
 
 import com.escapeindustries.dotmatrix.DigitDefinition;
-import com.escapeindustries.dotmatrix.DigitTransition;
+import com.escapeindustries.dotmatrix.GlyphTransition;
 
 import junit.framework.TestCase;
 
@@ -24,7 +24,7 @@ public class DigitDisplayTests extends TestCase {
 	public void testFindCorrectDotsToDimFromEndsBeforeTo() {
 		// Arrange
 		int[] expected = { 55, 62, 69, 76, 83 }; 
-		DigitTransition trans = new DigitTransition(counter);
+		GlyphTransition trans = new GlyphTransition(counter);
 		// Act
 		trans.makeTransition(one, two);
 		int[] result = counter.getDotsToDim();
@@ -40,7 +40,7 @@ public class DigitDisplayTests extends TestCase {
 		// Arrange
 		int[] expected = { 1, 2, 3, 4, 5, 43, 44, 45, 46, 47, 49, 56, 63, 70,
 				77, 85, 86, 87, 88, 89 };
-		DigitTransition trans = new DigitTransition(counter);
+		GlyphTransition trans = new GlyphTransition(counter);
 		// Act
 		trans.makeTransition(two, one);
 		int[] result = counter.getDotsToDim();
@@ -55,7 +55,7 @@ public class DigitDisplayTests extends TestCase {
 	public void testFindCorrectDotsToDimToAndFromEndSameDot() {
 		// Arrange
 		int[] expected = { 49, 56, 63, 70, 77 };
-		DigitTransition trans = new DigitTransition(counter);
+		GlyphTransition trans = new GlyphTransition(counter);
 		// Act
 		trans.makeTransition(two, three);
 		int[] result = counter.getDotsToDim();
@@ -71,7 +71,7 @@ public class DigitDisplayTests extends TestCase {
 		// Arrange
 		int[] expected = { 1, 2, 3, 4, 5, 43, 44, 45, 46, 47, 49, 56, 63, 70,
 				77, 85, 86, 87, 88, 89 };
-		DigitTransition trans = new DigitTransition(counter);
+		GlyphTransition trans = new GlyphTransition(counter);
 		// Act
 		trans.makeTransition(one, two);
 		int[] result = counter.getDotsToLight();
@@ -86,7 +86,7 @@ public class DigitDisplayTests extends TestCase {
 	public void testFindCorrectDotsToLightToEndsBeforeFrom() {
 		// Arrange
 		int[] expected = { 55, 62, 69, 76, 83 };
-		DigitTransition trans = new DigitTransition(counter);
+		GlyphTransition trans = new GlyphTransition(counter);
 		// Act
 		trans.makeTransition(two, one);
 		int[] result = counter.getDotsToLight();
@@ -101,7 +101,7 @@ public class DigitDisplayTests extends TestCase {
 	public void testFindCorrectDotsToLightToAndFromEndSameDot() {
 		// Arrange
 		int[] expected = { 55, 62, 69, 76, 83 };
-		DigitTransition trans = new DigitTransition(counter);
+		GlyphTransition trans = new GlyphTransition(counter);
 		// Act
 		trans.makeTransition(two, three);
 		int[] result = counter.getDotsToLight();
