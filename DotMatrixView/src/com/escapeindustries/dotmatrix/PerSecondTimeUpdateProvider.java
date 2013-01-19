@@ -3,10 +3,22 @@ package com.escapeindustries.dotmatrix;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * A {@link ValueUpdateProvider} that provides the time, with updates no more
+ * frequent than once per second.
+ * 
+ * @author Mark Roberts
+ * 
+ */
 public class PerSecondTimeUpdateProvider implements ValueUpdateProvider {
-	
+
 	private FormattedTime formatter;
 
+	/**
+	 * @param formatter
+	 *            The {@link FormattedTime} that will be used as the source of
+	 *            time values
+	 */
 	public PerSecondTimeUpdateProvider(FormattedTime formatter) {
 		this.formatter = formatter;
 	}

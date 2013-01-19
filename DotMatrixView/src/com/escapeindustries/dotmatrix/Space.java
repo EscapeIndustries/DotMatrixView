@@ -1,5 +1,10 @@
 package com.escapeindustries.dotmatrix;
 
+/**
+ * A {@link Glyph} representing a gap between other {@link Glyph}s.
+ * @author Mark Roberts
+ *
+ */
 public class Space extends Glyph {
 	
 	public Space() {

@@ -1,7 +1,7 @@
 package com.escapeindustries.dotmatrix;
 
 /**
- * A {@link Glyph} to represent a digit (0-9).
+ * A {@link Glyph} that represents a digit (0-9).
  * 
  * @author Mark Roberts
  */

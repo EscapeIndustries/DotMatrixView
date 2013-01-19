@@ -20,24 +20,24 @@ to make that happen?
  [X] DigitDefinition.java
  [X] DigitsParser.java
  [X] DotChangeAction.java
- [ ] FormatStringParser.java
- [ ] FormattedTime.java
+ [X] FormatStringParser.java
+ [X] FormattedTime.java
  [X] Glyph.java
- [ ] GlyphFactory.java
+ [X] GlyphFactory.java
  [X] GlyphTransition.java
  [X] Grid.java
  [ ] MatrixDisplay.java
  [ ] MatrixDisplayRenderController.java
- [ ] ModelGrid.java
- [ ] NormalDotChangeAction.java
- [ ] PerSecondTimeUpdateProvider.java
- [ ] Seperator.java
- [ ] SingleColorUpdateProvider.java
- [ ] Space.java
- [ ] StaticValueUpdateProvider.java
- [ ] SystemClockTimeSource.java
- [ ] TimeSource.java
- [ ] TransitionalColorSet.java
+ [X] ModelGrid.java
+ [X] NormalDotChangeAction.java
+ [X] PerSecondTimeUpdateProvider.java
+ [X] Seperator.java
+ [X] SingleColorUpdateProvider.java
+ [X] Space.java
+ [X] StaticValueUpdateProvider.java
+ [X] SystemClockTimeSource.java
+ [X] TimeSource.java
+ [X] TransitionalColorSet.java
  [X] UpdateProvider.java
  [X] ValueUpdateProvider.java
 

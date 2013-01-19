@@ -1,10 +1,17 @@
 package com.escapeindustries.dotmatrix;
 
+/**
+ * A {@link Grid} implementation that only stores the state of all the dots.
+ * Drawing to this only changes the stored state.
+ * 
+ * @author Mark Roberts
+ * 
+ */
 public class ModelGrid extends BaseGrid {
 
 	private int[][] grid;
 	private boolean transitionsActive;
-	
+
 	@Override
 	public void changeDot(int x, int y, boolean on) {
 		int current = grid[x][y];
@@ -30,6 +37,10 @@ public class ModelGrid extends BaseGrid {
 		super.setValue(value);
 	}
 
+	/**
+	 * Update the state so that all dots marked as in transition to ON become ON
+	 * and those in transition to OFF become OFF.
+	 */
 	public void clearTransitionState() {
 		for (int x = 0; x < this.columns; x++) {
 			for (int y = 0; y < this.rows; y++) {
@@ -43,6 +54,10 @@ public class ModelGrid extends BaseGrid {
 		transitionsActive = false;
 	}
 
+	/**
+	 * @return Are any dots in a transition state? True if dots are in
+	 *         transition, false if all dots are fully ON or OFF.
+	 */
 	public boolean getTransitionsActive() {
 		return transitionsActive;
 	}
