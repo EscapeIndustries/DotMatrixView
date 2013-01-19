@@ -1,16 +1,16 @@
 package com.escapeindustries.dotmatrix;
 
 public class NormalDotChangeAction implements DotChangeAction {
-	
-	private Glyph digit;
 
-	public NormalDotChangeAction(Glyph digit) {
-		this.digit = digit;
+	private Glyph glyph;
+
+	public NormalDotChangeAction(Glyph glyph) {
+		this.glyph = glyph;
 	}
 
 	@Override
 	public void dotHasChanged(int index, boolean on) {
-		digit.changeDot(index, on);
+		glyph.changeDot(index, on);
 	}
 
 }
