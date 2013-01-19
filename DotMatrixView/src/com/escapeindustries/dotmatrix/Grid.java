@@ -1,7 +1,7 @@
 package com.escapeindustries.dotmatrix;
 
 /**
- * The core of what makes a Grid that can display {@link Glyph Glyphs}.
+ * A Grid that can display {@link Glyph Glyphs}.
  * 
  * @author Mark Roberts
  * 
