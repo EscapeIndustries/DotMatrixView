@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A utility class to parse a format strings.
+ * A utility class to parse format strings.
  * 
  * @author Mark Roberts
  * 
