@@ -12,6 +12,21 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+/**
+ * <p>
+ * A {@link android.view.View View} that displays digits, spaces and colons by
+ * lighting and dimming dots on a 2D grid of dots. The dot colors animate to
+ * give a sense of phospher persistence on an old-skool LED clock display.
+ * </p>
+ * 
+ * <p>
+ * This class handles loading configuration and dealing with lifecycle events.
+ * Rendering the view is handled by {@link MatrixDisplayRenderController}.
+ * </p>
+ * 
+ * @author Mark Roberts
+ * 
+ */
 public class MatrixDisplay extends SurfaceView implements
 		SurfaceHolder.Callback {
 

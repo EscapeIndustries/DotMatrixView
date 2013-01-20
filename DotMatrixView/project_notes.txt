@@ -5,65 +5,13 @@ NEXT: Consider something that wants to use the view to draw from any grid to any
 	  this would just need a new sub-class of Glyph. Is that correct? Do the names in the interfaces still work?
 BUG:  Combine static value updater and countdown color change and the colors don't change.
 
-Release planning
-----------------
-The most important goal right now is to get the code for the View library onto GitHub. What needs to be done
-to make that happen?
-[X] Merge the surfaceview_alternative branch into master
-[X] Remove all the classes that are not needed for the SurfaceView based solution
-[X] Read ALL the remaining code and comment anything that isn't obvious
-[ ] Add JavaDoc comments to all the public bits, including the interfaces
- [X] BaseGrid.java
- [X] ColorUpdateProvider.java
- [X] CountdownColorUpdateProvider.java
- [X] Digit.java
- [X] DigitDefinition.java
- [X] DigitsParser.java
- [X] DotChangeAction.java
- [X] FormatStringParser.java
- [X] FormattedTime.java
- [X] Glyph.java
- [X] GlyphFactory.java
- [X] GlyphTransition.java
- [X] Grid.java
- [ ] MatrixDisplay.java
- [ ] MatrixDisplayRenderController.java
- [X] ModelGrid.java
- [X] NormalDotChangeAction.java
- [X] PerSecondTimeUpdateProvider.java
- [X] Seperator.java
- [X] SingleColorUpdateProvider.java
- [X] Space.java
- [X] StaticValueUpdateProvider.java
- [X] SystemClockTimeSource.java
- [X] TimeSource.java
- [X] TransitionalColorSet.java
- [X] UpdateProvider.java
- [X] ValueUpdateProvider.java
-
-Thoughts and requirements for building the dot array in code instead of XML:
-		Why do I want to do this?
-			Because I want more flexible sizes of dots and of the overall control.
-				This is what I would expect of a re-useable view.
-			It feels like a step towards being able to have more dots than are needed to allow scrolling (horizontal or vertical)
-				Scrolling would be a nice visual effect. It would also be useful for touch events, horizontally or vertically showing
-				higher and lower values to the left and right/above and below.
-		What parts will I need to build to make it work?
-			build the view objects based on parameters
-			build the digit definitions based on parameters
-				define the digits by the parts they are made of
-				build the definition of the parts in code
-					this approach allows more parts to be defined later
-					how do non-digit-width parts like spacers and colons play into this?
-				scaling factors - parts know they should take up all the dots available within constraints
-					when the digit width is wider, say 21 instead of current 7, the vertical lines should be
-					2 or even 3 dots wide
-						grids should be divided into proportions. A horizontal is 1 unit of that high and 5 units wide, a vertical
-						is 5 of that unit high and 1 unit wide. Spacers are 1 unit. So the dots of a colon would be 1 unit by 1 unit.
-					the proportions themselves can be changed? allowing normal, thin or fat characters.
-
 Decide your next experimental direction. Options:
  	Go further with the display piece
+ 		Scalable digit definitions
+ 			Allow digits to draw using more or fewer dots. This would require a digit definition that calculated its own
+ 			1-dimensional coordinates based on dots available for height and width, based on some basic proportions. Not
+ 			only would they extend in number of dots used for height and width but they might make the lines thicker
+ 			using more than one line of dots.
  		Touch events
  			The display will need some way to be set to the starting value. I could use vertical dragging to 
  			increment and decrement a digit. While dragging, the digit could slide down a row of dots at a time,
@@ -78,10 +26,6 @@ Decide your next experimental direction. Options:
  			their destination dots. The index offset would be the index of the start of row 12 (of 13).
  		Build dot-array digit from code not XML
  			Given the width and height, figure out which are the active dots
- 	Figure out the time piece
- 		How will update of the display be scheduled to happen
- 			When the activity is visible
- 			When in the background? Should there be a background service at all?
  		Calculate the current value offset from the start time and the current time
  			Calculate the correct current value from an offset off the time when it started, and every
  			time the display is scheduled to update figure it out again.
@@ -90,19 +34,9 @@ Decide your next experimental direction. Options:
  			Might you show both the ending time and the count-down on the screen together?
  	Learn to get appointment times from the calendar content provider
  	Use it to make a clock widget
- 
-Make the digits build in code with arbitrary sizes:
-	build the original matrices
-	build the co-ordinates of the digit parts, spacers and colon
-	arguments for building a matrix:
-		dots wide
-		dots high
-		dot size
-		spacer width
-	
-	Should this actually just construct a matrix big enough for the full display, with the
-	digits being indexes to items within it?
-	
+
+Example of the 1-dimensional coordinate system
+----------------------------------------------	
 An eight - all elements on - looks like this:
 	    1, 2, 3, 4, 5,
 	 7,               13,

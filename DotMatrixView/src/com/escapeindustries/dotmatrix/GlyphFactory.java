@@ -26,7 +26,7 @@ public class GlyphFactory {
 	}
 
 	/**
-	 * @return A {@link Separator} set to draw to the configured {@link Grid}
+	 * @return A {@link Seperator} set to draw to the configured {@link Grid}
 	 */
 	public Seperator createSeperator() {
 		return new Seperator(grid, 0, 0);

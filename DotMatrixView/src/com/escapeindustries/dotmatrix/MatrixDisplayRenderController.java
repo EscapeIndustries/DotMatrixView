@@ -8,6 +8,13 @@ import android.graphics.Paint;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
+/**
+ * The {@link java.lang.Thread Thread} used by {@link MatrixDisplay} to render
+ * to a {@link android.view.SurfaceView SurfaceView}.
+ * 
+ * @author Mark Roberts
+ * 
+ */
 public class MatrixDisplayRenderController extends Thread {
 
 	// Constants
@@ -40,6 +47,27 @@ public class MatrixDisplayRenderController extends Thread {
 	private int lastSeconds = -1;
 	private int fps = 0;
 
+	/**
+	 * @param holder
+	 *            {@link android.view.SurfaceHolder SurfaceHolder} of the
+	 *            {@link android.view.SurfaceView SurfaceView} to render to
+	 * @param grid
+	 *            the {@link ModelGrid} providing the state of the {@link Grid}
+	 * @param valueUpdater
+	 *            the source of values that will be rendered
+	 * @param paintUpdater
+	 *            the source of colors to render in
+	 * @param dotRadius
+	 *            the radius of a dot in raw pixels
+	 * @param dotSpacing
+	 *            the space in raw pixels to leave between dots, both
+	 *            horizontally and vertically
+	 * @param transitionDuration
+	 *            the time in milliseconds over which a dot transition (OFF to
+	 *            ON or ON to OFF) should take
+	 * @param backgroundColor
+	 *            the color to draw for the background
+	 */
 	public MatrixDisplayRenderController(SurfaceHolder holder, ModelGrid grid,
 			ValueUpdateProvider valueUpdater, ColorUpdateProvider paintUpdater,
 			int dotRadius, int dotSpacing, long transitionDuration,
@@ -63,11 +91,23 @@ public class MatrixDisplayRenderController extends Thread {
 		initCoords(grid.getRows(), grid.getColumns(), dotRadius, dotSpacing);
 	}
 
+	/**
+	 * Get the width in raw pixels that will be needed to render the grid.
+	 * 
+	 * @return the width in raw pixels that will be needed to render the grid
+	 *         per the configuration passed to the constructor
+	 */
 	public int getWidth() {
 		return coordsX[grid.getRows() - 1][grid.getColumns() - 1] + dotRadius
 				+ dotSpacing;
 	}
 
+	/**
+	 * Get the height in raw pixels that will be needed to render the grid.
+	 * 
+	 * @return the total height in raw pixels that will be needed to render the
+	 *         grid per the configuration passed to the constructor
+	 */
 	public int getHeight() {
 		return coordsY[grid.getRows() - 1][grid.getColumns() - 1] + dotRadius
 				+ dotSpacing;
@@ -104,6 +144,14 @@ public class MatrixDisplayRenderController extends Thread {
 		}
 	}
 
+	/**
+	 * Set the state of the thread to running or not running. It must be set to
+	 * true to allow the main loop to start running. Its main purpose is to get
+	 * the main loop to stop running by setting to false.
+	 * 
+	 * @param running
+	 *            the new running state - true for running, false for stopped
+	 */
 	public void setRunning(boolean running) {
 		this.running = running;
 	}
@@ -118,8 +166,9 @@ public class MatrixDisplayRenderController extends Thread {
 					canvas.drawColor(backgroundColor);
 					for (int row = 0; row < grid.getRows(); row++) {
 						for (int column = 0; column < grid.getColumns(); column++) {
-							canvas.drawCircle(coordsX[row][column], coordsY[row][column],
-									dotRadius, paints[grid.getDotState(column, row)]);
+							canvas.drawCircle(coordsX[row][column],
+									coordsY[row][column], dotRadius,
+									paints[grid.getDotState(column, row)]);
 						}
 					}
 				}
