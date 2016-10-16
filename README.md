@@ -2,6 +2,9 @@
 
 This is an Android library project providing a custom view that can display things on a grid of dots. When the displayed value changes, the dots that are changing fade in/out to mimic persistence of vision and the speed of reaction of 1980s style LED spots.
 
+##What does it look like?
+![screenshot](http://escapeindustries.github.io/DotMatrixView/screenshots/DotMatrixView.png)
+
 ##Usage
 
 Link the Android library project into your app project, then add it to your layout XML.
